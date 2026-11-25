@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Ubicaciones",
-                    "text": "En un empleado puede decidir a qué ubicaciones tiene acceso.<br><br>Marque las ubicaciones que quiera.<br><br>• Una o varias ubicaciones seleccionadas: el empleado tiene acceso a esas ubicaciones.<br>• Ninguna ubicación seleccionada: el empleado tiene acceso a todas las ubicaciones.<br><br>Un administrador tiene siempre acceso a todas las ubicaciones. Este límite solo se aplica a los empleados."
+                    "text": "En un empleado puede decidir a qué ubicaciones tiene acceso.<br><br>Marque las ubicaciones que quiera.<br><br>• Una o varias ubicaciones seleccionadas: el empleado tiene acceso a esas ubicaciones.<br>• Ninguna ubicación seleccionada: el empleado tiene acceso a todas las ubicaciones.<br><br>Un administrador tiene siempre acceso a todas las ubicaciones. Este límite solo se aplica a los empleados. Ese empleado solo ve y edita después a los ejecutores y compañeros de esas ubicaciones."
                 },
                 {
                     "label": "Iniciar sesión con Microsoft",
@@ -647,7 +647,7 @@
                 },
                 {
                     "label": "Operarios",
-                    "text": "Un operario no inicia sesión con una dirección de correo y una contraseña. En Clock Point elige su nombre y un icono propio. Eso ocurre en un solo teléfono.<br><br>Puede añadir opcionalmente un PIN o una clave de acceso.<br><br>En la página del equipo ve por cada operario si el perfil está activo, bloqueado o es jefe de equipo. Con <strong>Editar</strong> modifica los datos.<br><br>¿Tiene muchos operarios? Puede ver y gestionar la lista completa en <strong>Personas → Ejecutores</strong>."
+                    "text": "Un operario no inicia sesión con una dirección de correo y una contraseña. En Clock Point elige su nombre y un icono propio. Eso ocurre en un solo teléfono.<br><br>Puede añadir opcionalmente un PIN o una clave de acceso.<br><br>En la página del equipo ve por cada operario si el perfil está activo, bloqueado o es jefe de equipo. Con <strong>Editar</strong> modifica los datos.<br><br>¿Tiene muchos operarios? Puede ver y gestionar la lista completa en <strong>Personas → Ejecutores</strong>. Un empleado con ubicaciones elegidas solo ve y edita allí a los ejecutores de esas ubicaciones."
                 },
                 {
                     "label": "Iniciar sesión en Clock Point",

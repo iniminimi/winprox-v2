@@ -240,7 +240,13 @@ class ShiftsIndex extends Component
             ? $buildWeekGrid->handle((int) Tenancy::id(), (int) $this->workerFilter, $this->weekCursor()->toDateString(), $this->clockPointFilter, $this->showWeekends)
             : null;
 
+        $viewer = auth()->user();
+
         $query = WorkShift::query()
+            ->when(
+                $viewer instanceof \App\Models\User,
+                fn ($q) => $q->whereHas('worker', fn ($worker) => $worker->visibleTo($viewer)),
+            )
             ->with([
                 'worker',
                 'team.translations',
@@ -271,7 +277,12 @@ class ShiftsIndex extends Component
             'isWeek' => $isWeek,
             'weekGrid' => $weekGrid,
             'teams' => InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
-            'workers' => Worker::query()->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get(),
+            'workers' => Worker::query()
+                ->where('is_active', true)
+                ->when(auth()->user() instanceof \App\Models\User, fn ($query) => $query->visibleTo(auth()->user()))
+                ->orderBy('last_name')
+                ->orderBy('first_name')
+                ->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
             'manualClockInWorkers' => $manualClockInOptions['workers'],
             'manualClockInClockPoints' => $manualClockInOptions['clockPoints'],

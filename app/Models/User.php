@@ -2,19 +2,21 @@
 
 namespace App\Models;
 
+use App\Enums\UiTheme;
+use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use App\Enums\UiTheme;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /** @use HasFactory<UserFactory> */
     use HasApiTokens, HasFactory, Notifiable;
 
     public const ROLE_ADMIN = 'admin';
@@ -50,6 +52,41 @@ class User extends Authenticatable implements MustVerifyEmail
     public function locations(): BelongsToMany
     {
         return $this->belongsToMany(Location::class, 'location_user')->withTimestamps();
+    }
+
+    /**
+     * Een medewerker met gekozen locaties ziet alleen collega’s van die locaties.
+     *
+     * @param  Builder<User>  $query
+     * @return Builder<User>
+     */
+    public function scopeVisibleTo(Builder $query, User $viewer): Builder
+    {
+        $allowed = $viewer->accessibleLocationIds();
+
+        if ($allowed === null) {
+            return $query;
+        }
+
+        return $query->whereHas(
+            'locations',
+            fn (Builder $locations) => $locations->whereIn('locations.id', $allowed),
+        );
+    }
+
+    public function isVisibleTo(User $viewer): bool
+    {
+        $allowed = $viewer->accessibleLocationIds();
+
+        if ($allowed === null) {
+            return true;
+        }
+
+        $ids = $this->relationLoaded('locations')
+            ? $this->locations->pluck('id')->map(fn ($id) => (int) $id)->all()
+            : $this->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
+
+        return array_intersect($ids, $allowed) !== [];
     }
 
     public function linkedWorker(): HasOne

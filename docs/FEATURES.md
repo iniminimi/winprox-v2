@@ -1524,7 +1524,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   welkomst-/accountmail (set-password-link via reset-broker). `users.is_active` → inactief = geen login.
 - Medewerker: optioneel **locatie-multi-select** (leeg = alle vestigingen). Met Time-module:
   optioneel **prikklok-team** → gekoppeld worker-profiel (`workers.user_id`, telt niet dubbel als licentie).
-- Sidebar **Personen → Backoffice** (`/team?section=backoffice`). Alleen admin ziet dit menu-item.
+- Sidebar **Personen → Backoffice** (`/team?section=backoffice`). Een medewerker ziet de collega’s van haar locaties. Alleen een beheerder voegt collega’s toe of bewerkt hun account.
 
 ### 6.2 Teams
 - Sidebar **Personen → Teams** (`/team?section=teams`): teamlijst (geen checklists).
@@ -1532,11 +1532,13 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   Zodra er een team is: «Beheer hier de teams binnen je organisatie en voeg uitvoerders toe».
 - Lijst: teamnaam, aantal actieve workers, actief/inactief. Een klik op de
   teamnaam opent de teampagina (`/team/{team}`): gegevens, documenten,
-  mededelingen en de uitvoerders van dat team. Filter **Locatie** staat op de
-  lijst en op de teampagina en beperkt de uitvoerders (zelfde regel als
-  Uitvoerders: toegewezen aan die vestiging, geen vestiging, of een team dat
-  overal mag inklokken). Het aantal volgt die filter. Verwijderen van een team
-  kijkt nog naar alle uitvoerders, niet naar de gefilterde lijst.
+  mededelingen en de uitvoerders van dat team. Een medewerker met gekozen
+  locaties ziet alleen uitvoerders die aan minstens één van die locaties
+  hangen. Filter **Locatie** staat op de lijst en op de teampagina en beperkt
+  daarna de uitvoerders voor wie alle locaties mag zien (toegewezen aan die
+  vestiging, geen vestiging, of een team dat overal mag inklokken). Het aantal
+  volgt die filter. Verwijderen van een team kijkt nog naar alle uitvoerders,
+  niet naar de gefilterde lijst.
 - **Documenten en mededelingen voor uitvoerders** hangen aan het team, niet aan
   de vestiging. Ze staan niet op het unit-QR-portaal en tellen niet mee in het
   documentenquotum (10/20/30/40). Doelgroep: heel het team, of één uitvoerder

@@ -5,6 +5,7 @@ namespace App\Actions\Time;
 use App\Enums\AbsenceRequestStatus;
 use App\Models\AbsenceRequest;
 use App\Models\ClockPoint;
+use App\Models\User;
 use App\Support\Time\AbsencePhotoRetention;
 use App\Support\Time\TimeModuleAccess;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,12 +27,17 @@ class ListAbsenceRequestsAction
         ?string $to = null,
         ?int $clockPointId = null,
         bool $withPhotos = false,
+        ?User $viewer = null,
     ): Collection {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
         return AbsenceRequest::query()
             ->with(['worker', 'shiftType', 'decidedBy', 'photos'])
             ->where('tenant_id', $tenantId)
+            ->when(
+                $viewer instanceof User,
+                fn ($q) => $q->whereHas('worker', fn ($worker) => $worker->visibleTo($viewer)),
+            )
             ->when($status !== null, fn ($q) => $q->where('status', $status))
             ->when($teamId, fn ($q) => $q->whereHas(
                 'worker',

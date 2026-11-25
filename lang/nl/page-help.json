@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Locaties",
-                    "text": "Bij een medewerker kunt u bepalen tot welke locaties die toegang heeft.<br><br>Vink de gewenste locaties aan.<br><br>• Eén of meerdere locaties geselecteerd: de medewerker heeft toegang tot de geselecteerde locaties.<br>• Geen locaties geselecteerd: de medewerker krijgt toegang tot alle locaties.<br><br>Een beheerder heeft altijd toegang tot alle locaties. Deze beperking geldt dus alleen voor medewerkers."
+                    "text": "Bij een medewerker kunt u bepalen tot welke locaties die toegang heeft.<br><br>Vink de gewenste locaties aan.<br><br>• Eén of meerdere locaties geselecteerd: de medewerker heeft toegang tot de geselecteerde locaties.<br>• Geen locaties geselecteerd: de medewerker krijgt toegang tot alle locaties.<br><br>Een beheerder heeft altijd toegang tot alle locaties. Deze beperking geldt dus alleen voor medewerkers. Die medewerker ziet en bewerkt daarna alleen uitvoerders en collega’s van die locaties."
                 },
                 {
                     "label": "Inloggen met Microsoft",
@@ -647,7 +647,7 @@
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Een uitvoerder meldt zich niet aan met een e-mailadres en wachtwoord. Op Clock Point kiest die persoon zijn of haar naam en een eigen icoon. Dat gebeurt op één gsm.<br><br>U kunt daar optioneel een pincode of passkey aan toevoegen.<br><br>Op de teampagina ziet u per uitvoerder of het profiel actief, geblokkeerd of teamleader is. Via <strong>Bewerken</strong> past u de gegevens aan.<br><br>Hebt u veel uitvoerders? Dan kunt u de volledige lijst bekijken en beheren via <strong>Personen → Uitvoerders</strong>."
+                    "text": "Een uitvoerder meldt zich niet aan met een e-mailadres en wachtwoord. Op Clock Point kiest die persoon zijn of haar naam en een eigen icoon. Dat gebeurt op één gsm.<br><br>U kunt daar optioneel een pincode of passkey aan toevoegen.<br><br>Op de teampagina ziet u per uitvoerder of het profiel actief, geblokkeerd of teamleader is. Via <strong>Bewerken</strong> past u de gegevens aan.<br><br>Hebt u veel uitvoerders? Dan kunt u de volledige lijst bekijken en beheren via <strong>Personen → Uitvoerders</strong>. Een medewerker met gekozen locaties ziet en bewerkt daar alleen de uitvoerders van die locaties."
                 },
                 {
                     "label": "Aanmelden op Clock Point",

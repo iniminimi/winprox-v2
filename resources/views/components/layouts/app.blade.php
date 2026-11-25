@@ -397,7 +397,7 @@
                                 <span>{{ __('common.nav.people') }}</span>
                             </summary>
                             <div class="wp-sidebar-accordion__panel">
-                                @can('create', App\Models\User::class)
+                                @can('viewAny', App\Models\User::class)
                                     <a href="{{ route('team.index', ['section' => 'backoffice']) }}"
                                        class="wp-nav-link wp-nav-link--sub {{ $cmBackofficeNavActive ? 'is-active' : '' }}"
                                        @click="nav = false">
@@ -702,7 +702,7 @@
                                     <span>{{ __('common.nav.people') }}</span>
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
-                                    @can('create', App\Models\User::class)
+                                    @can('viewAny', App\Models\User::class)
                                         <a href="{{ route('team.index', ['section' => 'backoffice']) }}"
                                            class="wp-nav-link wp-nav-link--sub {{ $backofficeNavActive ? 'is-active' : '' }}"
                                            @click="nav = false">

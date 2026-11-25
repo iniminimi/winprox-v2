@@ -49,14 +49,14 @@ final class SearchTenantGlobalAction
         }
 
         if ($actor->can('viewAny', Worker::class)) {
-            $workers = $this->searchWorkers($tenantId, $terms);
+            $workers = $this->searchWorkers($tenantId, $terms, $actor);
             if ($workers->isNotEmpty()) {
                 $results['workers'] = $workers;
             }
         }
 
         if ($actor->can('viewAny', User::class)) {
-            $colleagues = $this->searchColleagues($tenantId, $terms);
+            $colleagues = $this->searchColleagues($tenantId, $terms, $actor);
             if ($colleagues->isNotEmpty()) {
                 $results['colleagues'] = $colleagues;
             }
@@ -177,11 +177,12 @@ final class SearchTenantGlobalAction
      * @param  list<string>  $terms
      * @return Collection<int, array{id: int|string, type: string, title: string, subtitle: string, url: string}>
      */
-    private function searchWorkers(int $tenantId, array $terms): Collection
+    private function searchWorkers(int $tenantId, array $terms, User $actor): Collection
     {
         $query = Worker::query()
             ->where('tenant_id', $tenantId)
             ->where('is_active', true)
+            ->visibleTo($actor)
             ->with(['team' => fn ($q) => $q->select('id', 'name', 'original_language')->with('translations')]);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
@@ -206,12 +207,13 @@ final class SearchTenantGlobalAction
      * @param  list<string>  $terms
      * @return Collection<int, array{id: int|string, type: string, title: string, subtitle: string, url: string}>
      */
-    private function searchColleagues(int $tenantId, array $terms): Collection
+    private function searchColleagues(int $tenantId, array $terms, User $actor): Collection
     {
         $query = User::query()
             ->where('tenant_id', $tenantId)
             ->where('is_superuser', false)
-            ->where('is_active', true);
+            ->where('is_active', true)
+            ->visibleTo($actor);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
             GlobalSearchQuery::applyColumnLike($termQuery, $term, ['name', 'email']);

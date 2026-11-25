@@ -183,7 +183,7 @@
             },
             {
                 "title": "Organisation, sites et personnes",
-                "body": "Les gestionnaires organisent l’entreprise avec des sites, des équipes, des personnes et des unités. Une unité peut être une pièce, un véhicule, une machine ou un autre moyen. Chaque site peut aussi avoir une unité pour l’ensemble du lieu. Un collaborateur peut ajouter, modifier ou désactiver des sites seulement si un administrateur l’autorise dans Paramètres, sous l’organisation.",
+                "body": "Les gestionnaires organisent l’entreprise avec des sites, des équipes, des personnes et des unités. Une unité peut être une pièce, un véhicule, une machine ou un autre moyen. Chaque site peut aussi avoir une unité pour l’ensemble du lieu. Un collaborateur peut ajouter, modifier ou désactiver des sites seulement si un administrateur l’autorise dans Paramètres, sous l’organisation. Un collaborateur avec des sites choisis ne voit et ne modifie que les exécutants et les collègues de ces sites.",
                 "items": [
                     "Gérer les catégories et les sites. Ajouter des unités une à une ou en masse, aussi via CSV.",
                     "Chercher et gérer les exécutants sous Personnes → Exécutants. Une photo de portrait est facultative.",

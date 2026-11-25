@@ -3,11 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Actions\Communication\ImportInternalTeamTranslationsAction;
-use App\Actions\Workers\DeleteWorkerImportBatchAction;
-use App\Actions\Workers\ImportWorkersAction;
-use App\Data\Workers\DeleteWorkerImportBatchData;
-use App\Data\Workers\ImportWorkersData;
-use App\Http\Requests\Workers\ImportWorkersRequest;
+use App\Actions\Portal\RevokeWorkerPasskeysAction;
 use App\Actions\Team\ClearWorkerWeekdayMinutesAction;
 use App\Actions\Team\CreateColleagueAction;
 use App\Actions\Team\CreateTeamAction;
@@ -16,40 +12,49 @@ use App\Actions\Team\DeleteTeamAction;
 use App\Actions\Team\DeleteWorkerAction;
 use App\Actions\Team\DeleteWorkerPhotoAction;
 use App\Actions\Team\ResetWorkerIconAction;
-use App\Actions\Team\SyncWorkerWeekdayMinutesAction;
-use App\Actions\Portal\RevokeWorkerPasskeysAction;
-use App\Actions\Time\ClearWorkerClockDeviceAction;
-use App\Actions\Time\ClearWorkerClockPinAction;
 use App\Actions\Team\SetColleagueActiveAction;
 use App\Actions\Team\SetTeamActiveAction;
 use App\Actions\Team\SetWorkerActiveAction;
 use App\Actions\Team\SetWorkerTeamleaderAction;
 use App\Actions\Team\SyncTeamCategoriesAction;
+use App\Actions\Team\SyncWorkerWeekdayMinutesAction;
 use App\Actions\Team\UpdateColleagueAction;
 use App\Actions\Team\UpdateTeamAction;
 use App\Actions\Team\UpdateWorkerAction;
 use App\Actions\Team\UpdateWorkerPhotoAction;
+use App\Actions\Time\ClearWorkerClockDeviceAction;
+use App\Actions\Time\ClearWorkerClockPinAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Actions\Time\SetWorkerLeaveEntitlementAction;
+use App\Actions\Workers\DeleteWorkerImportBatchAction;
+use App\Actions\Workers\ImportWorkersAction;
+use App\Data\Workers\DeleteWorkerImportBatchData;
+use App\Data\Workers\ImportWorkersData;
 use App\Http\Requests\Team\StoreColleagueRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\StoreWorkerRequest;
 use App\Http\Requests\Team\UpdateColleagueRequest;
 use App\Http\Requests\Team\UpdateWorkerRequest;
+use App\Http\Requests\Workers\ImportWorkersRequest;
+use App\Livewire\Teams\Announcements;
+use App\Livewire\Teams\Documents;
+use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
-use App\Livewire\Teams\Announcements;
-use App\Livewire\Teams\Documents;
 use App\Models\Worker;
 use App\Models\WorkerLeaveEntitlement;
+use App\Support\Import\MinimalXlsxWriter;
 use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
 use App\Support\Workers\WorkerImportBatchRegistry;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
@@ -59,6 +64,7 @@ use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Gebruikers-hub: collega-gebruikers (admin), operationele teams en workers.
@@ -72,13 +78,21 @@ class Team extends Component
 
     // Collega-gebruiker (modal)
     public bool $showColleagueModal = false;
+
     public ?int $editingColleagueId = null;
+
     public string $colleagueName = '';
+
     public string $colleagueEmail = '';
+
     public string $colleagueLocale = 'nl';
+
     public string $colleagueRole = User::ROLE_EMPLOYEE;
+
     public string $colleaguePassword = '';
+
     public string $colleaguePasswordConfirmation = '';
+
     public bool $colleagueSendAccountEmail = true;
 
     public bool $colleagueNotifyOnNewIssueEmail = true;
@@ -90,17 +104,29 @@ class Team extends Component
 
     // Team (modal)
     public bool $showTeamModal = false;
+
     public ?int $editingTeamId = null;
+
     public string $teamName = '';
+
     public int $teamSortOrder = 0;
+
     public bool $teamIsActive = true;
+
     public bool $teamClocksAllLocations = false;
+
     public mixed $teamRequiredBreakMinutes = null;
+
     public int $teamStaleShiftHours = 16;
+
     public int $teamLongShiftHours = 10;
+
     public string $teamSessionLifespanType = 'daily';
+
     public ?int $teamSessionLifespanCustomHours = null;
+
     public string $teamPreviewLocale = '';
+
     public string $teamTranslationName = '';
 
     /** @var list<int> */
@@ -139,11 +165,17 @@ class Team extends Component
     public bool $openCreateWorker = false;
 
     public string $workerFirstName = '';
+
     public string $workerLastName = '';
+
     public string $workerEmail = '';
+
     public string $workerPhone = '';
+
     public bool $workerIsExternal = false;
+
     public string $workerCompanyName = '';
+
     public string $workerSsin = '';
 
     public string|int|null $workerContractHours = null;
@@ -173,14 +205,20 @@ class Team extends Component
 
     // Worker bewerken/aanmaken (modal)
     public bool $showWorkerModal = false;
+
     public ?int $editingWorkerId = null;
 
     // Worker CSV import
     public bool $showWorkerImportModal = false;
+
     public $workerImportFile = null;
+
     public array $workerImportErrors = [];
+
     public ?int $workerImportedCount = null;
+
     public ?string $workersImportNotice = null;
+
     public string $workersImportNoticeType = 'success';
 
     public function mount(?InternalTeam $internalTeam = null): void
@@ -216,10 +254,6 @@ class Team extends Component
         }
 
         if (! in_array($this->section, ['backoffice', 'teams'], true)) {
-            $this->section = 'teams';
-        }
-
-        if ($this->section === 'backoffice' && ! (auth()->user()?->can('create', User::class) ?? false)) {
             $this->section = 'teams';
         }
 
@@ -286,14 +320,16 @@ class Team extends Component
     {
         try {
             $this->authorize('create', User::class);
-        } catch (\Illuminate\Auth\Access\AuthorizationException $e) {
+        } catch (AuthorizationException $e) {
             $this->addError('colleagueCreate', __('team.errors.not_authorized'));
+
             return;
         }
 
         $tenant = Tenant::query()->findOrFail(Tenancy::id());
         if (! $tenant->canAddSeat()) {
             $this->addError('colleagueCreate', __('team.errors.seat_limit'));
+
             return;
         }
 
@@ -822,6 +858,7 @@ class Team extends Component
         $tenant = Tenant::query()->findOrFail(Tenancy::id());
         if (! $tenant->canAddSeat()) {
             $this->addError('workerFirstName', __('team.errors.seat_limit'));
+
             return;
         }
 
@@ -869,7 +906,7 @@ class Team extends Component
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, InternalTeam>
+     * @return Collection<int, InternalTeam>
      */
     private function selectableWorkerTeams()
     {
@@ -885,7 +922,7 @@ class Team extends Component
      * (eventueel inactieve) team van de worker erbij zodat de select niet
      * leeg lijkt.
      *
-     * @return \Illuminate\Support\Collection<int, InternalTeam>
+     * @return Collection<int, InternalTeam>
      */
     private function workerModalTeams()
     {
@@ -929,6 +966,7 @@ class Team extends Component
         if ($this->editingWorkerId) {
             // Edit mode
             $worker = $this->authorizedWorker((int) $this->editingWorkerId);
+            $locationIds = $this->locationIdsForWorkerSave($worker);
 
             $this->validate(
                 [
@@ -957,7 +995,7 @@ class Team extends Component
                 'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                 'company_name' => $validated['workerCompanyName'] ?? null,
                 'internal_team_id' => (int) $team->id,
-                'location_ids' => $this->selectedWorkerLocationIds,
+                'location_ids' => $locationIds,
                 'default_unit_id' => $validated['workerDefaultUnitId'] ?? null,
             ];
             if (! $this->appendContractMinutes($payload)) {
@@ -969,7 +1007,7 @@ class Team extends Component
 
             try {
                 $worker = $updateWorker->handle($worker, $payload, (int) auth()->id());
-            } catch (\Illuminate\Validation\ValidationException $e) {
+            } catch (ValidationException $e) {
                 $this->mapWorkerDefaultUnitErrors($e);
 
                 return;
@@ -1006,7 +1044,7 @@ class Team extends Component
                     'phone' => $validated['workerPhone'] ?? null,
                     'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                     'company_name' => $validated['workerCompanyName'] ?? null,
-                    'location_ids' => $this->selectedWorkerLocationIds,
+                    'location_ids' => $this->locationIdsForWorkerSave(new Worker),
                     'default_unit_id' => $validated['workerDefaultUnitId'] ?? null,
                 ];
                 if (! $this->appendContractMinutes($payload)) {
@@ -1025,7 +1063,7 @@ class Team extends Component
                 }
 
                 throw $e;
-            } catch (\Illuminate\Validation\ValidationException $e) {
+            } catch (ValidationException $e) {
                 $this->mapWorkerDefaultUnitErrors($e);
 
                 return;
@@ -1076,7 +1114,7 @@ class Team extends Component
         $this->dispatch('saved');
     }
 
-    private function mapWorkerDefaultUnitErrors(\Illuminate\Validation\ValidationException $e): void
+    private function mapWorkerDefaultUnitErrors(ValidationException $e): void
     {
         $messages = $e->errors()['default_unit_id'] ?? null;
         if (is_array($messages) && $messages !== []) {
@@ -1426,7 +1464,7 @@ class Team extends Component
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, Unit>
+     * @return Collection<int, Unit>
      */
     public function availableWorkerDefaultUnits()
     {
@@ -1545,10 +1583,33 @@ class Team extends Component
         return $worker;
     }
 
+    /**
+     * @return list<int>
+     */
+    private function locationIdsForWorkerSave(Worker $worker): array
+    {
+        $selected = array_values(array_unique(array_map('intval', $this->selectedWorkerLocationIds)));
+        $viewer = auth()->user();
+        $allowed = $viewer instanceof User ? $viewer->accessibleLocationIds() : null;
+
+        if ($allowed === null) {
+            return $selected;
+        }
+
+        $kept = $worker->exists
+            ? $worker->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all()
+            : [];
+        $hidden = array_values(array_diff($kept, $allowed));
+        $chosen = array_values(array_intersect($selected, $allowed));
+
+        return array_values(array_unique([...$chosen, ...$hidden]));
+    }
+
     private function authorizedWorker(int $workerId): Worker
     {
         $worker = Worker::findOrFail($workerId);
         Gate::authorize('update', $worker->team);
+        $this->authorize('update', $worker);
 
         return $worker;
     }
@@ -1562,7 +1623,7 @@ class Team extends Component
 
     // --- Worker CSV / Excel import ----------------------------------------
 
-    public function downloadSampleCsv(): \Symfony\Component\HttpFoundation\StreamedResponse
+    public function downloadSampleCsv(): StreamedResponse
     {
         $this->authorize('create', InternalTeam::class);
 
@@ -1589,7 +1650,7 @@ class Team extends Component
         ]);
     }
 
-    public function downloadSampleXlsx(): \Symfony\Component\HttpFoundation\StreamedResponse
+    public function downloadSampleXlsx(): StreamedResponse
     {
         $this->authorize('create', InternalTeam::class);
 
@@ -1609,7 +1670,7 @@ class Team extends Component
         return response()->streamDownload(function () use ($rows) {
             $tempPath = sys_get_temp_dir().DIRECTORY_SEPARATOR.'winprox-workers-sample-'.uniqid('', true).'.xlsx';
             try {
-                \App\Support\Import\MinimalXlsxWriter::write($tempPath, $rows);
+                MinimalXlsxWriter::write($tempPath, $rows);
                 readfile($tempPath);
             } finally {
                 @unlink($tempPath);
@@ -1652,13 +1713,13 @@ class Team extends Component
     {
         $this->authorize('create', InternalTeam::class);
 
-        if ($this->workerImportFile === null || ! ($this->workerImportFile instanceof \Livewire\Features\SupportFileUploads\TemporaryUploadedFile)) {
+        if ($this->workerImportFile === null || ! ($this->workerImportFile instanceof TemporaryUploadedFile)) {
             $this->workerImportErrors = [__('team.errors.import_file_required')];
 
             return;
         }
 
-        $validator = \Illuminate\Support\Facades\Validator::make(
+        $validator = Validator::make(
             ['file' => $this->workerImportFile],
             ImportWorkersRequest::getReusableRules(),
             ImportWorkersRequest::getReusableMessages()
@@ -1711,12 +1772,12 @@ class Team extends Component
             if ($result['preserved_count'] > 0) {
                 $this->workersImportNotice = $teamsDeleted > 0
                     ? __('team.import_history.partially_deleted_with_teams', [
-                        'deleted'   => $result['deleted_count'],
+                        'deleted' => $result['deleted_count'],
                         'preserved' => $result['preserved_count'],
-                        'teams'     => $teamsDeleted,
+                        'teams' => $teamsDeleted,
                     ])
                     : __('team.import_history.partially_deleted', [
-                        'deleted'   => $result['deleted_count'],
+                        'deleted' => $result['deleted_count'],
                         'preserved' => $result['preserved_count'],
                     ]);
             } else {
@@ -1738,12 +1799,20 @@ class Team extends Component
     }
 
     /**
-     * Zelfde regel als Uitvoerders: toegewezen aan de locatie, geen vestiging
-     * (overal), of een team dat overal mag inklokken.
+     * Eerst alleen uitvoerders van de locaties van de kijker. Het locatiefilter
+     * daarna houdt een team dat overal mag inklokken, en uitvoerders zonder
+     * vestiging, zichtbaar voor wie alle locaties mag zien.
      */
-    public function visibleTeamWorkers(InternalTeam $team): \Illuminate\Support\Collection
+    public function visibleTeamWorkers(InternalTeam $team): Collection
     {
         $workers = $team->workers;
+        $viewer = auth()->user();
+        if ($viewer instanceof User) {
+            $workers = $workers
+                ->filter(fn (Worker $worker): bool => $worker->isVisibleTo($viewer))
+                ->values();
+        }
+
         $locationId = $this->locationFilter;
         if ($locationId === null) {
             return $workers;
@@ -1772,9 +1841,10 @@ class Team extends Component
 
         $isBackoffice = $this->isBackofficeSection();
 
-        $colleagues = ($isBackoffice && $canManageUsers)
+        $colleagues = $isBackoffice
             ? User::where('tenant_id', Tenancy::id())
                 ->where('is_superuser', false)
+                ->visibleTo($user)
                 ->when(trim($this->search) !== '', function ($query) {
                     $term = '%'.trim($this->search).'%';
                     $query->where(function ($userQuery) use ($term) {
@@ -1814,7 +1884,7 @@ class Team extends Component
 
         $categories = $isBackoffice
             ? collect()
-            : \App\Models\Category::where('tenant_id', Tenancy::id())
+            : Category::where('tenant_id', Tenancy::id())
                 ->with('translations')
                 ->orderBy('name')
                 ->get(['id', 'name', 'original_language']);
@@ -1900,7 +1970,10 @@ class Team extends Component
             'categories' => $isBackoffice ? collect() : $categories,
             'teamTranslationLocales' => $teamTranslationLocales,
             'filterLocations' => $filterLocations,
-            'allLocations' => Location::query()->orderBy('name')->get(['id', 'name', 'address']),
+            'allLocations' => Location::query()
+                ->when($user instanceof User, fn ($query) => $query->accessibleTo($user))
+                ->orderBy('name')
+                ->get(['id', 'name', 'address']),
             'workerDefaultUnits' => $this->showWorkerModal ? $this->availableWorkerDefaultUnits() : collect(),
             'workerModalTeams' => $this->showWorkerModal
                 ? $this->workerModalTeams()

@@ -6,6 +6,7 @@ namespace App\Livewire\Pages;
 
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\User;
 use App\Models\Worker;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -74,9 +75,17 @@ class WorkersIndex extends Component
         $user = auth()->user();
         $scopeLocationIds = $user?->accessibleLocationIds();
 
+        if (
+            $scopeLocationIds !== null
+            && $this->locationFilter !== null
+            && ! in_array((int) $this->locationFilter, $scopeLocationIds, true)
+        ) {
+            $this->locationFilter = null;
+        }
+
         $locationsQuery = Location::query()->orderBy('name');
-        if ($scopeLocationIds !== null) {
-            $locationsQuery->whereIn('id', $scopeLocationIds);
+        if ($user instanceof User) {
+            $locationsQuery->accessibleTo($user);
         }
         $locations = $locationsQuery->get(['id', 'name', 'address']);
 
@@ -107,13 +116,7 @@ class WorkersIndex extends Component
                         ->orWhereDoesntHave('locations');
                 });
             })
-            ->when($scopeLocationIds !== null, function ($builder) use ($scopeLocationIds) {
-                $builder->where(function ($inner) use ($scopeLocationIds) {
-                    $inner->whereHas('team', fn ($teamQuery) => $teamQuery->where('clocks_all_locations', true))
-                        ->orWhereHas('locations', fn ($locationQuery) => $locationQuery->whereIn('locations.id', $scopeLocationIds))
-                        ->orWhereDoesntHave('locations');
-                });
-            })
+            ->when($user instanceof User, fn ($builder) => $builder->visibleTo($user))
             ->orderBy('last_name')
             ->orderBy('first_name');
 

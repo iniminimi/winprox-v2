@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Locations",
-                    "text": "For an employee you can choose which locations they can access.<br><br>Tick the locations you want.<br><br>• One or more locations selected: the employee can access those locations.<br>• No locations selected: the employee can access all locations.<br><br>An administrator always has access to all locations. This limit applies only to employees."
+                    "text": "For an employee you can choose which locations they can access.<br><br>Tick the locations you want.<br><br>• One or more locations selected: the employee can access those locations.<br>• No locations selected: the employee can access all locations.<br><br>An administrator always has access to all locations. This limit applies only to employees. That employee then only sees and edits workers and colleagues from those locations."
                 },
                 {
                     "label": "Sign in with Microsoft",
@@ -647,7 +647,7 @@
                 },
                 {
                     "label": "Workers",
-                    "text": "A worker does not sign in with an email address and password. On Clock Point that person chooses their name and a personal icon. That happens on one phone.<br><br>You can optionally add a PIN or a passkey.<br><br>On the team page you see for each worker whether the profile is active, blocked or a team leader. You change the details via <strong>Edit</strong>.<br><br>Do you have many workers? You can view and manage the full list via <strong>People → Workers</strong>."
+                    "text": "A worker does not sign in with an email address and password. On Clock Point that person chooses their name and a personal icon. That happens on one phone.<br><br>You can optionally add a PIN or a passkey.<br><br>On the team page you see for each worker whether the profile is active, blocked or a team leader. You change the details via <strong>Edit</strong>.<br><br>Do you have many workers? You can view and manage the full list via <strong>People → Workers</strong>. An employee with selected locations only sees and edits the workers from those locations there."
                 },
                 {
                     "label": "Signing in on Clock Point",

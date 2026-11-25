@@ -197,6 +197,7 @@ class AbsenceRequestsIndex extends Component
             $this->normalizedFilterDate($this->to),
             $this->clockPointFilter,
             $this->photosFilter === 'with',
+            auth()->user() instanceof \App\Models\User ? auth()->user() : null,
         );
         $deciding = $this->decidingId !== null
             ? AbsenceRequest::query()->with(['worker', 'shiftType', 'photos'])->find($this->decidingId)
@@ -217,7 +218,12 @@ class AbsenceRequestsIndex extends Component
             'pendingCount' => $countPending->handle($tenantId),
             'photosFilter' => in_array($this->photosFilter, ['expiring', 'with'], true) ? $this->photosFilter : null,
             'teams' => InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
-            'workers' => Worker::query()->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get(),
+            'workers' => Worker::query()
+                ->where('is_active', true)
+                ->when(auth()->user() instanceof \App\Models\User, fn ($query) => $query->visibleTo(auth()->user()))
+                ->orderBy('last_name')
+                ->orderBy('first_name')
+                ->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
             'reasonMax' => TextDescriptionLimits::MAX,
         ]);

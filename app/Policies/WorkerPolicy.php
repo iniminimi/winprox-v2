@@ -15,7 +15,8 @@ class WorkerPolicy
 
     public function view(User $user, Worker $worker): bool
     {
-        return SuperuserTenantAccess::canAccessTenant($user, (int) $worker->tenant_id);
+        return SuperuserTenantAccess::canAccessTenant($user, (int) $worker->tenant_id)
+            && $worker->isVisibleTo($user);
     }
 
     public function update(User $user, Worker $worker): bool

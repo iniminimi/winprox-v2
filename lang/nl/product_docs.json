@@ -183,7 +183,7 @@
             },
             {
                 "title": "Organisatie, locaties en medewerkers",
-                "body": "Beheerders richten de organisatie in met locaties, teams, medewerkers en units. Een unit kan een ruimte, een voertuig, een machine of een ander middel zijn. Elke locatie kan ook een unit voor de hele locatie hebben. Locaties toevoegen, wijzigen of inactief zetten kan een medewerker alleen als de beheerder dat toestaat onder Instellingen, bij de organisatie.",
+                "body": "Beheerders richten de organisatie in met locaties, teams, medewerkers en units. Een unit kan een ruimte, een voertuig, een machine of een ander middel zijn. Elke locatie kan ook een unit voor de hele locatie hebben. Locaties toevoegen, wijzigen of inactief zetten kan een medewerker alleen als de beheerder dat toestaat onder Instellingen, bij de organisatie. Een medewerker met gekozen locaties ziet en bewerkt alleen uitvoerders en collega’s van die locaties.",
                 "items": [
                     "Categorieën en locaties beheren. Units apart of in bulk toevoegen, ook via CSV.",
                     "Uitvoerders zoeken en beheren onder Personen → Uitvoerders. Een portretfoto is optioneel.",

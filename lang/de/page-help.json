@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Standorte",
-                    "text": "Bei einem Mitarbeiter können Sie festlegen, auf welche Standorte er Zugriff hat.<br><br>Kreuzen Sie die gewünschten Standorte an.<br><br>• Ein oder mehrere Standorte ausgewählt: der Mitarbeiter hat Zugriff auf die ausgewählten Standorte.<br>• Keine Standorte ausgewählt: der Mitarbeiter hat Zugriff auf alle Standorte.<br><br>Ein Administrator hat immer Zugriff auf alle Standorte. Diese Einschränkung gilt also nur für Mitarbeiter."
+                    "text": "Bei einem Mitarbeiter können Sie festlegen, auf welche Standorte er Zugriff hat.<br><br>Kreuzen Sie die gewünschten Standorte an.<br><br>• Ein oder mehrere Standorte ausgewählt: der Mitarbeiter hat Zugriff auf die ausgewählten Standorte.<br>• Keine Standorte ausgewählt: der Mitarbeiter hat Zugriff auf alle Standorte.<br><br>Ein Administrator hat immer Zugriff auf alle Standorte. Diese Einschränkung gilt also nur für Mitarbeiter. Dieser Mitarbeiter sieht und bearbeitet danach nur Ausführende und Kollegen dieser Standorte."
                 },
                 {
                     "label": "Mit Microsoft anmelden",
@@ -647,7 +647,7 @@
                 },
                 {
                     "label": "Ausführende",
-                    "text": "Eine ausführende Person meldet sich nicht mit E-Mail-Adresse und Passwort an. Auf Clock Point wählt sie ihren Namen und ein eigenes Symbol. Das geschieht auf einem Handy.<br><br>Sie können dort optional eine PIN oder einen Passkey hinzufügen.<br><br>Auf der Teamseite sehen Sie je Person, ob das Profil aktiv, blockiert oder Teamleiter ist. Über <strong>Bearbeiten</strong> passen Sie die Daten an.<br><br>Haben Sie viele ausführende Personen? Dann können Sie die ganze Liste über <strong>Personen → Mitarbeiter</strong> ansehen und verwalten."
+                    "text": "Eine ausführende Person meldet sich nicht mit E-Mail-Adresse und Passwort an. Auf Clock Point wählt sie ihren Namen und ein eigenes Symbol. Das geschieht auf einem Handy.<br><br>Sie können dort optional eine PIN oder einen Passkey hinzufügen.<br><br>Auf der Teamseite sehen Sie je Person, ob das Profil aktiv, blockiert oder Teamleiter ist. Über <strong>Bearbeiten</strong> passen Sie die Daten an.<br><br>Haben Sie viele ausführende Personen? Dann können Sie die ganze Liste über <strong>Personen → Mitarbeiter</strong> ansehen und verwalten. Ein Mitarbeiter mit ausgewählten Standorten sieht und bearbeitet dort nur die Ausführenden dieser Standorte."
                 },
                 {
                     "label": "Auf Clock Point anmelden",

@@ -49,7 +49,7 @@ it('toont instellingen maar geen abonnement in de sidebar voor medewerkers', fun
         ->assertSee(__('common.nav.settings'), false)
         ->assertDontSee('href="'.route('subscription.index').'"', false)
         ->assertSee(__('team.nav.teams'), false)
-        ->assertDontSee('href="'.route('team.index', ['section' => 'backoffice']).'"', false)
+        ->assertSee('href="'.route('team.index', ['section' => 'backoffice']).'"', false)
         ->assertSee('href="'.route('team.index', ['section' => 'teams']).'"', false);
 
     $this->actingAs($employee)

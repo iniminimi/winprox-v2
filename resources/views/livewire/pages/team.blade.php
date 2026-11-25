@@ -159,13 +159,14 @@
         </div>
     @elseif ($this->isBackofficeSection())
     <div id="backoffice">
-        @if ($canManageUsers)
             <div class="wp-card wp-card-pad wp-stack-tight">
             <div class="wp-row">
                 <h2 class="wp-section-title">{{ __('team.colleagues.title') }}</h2>
-                <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateColleague">
-                    {{ __('team.colleagues.add') }}
-                </button>
+                @if ($canManageUsers)
+                    <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateColleague">
+                        {{ __('team.colleagues.add') }}
+                    </button>
+                @endif
             </div>
             @error('colleagueCreate')
                 <div class="wp-flash wp-flash--warning">{{ $message }}</div>
@@ -184,14 +185,19 @@
                             <span class="wp-pill wp-pill--{{ $colleague->is_active ? 'done' : 'closed' }}">
                                 {{ $colleague->is_active ? __('team.colleagues.active') : __('team.colleagues.inactive') }}
                             </span>
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditColleague({{ $colleague->id }})">{{ __('team.colleagues.edit') }}</button>
-                            @if ($colleague->id !== auth()->id())
-                                @if ($colleague->is_active)
-                                    <button type="button" class="btn btn--warning btn--sm" wire:click="setColleagueActive({{ $colleague->id }}, false)">{{ __('team.colleagues.deactivate') }}</button>
-                                @else
-                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setColleagueActive({{ $colleague->id }}, true)">{{ __('team.colleagues.activate') }}</button>
+                            @can('update', $colleague)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditColleague({{ $colleague->id }})">{{ __('team.colleagues.edit') }}</button>
+                            @endcan
+                            @can('update', $colleague)
+                                @if ($colleague->id !== auth()->id())
+                                    @if ($colleague->is_active)
+                                        <button type="button" class="btn btn--warning btn--sm" wire:click="setColleagueActive({{ $colleague->id }}, false)">{{ __('team.colleagues.deactivate') }}</button>
+                                    @else
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="setColleagueActive({{ $colleague->id }}, true)">{{ __('team.colleagues.activate') }}</button>
+                                    @endif
                                 @endif
-                            @else
+                            @endcan
+                            @if ($colleague->id === auth()->id())
                                 <span class="wp-chip">{{ __('team.colleagues.you') }}</span>
                             @endif
                         </div>
@@ -201,7 +207,6 @@
                 @endforelse
             </div>
         </div>
-        @endif
     </div>
     @else
     {{-- Teams ---------------------------------------------------------------}}

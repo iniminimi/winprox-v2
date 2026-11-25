@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Support\Platform\SuperuserTenantAccess;
 
 /**
  * Collega-gebruikers en organisatie (admin-only).
@@ -12,6 +13,16 @@ class UserPolicy
     public function viewAny(User $user): bool
     {
         return $user->is_superuser || $user->tenant_id !== null;
+    }
+
+    public function view(User $user, User $colleague): bool
+    {
+        if ($colleague->is_superuser) {
+            return false;
+        }
+
+        return SuperuserTenantAccess::canAccessTenant($user, (int) $colleague->tenant_id)
+            && $colleague->isVisibleTo($user);
     }
 
     public function create(User $user): bool

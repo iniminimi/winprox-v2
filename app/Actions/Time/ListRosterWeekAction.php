@@ -898,10 +898,10 @@ class ListRosterWeekAction
             });
 
         if ($actorLocationIds !== null) {
-            $query->where(function ($q) use ($actorLocationIds) {
-                $q->whereHas('team', fn ($team) => $team->where('clocks_all_locations', true))
-                    ->orWhereHas('locations', fn ($locations) => $locations->whereIn('locations.id', $actorLocationIds ?: [0]));
-            });
+            $query->whereHas(
+                'locations',
+                fn ($locations) => $locations->whereIn('locations.id', $actorLocationIds ?: [0]),
+            );
         }
 
         if ($locationId !== null) {

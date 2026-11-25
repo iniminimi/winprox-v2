@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\BelongsToTenant;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -98,6 +99,41 @@ class Worker extends Model
     public function locations(): BelongsToMany
     {
         return $this->belongsToMany(Location::class, 'location_worker')->withTimestamps();
+    }
+
+    /**
+     * Een medewerker met gekozen locaties ziet alleen uitvoerders van die locaties.
+     *
+     * @param  Builder<Worker>  $query
+     * @return Builder<Worker>
+     */
+    public function scopeVisibleTo(Builder $query, User $user): Builder
+    {
+        $allowed = $user->accessibleLocationIds();
+
+        if ($allowed === null) {
+            return $query;
+        }
+
+        return $query->whereHas(
+            'locations',
+            fn (Builder $locations) => $locations->whereIn('locations.id', $allowed),
+        );
+    }
+
+    public function isVisibleTo(User $user): bool
+    {
+        $allowed = $user->accessibleLocationIds();
+
+        if ($allowed === null) {
+            return true;
+        }
+
+        $ids = $this->relationLoaded('locations')
+            ? $this->locations->pluck('id')->map(fn ($id) => (int) $id)->all()
+            : $this->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
+
+        return array_intersect($ids, $allowed) !== [];
     }
 
     public function teamDocuments(): HasMany

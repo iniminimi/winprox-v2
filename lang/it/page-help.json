@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Sedi",
-                    "text": "Per un dipendente può scegliere a quali sedi ha accesso.<br><br>Selezioni le sedi desiderate.<br><br>• Una o più sedi selezionate: il dipendente ha accesso alle sedi selezionate.<br>• Nessuna sede selezionata: il dipendente ha accesso a tutte le sedi.<br><br>Un amministratore ha sempre accesso a tutte le sedi. Questo limite vale quindi solo per i dipendenti."
+                    "text": "Per un dipendente può scegliere a quali sedi ha accesso.<br><br>Selezioni le sedi desiderate.<br><br>• Una o più sedi selezionate: il dipendente ha accesso alle sedi selezionate.<br>• Nessuna sede selezionata: il dipendente ha accesso a tutte le sedi.<br><br>Un amministratore ha sempre accesso a tutte le sedi. Questo limite vale quindi solo per i dipendenti. Quel dipendente vede e modifica poi solo gli esecutori e i colleghi di quelle sedi."
                 },
                 {
                     "label": "Accedi con Microsoft",
@@ -647,7 +647,7 @@
                 },
                 {
                     "label": "Operatori",
-                    "text": "Un operatore non accede con indirizzo e-mail e password. Su Clock Point sceglie il proprio nome e un’icona personale. Succede su un solo telefono.<br><br>Può aggiungere, se vuole, un PIN o una passkey.<br><br>Nella pagina del team vede per ogni operatore se il profilo è attivo, bloccato o team leader. Con <strong>Modifica</strong> aggiorna i dati.<br><br>Ha molti operatori? Può vedere e gestire l’elenco completo in <strong>Persone → Esecutori</strong>."
+                    "text": "Un operatore non accede con indirizzo e-mail e password. Su Clock Point sceglie il proprio nome e un’icona personale. Succede su un solo telefono.<br><br>Può aggiungere, se vuole, un PIN o una passkey.<br><br>Nella pagina del team vede per ogni operatore se il profilo è attivo, bloccato o team leader. Con <strong>Modifica</strong> aggiorna i dati.<br><br>Ha molti operatori? Può vedere e gestire l’elenco completo in <strong>Persone → Esecutori</strong>. Un dipendente con sedi scelte vede e modifica lì solo gli esecutori di quelle sedi."
                 },
                 {
                     "label": "Accedere su Clock Point",

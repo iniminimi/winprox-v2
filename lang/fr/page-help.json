@@ -614,7 +614,7 @@
                 },
                 {
                     "label": "Sites",
-                    "text": "Pour un employé, vous pouvez choisir les sites auxquels il a accès.<br><br>Cochez les sites souhaités.<br><br>• Un ou plusieurs sites sélectionnés : l’employé a accès aux sites sélectionnés.<br>• Aucun site sélectionné : l’employé a accès à tous les sites.<br><br>Un administrateur a toujours accès à tous les sites. Cette limite ne concerne donc que les employés."
+                    "text": "Pour un employé, vous pouvez choisir les sites auxquels il a accès.<br><br>Cochez les sites souhaités.<br><br>• Un ou plusieurs sites sélectionnés : l’employé a accès aux sites sélectionnés.<br>• Aucun site sélectionné : l’employé a accès à tous les sites.<br><br>Un administrateur a toujours accès à tous les sites. Cette limite ne concerne donc que les employés. Cet employé ne voit et ne modifie ensuite que les exécutants et les collègues de ces sites."
                 },
                 {
                     "label": "Se connecter avec Microsoft",
@@ -651,7 +651,7 @@
                 },
                 {
                     "label": "Intervenants",
-                    "text": "Un intervenant ne se connecte pas avec une adresse e-mail et un mot de passe. Sur Clock Point, il choisit son nom et une icône personnelle. Cela se fait sur un seul téléphone.<br><br>Vous pouvez y ajouter un code PIN ou une clé d’accès, si vous le souhaitez.<br><br>Sur la page de l’équipe, vous voyez pour chaque intervenant si le profil est actif, bloqué ou chef d’équipe. Vous modifiez les données via <strong>Modifier</strong>.<br><br>Vous avez beaucoup d’intervenants ? Vous pouvez consulter et gérer la liste complète via <strong>Personnes → Exécutants</strong>."
+                    "text": "Un intervenant ne se connecte pas avec une adresse e-mail et un mot de passe. Sur Clock Point, il choisit son nom et une icône personnelle. Cela se fait sur un seul téléphone.<br><br>Vous pouvez y ajouter un code PIN ou une clé d’accès, si vous le souhaitez.<br><br>Sur la page de l’équipe, vous voyez pour chaque intervenant si le profil est actif, bloqué ou chef d’équipe. Vous modifiez les données via <strong>Modifier</strong>.<br><br>Vous avez beaucoup d’intervenants ? Vous pouvez consulter et gérer la liste complète via <strong>Personnes → Exécutants</strong>. Un employé avec des sites choisis n’y voit et n’y modifie que les exécutants de ces sites."
                 },
                 {
                     "label": "Se connecter sur Clock Point",

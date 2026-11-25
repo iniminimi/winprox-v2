@@ -60,9 +60,11 @@ class Announcements extends Component
             return;
         }
 
+        $viewer = auth()->user();
         $onThisTeam = Worker::query()
             ->where('internal_team_id', $this->team->id)
             ->whereKey($focusWorkerId)
+            ->when($viewer instanceof \App\Models\User, fn ($query) => $query->visibleTo($viewer))
             ->exists();
 
         if ($onThisTeam) {
@@ -193,8 +195,10 @@ class Announcements extends Component
 
     public function render(ListTeamLibraryOpensAction $listOpens)
     {
+        $viewer = auth()->user();
         $workers = Worker::query()
             ->where('internal_team_id', $this->team->id)
+            ->when($viewer instanceof \App\Models\User, fn ($query) => $query->visibleTo($viewer))
             ->orderBy('first_name')
             ->orderBy('last_name')
             ->get();
@@ -212,7 +216,7 @@ class Announcements extends Component
             'workers' => $workers,
             'activeWorkerIds' => $workers->where('is_active', true)->pluck('id')->map(fn ($id) => (int) $id)->all(),
             'opensRows' => $this->opensItemId !== null
-                ? $listOpens->handle((int) Tenancy::id(), $this->findAnnouncement($this->opensItemId))
+                ? $listOpens->handle((int) Tenancy::id(), $this->findAnnouncement($this->opensItemId), auth()->user() instanceof \App\Models\User ? auth()->user() : null)
                 : null,
         ]);
     }
