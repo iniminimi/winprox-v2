@@ -128,6 +128,19 @@
                             </span>
                         </label>
                     </div>
+                    @if ($organisationTenant?->hasTimeModule() || $organisationTenant?->checkmateMode())
+                        <div class="wp-settings-subblock">
+                            <h3 class="wp-settings-subblock-title">{{ __('settings.org.employees_view_other_presence_label') }}</h3>
+                            <label class="wp-switch wp-check--boxed">
+                                <input type="checkbox" wire:model.live="employeesMayViewOtherLocationsPresence">
+                                <span class="wp-switch__track" aria-hidden="true"></span>
+                                <span>
+                                    {{ __('settings.org.employees_view_other_presence_label') }}
+                                    <br><span class="wp-hint">{{ __('settings.org.employees_view_other_presence_hint') }}</span>
+                                </span>
+                            </label>
+                        </div>
+                    @endif
                 @endif
 
                 @if ($canManageOrganisation && ! ($checkmateMode ?? false))

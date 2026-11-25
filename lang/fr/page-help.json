@@ -860,6 +860,11 @@
                     "text": "Seul un administrateur peut activer ceci. Le réglage s’applique tout de suite.<br><br>• Désactivé : seul un administrateur ajoute des sites, les modifie ou les rend inactifs.<br>• Activé : les collaborateurs du backoffice peuvent le faire aussi.<br><br>Les unités, les signalements et les tâches restent disponibles pour les collaborateurs."
                 },
                 {
+                    "label": "Présence des autres sites",
+                    "nested": true,
+                    "text": "Seul un administrateur peut activer ceci. Le réglage s’applique tout de suite.<br><br>• Désactivé : sur Présence, un collaborateur ne voit que qui est présent aux Clock Points de ses sites.<br>• Activé : il voit aussi la présence des autres sites."
+                },
+                {
                     "label": "Logo de l’organisation",
                     "nested": true,
                     "text": "Téléversez le logo de votre organisation en fichier PNG ou JPG de 2 Mo au maximum.<br><br>Le logo apparaît sur le portail WinProx et sur les codes QR.<br><br>En tant que collaborateur, vous pouvez seulement voir le logo. Seul un administrateur peut le modifier."
@@ -1624,7 +1629,7 @@
                 },
                 {
                     "label": "Rechercher et filtrer",
-                    "text": "Avec les filtres, vous trouvez vite les bons exécutants :<br>• Rechercher un collaborateur : recherchez par nom.<br>• Équipe : choisissez une équipe, ou Toutes les équipes.<br>• Site : choisissez un site, ou Tous les sites.<br>• Clock Point : choisissez un Clock Point, ou Tous les clock points.<br><br>Vous sélectionnez un site ou un Clock Point ? Vous ne voyez alors que les exécutants pointés à cet endroit.<br><br>Les exécutants qui ne sont pas pointés disparaissent alors de l’aperçu. Il n’y a en effet ni site ni Clock Point pour eux."
+                    "text": "Avec les filtres, vous trouvez vite les bons exécutants :<br>• Rechercher un collaborateur : recherchez par nom.<br>• Équipe : choisissez une équipe, ou Toutes les équipes.<br>• Site : choisissez un site, ou Tous les sites.<br>• Clock Point : choisissez un Clock Point, ou Tous les clock points.<br><br>Vous sélectionnez un site ou un Clock Point ? Vous ne voyez alors que les exécutants pointés à cet endroit.<br><br>Les exécutants qui ne sont pas pointés disparaissent alors de l’aperçu. Il n’y a en effet ni site ni Clock Point pour eux. Un collaborateur avec des sites choisis ne voit que la présence des Clock Points de ces sites, sauf si vous autorisez les autres sites sous Paramètres → Votre organisation."
                 },
                 {
                     "label": "Voir les heures d’un exécutant",

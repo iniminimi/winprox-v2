@@ -55,7 +55,9 @@
         "shell_background_remove": "Remove backoffice background",
         "shell_background_remove_confirm": "Remove the backoffice background? The backoffice will use the default background again.",
         "employees_manage_locations_label": "Staff may add and manage locations",
-        "employees_manage_locations_hint": "Off by default. Only an administrator adds locations, edits them or marks them inactive. On: backoffice staff may do that too."
+        "employees_manage_locations_hint": "Off by default. Only an administrator adds locations, edits them or marks them inactive. On: backoffice staff may do that too.",
+        "employees_view_other_presence_label": "Staff may see presence at other locations",
+        "employees_view_other_presence_hint": "Off by default. A staff member only sees who is present at the Clock Points of her locations. On: she also sees presence at the other locations."
     },
     "qr_stickers": {
         "title": "QR print sheet",

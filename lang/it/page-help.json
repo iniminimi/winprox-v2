@@ -856,6 +856,11 @@
                     "text": "Solo un amministratore può attivarlo. L’impostazione si applica subito.<br><br>• Disattivo: solo un amministratore aggiunge sedi, le modifica o le rende inattive.<br>• Attivo: anche i dipendenti del backoffice possono farlo.<br><br>Unità, segnalazioni e attività restano disponibili per i dipendenti."
                 },
                 {
+                    "label": "Presenza delle altre sedi",
+                    "nested": true,
+                    "text": "Solo un amministratore può attivarlo. L’impostazione si applica subito.<br><br>• Disattivo: in Presenza, un dipendente vede solo chi è presente ai Clock Point delle sue sedi.<br>• Attivo: vede anche la presenza delle altre sedi."
+                },
+                {
                     "label": "Logo organizzazione",
                     "nested": true,
                     "text": "Carichi il logo della sua organizzazione come file PNG o JPG di al massimo 2 MB.<br><br>Il logo compare nel portale WinProx e sui codici QR.<br><br>Come dipendente può solo vedere il logo. Può modificarlo solo un amministratore."
@@ -1620,7 +1625,7 @@
                 },
                 {
                     "label": "Cercare e filtrare",
-                    "text": "Con i filtri trova presto gli esecutori giusti:<br>• Cerca lavoratore: cerchi per nome.<br>• Team: scelga un team oppure Tutti i team.<br>• Sede: scelga una sede oppure Tutte le sedi.<br>• Clock Point: scelga un Clock Point oppure Tutti i clock points.<br><br>Seleziona una sede o un Clock Point? Allora vede solo gli esecutori timbrati lì.<br><br>Gli esecutori che non hanno timbrato spariscono dalla panoramica. Per loro non c’è una sede né un Clock Point."
+                    "text": "Con i filtri trova presto gli esecutori giusti:<br>• Cerca lavoratore: cerchi per nome.<br>• Team: scelga un team oppure Tutti i team.<br>• Sede: scelga una sede oppure Tutte le sedi.<br>• Clock Point: scelga un Clock Point oppure Tutti i clock points.<br><br>Seleziona una sede o un Clock Point? Allora vede solo gli esecutori timbrati lì.<br><br>Gli esecutori che non hanno timbrato spariscono dalla panoramica. Per loro non c’è una sede né un Clock Point. Un dipendente con sedi scelte vede solo la presenza dei Clock Point di quelle sedi, salvo che lei consenta le altre sedi in Impostazioni → La sua organizzazione."
                 },
                 {
                     "label": "Vedere le ore di un esecutore",

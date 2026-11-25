@@ -55,7 +55,9 @@
         "shell_background_remove": "Rimuovi sfondo del backoffice",
         "shell_background_remove_confirm": "Rimuovere lo sfondo del backoffice? Il backoffice userà di nuovo lo sfondo predefinito.",
         "employees_manage_locations_label": "I dipendenti possono aggiungere e gestire le sedi",
-        "employees_manage_locations_hint": "Disattivato per impostazione predefinita. Solo un amministratore aggiunge sedi, le modifica o le rende inattive. Attivo: anche i dipendenti del backoffice possono farlo."
+        "employees_manage_locations_hint": "Disattivato per impostazione predefinita. Solo un amministratore aggiunge sedi, le modifica o le rende inattive. Attivo: anche i dipendenti del backoffice possono farlo.",
+        "employees_view_other_presence_label": "I dipendenti possono vedere la presenza delle altre sedi",
+        "employees_view_other_presence_hint": "Disattivato per impostazione predefinita. Un dipendente vede solo chi è presente ai Clock Point delle sue sedi. Attivo: vede anche la presenza delle altre sedi."
     },
     "qr_stickers": {
         "title": "Foglio di stampa QR",

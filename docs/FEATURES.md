@@ -1524,7 +1524,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   welkomst-/accountmail (set-password-link via reset-broker). `users.is_active` → inactief = geen login.
 - Medewerker: optioneel **locatie-multi-select** (leeg = alle vestigingen). Met Time-module:
   optioneel **prikklok-team** → gekoppeld worker-profiel (`workers.user_id`, telt niet dubbel als licentie).
-- Sidebar **Personen → Backoffice** (`/team?section=backoffice`). Een medewerker ziet de collega’s van haar locaties. Alleen een beheerder voegt collega’s toe of bewerkt hun account. Zoeken, de cijfers op het beginscherm, overuren, alarmen en afwezigheidsaanvragen (ook de foto) volgen diezelfde locaties.
+- Sidebar **Personen → Backoffice** (`/team?section=backoffice`). Een medewerker ziet de collega’s van haar locaties. Alleen een beheerder voegt collega’s toe of bewerkt hun account. Zoeken, de cijfers op het beginscherm, overuren, alarmen en afwezigheidsaanvragen (ook de foto) volgen diezelfde locaties. Onder Je organisatie kan een beheerder toelaten dat een medewerker ook de aanwezigheid van andere Clock Points ziet. Standaard uit.
 
 ### 6.2 Teams
 - Sidebar **Personen → Teams** (`/team?section=teams`): teamlijst (geen checklists).

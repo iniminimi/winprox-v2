@@ -55,7 +55,9 @@
         "shell_background_remove": "Supprimer l’arrière-plan du back-office",
         "shell_background_remove_confirm": "Supprimer l’arrière-plan du back-office ? Le back-office utilisera à nouveau l’arrière-plan par défaut.",
         "employees_manage_locations_label": "Les collaborateurs peuvent ajouter et gérer des sites",
-        "employees_manage_locations_hint": "Désactivé par défaut. Seul un administrateur ajoute des sites, les modifie ou les rend inactifs. Activé : les collaborateurs du backoffice peuvent le faire aussi."
+        "employees_manage_locations_hint": "Désactivé par défaut. Seul un administrateur ajoute des sites, les modifie ou les rend inactifs. Activé : les collaborateurs du backoffice peuvent le faire aussi.",
+        "employees_view_other_presence_label": "Les collaborateurs peuvent voir la présence des autres sites",
+        "employees_view_other_presence_hint": "Désactivé par défaut. Un collaborateur ne voit que qui est présent aux Clock Points de ses sites. Activé : il voit aussi la présence des autres sites."
     },
     "qr_stickers": {
         "title": "Feuille d’impression QR",

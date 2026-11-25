@@ -55,7 +55,9 @@
         "shell_background_remove": "Backoffice-Hintergrund entfernen",
         "shell_background_remove_confirm": "Backoffice-Hintergrund entfernen? Das Backoffice verwendet wieder den Standardhintergrund.",
         "employees_manage_locations_label": "Mitarbeitende dürfen Standorte hinzufügen und verwalten",
-        "employees_manage_locations_hint": "Standardmäßig aus. Nur ein Administrator fügt Standorte hinzu, ändert sie oder setzt sie inaktiv. Ein: Mitarbeitende im Backoffice dürfen das ebenfalls."
+        "employees_manage_locations_hint": "Standardmäßig aus. Nur ein Administrator fügt Standorte hinzu, ändert sie oder setzt sie inaktiv. Ein: Mitarbeitende im Backoffice dürfen das ebenfalls.",
+        "employees_view_other_presence_label": "Mitarbeitende dürfen die Anwesenheit anderer Standorte sehen",
+        "employees_view_other_presence_hint": "Standardmäßig aus. Ein Mitarbeitender sieht nur, wer an den Clock Points seiner Standorte anwesend ist. Ein: er sieht auch die Anwesenheit der anderen Standorte."
     },
     "qr_stickers": {
         "title": "QR-Druckbogen",

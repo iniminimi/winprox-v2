@@ -856,6 +856,11 @@
                     "text": "Alleen een beheerder kan dit aanzetten. De instelling wordt meteen toegepast.<br><br>• Uit: alleen een beheerder voegt locaties toe, wijzigt ze of zet ze inactief.<br>• Aan: medewerkers van de backoffice mogen dat ook.<br><br>Units, meldingen en taken blijven voor medewerkers beschikbaar."
                 },
                 {
+                    "label": "Aanwezigheid van andere locaties",
+                    "nested": true,
+                    "text": "Alleen een beheerder kan dit aanzetten. De instelling wordt meteen toegepast.<br><br>• Uit: een medewerker ziet op Aanwezigheid alleen wie aanwezig is op de Clock Points van haar locaties.<br>• Aan: ze ziet ook de aanwezigheid van de andere locaties."
+                },
+                {
                     "label": "Organisatielogo",
                     "nested": true,
                     "text": "Upload het logo van uw organisatie als PNG- of JPG-bestand van maximaal 2 MB.<br><br>Het logo verschijnt op het WinProx-portaal en op de QR-codes.<br><br>Als medewerker kunt u het logo alleen bekijken. Aanpassen kan alleen door een beheerder."
@@ -1620,7 +1625,7 @@
                 },
                 {
                     "label": "Zoeken en filteren",
-                    "text": "Met de filters vindt u snel de juiste uitvoerders:<br>• Zoek medewerker: zoek op naam.<br>• Team: kies een specifiek team of Alle teams.<br>• Locatie: kies een vestiging of Alle locaties.<br>• Clock Point: kies een specifiek aanmeldpunt of Alle clock points.<br><br>Selecteert u een locatie of Clock Point? Dan ziet u alleen de uitvoerders die daar zijn ingeklokt.<br><br>Uitvoerders die niet zijn ingeklokt, verdwijnen dan uit het overzicht. Er is voor hen immers geen locatie of Clock Point beschikbaar."
+                    "text": "Met de filters vindt u snel de juiste uitvoerders:<br>• Zoek medewerker: zoek op naam.<br>• Team: kies een specifiek team of Alle teams.<br>• Locatie: kies een vestiging of Alle locaties.<br>• Clock Point: kies een specifiek aanmeldpunt of Alle clock points.<br><br>Selecteert u een locatie of Clock Point? Dan ziet u alleen de uitvoerders die daar zijn ingeklokt.<br><br>Uitvoerders die niet zijn ingeklokt, verdwijnen dan uit het overzicht. Er is voor hen immers geen locatie of Clock Point beschikbaar. Een medewerker met gekozen locaties ziet alleen de aanwezigheid van de Clock Points van die locaties, tenzij u onder Instellingen → Je organisatie toestaat dat ze ook de andere locaties ziet."
                 },
                 {
                     "label": "De uren van een uitvoerder bekijken",

@@ -4,6 +4,7 @@ namespace App\Livewire\Pages;
 
 use App\Actions\Qr\RenderBrandedQrStickerPreviewAction;
 use App\Actions\Settings\UpdateTenantEmployeesMayManageLocationsAction;
+use App\Actions\Settings\UpdateTenantEmployeesMayViewOtherPresenceAction;
 use App\Actions\Settings\UpdateTenantPhotoAlbumAction;
 use App\Actions\Settings\UpdateUserNotifyOnNewIssueEmailAction;
 use App\Actions\Settings\UpdateUserUiThemeAction;
@@ -14,6 +15,7 @@ use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
 use App\Actions\Team\UpdateTenantCustomersOnLocationAction;
 use App\Actions\Team\UpdateTenantWorkMenuAction;
 use App\Http\Requests\Settings\UpdateTenantEmployeesMayManageLocationsRequest;
+use App\Http\Requests\Settings\UpdateTenantEmployeesMayViewOtherPresenceRequest;
 use App\Http\Requests\Team\UpdateTenantCustomersOnLocationRequest;
 use App\Actions\Time\RequestPresenceComplianceAction;
 use App\Actions\Time\UpdatePresenceComplianceSettingsAction;
@@ -122,6 +124,8 @@ class Settings extends Component
 
     public bool $employeesMayManageLocations = false;
 
+    public bool $employeesMayViewOtherLocationsPresence = false;
+
     public bool $workMenuCalendarEnabled = true;
 
     public bool $workMenuReservationsEnabled = true;
@@ -195,6 +199,7 @@ class Settings extends Component
         $this->notifyOnNewIssueEmail = (bool) $user->notify_on_new_issue_email;
         $this->photoAlbumEnabled = (bool) $tenant->photo_album_enabled;
         $this->employeesMayManageLocations = $tenant->employeesMayManageLocations();
+        $this->employeesMayViewOtherLocationsPresence = $tenant->employeesMayViewOtherLocationsPresence();
 
         if ($this->canUpdateTenantBranding) {
             $this->fillOrganisationFromTenant($tenant);
@@ -1040,6 +1045,29 @@ class Settings extends Component
         );
 
         $this->employeesMayManageLocations = $updated->employeesMayManageLocations();
+    }
+
+    public function updatedEmployeesMayViewOtherLocationsPresence(bool $value, UpdateTenantEmployeesMayViewOtherPresenceAction $update): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $validated = Validator::make(
+            ['employees_may_view_other_presence' => $value],
+            UpdateTenantEmployeesMayViewOtherPresenceRequest::ruleSet(),
+        )->validate();
+
+        $updated = $update->handle(
+            $tenant,
+            (bool) $validated['employees_may_view_other_presence'],
+            (int) auth()->id(),
+        );
+
+        $this->employeesMayViewOtherLocationsPresence = $updated->employeesMayViewOtherLocationsPresence();
     }
 
     public function updatedPhotoAlbumEnabled(bool $value, UpdateTenantPhotoAlbumAction $update): void

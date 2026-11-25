@@ -856,6 +856,11 @@
                     "text": "Solo un administrador puede activar esto. El ajuste se aplica al momento.<br><br>• Desactivado: solo un administrador añade sedes, las modifica o las marca como inactivas.<br>• Activado: el personal de backoffice también puede hacerlo.<br><br>Las unidades, los informes y las tareas siguen disponibles para el personal."
                 },
                 {
+                    "label": "Presencia de otras sedes",
+                    "nested": true,
+                    "text": "Solo un administrador puede activar esto. El ajuste se aplica al momento.<br><br>• Desactivado: en Presencia, un empleado solo ve quién está presente en los Clock Points de sus sedes.<br>• Activado: también ve la presencia de las otras sedes."
+                },
+                {
                     "label": "Logotipo de la organización",
                     "nested": true,
                     "text": "Suba el logotipo de su organización como archivo PNG o JPG de 2 MB como máximo.<br><br>El logotipo aparece en el portal de WinProx y en los códigos QR.<br><br>Como empleado solo puede ver el logotipo. Solo un administrador puede cambiarlo."
@@ -1620,7 +1625,7 @@
                 },
                 {
                     "label": "Buscar y filtrar",
-                    "text": "Con los filtros encuentra pronto a los ejecutores correctos:<br>• Buscar trabajador: busque por nombre.<br>• Equipo: elija un equipo o Todos los equipos.<br>• Ubicación: elija una sede o Todas las ubicaciones.<br>• Clock Point: elija un Clock Point o Todos los clock points.<br><br>¿Selecciona una ubicación o un Clock Point? Entonces solo ve a los ejecutores fichados allí.<br><br>Los ejecutores que no han fichado desaparecen del resumen. Para ellos no hay ubicación ni Clock Point."
+                    "text": "Con los filtros encuentra pronto a los ejecutores correctos:<br>• Buscar trabajador: busque por nombre.<br>• Equipo: elija un equipo o Todos los equipos.<br>• Ubicación: elija una sede o Todas las ubicaciones.<br>• Clock Point: elija un Clock Point o Todos los clock points.<br><br>¿Selecciona una ubicación o un Clock Point? Entonces solo ve a los ejecutores fichados allí.<br><br>Los ejecutores que no han fichado desaparecen del resumen. Para ellos no hay ubicación ni Clock Point. Un empleado con sedes elegidas solo ve la presencia de los Clock Points de esas sedes, salvo que permita las otras sedes en Ajustes → Su organización."
                 },
                 {
                     "label": "Ver las horas de un ejecutor",

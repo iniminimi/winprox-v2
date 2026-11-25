@@ -11,6 +11,7 @@ use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Models\WorkShift;
 use App\Support\Checkmate\CheckmateMode;
 use App\Support\Tenancy;
@@ -160,13 +161,28 @@ class PresenceIndex extends Component
 
         $user = auth()->user();
         $scopeLocationIds = $user?->accessibleLocationIds();
+        $tenant = Tenant::query()->find($tenantId);
+        $presenceScope = $tenant?->employeesMayViewOtherLocationsPresence() ? null : $scopeLocationIds;
+        if ($presenceScope !== null && $user instanceof User) {
+            if ($this->locationFilter !== null && ! in_array((int) $this->locationFilter, $presenceScope, true)) {
+                $this->locationFilter = null;
+            }
+            if ($this->clockPointFilter !== null && ! ClockPoint::query()->visibleTo($user)->whereKey($this->clockPointFilter)->exists()) {
+                $this->clockPointFilter = null;
+            }
+        }
         $manualClockInOptions = $this->showManualClockInModal
             ? $this->manualClockInFormOptions($scopeLocationIds)
             : ['workers' => collect(), 'clockPoints' => collect()];
 
         $locationsQuery = Location::query()->orderBy('name');
-        if ($scopeLocationIds !== null) {
-            $locationsQuery->whereIn('id', $scopeLocationIds);
+        if ($presenceScope !== null) {
+            $locationsQuery->whereIn('id', $presenceScope !== [] ? $presenceScope : [0]);
+        }
+
+        $clockPoints = ClockPoint::query()->orderBy('sort_order')->orderBy('name');
+        if ($presenceScope !== null && $user instanceof User) {
+            $clockPoints->visibleTo($user);
         }
 
         $dashboard = $buildDashboard->handle(
@@ -178,13 +194,13 @@ class PresenceIndex extends Component
             TimePresenceStatusFilter::tryFromRequest($this->statusFilter),
             $expandedTeamIds,
             $includeAbsentRoster,
-            $scopeLocationIds,
+            $presenceScope,
         );
 
         return view('livewire.time.presence-index', [
             'dashboard' => $dashboard,
             'teams' => InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
-            'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
+            'clockPoints' => $clockPoints->get(),
             'locations' => $locationsQuery->get(),
             'staleHours' => (int) config('time.stale_shift_hours', 16),
             'teamPageSize' => (int) config('time.presence_team_page_size', 50),

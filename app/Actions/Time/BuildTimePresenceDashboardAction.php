@@ -107,7 +107,7 @@ class BuildTimePresenceDashboardAction
         }
 
         $clockedInWorkerIds = $openShifts->pluck('worker_id')->all();
-        $absentCount = $this->countAbsentWorkers($tenantId, $teamId, $clockedInWorkerIds, $needle, $clockPointId, $locationId);
+        $absentCount = $this->countAbsentWorkers($tenantId, $teamId, $clockedInWorkerIds, $needle, $clockPointId, $locationId, $scopeLocationIds);
 
         $kpis = new TimePresenceKpis(
             clockedIn: $active->count() + $onBreak->count(),
@@ -132,6 +132,7 @@ class BuildTimePresenceDashboardAction
                     $clockPointId,
                     $locationId,
                     $statusFilter,
+                    $scopeLocationIds,
                 ),
                 isSearchMode: true,
             );
@@ -153,6 +154,7 @@ class BuildTimePresenceDashboardAction
             $needle,
             $clockPointId,
             $locationId,
+            $scopeLocationIds,
         );
 
         $teamBuckets = $teams->map(function (InternalTeam $team) use (
@@ -166,6 +168,7 @@ class BuildTimePresenceDashboardAction
             $needle,
             $expandedTeamIds,
             $includeAbsentRoster,
+            $scopeLocationIds,
         ) {
             $teamActive = $active->where('internal_team_id', $team->id)->values();
             $teamBreak = $onBreak->where('internal_team_id', $team->id)->values();
@@ -191,7 +194,7 @@ class BuildTimePresenceDashboardAction
                 activeShifts: $isExpanded ? $teamActive : collect(),
                 breakShifts: $isExpanded ? $teamBreak : collect(),
                 absentWorkers: $loadAbsent
-                    ? $this->loadAbsentWorkersForTeam($tenantId, $team->id, $clockedInWorkerIds, $needle)
+                    ? $this->loadAbsentWorkersForTeam($tenantId, $team->id, $clockedInWorkerIds, $needle, $scopeLocationIds)
                     : collect(),
             );
         })->filter(function (TimePresenceTeamBucket $bucket) use ($statusFilter) {
@@ -342,12 +345,13 @@ class BuildTimePresenceDashboardAction
         string $needle,
         ?int $clockPointId,
         ?int $locationId,
+        ?array $scopeLocationIds = null,
     ): int {
         if ($clockPointId !== null || $locationId !== null) {
             return 0;
         }
 
-        return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle)->count();
+        return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle, $scopeLocationIds)->count();
     }
 
     /**
@@ -361,12 +365,13 @@ class BuildTimePresenceDashboardAction
         string $needle,
         ?int $clockPointId,
         ?int $locationId,
+        ?array $scopeLocationIds = null,
     ): array {
         if ($clockPointId !== null || $locationId !== null) {
             return [];
         }
 
-        return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle)
+        return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle, $scopeLocationIds)
             ->selectRaw('internal_team_id, COUNT(*) as aggregate')
             ->groupBy('internal_team_id')
             ->pluck('aggregate', 'internal_team_id')
@@ -377,12 +382,18 @@ class BuildTimePresenceDashboardAction
      * @param  list<int>  $clockedInWorkerIds
      * @return \Illuminate\Database\Eloquent\Builder<Worker>
      */
-    private function absentWorkersQuery(int $tenantId, ?int $teamId, array $clockedInWorkerIds, string $needle)
+    private function absentWorkersQuery(int $tenantId, ?int $teamId, array $clockedInWorkerIds, string $needle, ?array $scopeLocationIds = null)
     {
         return Worker::query()
             ->where('tenant_id', $tenantId)
             ->where('is_active', true)
             ->when($teamId, fn ($q) => $q->where('internal_team_id', $teamId))
+            ->when($scopeLocationIds !== null, function ($q) use ($scopeLocationIds) {
+                $q->whereHas('locations', fn ($locations) => $locations->whereIn(
+                    'locations.id',
+                    $scopeLocationIds !== [] ? $scopeLocationIds : [0],
+                ));
+            })
             ->when($clockedInWorkerIds !== [], fn ($q) => $q->whereNotIn('id', $clockedInWorkerIds))
             ->when($needle !== '', function ($q) use ($needle) {
                 $q->where(function ($inner) use ($needle) {
@@ -404,6 +415,7 @@ class BuildTimePresenceDashboardAction
         ?int $clockPointId,
         ?int $locationId,
         TimePresenceStatusFilter $statusFilter,
+        ?array $scopeLocationIds = null,
     ): Collection {
         if ($statusFilter !== TimePresenceStatusFilter::Absent && $statusFilter !== TimePresenceStatusFilter::All) {
             return collect();
@@ -413,7 +425,7 @@ class BuildTimePresenceDashboardAction
             return collect();
         }
 
-        return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle)
+        return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle, $scopeLocationIds)
             ->with('team.translations')
             ->orderBy('last_name')
             ->orderBy('first_name')
@@ -430,8 +442,9 @@ class BuildTimePresenceDashboardAction
         int $teamId,
         array $clockedInWorkerIds,
         string $needle,
+        ?array $scopeLocationIds = null,
     ): Collection {
-        return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle)
+        return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle, $scopeLocationIds)
             ->with('team.translations')
             ->orderBy('last_name')
             ->orderBy('first_name')

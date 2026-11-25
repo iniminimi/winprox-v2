@@ -6,8 +6,10 @@ use App\Actions\Time\ClockInAction;
 use App\Enums\TaskStatus;
 use App\Livewire\Time\AbsenceRequestsIndex;
 use App\Livewire\Time\AlarmsIndex;
+use App\Livewire\Pages\Settings;
 use App\Livewire\Time\ClockPointsIndex;
 use App\Livewire\Time\OvertimeIndex;
+use App\Livewire\Time\PresenceIndex;
 use App\Models\AbsenceRequest;
 use App\Models\AbsenceRequestPhoto;
 use App\Models\ClockPoint;
@@ -162,4 +164,60 @@ it('toont een medewerker alleen de clock points van haar locatie', function () {
         ->assertDontSee('Magazijn B')
         ->call('openEdit', $pointAway->id)
         ->assertForbidden();
+});
+
+it('toont aanwezigheid van andere locaties alleen als de organisatie dat aanzet', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $here = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn A']);
+    $away = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn B']);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $employee->locations()->sync([$here->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $workerHere = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Nora',
+        'last_name' => 'Hier',
+    ]);
+    $workerHere->locations()->sync([$here->id]);
+    $workerAway = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Zora',
+        'last_name' => 'Daar',
+    ]);
+    $workerAway->locations()->sync([$away->id]);
+    $pointHere = ClockPoint::factory()->forLocation($here)->create(['name' => 'Punt Hier']);
+    $pointAway = ClockPoint::factory()->forLocation($away)->create(['name' => 'Punt Daar']);
+    app(ClockInAction::class)->handle($workerHere, $pointHere);
+    app(ClockInAction::class)->handle($workerAway, $pointAway);
+
+    Livewire::actingAs($employee)
+        ->test(PresenceIndex::class)
+        ->assertSee('Punt Hier')
+        ->assertDontSee('Punt Daar')
+        ->assertSee('Nora Hier')
+        ->assertDontSee('Zora Daar');
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->assertDontSee('wire:model.live="employeesMayViewOtherLocationsPresence"', false)
+        ->set('employeesMayViewOtherLocationsPresence', true)
+        ->assertForbidden();
+
+    expect($tenant->fresh()->employeesMayViewOtherLocationsPresence())->toBeFalse();
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->set('employeesMayViewOtherLocationsPresence', true);
+
+    expect($tenant->fresh()->employeesMayViewOtherLocationsPresence())->toBeTrue();
+
+    Livewire::actingAs($employee)
+        ->test(PresenceIndex::class)
+        ->assertSee('Punt Hier')
+        ->assertSee('Punt Daar')
+        ->assertSee('Zora Daar');
 });

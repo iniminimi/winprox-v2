@@ -55,7 +55,9 @@
         "shell_background_remove": "Backoffice-achtergrond verwijderen",
         "shell_background_remove_confirm": "Backoffice-achtergrond verwijderen? De backoffice gebruikt daarna weer de standaardachtergrond.",
         "employees_manage_locations_label": "Medewerkers mogen locaties toevoegen en beheren",
-        "employees_manage_locations_hint": "Standaard uit. Alleen een beheerder voegt locaties toe, wijzigt ze of zet ze inactief. Aan: medewerkers van de backoffice mogen dat ook."
+        "employees_manage_locations_hint": "Standaard uit. Alleen een beheerder voegt locaties toe, wijzigt ze of zet ze inactief. Aan: medewerkers van de backoffice mogen dat ook.",
+        "employees_view_other_presence_label": "Medewerkers mogen de aanwezigheid van andere locaties zien",
+        "employees_view_other_presence_hint": "Standaard uit. Een medewerker ziet alleen wie aanwezig is op de Clock Points van haar locaties. Aan: ze ziet ook de aanwezigheid van de andere locaties."
     },
     "qr_stickers": {
         "title": "QR-afdrukblad",

@@ -856,6 +856,11 @@
                     "text": "Nur ein Administrator kann dies einschalten. Die Einstellung gilt sofort.<br><br>• Aus: nur ein Administrator fügt Standorte hinzu, ändert sie oder setzt sie inaktiv.<br>• Ein: Mitarbeitende im Backoffice dürfen das ebenfalls.<br><br>Units, Meldungen und Aufgaben bleiben für Mitarbeitende verfügbar."
                 },
                 {
+                    "label": "Anwesenheit anderer Standorte",
+                    "nested": true,
+                    "text": "Nur ein Administrator kann dies einschalten. Die Einstellung gilt sofort.<br><br>• Aus: unter Anwesenheit sieht ein Mitarbeitender nur, wer an den Clock Points seiner Standorte anwesend ist.<br>• Ein: er sieht auch die Anwesenheit der anderen Standorte."
+                },
+                {
                     "label": "Organisationslogo",
                     "nested": true,
                     "text": "Laden Sie das Logo Ihrer Organisation als PNG- oder JPG-Datei von höchstens 2 MB hoch.<br><br>Das Logo erscheint im WinProx-Portal und auf den QR-Codes.<br><br>Als Mitarbeitender können Sie das Logo nur ansehen. Ändern kann es nur ein Administrator."
@@ -1620,7 +1625,7 @@
                 },
                 {
                     "label": "Suchen und filtern",
-                    "text": "Mit den Filtern finden Sie schnell die richtigen Personen:<br>• Mitarbeitende suchen: suchen Sie nach dem Namen.<br>• Team: wählen Sie ein bestimmtes Team oder Alle Teams.<br>• Standort: wählen Sie einen Standort oder Alle Standorte.<br>• Clock Point: wählen Sie einen bestimmten Clock Point oder Alle Clock Points.<br><br>Wählen Sie einen Standort oder einen Clock Point? Dann sehen Sie nur die Personen, die dort eingestempelt sind.<br><br>Personen, die nicht eingestempelt sind, verschwinden dann aus der Übersicht. Für sie gibt es keinen Standort und keinen Clock Point."
+                    "text": "Mit den Filtern finden Sie schnell die richtigen Personen:<br>• Mitarbeitende suchen: suchen Sie nach dem Namen.<br>• Team: wählen Sie ein bestimmtes Team oder Alle Teams.<br>• Standort: wählen Sie einen Standort oder Alle Standorte.<br>• Clock Point: wählen Sie einen bestimmten Clock Point oder Alle Clock Points.<br><br>Wählen Sie einen Standort oder einen Clock Point? Dann sehen Sie nur die Personen, die dort eingestempelt sind.<br><br>Personen, die nicht eingestempelt sind, verschwinden dann aus der Übersicht. Für sie gibt es keinen Standort und keinen Clock Point. Ein Mitarbeitender mit ausgewählten Standorten sieht nur die Anwesenheit der Clock Points dieser Standorte, außer Sie erlauben die anderen Standorte unter Einstellungen → Ihre Organisation."
                 },
                 {
                     "label": "Die Stunden einer Person ansehen",

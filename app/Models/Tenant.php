@@ -69,6 +69,7 @@ class Tenant extends Model
         'work_menu_unit_measurements_enabled',
         'photo_album_enabled',
         'employees_may_manage_locations',
+        'employees_may_view_other_presence',
         'starter_pack_key',
         'starter_pack_applied_at',
         'starter_pack_payload',
@@ -112,6 +113,7 @@ class Tenant extends Model
             'work_menu_unit_measurements_enabled' => 'boolean',
             'photo_album_enabled' => 'boolean',
             'employees_may_manage_locations' => 'boolean',
+            'employees_may_view_other_presence' => 'boolean',
             'starter_pack_applied_at' => 'datetime',
             'starter_pack_payload' => 'array',
             'starter_pack_result_dismissed_at' => 'datetime',
@@ -424,6 +426,12 @@ class Tenant extends Model
     public function employeesMayManageLocations(): bool
     {
         return (bool) $this->employees_may_manage_locations;
+    }
+
+    /** Medewerkers zien ook de aanwezigheid van Clock Points buiten hun locaties. Standaard uit. */
+    public function employeesMayViewOtherLocationsPresence(): bool
+    {
+        return (bool) $this->employees_may_view_other_presence;
     }
 
     /** Fotoalbum voor de hele organisatie. Nooit in Checkmate. */
