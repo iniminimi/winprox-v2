@@ -111,13 +111,19 @@ trait ManagesManualClockIn
             $clockPointsQuery->whereIn('location_id', $actorLocationIds);
         }
 
+        $workers = Worker::query()
+            ->where('is_active', true)
+            ->whereNotIn('id', $openWorkerIds)
+            ->when($actorLocationIds !== null, fn ($query) => $query->whereHas(
+                'locations',
+                fn ($locations) => $locations->whereIn('locations.id', $actorLocationIds),
+            ))
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->get();
+
         return [
-            'workers' => Worker::query()
-                ->where('is_active', true)
-                ->whereNotIn('id', $openWorkerIds)
-                ->orderBy('first_name')
-                ->orderBy('last_name')
-                ->get(),
+            'workers' => $workers,
             'clockPoints' => $clockPointsQuery->get(),
         ];
     }

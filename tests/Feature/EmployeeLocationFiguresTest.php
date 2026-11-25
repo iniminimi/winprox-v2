@@ -20,6 +20,7 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
+use App\Models\WorkShift;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Livewire;
@@ -220,4 +221,54 @@ it('toont aanwezigheid van andere locaties alleen als de organisatie dat aanzet'
         ->assertSee('Punt Hier')
         ->assertSee('Punt Daar')
         ->assertSee('Zora Daar');
+});
+
+it('beperkt manueel inklokken tot uitvoerders en clock points van haar locatie', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $here = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn A']);
+    $away = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn B']);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $employee->locations()->sync([$here->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $workerHere = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Nora',
+        'last_name' => 'Hier',
+    ]);
+    $workerHere->locations()->sync([$here->id]);
+    $workerAway = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Zora',
+        'last_name' => 'Daar',
+    ]);
+    $workerAway->locations()->sync([$away->id]);
+    $pointHere = ClockPoint::factory()->forLocation($here)->create(['name' => 'Punt Hier']);
+    $pointAway = ClockPoint::factory()->forLocation($away)->create(['name' => 'Punt Daar']);
+
+    Livewire::actingAs($employee)
+        ->test(PresenceIndex::class)
+        ->call('openManualClockIn')
+        ->assertSee('Nora Hier')
+        ->assertDontSee('Zora Daar')
+        ->assertSee('Punt Hier')
+        ->assertDontSee('Punt Daar')
+        ->set('manualClockInWorkerId', $workerAway->id)
+        ->set('manualClockInClockPointId', $pointAway->id)
+        ->set('manualClockInReason', 'Gsm vergeten')
+        ->call('confirmManualClockIn')
+        ->assertHasErrors(['manualClockInReason']);
+
+    expect(WorkShift::query()->where('worker_id', $workerAway->id)->exists())->toBeFalse();
+
+    Livewire::actingAs($employee)
+        ->test(PresenceIndex::class)
+        ->call('openManualClockIn')
+        ->set('manualClockInWorkerId', $workerHere->id)
+        ->set('manualClockInClockPointId', $pointHere->id)
+        ->set('manualClockInReason', 'Gsm vergeten')
+        ->call('confirmManualClockIn')
+        ->assertHasNoErrors();
 });

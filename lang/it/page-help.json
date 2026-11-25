@@ -1642,7 +1642,7 @@
                 {
                     "label": "Timbratura manuale",
                     "requires_facility": true,
-                    "text": "Un esecutore non ha il telefono, o non riesce a scansionare il codice QR? Può timbrarlo Lei.<br><br>Faccia clic su Timbratura manuale e scelga:<br>• L’esecutore.<br>• Il Clock Point in cui la persona deve timbrare.<br>• Un motivo per la registrazione manuale.<br><br>WinProx non collega un dispositivo all’esecutore per questo.<br><br>Dopo la timbratura, accanto a quella persona compare l’etichetta Timbrato manualmente. Vede la stessa etichetta nelle ore timbrate e sul Clock Point.<br><br>L’uscita avviene più tardi con una nuova scansione del codice QR, oppure chiude il turno con Chiudi turno."
+                    "text": "Un esecutore non ha il telefono, o non riesce a scansionare il codice QR? Può timbrarlo Lei.<br><br>Faccia clic su Timbratura manuale e scelga:<br>• L’esecutore.<br>• Il Clock Point in cui la persona deve timbrare.<br>• Un motivo per la registrazione manuale.<br><br>WinProx non collega un dispositivo all’esecutore per questo.<br><br>Dopo la timbratura, accanto a quella persona compare l’etichetta Timbrato manualmente. Vede la stessa etichetta nelle ore timbrate e sul Clock Point.<br><br>L’uscita avviene più tardi con una nuova scansione del codice QR, oppure chiude il turno con Chiudi turno. Un dipendente con sedi scelte vede qui solo gli esecutori e i Clock Point di quelle sedi."
                 },
                 {
                     "label": "Come timbrano gli esecutori?",

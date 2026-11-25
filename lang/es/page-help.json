@@ -1642,7 +1642,7 @@
                 {
                     "label": "Fichar manualmente",
                     "requires_facility": true,
-                    "text": "¿Un ejecutor no tiene el móvil o no consigue escanear el código QR? Puede ficharlo usted mismo.<br><br>Haga clic en Fichar manualmente y elija:<br>• El ejecutor.<br>• El Clock Point en el que debe fichar.<br>• Un motivo para el registro manual.<br><br>WinProx no vincula un dispositivo al ejecutor para esto.<br><br>Después de fichar, aparece junto a esa persona la etiqueta Fichado manualmente. Ve la misma etiqueta en las horas fichadas y en el Clock Point.<br><br>La salida se hace más tarde con un nuevo escaneo del código QR, o usted cierra el turno con Cerrar turno."
+                    "text": "¿Un ejecutor no tiene el móvil o no consigue escanear el código QR? Puede ficharlo usted mismo.<br><br>Haga clic en Fichar manualmente y elija:<br>• El ejecutor.<br>• El Clock Point en el que debe fichar.<br>• Un motivo para el registro manual.<br><br>WinProx no vincula un dispositivo al ejecutor para esto.<br><br>Después de fichar, aparece junto a esa persona la etiqueta Fichado manualmente. Ve la misma etiqueta en las horas fichadas y en el Clock Point.<br><br>La salida se hace más tarde con un nuevo escaneo del código QR, o usted cierra el turno con Cerrar turno. Un empleado con sedes elegidas solo ve aquí a los ejecutores y los Clock Points de esas sedes."
                 },
                 {
                     "label": "¿Cómo fichan los ejecutores?",

@@ -1642,7 +1642,7 @@
                 {
                     "label": "Clock in manually",
                     "requires_facility": true,
-                    "text": "Does a worker not have their phone, or can they not scan the QR code? You can clock that person in yourself.<br><br>Click Clock in manually and choose:<br>• The worker.<br>• The Clock Point where the person should clock in.<br>• A reason for the manual registration.<br><br>WinProx does not link a device to the worker for this.<br><br>After clocking in, the label Clocked in manually appears for that person. You see the same label with the clocked hours and on the Clock Point.<br><br>Clocking out happens later with a new QR scan, or you close the shift yourself with Close shift."
+                    "text": "Does a worker not have their phone, or can they not scan the QR code? You can clock that person in yourself.<br><br>Click Clock in manually and choose:<br>• The worker.<br>• The Clock Point where the person should clock in.<br>• A reason for the manual registration.<br><br>WinProx does not link a device to the worker for this.<br><br>After clocking in, the label Clocked in manually appears for that person. You see the same label with the clocked hours and on the Clock Point.<br><br>Clocking out happens later with a new QR scan, or you close the shift yourself with Close shift. A staff member with selected locations only sees workers and Clock Points of those locations here."
                 },
                 {
                     "label": "How do workers clock in and out?",

@@ -1642,7 +1642,7 @@
                 {
                     "label": "Manuell einstempeln",
                     "requires_facility": true,
-                    "text": "Hat eine Person das Handy nicht dabei oder gelingt der Scan des QR-Codes nicht? Dann können Sie diese Person selbst einstempeln.<br><br>Klicken Sie auf Manuell einstempeln und wählen Sie:<br>• Die Person.<br>• Den Clock Point, an dem die Person einstempeln soll.<br>• Einen Grund für die manuelle Registrierung.<br><br>WinProx koppelt dafür kein Gerät an die Person.<br><br>Nach dem Einstempeln erscheint bei dieser Person das Label Manuell eingestempelt. Dasselbe Label sehen Sie bei den gestempelten Stunden und am Clock Point.<br><br>Ausgestempelt wird später mit einem neuen QR-Scan, oder Sie schließen die Schicht selbst über Schicht schließen."
+                    "text": "Hat eine Person das Handy nicht dabei oder gelingt der Scan des QR-Codes nicht? Dann können Sie diese Person selbst einstempeln.<br><br>Klicken Sie auf Manuell einstempeln und wählen Sie:<br>• Die Person.<br>• Den Clock Point, an dem die Person einstempeln soll.<br>• Einen Grund für die manuelle Registrierung.<br><br>WinProx koppelt dafür kein Gerät an die Person.<br><br>Nach dem Einstempeln erscheint bei dieser Person das Label Manuell eingestempelt. Dasselbe Label sehen Sie bei den gestempelten Stunden und am Clock Point.<br><br>Ausgestempelt wird später mit einem neuen QR-Scan, oder Sie schließen die Schicht selbst über Schicht schließen. Ein Mitarbeitender mit ausgewählten Standorten sieht hier nur Ausführende und Clock Points dieser Standorte."
                 },
                 {
                     "label": "Wie stempeln Mitarbeitende ein und aus?",

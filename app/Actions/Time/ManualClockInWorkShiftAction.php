@@ -43,6 +43,13 @@ class ManualClockInWorkShiftAction
             if ($clockPointLocationId === null || ! in_array($clockPointLocationId, $actorLocationIds, true)) {
                 throw new InvalidArgumentException('clock_point_not_allowed');
             }
+
+            $workerOnLocation = $worker->locations()
+                ->whereIn('locations.id', $actorLocationIds)
+                ->exists();
+            if (! $workerOnLocation) {
+                throw new InvalidArgumentException('worker_location_not_allowed');
+            }
         }
 
         return DB::transaction(function () use ($worker, $clockPoint, $reason, $tenantId, $actorUserId) {

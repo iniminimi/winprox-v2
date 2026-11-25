@@ -1646,7 +1646,7 @@
                 {
                     "label": "Pointer manuellement",
                     "requires_facility": true,
-                    "text": "Un exécutant n’a pas son téléphone, ou le scan du code QR ne fonctionne pas ? Vous pouvez le pointer vous-même.<br><br>Cliquez sur Pointer manuellement et choisissez :<br>• L’exécutant.<br>• Le Clock Point où la personne doit pointer.<br>• Une raison pour l’enregistrement manuel.<br><br>WinProx ne lie pas d’appareil à l’exécutant pour cela.<br><br>Après le pointage, l’étiquette Pointé manuellement apparaît pour cette personne. Vous voyez la même étiquette dans les heures pointées et sur le Clock Point.<br><br>La sortie se fait plus tard avec un nouveau scan du code QR, ou vous clôturez le shift vous-même avec Clôturer le shift."
+                    "text": "Un exécutant n’a pas son téléphone, ou le scan du code QR ne fonctionne pas ? Vous pouvez le pointer vous-même.<br><br>Cliquez sur Pointer manuellement et choisissez :<br>• L’exécutant.<br>• Le Clock Point où la personne doit pointer.<br>• Une raison pour l’enregistrement manuel.<br><br>WinProx ne lie pas d’appareil à l’exécutant pour cela.<br><br>Après le pointage, l’étiquette Pointé manuellement apparaît pour cette personne. Vous voyez la même étiquette dans les heures pointées et sur le Clock Point.<br><br>La sortie se fait plus tard avec un nouveau scan du code QR, ou vous clôturez le shift vous-même avec Clôturer le shift. Un collaborateur avec des sites choisis ne voit ici que les exécutants et les Clock Points de ces sites."
                 },
                 {
                     "label": "Comment les exécutants pointent-ils ?",

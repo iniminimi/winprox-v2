@@ -1642,7 +1642,7 @@
                 {
                     "label": "Manueel inklokken",
                     "requires_facility": true,
-                    "text": "Heeft een uitvoerder zijn gsm niet bij of lukt het niet om de QR-code te scannen? Dan kunt u die persoon zelf manueel inklokken.<br><br>Klik op Manueel inklokken en kies:<br>• De uitvoerder.<br>• Het Clock Point waarop de persoon moet inklokken.<br>• Een reden voor de manuele registratie.<br><br>WinProx koppelt hiervoor geen toestel aan de uitvoerder.<br><br>Na het inklokken verschijnt bij die persoon het label Manueel ingeklokt. U ziet hetzelfde label ook bij de geklokte uren en op het Clock Point.<br><br>Uitklokken gebeurt later via een nieuwe QR-scan of u sluit de shift zelf af via Shift sluiten."
+                    "text": "Heeft een uitvoerder zijn gsm niet bij of lukt het niet om de QR-code te scannen? Dan kunt u die persoon zelf manueel inklokken.<br><br>Klik op Manueel inklokken en kies:<br>• De uitvoerder.<br>• Het Clock Point waarop de persoon moet inklokken.<br>• Een reden voor de manuele registratie.<br><br>WinProx koppelt hiervoor geen toestel aan de uitvoerder.<br><br>Na het inklokken verschijnt bij die persoon het label Manueel ingeklokt. U ziet hetzelfde label ook bij de geklokte uren en op het Clock Point.<br><br>Uitklokken gebeurt later via een nieuwe QR-scan of u sluit de shift zelf af via Shift sluiten. Een medewerker met gekozen locaties ziet hier alleen uitvoerders en Clock Points van die locaties."
                 },
                 {
                     "label": "Hoe klokken uitvoerders in en uit?",
