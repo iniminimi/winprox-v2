@@ -45,7 +45,9 @@
                 @endif
             </div>
             @if ($variant === 'app')
-                <x-wp-flip-clock />
+                @once
+                    <x-wp-flip-clock />
+                @endonce
             @endif
         </div>
         @if ($subtitle)
