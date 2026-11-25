@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Actions\Billing\ActivateSubscriptionPlanAction;
+use App\Actions\Retention\ListTenantTimeArchivesAction;
 use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\FulfillStripeCheckoutSessionAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
@@ -451,7 +452,7 @@ class Subscription extends Component
         $this->redirect(route('platform.tenants'));
     }
 
-    public function render(RealignSubscriptionPeriodAction $realign)
+    public function render(RealignSubscriptionPeriodAction $realign, ListTenantTimeArchivesAction $listTimeArchives)
     {
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
@@ -475,6 +476,9 @@ class Subscription extends Component
             'billingStatus' => $billingStatus,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'canManage' => $tenant && $user?->can('manageSubscription', $tenant),
+            'timeArchives' => $tenant && $user?->can('manageSubscription', $tenant) && ($tenant->hasTimeModule() || $tenant->checkmateMode())
+                ? $listTimeArchives->handle($tenant)
+                : collect(),
             'seatsQtyEditable' => $tenant instanceof Tenant && $tenant->planUsesSeatQuantity(),
             'selectedPlan' => $this->selectedPlan,
             'statusMessage' => $this->statusMessage,

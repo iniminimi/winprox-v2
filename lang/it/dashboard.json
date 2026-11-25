@@ -210,8 +210,16 @@
     },
     "absence_photos": {
         "title": "Foto di assenza",
-        "body": "Alcune foto hanno più di 5 mesi. Saranno cancellate entro un mese. Conservi una copia se le servono più a lungo.",
+        "body": "Alcune foto hanno più di 5 mesi. Saranno cancellate entro un mese. Poi restano un mese su Abbonamento, pronte da scaricare.",
         "cta": "Vedi le foto"
+    },
+    "time_archives": {
+        "year_title": "Turni salvati",
+        "year_body": "I turni, le ore timbrate e le richieste del :year sono in un file. Lo scarichi da Abbonamento.",
+        "year_cta": "Vai ad Abbonamento",
+        "photos_title": "Foto rimosse",
+        "photos_body": "Le foto di assenza sono state rimosse. Le scarichi da Abbonamento. Il file più vecchio resta disponibile fino al :date.",
+        "photos_cta": "Vai ad Abbonamento"
     },
     "add_device": {
         "title": "Aggiungi un dispositivo",

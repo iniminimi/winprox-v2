@@ -210,8 +210,16 @@
     },
     "absence_photos": {
         "title": "Fotos de ausencia",
-        "body": "Algunas fotos tienen más de 5 meses. Se borrarán en un mes. Guarde una copia si las necesita más tiempo.",
+        "body": "Algunas fotos tienen más de 5 meses. Se borrarán en un mes. Después quedan un mes en Suscripción para descargarlas.",
         "cta": "Ver las fotos"
+    },
+    "time_archives": {
+        "year_title": "Cuadrante guardado",
+        "year_body": "El cuadrante, las horas fichadas y las solicitudes de :year están en un archivo. Descárguelo en Suscripción.",
+        "year_cta": "Ir a Suscripción",
+        "photos_title": "Fotos eliminadas",
+        "photos_body": "Las fotos de ausencia se han eliminado. Descárguelas en Suscripción. El archivo más antiguo sigue disponible hasta el :date.",
+        "photos_cta": "Ir a Suscripción"
     },
     "add_device": {
         "title": "Añadir un dispositivo",

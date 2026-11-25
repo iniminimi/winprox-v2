@@ -372,6 +372,13 @@
             "billing": "After the trial: €5 per active seat per month. You set the seat quantity yourself on this page."
         }
     },
+    "time_archives": {
+        "heading": "Saved files",
+        "intro": "A year stays on screen until 1 February of the following year. After that it stays here for three years. Photos with a request stay for six months and then for one more month in a file.",
+        "year": "Year :year",
+        "photos": "Photos :period",
+        "until": "until :date"
+    },
     "public_demo_note": "Not sure which plan fits? We are happy to explain it personally.",
     "public_demo_cta": "Book a demo"
 }

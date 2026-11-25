@@ -1240,5 +1240,85 @@
             "break_open": "Une pause est déjà en cours.",
             "break_closed": "Aucune pause en cours."
         }
+    },
+    "archive": {
+        "columns": {
+            "roster": {
+                "worker": "Exécutant",
+                "date": "Date",
+                "kind": "Type",
+                "code": "Code",
+                "label": "Nom",
+                "start": "Début",
+                "end": "Fin",
+                "break": "Pause (min)",
+                "portion": "Partie de journée",
+                "unit_code": "Code d'unité",
+                "unit": "Unité",
+                "location": "Lieu",
+                "note": "Note",
+                "status": "Statut"
+            },
+            "shifts": {
+                "worker": "Exécutant",
+                "team": "Équipe",
+                "clock_in": "Pointage entrée",
+                "clock_out": "Pointage sortie",
+                "break": "Pause (min)",
+                "clock_in_point": "Point d'entrée",
+                "clock_out_point": "Point de sortie",
+                "source_in": "Source entrée",
+                "source_out": "Source sortie",
+                "latitude": "Latitude",
+                "longitude": "Longitude",
+                "hops": "Déplacements",
+                "status": "Statut"
+            },
+            "breaks": {
+                "shift_id": "Service",
+                "started_at": "Début",
+                "ended_at": "Fin",
+                "type": "Type"
+            },
+            "visits": {
+                "shift_id": "Service",
+                "unit": "Unité",
+                "location": "Lieu",
+                "started_at": "Début",
+                "ended_at": "Fin",
+                "start_lat": "Latitude début",
+                "start_lng": "Longitude début",
+                "end_lat": "Latitude fin",
+                "end_lng": "Longitude fin"
+            },
+            "tasks": {
+                "shift_id": "Service",
+                "task": "Tâche",
+                "started_at": "Début",
+                "ended_at": "Fin"
+            },
+            "requests": {
+                "worker": "Exécutant",
+                "kind": "Type",
+                "code": "Code",
+                "label": "Nom",
+                "date_from": "Du",
+                "date_to": "Au",
+                "portion": "Partie de journée",
+                "note": "Note",
+                "status": "Statut",
+                "decision": "Décision",
+                "decided_at": "Décidé le",
+                "photos": "Photos"
+            },
+            "photos": {
+                "request": "Demande",
+                "worker": "Exécutant",
+                "date_from": "Du",
+                "date_to": "Au",
+                "kind": "Type",
+                "file": "Fichier"
+            }
+        }
     }
 }

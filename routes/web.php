@@ -45,6 +45,7 @@ use App\Http\Controllers\Tasks\InspectionRoundTaskPrintController;
 use App\Http\Controllers\Tasks\TaskExportController;
 use App\Http\Controllers\Tasks\TaskPrintController;
 use App\Http\Controllers\Team\TeamDocumentFileController;
+use App\Http\Controllers\Subscription\TenantTimeArchiveDownloadController;
 use App\Http\Controllers\TenantPurgeConfirmController;
 use App\Http\Controllers\Time\AbsenceRequestPhotoFileController;
 use App\Http\Controllers\Time\ClockPointHomescreenManifestController;
@@ -591,6 +592,8 @@ Route::middleware(['auth', 'backoffice.desktop'])->group(function () {
         Route::get('/settings/api/docs', ApiDocumentation::class)->name('settings.api.docs');
         Route::get('/settings/api/docs/{file}', ApiDocumentation::class)->name('settings.api.docs.show');
         Route::get('/subscription', Subscription::class)->name('subscription.index');
+        Route::get('/subscription/time-archives/{archive}', TenantTimeArchiveDownloadController::class)
+            ->name('subscription.time-archives.download');
         Route::get('/activity', Activity::class)->name('activity.index');
         Route::get('/qr/connect/{token}', QrConnect::class)->name('qr.connect');
     });

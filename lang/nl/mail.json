@@ -175,6 +175,7 @@
                 "planned_shifts": "Geplande diensten: :count",
                 "absence_requests": "Verlofaanvragen: :count",
                 "absence_request_photos": "Foto's bij afwezigheid: :count",
+                "tenant_time_archives": "Bewaarde bestanden: :count",
                 "shift_types": "Diensttypes: :count",
                 "worker_notifications": "Meldingen aan uitvoerders: :count",
                 "clock_display_claims": "Klokscherm-koppelingen: :count",

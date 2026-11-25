@@ -175,6 +175,7 @@
                 "planned_shifts": "Planned shifts: :count",
                 "absence_requests": "Absence requests: :count",
                 "absence_request_photos": "Absence photos: :count",
+                "tenant_time_archives": "Saved files: :count",
                 "shift_types": "Shift types: :count",
                 "worker_notifications": "Worker notifications: :count",
                 "clock_display_claims": "Clock display pairings: :count",

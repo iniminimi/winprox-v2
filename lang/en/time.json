@@ -1240,5 +1240,85 @@
             "break_open": "A break is already open.",
             "break_closed": "No break is open."
         }
+    },
+    "archive": {
+        "columns": {
+            "roster": {
+                "worker": "Worker",
+                "date": "Date",
+                "kind": "Type",
+                "code": "Code",
+                "label": "Name",
+                "start": "Start",
+                "end": "End",
+                "break": "Break (min)",
+                "portion": "Day part",
+                "unit_code": "Unit code",
+                "unit": "Unit",
+                "location": "Location",
+                "note": "Note",
+                "status": "Status"
+            },
+            "shifts": {
+                "worker": "Worker",
+                "team": "Team",
+                "clock_in": "Clock in",
+                "clock_out": "Clock out",
+                "break": "Break (min)",
+                "clock_in_point": "Clock-in point",
+                "clock_out_point": "Clock-out point",
+                "source_in": "Source in",
+                "source_out": "Source out",
+                "latitude": "Latitude",
+                "longitude": "Longitude",
+                "hops": "Moves",
+                "status": "Status"
+            },
+            "breaks": {
+                "shift_id": "Shift",
+                "started_at": "Start",
+                "ended_at": "End",
+                "type": "Type"
+            },
+            "visits": {
+                "shift_id": "Shift",
+                "unit": "Unit",
+                "location": "Location",
+                "started_at": "Start",
+                "ended_at": "End",
+                "start_lat": "Start latitude",
+                "start_lng": "Start longitude",
+                "end_lat": "End latitude",
+                "end_lng": "End longitude"
+            },
+            "tasks": {
+                "shift_id": "Shift",
+                "task": "Task",
+                "started_at": "Start",
+                "ended_at": "End"
+            },
+            "requests": {
+                "worker": "Worker",
+                "kind": "Type",
+                "code": "Code",
+                "label": "Name",
+                "date_from": "From",
+                "date_to": "To",
+                "portion": "Day part",
+                "note": "Note",
+                "status": "Status",
+                "decision": "Decision",
+                "decided_at": "Decided at",
+                "photos": "Photos"
+            },
+            "photos": {
+                "request": "Request",
+                "worker": "Worker",
+                "date_from": "From",
+                "date_to": "To",
+                "kind": "Type",
+                "file": "File"
+            }
+        }
     }
 }

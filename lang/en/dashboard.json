@@ -210,8 +210,16 @@
     },
     "absence_photos": {
         "title": "Photos with an absence",
-        "body": "Some photos are older than 5 months. They will be deleted within a month. Keep your own copy if you need them longer.",
+        "body": "Some photos are older than 5 months. They will be deleted within a month. After that they stay on Subscription for one month, ready to download.",
         "cta": "View the photos"
+    },
+    "time_archives": {
+        "year_title": "Roster saved",
+        "year_body": "The roster, the clocked hours and the requests for :year are in a file. Download it via Subscription.",
+        "year_cta": "Go to Subscription",
+        "photos_title": "Photos removed",
+        "photos_body": "Photos with an absence have been removed. Download them via Subscription. The oldest file stays available until :date.",
+        "photos_cta": "Go to Subscription"
     },
     "add_device": {
         "title": "Add a device",

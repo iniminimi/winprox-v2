@@ -1344,8 +1344,10 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   Geweigerd of al begonnen: niet intrekken.
   Events `time.absence.requested|cancelled|approved|rejected`. Geen REST-schrijf-API.
   Optioneel tot 4 foto's (zelfde kiezer als een melding, privé-disk). Ze blijven 6 maanden
-  bij de aanvraag in Time → Aanvragen; daarna wist `winprox:retention-prune` alleen de foto.
-  Vanaf 5 maanden waarschuwt het beginscherm, zodat de organisatie zelf een kopie bewaart.
+  bij de aanvraag in Time → Aanvragen. Daarna zet `winprox:retention-prune` ze in een zip
+  van die maand, één maand te downloaden onderaan Abonnement, en wist het origineel.
+  Vanaf 5 maanden waarschuwt het beginscherm. Het jaarbestand van rooster, uren en
+  aanvragen bevat die fotobestanden niet.
 - **Golf 2 — gepland vs geklokt:** alleen beheer, **published**. Matching is **per blok**: alle
   klok-sessies die een blok raken (overlap > 0) tellen mee — eerste in bepaalt de start, laatste uit
   het einde; gaten binnen het blok zijn geen afwijking. Per blok ok / deviation / missing;

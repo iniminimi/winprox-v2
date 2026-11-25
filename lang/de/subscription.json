@@ -372,6 +372,13 @@
             "billing": "Nach der Probe: 5 € pro aktivem Seat pro Monat. Die Seat-Anzahl stellen Sie auf dieser Seite ein."
         }
     },
+    "time_archives": {
+        "heading": "Gespeicherte Dateien",
+        "intro": "Ein Jahr bleibt auf dem Bildschirm bis zum 1. Februar des Folgejahres. Danach liegt es hier drei Jahre. Fotos zu einem Antrag bleiben sechs Monate und danach noch einen Monat in einer Datei.",
+        "year": "Jahr :year",
+        "photos": "Fotos :period",
+        "until": "bis :date"
+    },
     "public_demo_note": "Unsicher, welche Formel passt? Wir erklären es Ihnen gerne persönlich.",
     "public_demo_cta": "Demo vereinbaren"
 }

@@ -372,6 +372,13 @@
             "billing": "Après l'essai : 5 € par siège actif par mois. Vous réglez le nombre de sièges sur cette page."
         }
     },
+    "time_archives": {
+        "heading": "Fichiers conservés",
+        "intro": "Une année reste à l'écran jusqu'au 1er février de l'année suivante. Ensuite elle reste ici trois ans. Les photos d'une demande restent six mois, puis encore un mois dans un fichier.",
+        "year": "Année :year",
+        "photos": "Photos :period",
+        "until": "jusqu'au :date"
+    },
     "public_demo_note": "Vous hésitez sur la formule ? Nous vous l'expliquons volontiers en personne.",
     "public_demo_cta": "Planifier une démonstration"
 }

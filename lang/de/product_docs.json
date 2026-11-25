@@ -132,7 +132,7 @@
             },
             {
                 "title": "Urlaub und Abwesenheit",
-                "body": "Mitarbeitende beantragen Urlaub, Ausgleich, Krankheit oder (falls eingerichtet) einen Typ unter Sonstige über Clock Point. Die Verwaltung entscheidet unter Time → Anträge — auch Krankheit muss genehmigt werden. Es geht keine E-Mail. Krankheit und Sonstige zählen nicht zum Urlaubssaldo oder Ausgleich; das macht das Sozialsekretariat, nicht WinProx. Ein Foto zum Antrag bleibt 6 Monate gespeichert und wird danach gelöscht. Bewahren Sie selbst eine Kopie auf, wenn Sie es länger brauchen.",
+                "body": "Mitarbeitende beantragen Urlaub, Ausgleich, Krankheit oder (falls eingerichtet) einen Typ unter Sonstige über Clock Point. Die Verwaltung entscheidet unter Time → Anträge — auch Krankheit muss genehmigt werden. Es geht keine E-Mail. Krankheit und Sonstige zählen nicht zum Urlaubssaldo oder Ausgleich; das macht das Sozialsekretariat, nicht WinProx. Ein Foto zum Antrag bleibt 6 Monate beim Antrag. Danach liegt es einen Monat in einer Datei unter Abonnement.",
                 "items": [
                     "Ein Antrag läuft von einem Anfangs- bis zu einem Enddatum, höchstens 31 Tage (Andere: ein Tag), und nicht in der Vergangenheit. Die Liste auf Clock Point ist Urlaub, Ausgleich, Krank, danach Andere nach Name.",
                     "Im Verwaltungs-Dienstplan sehen Sie offene Anträge als Markierung an den betreffenden Tagen; über die Markierung öffnen Sie Time → Anträge (der Dienst bleibt bis zur Freigabe stehen).",
@@ -499,7 +499,8 @@
                     "Ein geplanter Dienstplan ist optional. Eine frühere Fassung zurücksetzen darf nur, wer den Plan bearbeiten darf, und nur für begrenzte Zeit.",
                     "Optionale Anwesenheitsmeldung an das belgische Landesamt für soziale Sicherheit (CIAO). Die Nationalregisternummer wird verschlüsselt gespeichert. Der Kunde trägt die Unternehmensnummer ein. Erfolgreiche Meldungen werden nach einer begrenzten Frist gelöscht. Ein Export ohne Nationalregisternummer ist verfügbar.",
                     "Technische Fehlerprotokolle liegen nur auf dem Server und werden höchstens 14 Tage aufbewahrt.",
-                    "Ein Foto zu einem Abwesenheitsantrag sehen nur die Person und wer den Antrag behandelt. WinProx bewahrt es 6 Monate auf und löscht es danach. Ab 5 Monaten warnt der Startbildschirm. Bewahren Sie selbst eine Kopie auf, wenn Sie es länger brauchen."
+                    "Dienstplan, gestempelte Stunden und Anträge bleiben für das laufende und das vorige Jahr auf dem Bildschirm. Am 1. Februar geht das Jahr davor in eine Datei unter Abonnement und bleibt dort drei Jahre.",
+                    "Ein Foto zu einem Abwesenheitsantrag sehen nur die Person und wer den Antrag behandelt. WinProx bewahrt es 6 Monate beim Antrag auf. Danach liegt es einen Monat in einer Datei unter Abonnement. Ab 5 Monaten warnt der Startbildschirm."
                 ],
                 "key": "privacy"
             },

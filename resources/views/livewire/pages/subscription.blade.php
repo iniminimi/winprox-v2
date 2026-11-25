@@ -536,6 +536,25 @@
         </section>
     @endif
 
+    @if (! $publicMode && ($timeArchives ?? collect())->isNotEmpty())
+        <section class="wp-card wp-card-pad wp-stack wp-billing-page-width" wire:key="subscription-time-archives">
+            <p class="wp-section-title">{{ __('subscription.time_archives.heading') }}</p>
+            <p class="wp-muted">{{ __('subscription.time_archives.intro') }}</p>
+            <div class="wp-stack-tight">
+                @foreach ($timeArchives as $archive)
+                    <div class="wp-cluster wp-cluster--tight">
+                        <a href="{{ route('subscription.time-archives.download', $archive) }}" class="btn btn--ghost btn--sm">
+                            {{ $archive->kind === 'year'
+                                ? __('subscription.time_archives.year', ['year' => $archive->period_key])
+                                : __('subscription.time_archives.photos', ['period' => $archive->period_key]) }}
+                        </a>
+                        <span class="wp-muted">{{ __('subscription.time_archives.until', ['date' => $archive->available_until->timezone('Europe/Brussels')->subDay()->format('d-m-Y')]) }}</span>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+    @endif
+
     @if ($purgeConfirmKind)
         @php
             $purgeConfirmBody = match ($purgeConfirmKind) {

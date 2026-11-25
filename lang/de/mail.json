@@ -175,6 +175,7 @@
                 "planned_shifts": "Geplante Schichten: :count",
                 "absence_requests": "Abwesenheitsanträge: :count",
                 "absence_request_photos": "Fotos zur Abwesenheit: :count",
+                "tenant_time_archives": "Gespeicherte Dateien: :count",
                 "shift_types": "Schichttypen: :count",
                 "worker_notifications": "Benachrichtigungen an Ausführende: :count",
                 "clock_display_claims": "Uhrbildschirm-Kopplungen: :count",

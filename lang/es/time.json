@@ -1240,5 +1240,85 @@
             "break_open": "Ya hay una pausa en curso.",
             "break_closed": "No hay una pausa en curso."
         }
+    },
+    "archive": {
+        "columns": {
+            "roster": {
+                "worker": "Ejecutor",
+                "date": "Fecha",
+                "kind": "Tipo",
+                "code": "Código",
+                "label": "Nombre",
+                "start": "Inicio",
+                "end": "Fin",
+                "break": "Pausa (min)",
+                "portion": "Parte del día",
+                "unit_code": "Código de unit",
+                "unit": "Unit",
+                "location": "Lugar",
+                "note": "Nota",
+                "status": "Estado"
+            },
+            "shifts": {
+                "worker": "Ejecutor",
+                "team": "Equipo",
+                "clock_in": "Entrada",
+                "clock_out": "Salida",
+                "break": "Pausa (min)",
+                "clock_in_point": "Punto de entrada",
+                "clock_out_point": "Punto de salida",
+                "source_in": "Origen entrada",
+                "source_out": "Origen salida",
+                "latitude": "Latitud",
+                "longitude": "Longitud",
+                "hops": "Traslados",
+                "status": "Estado"
+            },
+            "breaks": {
+                "shift_id": "Servicio",
+                "started_at": "Inicio",
+                "ended_at": "Fin",
+                "type": "Tipo"
+            },
+            "visits": {
+                "shift_id": "Servicio",
+                "unit": "Unit",
+                "location": "Lugar",
+                "started_at": "Inicio",
+                "ended_at": "Fin",
+                "start_lat": "Latitud inicio",
+                "start_lng": "Longitud inicio",
+                "end_lat": "Latitud fin",
+                "end_lng": "Longitud fin"
+            },
+            "tasks": {
+                "shift_id": "Servicio",
+                "task": "Tarea",
+                "started_at": "Inicio",
+                "ended_at": "Fin"
+            },
+            "requests": {
+                "worker": "Ejecutor",
+                "kind": "Tipo",
+                "code": "Código",
+                "label": "Nombre",
+                "date_from": "Desde",
+                "date_to": "Hasta",
+                "portion": "Parte del día",
+                "note": "Nota",
+                "status": "Estado",
+                "decision": "Decisión",
+                "decided_at": "Decidido el",
+                "photos": "Fotos"
+            },
+            "photos": {
+                "request": "Solicitud",
+                "worker": "Ejecutor",
+                "date_from": "Desde",
+                "date_to": "Hasta",
+                "kind": "Tipo",
+                "file": "Archivo"
+            }
+        }
     }
 }

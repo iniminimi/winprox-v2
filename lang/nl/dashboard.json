@@ -210,8 +210,16 @@
     },
     "absence_photos": {
         "title": "Foto's bij afwezigheid",
-        "body": "Sommige foto's zijn ouder dan 5 maanden. Binnen een maand worden ze gewist. Bewaar zelf een kopie als u ze langer nodig hebt.",
+        "body": "Sommige foto's zijn ouder dan 5 maanden. Binnen een maand worden ze gewist. Daarna staan ze één maand op Abonnement om te downloaden.",
         "cta": "Bekijk de foto's"
+    },
+    "time_archives": {
+        "year_title": "Uurrooster bewaard",
+        "year_body": "Het uurrooster, de geklokte uren en de aanvragen van :year staan in een bestand. Download het via Abonnement.",
+        "year_cta": "Naar Abonnement",
+        "photos_title": "Foto's verwijderd",
+        "photos_body": "Foto's bij afwezigheid zijn verwijderd. Download ze via Abonnement. Het oudste bestand blijft beschikbaar tot :date.",
+        "photos_cta": "Naar Abonnement"
     },
     "add_device": {
         "title": "Toestel toevoegen",

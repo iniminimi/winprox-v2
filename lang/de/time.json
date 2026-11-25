@@ -1240,5 +1240,85 @@
             "break_open": "Eine Pause läuft bereits.",
             "break_closed": "Es läuft keine Pause."
         }
+    },
+    "archive": {
+        "columns": {
+            "roster": {
+                "worker": "Ausführende",
+                "date": "Datum",
+                "kind": "Art",
+                "code": "Code",
+                "label": "Name",
+                "start": "Beginn",
+                "end": "Ende",
+                "break": "Pause (Min.)",
+                "portion": "Tagesanteil",
+                "unit_code": "Unit-Code",
+                "unit": "Unit",
+                "location": "Ort",
+                "note": "Notiz",
+                "status": "Status"
+            },
+            "shifts": {
+                "worker": "Ausführende",
+                "team": "Team",
+                "clock_in": "Einstempeln",
+                "clock_out": "Ausstempeln",
+                "break": "Pause (Min.)",
+                "clock_in_point": "Einstempelpunkt",
+                "clock_out_point": "Ausstempelpunkt",
+                "source_in": "Quelle ein",
+                "source_out": "Quelle aus",
+                "latitude": "Breite",
+                "longitude": "Länge",
+                "hops": "Wechsel",
+                "status": "Status"
+            },
+            "breaks": {
+                "shift_id": "Dienst",
+                "started_at": "Beginn",
+                "ended_at": "Ende",
+                "type": "Art"
+            },
+            "visits": {
+                "shift_id": "Dienst",
+                "unit": "Unit",
+                "location": "Ort",
+                "started_at": "Beginn",
+                "ended_at": "Ende",
+                "start_lat": "Breite Beginn",
+                "start_lng": "Länge Beginn",
+                "end_lat": "Breite Ende",
+                "end_lng": "Länge Ende"
+            },
+            "tasks": {
+                "shift_id": "Dienst",
+                "task": "Aufgabe",
+                "started_at": "Beginn",
+                "ended_at": "Ende"
+            },
+            "requests": {
+                "worker": "Ausführende",
+                "kind": "Art",
+                "code": "Code",
+                "label": "Name",
+                "date_from": "Von",
+                "date_to": "Bis",
+                "portion": "Tagesanteil",
+                "note": "Notiz",
+                "status": "Status",
+                "decision": "Entscheidung",
+                "decided_at": "Entschieden am",
+                "photos": "Fotos"
+            },
+            "photos": {
+                "request": "Antrag",
+                "worker": "Ausführende",
+                "date_from": "Von",
+                "date_to": "Bis",
+                "kind": "Art",
+                "file": "Datei"
+            }
+        }
     }
 }

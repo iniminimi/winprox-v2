@@ -210,8 +210,16 @@
     },
     "absence_photos": {
         "title": "Fotos zur Abwesenheit",
-        "body": "Manche Fotos sind älter als 5 Monate. Innerhalb eines Monats werden sie gelöscht. Bewahren Sie selbst eine Kopie auf, wenn Sie sie länger brauchen.",
+        "body": "Manche Fotos sind älter als 5 Monate. Innerhalb eines Monats werden sie gelöscht. Danach liegen sie einen Monat unter Abonnement zum Herunterladen bereit.",
         "cta": "Fotos ansehen"
+    },
+    "time_archives": {
+        "year_title": "Dienstplan gespeichert",
+        "year_body": "Dienstplan, gestempelte Stunden und Anträge von :year stehen in einer Datei. Laden Sie sie über Abonnement herunter.",
+        "year_cta": "Zu Abonnement",
+        "photos_title": "Fotos entfernt",
+        "photos_body": "Fotos zur Abwesenheit wurden entfernt. Laden Sie sie über Abonnement herunter. Die älteste Datei bleibt verfügbar bis :date.",
+        "photos_cta": "Zu Abonnement"
     },
     "add_device": {
         "title": "Gerät hinzufügen",

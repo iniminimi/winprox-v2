@@ -13,6 +13,7 @@ use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
 use App\Actions\Onboarding\RemoveTenantStarterPackAction;
 use App\Actions\ReleaseNotes\ShouldShowWhatsNewCardAction;
 use App\Actions\Sense\ListSenseAttentionAction;
+use App\Actions\Retention\ListTimeArchiveNoticesAction;
 use App\Actions\Time\CountExpiringAbsencePhotosAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Actions\Time\SendClockPointQrMailAction;
@@ -258,6 +259,7 @@ class Dashboard extends Component
         BuildCheckmateDashboardDataAction $buildCheckmate,
         ShouldShowWhatsNewCardAction $shouldShowWhatsNew,
         CountExpiringAbsencePhotosAction $countExpiringAbsencePhotos,
+        ListTimeArchiveNoticesAction $listTimeArchiveNotices,
         ListSenseAttentionAction $listSenseAttention,
     ) {
         $tenant = $this->resolveTenant();
@@ -280,11 +282,15 @@ class Dashboard extends Component
             : null;
         $onboarding = $isCheckmate ? null : TenantOnboardingState::current();
         $user = auth()->user();
+        $timeArchiveNotices = ['year' => null, 'photo_until' => null];
         if ($tenantId > 0) {
             $expiringAbsencePhotos = $countExpiringAbsencePhotos->handle(
                 $tenantId,
                 $user instanceof User ? $user->accessibleLocationIds() : null,
             );
+            if ($tenant?->hasTimeModule() || $tenant?->checkmateMode()) {
+                $timeArchiveNotices = $listTimeArchiveNotices->handle($tenantId);
+            }
         }
         $canManageStarterPack = $user instanceof User
             && $tenant !== null
@@ -357,6 +363,9 @@ class Dashboard extends Component
             'onboarding' => $onboarding,
             'hasTimeModule' => $hasTimeModule,
             'expiringAbsencePhotos' => $expiringAbsencePhotos,
+            'timeArchiveYear' => $timeArchiveNotices['year'],
+            'timeArchivePhotoUntil' => $timeArchiveNotices['photo_until'],
+            'canOpenSubscription' => $user instanceof User && $tenant !== null && $user->can('manageSubscription', $tenant),
             'canApplyStarterPack' => $canApplyStarterPack,
             'showStarterPackChooser' => $showStarterPackChooser,
             'canManageStarterPack' => $canManageStarterPack,

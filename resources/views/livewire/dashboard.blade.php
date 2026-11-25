@@ -40,6 +40,8 @@
             </div>
         @endif
 
+        @include('partials.wp-time-archive-notices')
+
         @if ($checkmate->workersMissingSsin !== [])
             <div class="wp-card wp-card-pad wp-stack-tight wp-card--prio-pulse">
                 <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.ssin.title') }}</strong></p>
@@ -410,6 +412,8 @@
         @if (session('time_flash'))
             <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
         @endif
+
+        @include('partials.wp-time-archive-notices')
 
         @if ($expiringAbsencePhotos > 0)
             @include('partials.wp-absence-photo-expiry-card')

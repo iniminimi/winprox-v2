@@ -132,7 +132,7 @@
             },
             {
                 "title": "Congé et absence",
-                "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Aucun e-mail n’est envoyé. Maladie et Autre ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx. Une photo jointe à la demande est conservée 6 mois, puis effacée. Gardez une copie si vous en avez besoin plus longtemps.",
+                "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Aucun e-mail n’est envoyé. Maladie et Autre ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx. Une photo jointe à la demande reste 6 mois avec la demande. Ensuite elle reste un mois dans un fichier sur Abonnement.",
                 "items": [
                     "Une demande va d’une date de début à une date de fin, 31 jours au maximum (Autre: un jour), et pas dans le passé. La liste sur Clock Point est Congé, Récup, Maladie, puis Autre par nom.",
                     "Dans le planning d’administration, les demandes ouvertes apparaissent comme un marquage sur les jours concernés ; ce marquage ouvre Time → Demandes (le service reste jusqu’à l’approbation).",
@@ -499,7 +499,8 @@
                     "Un horaire planifié est optionnel. Revenir à une version précédente est réservé à qui peut modifier l’horaire, et seulement pendant une durée limitée.",
                     "Transmission optionnelle des présences vers l’ONSS belge (CIAO). Le numéro de registre national est stocké chiffré. Le client indique le numéro d’entreprise. Les envois réussis sont supprimés après une durée limitée. Un export sans numéro de registre national est disponible.",
                     "Les journaux d'erreurs techniques restent uniquement sur le serveur et sont conservés 14 jours au maximum.",
-                    "Une photo jointe à une demande d’absence n’est visible que par l’intervenant et par qui traite la demande. WinProx la garde 6 mois, puis l’efface. À partir de 5 mois, l’écran d’accueil prévient. Gardez une copie si vous en avez besoin plus longtemps."
+                    "Le planning, les heures pointées et les demandes restent à l’écran pour l’année en cours et l’année précédente. Le 1er février, l’année d’avant va dans un fichier sur Abonnement et y reste trois ans.",
+                    "Une photo jointe à une demande d’absence n’est visible que par l’intervenant et par qui traite la demande. WinProx la garde 6 mois avec la demande. Ensuite elle reste un mois dans un fichier sur Abonnement. À partir de 5 mois, l’écran d’accueil prévient."
                 ],
                 "key": "privacy"
             },

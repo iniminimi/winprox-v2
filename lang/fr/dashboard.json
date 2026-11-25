@@ -210,8 +210,16 @@
     },
     "absence_photos": {
         "title": "Photos d'absence",
-        "body": "Certaines photos ont plus de 5 mois. Elles seront effacées dans un mois. Gardez une copie si vous en avez besoin plus longtemps.",
+        "body": "Certaines photos ont plus de 5 mois. Elles seront effacées dans un mois. Ensuite, elles restent un mois sur Abonnement, prêtes à télécharger.",
         "cta": "Voir les photos"
+    },
+    "time_archives": {
+        "year_title": "Planning enregistré",
+        "year_body": "Le planning, les heures pointées et les demandes de :year sont dans un fichier. Téléchargez-le via Abonnement.",
+        "year_cta": "Vers Abonnement",
+        "photos_title": "Photos retirées",
+        "photos_body": "Les photos d'absence ont été retirées. Téléchargez-les via Abonnement. Le fichier le plus ancien reste disponible jusqu'au :date.",
+        "photos_cta": "Vers Abonnement"
     },
     "add_device": {
         "title": "Ajouter un appareil",

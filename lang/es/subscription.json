@@ -372,6 +372,13 @@
             "billing": "Tras la prueba: 5 € por plaza activa al mes. Configuras el número de plazas en esta página."
         }
     },
+    "time_archives": {
+        "heading": "Archivos guardados",
+        "intro": "Un año sigue en pantalla hasta el 1 de febrero del año siguiente. Después permanece aquí tres años. Las fotos de una solicitud siguen seis meses y luego un mes más en un archivo.",
+        "year": "Año :year",
+        "photos": "Fotos :period",
+        "until": "hasta el :date"
+    },
     "public_demo_note": "¿No sabe qué fórmula le conviene? Se lo explicamos con gusto en persona.",
     "public_demo_cta": "Solicitar una demostración"
 }

@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Actions\Retention\ArchiveDueTenantTimeYearsAction;
 use App\Actions\Retention\PruneAbsenceRequestPhotosAction;
 use App\Actions\Retention\PruneCameraPhotosAction;
 use App\Actions\Retention\PruneClosedIssueMediaAction;
+use App\Actions\Retention\PruneExpiredTimeArchivesAction;
 use App\Actions\Retention\PruneInactiveTenantFacilityDataAction;
 use App\Actions\Retention\PrunePresenceSubmissionsAction;
 use App\Actions\Retention\PruneRosterRestorePointsAction;
@@ -25,6 +27,8 @@ class RetentionPruneCommand extends Command
         PruneUnitAlbumPhotosAction $pruneUnitAlbumPhotos,
         PruneAbsenceRequestPhotosAction $pruneAbsencePhotos,
         PruneCameraPhotosAction $pruneCameraPhotos,
+        ArchiveDueTenantTimeYearsAction $archiveTimeYears,
+        PruneExpiredTimeArchivesAction $pruneTimeArchives,
     ): int {
         $dryRun = (bool) $this->option('dry-run');
 
@@ -89,6 +93,25 @@ class RetentionPruneCommand extends Command
             $dryRun ? '(zou verwijderen)' : 'verwijderd',
         ));
 
-        return self::SUCCESS;
+        $years = $archiveTimeYears->handle($dryRun);
+        $this->info(sprintf(
+            'Tijdarchief: %d tenants, %d jaren, %d rijen %s, %d overgeslagen, %d fouten',
+            $years['tenants'],
+            $years['years'],
+            $years['deleted'],
+            $dryRun ? '(zou archiveren)' : 'gearchiveerd',
+            $years['skipped'],
+            $years['errors'],
+        ));
+
+        $archives = $pruneTimeArchives->handle($dryRun);
+        $this->info(sprintf(
+            'Verlopen tijdarchieven: %d gescand, %d %s',
+            $archives['scanned'],
+            $archives['removed'],
+            $dryRun ? '(zou verwijderen)' : 'verwijderd',
+        ));
+
+        return $years['errors'] > 0 ? self::FAILURE : self::SUCCESS;
     }
 }

@@ -372,6 +372,13 @@
             "billing": "Dopo la prova: 5 € per posto attivo al mese. Imposti il numero di posti in questa pagina."
         }
     },
+    "time_archives": {
+        "heading": "File conservati",
+        "intro": "Un anno resta sullo schermo fino al 1° febbraio dell'anno successivo. Poi resta qui per tre anni. Le foto di una richiesta restano sei mesi e poi ancora un mese in un file.",
+        "year": "Anno :year",
+        "photos": "Foto :period",
+        "until": "fino al :date"
+    },
     "public_demo_note": "Non sai quale formula fa per te? Te lo spieghiamo volentieri di persona.",
     "public_demo_cta": "Richiedi una demo"
 }

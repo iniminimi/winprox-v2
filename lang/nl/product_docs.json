@@ -132,7 +132,7 @@
             },
             {
                 "title": "Verlof en afwezigheid",
-                "body": "Medewerkers vragen verlof, recup, ziekte of (als beheer die heeft aangemaakt) een type onder Andere via Clock Point. De beheerder beslist in Time → Aanvragen — ook ziekte moet worden goedgekeurd. Er gaat geen e-mail uit. Ziekte en Andere (bv. klein verlet, baaldag) tellen niet mee voor het verlofsaldo of recup; dat verwerkt het sociaal secretariaat, niet WinProx. Een foto bij de aanvraag blijft 6 maanden bewaard en wordt daarna gewist. Bewaar zelf een kopie als u ze langer nodig hebt.",
+                "body": "Medewerkers vragen verlof, recup, ziekte of (als beheer die heeft aangemaakt) een type onder Andere via Clock Point. De beheerder beslist in Time → Aanvragen — ook ziekte moet worden goedgekeurd. Er gaat geen e-mail uit. Ziekte en Andere (bv. klein verlet, baaldag) tellen niet mee voor het verlofsaldo of recup; dat verwerkt het sociaal secretariaat, niet WinProx. Een foto bij de aanvraag blijft 6 maanden bij de aanvraag. Daarna staat ze één maand in een bestand op Abonnement.",
                 "items": [
                     "Een aanvraag loopt van een begindatum tot een einddatum, maximaal 31 dagen (Andere: één dag), en niet in het verleden. De keuzelijst op Clock Point staat als Verlof, Recup, Ziek, daarna Andere op naam.",
                     "In het beheer-uurrooster ziet u open aanvragen als markering op de betreffende dagen; via die markering opent u Time → Aanvragen (dienst blijft staan tot goedkeuring).",
@@ -499,7 +499,8 @@
                     "Een gepland uurrooster is optioneel. Een vorige versie terugzetten kan alleen wie het rooster mag bewerken, en alleen gedurende een beperkte tijd.",
                     "Optionele doorgifte van aanwezigheid naar de Belgische RSZ (CIAO). Het rijksregisternummer wordt versleuteld bewaard. De klant vult het ondernemingsnummer in. Geslaagde doorgiftes worden na een beperkte termijn verwijderd. Een export zonder rijksregisternummer is beschikbaar.",
                     "Technische foutlogs staan alleen op de server en worden maximaal 14 dagen bewaard.",
-                    "Een foto bij een afwezigheidsaanvraag is alleen zichtbaar voor de uitvoerder en voor wie de aanvraag behandelt. WinProx bewaart ze 6 maanden en wist ze daarna. Vanaf 5 maanden waarschuwt het beginscherm. Bewaar zelf een kopie als u ze langer nodig hebt."
+                    "Het uurrooster, de geklokte uren en de aanvragen blijven het lopende jaar en het vorige jaar in het scherm. Op 1 februari gaat het jaar daarvoor in een bestand op Abonnement en blijft daar drie jaar.",
+                    "Een foto bij een afwezigheidsaanvraag is alleen zichtbaar voor de uitvoerder en voor wie de aanvraag behandelt. WinProx bewaart ze 6 maanden bij de aanvraag. Daarna staat ze één maand in een bestand op Abonnement. Vanaf 5 maanden waarschuwt het beginscherm."
                 ],
                 "key": "privacy"
             },

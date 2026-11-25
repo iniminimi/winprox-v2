@@ -1240,5 +1240,85 @@
             "break_open": "Er loopt al een pauze.",
             "break_closed": "Er loopt geen pauze."
         }
+    },
+    "archive": {
+        "columns": {
+            "roster": {
+                "worker": "Uitvoerder",
+                "date": "Datum",
+                "kind": "Soort",
+                "code": "Code",
+                "label": "Naam",
+                "start": "Start",
+                "end": "Einde",
+                "break": "Pauze (min)",
+                "portion": "Dagdeel",
+                "unit_code": "Unitcode",
+                "unit": "Unit",
+                "location": "Locatie",
+                "note": "Notitie",
+                "status": "Status"
+            },
+            "shifts": {
+                "worker": "Uitvoerder",
+                "team": "Team",
+                "clock_in": "Inklok",
+                "clock_out": "Uitklok",
+                "break": "Pauze (min)",
+                "clock_in_point": "Inklokpunt",
+                "clock_out_point": "Uitklokpunt",
+                "source_in": "Bron in",
+                "source_out": "Bron uit",
+                "latitude": "Breedte",
+                "longitude": "Lengte",
+                "hops": "Verplaatsingen",
+                "status": "Status"
+            },
+            "breaks": {
+                "shift_id": "Dienst",
+                "started_at": "Start",
+                "ended_at": "Einde",
+                "type": "Soort"
+            },
+            "visits": {
+                "shift_id": "Dienst",
+                "unit": "Unit",
+                "location": "Locatie",
+                "started_at": "Start",
+                "ended_at": "Einde",
+                "start_lat": "Breedte start",
+                "start_lng": "Lengte start",
+                "end_lat": "Breedte einde",
+                "end_lng": "Lengte einde"
+            },
+            "tasks": {
+                "shift_id": "Dienst",
+                "task": "Taak",
+                "started_at": "Start",
+                "ended_at": "Einde"
+            },
+            "requests": {
+                "worker": "Uitvoerder",
+                "kind": "Soort",
+                "code": "Code",
+                "label": "Naam",
+                "date_from": "Van",
+                "date_to": "Tot",
+                "portion": "Dagdeel",
+                "note": "Notitie",
+                "status": "Status",
+                "decision": "Beslissing",
+                "decided_at": "Beslist op",
+                "photos": "Foto's"
+            },
+            "photos": {
+                "request": "Aanvraag",
+                "worker": "Uitvoerder",
+                "date_from": "Van",
+                "date_to": "Tot",
+                "kind": "Soort",
+                "file": "Bestand"
+            }
+        }
     }
 }

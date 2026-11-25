@@ -132,7 +132,7 @@
             },
             {
                 "title": "Leave and absence",
-                "body": "Workers request leave, TOIL, sick leave or (if set up) a type under Other via Clock Point. Staff decide under Time → Requests — sick leave must be approved too. No e-mail is sent. Sick leave and Other (e.g. short leave, personal day) do not count toward leave balance or TOIL; payroll handles that, not WinProx. A photo with the request is kept for 6 months and then deleted. Keep your own copy if you need it longer.",
+                "body": "Workers request leave, TOIL, sick leave or (if set up) a type under Other via Clock Point. Staff decide under Time → Requests — sick leave must be approved too. No e-mail is sent. Sick leave and Other (e.g. short leave, personal day) do not count toward leave balance or TOIL; payroll handles that, not WinProx. A photo with the request stays with the request for 6 months. After that it stays for one month in a file on Subscription.",
                 "items": [
                     "A request runs from a start date to an end date, at most 31 days (Other: one day), and not in the past. The Clock Point list is Leave, Comp time, Sick, then Other by name.",
                     "In the admin roster, open requests appear as a marker on the relevant days; that marker opens Time → Requests (the shift stays until approval).",
@@ -499,7 +499,8 @@
                     "A planned roster is optional. Restoring a previous version is limited to people who may edit the roster, and only for a limited time.",
                     "Optional presence reporting to the Belgian social security office (CIAO). The national register number is stored encrypted. The customer enters the enterprise number. Successful submissions are deleted after a limited period. An export without the national register number is available.",
                     "Technical error logs are kept on the server only, for at most 14 days.",
-                    "A photo with an absence request is visible only to the worker and to whoever handles the request. WinProx keeps it for 6 months and then deletes it. From 5 months the home screen warns you. Keep your own copy if you need it longer."
+                    "The roster, the clocked hours and the requests stay on screen for the current year and the previous year. On 1 February the year before that goes into a file on Subscription and stays there for three years.",
+                    "A photo with an absence request is visible only to the worker and to whoever handles the request. WinProx keeps it with the request for 6 months. After that it stays for one month in a file on Subscription. From 5 months the home screen warns you."
                 ],
                 "key": "privacy"
             },

@@ -372,6 +372,13 @@
             "billing": "Na de proef: €5 per actieve seat per maand. Je stelt het aantal seats zelf in op deze pagina."
         }
     },
+    "time_archives": {
+        "heading": "Bewaarde bestanden",
+        "intro": "Een jaar blijft in het scherm tot 1 februari van het jaar erna. Daarna staat het hier drie jaar. Foto's bij een aanvraag blijven zes maanden en daarna nog één maand in een bestand.",
+        "year": "Jaar :year",
+        "photos": "Foto's :period",
+        "until": "tot en met :date"
+    },
     "public_demo_note": "Twijfelt u welke formule past? Wij leggen het graag persoonlijk uit.",
     "public_demo_cta": "Plan een demonstratie"
 }

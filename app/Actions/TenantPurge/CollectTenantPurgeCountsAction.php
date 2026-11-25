@@ -55,6 +55,7 @@ final class CollectTenantPurgeCountsAction
         'tenant_holiday_agreements',
         'tenant_qr_sticker_sheet_settings',
         'absence_request_photos',
+        'tenant_time_archives',
         'cameras',
         'camera_claims',
         'camera_photos',

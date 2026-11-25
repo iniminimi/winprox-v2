@@ -175,6 +175,7 @@
                 "planned_shifts": "Turni pianificati: :count",
                 "absence_requests": "Richieste di assenza: :count",
                 "absence_request_photos": "Foto di assenza: :count",
+                "tenant_time_archives": "File conservati: :count",
                 "shift_types": "Tipi di turno: :count",
                 "worker_notifications": "Notifiche agli esecutori: :count",
                 "clock_display_claims": "Abbinamenti schermi orologio: :count",
