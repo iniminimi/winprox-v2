@@ -56,8 +56,8 @@
             "photos_image": "Apenas fotos.",
             "photos_size": "Uma foto é demasiado grande."
         },
-        "photos_kept": "As fotos de um pedido ficam 6 meses. Depois são apagadas. Guarde uma cópia se precisar delas por mais tempo.",
-        "photos_expiring_note": "Estas fotos serão apagadas dentro de um mês.",
+        "photos_kept": "As fotos de um pedido ficam 6 meses com o pedido. Depois ficam um mês no fundo de Subscrição.",
+        "photos_expiring_note": "Estas fotos saem do pedido dentro de um mês. Depois ficam um mês no fundo de Subscrição.",
         "photos_show_all": "Todos os pedidos",
         "photos_with": "Com foto"
     },
@@ -227,7 +227,7 @@
             "shift_type_placeholder": "Escolha um tipo",
             "period_hint_single": "Toque na data. Dias no passado não podem ser escolhidos.",
             "photos_add": "Foto de um comprovativo",
-            "photos_hint": "Opcional. O WinProx guarda uma foto durante 6 meses e depois apaga-a. Guarde uma cópia se precisar dela por mais tempo."
+            "photos_hint": "Opcional. O WinProx guarda uma foto durante 6 meses com o pedido. Depois um administrador ainda a pode transferir durante um mês."
         },
         "now": {
             "status_out": "Sem entrada",

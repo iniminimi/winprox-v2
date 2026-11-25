@@ -1080,6 +1080,10 @@
                     "text": "Checkmate is the simple WinProx plan for crews that work at different customer sites — cleaning companies, for example.<br><br>Workers use their phone to clock in and out. At each customer they start a visit. WinProx checks via the phone location whether the worker is really at the work address, within a radius of 100 m.<br><br>What is included?<br>• <strong>Customers and work addresses:</strong> manage the customers and places where your workers work.<br>• <strong>Punch clock:</strong> workers clock in and out, including breaks.<br>• <strong>Own hours:</strong> each worker can view their worked hours.<br>• <strong>Hours per customer:</strong> as an admin you see how much time was worked at each customer.<br>• <strong>CIAO (NSSO):</strong> the presence declaration to the NSSO is included. Enter your CBE number under Settings for that.<br><br>What is not included?<br>• Reports.<br>• Tasks.<br>• Units.<br>• Documents.<br>• Roster.<br><br><strong>Price</strong><br>You pay €5 per active licence per month. That can be a colleague or a worker.<br><br>You choose how many active licences you need.<br><br><strong>Expand later?</strong><br>Does your organisation need more options later? Then you can move to a regular WinProx plan.<br><br>Your existing data is kept. You do not have to start again."
                 },
                 {
+                    "label": "Saved files",
+                    "text": "At the bottom of this page is the <strong>Saved files</strong> card, even when no file is ready yet.<br><br>The current year and the previous year stay on screen.<br><br>On 1 February the year before that goes into a file: roster, clocked hours and requests. The file stays for three years.<br><br>A photo with a request stays with the request for six months. After that it stays for one month in a file in the same card.<br><br>Checkmate has no roster. The file there holds the clocked hours."
+                },
+                {
                     "label": "Delete your organisation and data",
                     "text": "Want to stop WinProx and remove your whole organisation? Only an admin can do that.<br><br><strong>Step 1 — Download your data first</strong><br>Export your data beforehand via:<br>Settings → Privacy & data export<br><br>That way you still have your data when you no longer use WinProx.<br><br><strong>Step 2 — Request deletion</strong><br>Go to Subscription and:<br>1. Tick the confirmation for deletion.<br>2. Enter your password.<br>3. Confirm your request.<br><br>All admins of the organisation then receive a confirmation email.<br><br><strong>What happens next?</strong><br>What follows depends on your subscription.<br><br>• <strong>During the trial:</strong> after the request you can carry out the final deletion yourself.<br>• <strong>On a paid subscription:</strong> there is first a waiting period of 7 days. During that period a warning appears on screen and you receive a reminder email. WinProx administration then carries out the final deletion.<br><br>During processing WinProx keeps a technical snapshot without media files for 30 days.<br><br>Changed your mind? You can cancel the request during the waiting period via Subscription.<br><br>Important: always download your data before you confirm deletion. After final deletion you can no longer consult your organisation data via WinProx."
                 }
@@ -1374,7 +1378,7 @@
                 },
                 {
                     "label": "Leave / Absence",
-                    "text": "After sign-in you see the Leave / Absence tile. Choose the absence by name (e.g. Leave, Sick, Personal day) — types come from your organisation’s shift types. The list is Leave, Comp time, Sick, then Other (by name). Then from–to (Other: one day), optional note, max. 31 days, not in the past. Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent. At the top you see leave left this year of the entitlement, and next year when an entitlement is set, plus overtime. This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay. You can add a photo of a note, up to four. WinProx keeps it for 6 months and then deletes it. Keep your own copy if you need it longer."
+                    "text": "After sign-in you see the Leave / Absence tile. Choose the absence by name (e.g. Leave, Sick, Personal day) — types come from your organisation’s shift types. The list is Leave, Comp time, Sick, then Other (by name). Then from–to (Other: one day), optional note, max. 31 days, not in the past. Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent. At the top you see leave left this year of the entitlement, and next year when an entitlement is set, plus overtime. This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay. You can add a photo of a note, up to four. WinProx keeps it for 6 months. After that an administrator can still download it for one month."
                 }
             ]
         },
@@ -2285,7 +2289,7 @@
                 },
                 {
                     "label": "Requests from workers",
-                    "text": "Workers can request leave, time off in lieu, sick leave or an Other absence themselves on Clock Point, on the <strong>Leave / Absence</strong> tile.<br><br>You handle these requests under <strong>Time → Requests</strong>.<br><br>A sick report must be approved there as well.<br><br>Sick and Other do not affect the leave balance or the time-off-in-lieu balance.<br><br>The worker can add a photo of a note. It stays with the request for 6 months. Then WinProx deletes it. Keep your own copy if you need it longer.",
+                    "text": "Workers can request leave, time off in lieu, sick leave or an Other absence themselves on Clock Point, on the <strong>Leave / Absence</strong> tile.<br><br>You handle these requests under <strong>Time → Requests</strong>.<br><br>A sick report must be approved there as well.<br><br>Sick and Other do not affect the leave balance or the time-off-in-lieu balance.<br><br>The worker can add a photo of a note. It stays with the request for 6 months. After that it stays for one month at the bottom of Subscription.",
                     "nested": true
                 },
                 {
@@ -2403,7 +2407,7 @@
                 },
                 {
                     "label": "The list",
-                    "text": "You can also filter by team, worker, Clock Point and period (from–to), as on Clocked hours. A request stays visible when it overlaps that period. A Clock Point shows requests from workers who may clock in there. <strong>With photo</strong> shows only requests that have a photo. Click <strong>Apply</strong>.<br><br>At the top you can filter the requests by <strong>All</strong>, <strong>Open</strong>, <strong>Approved</strong>, <strong>Rejected</strong> or <strong>Withdrawn</strong>.<br><br>For each request you see the worker, the type of absence, the requested days and, if there is one, a note.<br><br>After a decision you also see who approved or rejected the request.<br><br>If there is a photo, you see it with the request. WinProx keeps photos for 6 months and then deletes them. From 5 months the home screen warns you. Keep your own copy if you need them longer."
+                    "text": "You can also filter by team, worker, Clock Point and period (from–to), as on Clocked hours. A request stays visible when it overlaps that period. A Clock Point shows requests from workers who may clock in there. <strong>With photo</strong> shows only requests that have a photo. Click <strong>Apply</strong>.<br><br>At the top you can filter the requests by <strong>All</strong>, <strong>Open</strong>, <strong>Approved</strong>, <strong>Rejected</strong> or <strong>Withdrawn</strong>.<br><br>For each request you see the worker, the type of absence, the requested days and, if there is one, a note.<br><br>After a decision you also see who approved or rejected the request.<br><br>If there is a photo, you see it with the request. WinProx keeps photos for 6 months with the request. After that they stay for one month at the bottom of Subscription. From 5 months the home screen warns you."
                 },
                 {
                     "label": "Reviewing a request",
@@ -2702,6 +2706,10 @@
                 {
                     "label": "Plan",
                     "text": "Checkmate charges €5 per active seat (colleague or field worker) per month. During the trial you get 25 licences to test properly — no unit or document limits. After the trial you set the seat quantity yourself; you cannot go below active seats — deactivate workers first."
+                },
+                {
+                    "label": "Saved files",
+                    "text": "At the bottom of this page is the Saved files card, even when no file is ready yet. The current year stays on screen. On 1 February the year before that goes into a file of the clocked hours, for three years."
                 },
                 {
                     "label": "Delete data",

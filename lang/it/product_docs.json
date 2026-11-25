@@ -44,6 +44,7 @@
                     "Affiancare le ore registrate ai turni.",
                     "Pianificare i turni e pubblicarli.",
                     "Gestire le richieste di ferie, recupero, malattia e Altro.",
+                    "Gli anni chiusi di turni, ore timbrate e richieste compaiono più tardi in fondo ad Abbonamento, per tre anni. L'anno in corso e quello precedente restano sullo schermo.",
                     "Gestire segnalazioni, compiti e giri di ispezione.",
                     "Gestire sedi, team, persone e unità.",
                     "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo.",
@@ -58,6 +59,7 @@
                 "body": "Checkmate è la formula per chi lavora dal cliente, per esempio in edilizia o pulizie. Una visita parte solo se il GPS è entro la distanza impostata della sede del cliente.",
                 "items": [
                     "Si può timbrare dall’icona di Clock Point. Presenza, foglio ore e Le mie ore sono inclusi.",
+                    "Gli anni chiusi delle ore timbrate compaiono più tardi in fondo ad Abbonamento, per tre anni.",
                     "Clienti e sedi si gestiscono in Clienti e Sedi. Una sede può avere un’unità per l’intera sede.",
                     "I clienti si importano in blocco da CSV o Excel, con i dati della sede su ogni riga.",
                     "Per cliente si vede il mese: visite, tempo lavorato e ore per sede. Si esporta in CSV o si stampa.",
@@ -132,7 +134,7 @@
             },
             {
                 "title": "Ferie e assenza",
-                "body": "I lavoratori chiedono ferie, recupero, malattia o (se configurato) un tipo in Altro via Clock Point. La gestione decide in Time → Richieste — anche la malattia va approvata. Non parte alcuna e-mail. Malattia e Altro non contano nel saldo ferie né nel recupero; se ne occupa il segretariato sociale, non WinProx. Una foto allegata alla richiesta resta 6 mesi con la richiesta. Poi resta un mese in un file su Abbonamento.",
+                "body": "I lavoratori chiedono ferie, recupero, malattia o (se configurato) un tipo in Altro via Clock Point. La gestione decide in Time → Richieste — anche la malattia va approvata. Non parte alcuna e-mail. Malattia e Altro non contano nel saldo ferie né nel recupero; se ne occupa il segretariato sociale, non WinProx. Una foto allegata alla richiesta resta 6 mesi con la richiesta. Poi resta un mese in un file in fondo ad Abbonamento.",
                 "items": [
                     "Una richiesta va da una data di inizio a una data di fine, al massimo 31 giorni (Altro: un giorno), e non nel passato. L’elenco su Clock Point è Ferie, Recupero, Malattia e poi Altro per nome.",
                     "Nel turno di amministrazione le richieste aperte compaiono come contrassegno sui giorni interessati; da lì aprite Time → Richieste (il servizio resta fino all’approvazione).",
@@ -499,8 +501,9 @@
                     "Un turno pianificato è opzionale. Ripristinare una versione precedente può solo chi può modificare il turno, e solo per un tempo limitato.",
                     "Invio opzionale delle presenze all’ente previdenziale belga (CIAO). Il numero di registro nazionale è conservato cifrato. Il cliente indica il numero d’impresa. Gli invii riusciti sono eliminati dopo un periodo limitato. È disponibile un export senza il numero di registro nazionale.",
                     "I log tecnici degli errori restano solo sul server e sono conservati al massimo 14 giorni.",
-                    "Turni, ore timbrate e richieste restano sullo schermo per l’anno in corso e quello precedente. Il 1° febbraio l’anno prima di quelli va in un file su Abbonamento e ci resta tre anni.",
-                    "Una foto con una richiesta di assenza è visibile solo all’operatore e a chi tratta la richiesta. WinProx la conserva 6 mesi con la richiesta. Poi resta un mese in un file su Abbonamento. Da 5 mesi la schermata iniziale avvisa."
+                    "Turni, ore timbrate e richieste restano sullo schermo per l’anno in corso e quello precedente. Il 1° febbraio l’anno prima di quelli va in un file in fondo ad Abbonamento e ci resta tre anni.",
+                    "Una foto con una richiesta di assenza è visibile solo all’operatore e a chi tratta la richiesta. WinProx la conserva 6 mesi con la richiesta. Poi resta un mese in un file in fondo ad Abbonamento. Da 5 mesi la schermata iniziale avvisa.",
+                    "Il riquadro File conservati è già in fondo ad Abbonamento, anche se non c'è ancora nessun file."
                 ],
                 "key": "privacy"
             },
@@ -556,6 +559,7 @@
                 "title": "Checkmate",
                 "items": [
                     "La stessa piattaforma e la stessa separazione tra organizzazioni, con meno schermate per chi lavora dai clienti.",
+                    "Gli anni chiusi delle ore timbrate compaiono più tardi in fondo ad Abbonamento, per tre anni.",
                     "**5 €** per esecutore attivo al mese.",
                     "Prova: 25 licenze per 30 giorni."
                 ],

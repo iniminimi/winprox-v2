@@ -601,7 +601,7 @@
             "shift_type_placeholder": "Typ wählen",
             "period_hint_single": "Tippen Sie das Datum. Vergangene Tage sind nicht wählbar.",
             "photos_add": "Foto eines Scheins",
-            "photos_hint": "Optional. WinProx bewahrt ein Foto 6 Monate auf und löscht es danach. Bewahren Sie selbst eine Kopie auf, wenn Sie es länger brauchen."
+            "photos_hint": "Optional. WinProx bewahrt ein Foto 6 Monate beim Antrag auf. Danach kann ein Administrator es noch einen Monat herunterladen."
         },
         "now": {
             "status_out": "Nicht eingestempelt",
@@ -1210,8 +1210,8 @@
             "photos_image": "Nur Fotos.",
             "photos_size": "Ein Foto ist zu groß."
         },
-        "photos_kept": "Fotos zu einem Antrag bleiben 6 Monate gespeichert. Danach werden sie gelöscht. Bewahren Sie selbst eine Kopie auf, wenn Sie sie länger brauchen.",
-        "photos_expiring_note": "Diese Fotos werden innerhalb eines Monats gelöscht.",
+        "photos_kept": "Fotos zu einem Antrag bleiben 6 Monate beim Antrag. Danach liegen sie einen Monat unten auf Abonnement.",
+        "photos_expiring_note": "Diese Fotos verschwinden innerhalb eines Monats aus dem Antrag. Danach liegen sie einen Monat unten auf Abonnement.",
         "photos_show_all": "Alle Anträge",
         "photos_with": "Mit Foto"
     },

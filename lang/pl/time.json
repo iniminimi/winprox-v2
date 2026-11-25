@@ -56,8 +56,8 @@
             "photos_image": "Tylko zdjęcia.",
             "photos_size": "Zdjęcie jest za duże."
         },
-        "photos_kept": "Zdjęcia przy wniosku zostają na 6 miesięcy. Potem są usuwane. Zachowaj kopię, jeśli potrzebujesz ich dłużej.",
-        "photos_expiring_note": "Te zdjęcia zostaną usunięte w ciągu miesiąca.",
+        "photos_kept": "Zdjęcia przy wniosku zostają 6 miesięcy przy wniosku. Potem leżą miesiąc na dole strony Subskrypcja.",
+        "photos_expiring_note": "Te zdjęcia znikają z wniosku w ciągu miesiąca. Potem leżą miesiąc na dole strony Subskrypcja.",
         "photos_show_all": "Wszystkie wnioski",
         "photos_with": "Ze zdjęciem"
     },
@@ -227,7 +227,7 @@
             "shift_type_placeholder": "Wybierz typ",
             "period_hint_single": "Dotknij daty. Dni z przeszłości nie można wybrać.",
             "photos_add": "Zdjęcie zaświadczenia",
-            "photos_hint": "Opcjonalnie. WinProx przechowuje zdjęcie przez 6 miesięcy, a potem je usuwa. Zachowaj kopię, jeśli potrzebujesz go dłużej."
+            "photos_hint": "Opcjonalnie. WinProx przechowuje zdjęcie przez 6 miesięcy przy wniosku. Potem administrator może je jeszcze pobrać przez miesiąc."
         },
         "now": {
             "status_out": "Bez wejścia",

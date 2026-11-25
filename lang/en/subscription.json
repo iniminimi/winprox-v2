@@ -374,10 +374,11 @@
     },
     "time_archives": {
         "heading": "Saved files",
-        "intro": "A year stays on screen until 1 February of the following year. After that it stays here for three years. Photos with a request stay for six months and then for one more month in a file.",
+        "intro": "This is where the files for the roster, clocked hours and requests will appear. The current year and the previous year stay on screen. On 1 February the year before that appears here, for three years. Photos with a request stay with the request for six months and then for one more month in a file here.",
         "year": "Year :year",
         "photos": "Photos :period",
-        "until": "until :date"
+        "until": "until :date",
+        "empty": "No file is ready yet."
     },
     "public_demo_note": "Not sure which plan fits? We are happy to explain it personally.",
     "public_demo_cta": "Book a demo"

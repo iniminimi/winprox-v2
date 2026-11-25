@@ -374,10 +374,11 @@
     },
     "time_archives": {
         "heading": "Archivos guardados",
-        "intro": "Un año sigue en pantalla hasta el 1 de febrero del año siguiente. Después permanece aquí tres años. Las fotos de una solicitud siguen seis meses y luego un mes más en un archivo.",
+        "intro": "Aquí aparecerán los archivos del cuadrante, las horas fichadas y las solicitudes. El año en curso y el anterior siguen en pantalla. El 1 de febrero, el año anterior a esos aparece aquí, durante tres años. Las fotos de una solicitud siguen seis meses con la solicitud y después un mes más en un archivo aquí.",
         "year": "Año :year",
         "photos": "Fotos :period",
-        "until": "hasta el :date"
+        "until": "hasta el :date",
+        "empty": "Todavía no hay ningún archivo listo."
     },
     "public_demo_note": "¿No sabe qué fórmula le conviene? Se lo explicamos con gusto en persona.",
     "public_demo_cta": "Solicitar una demostración"

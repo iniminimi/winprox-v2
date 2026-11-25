@@ -1837,6 +1837,9 @@ aantallen > 0.
 
 Config: `config/tenant_purge.php`. Actions onder `app/Actions/TenantPurge/`.
 
+### 7.4a Bewaarde bestanden
+Onderaan Abonnement staat voor een Time- of Checkmate-beheerder het kader **Bewaarde bestanden**, ook als er nog geen bestand is. Het lopende jaar en het vorige jaar blijven in het scherm. Op 1 februari gaat het jaar daarvoor in een zip (uurrooster, geklokte uren, aanvragen; Checkmate alleen de geklokte uren), drie jaar beschikbaar. Foto's bij een aanvraag blijven zes maanden bij de aanvraag en daarna nog één maand in een maandbestand in hetzelfde kader. De publieke prijspagina toont het kader niet.
+
 ### 7.5 NIET overnemen
 `micro_hospitality`, hospitality-trialplan-split, demo/marketing-query-params, sector-subtitels,
 battery-PNG-widget als losse kaart (de vijf PNG's zitten in de compacte capsule).

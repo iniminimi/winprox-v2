@@ -44,6 +44,7 @@
                     "De geregistreerde uren naast het uurrooster leggen.",
                     "Diensten plannen en publiceren.",
                     "Verlof-, recup-, ziek- en Andere-aanvragen behandelen.",
+                    "Afgesloten jaren van het uurrooster, de geklokte uren en de aanvragen staan later onderaan Abonnement, drie jaar lang. Het lopende jaar en het vorige jaar blijven in het scherm.",
                     "Meldingen, taken en inspectierondes beheren.",
                     "Locaties, teams, medewerkers en units beheren.",
                     "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie.",
@@ -58,6 +59,7 @@
                 "body": "Checkmate is de formule voor mensen die bij klanten werken, bijvoorbeeld in de bouw of de schoonmaak. Een bezoek start pas als de GPS binnen de ingestelde afstand van de klantlocatie zit.",
                 "items": [
                     "In- en uitklokken kan via het icoon van Clock Point. Aanwezigheid, de urenstaat en Mijn uren zitten erbij.",
+                    "Afgesloten jaren van de geklokte uren staan later onderaan Abonnement, drie jaar lang.",
                     "Klanten en hun locaties beheert u onder Klanten en Locaties. Een locatie kan een unit voor de hele locatie hebben.",
                     "Klanten importeert u in bulk via CSV of Excel, met de locatiegegevens per rij.",
                     "Per klant ziet u de maand: bezoeken, gewerkte tijd en uren per locatie. Dat exporteert u als CSV of u drukt het af.",
@@ -132,7 +134,7 @@
             },
             {
                 "title": "Verlof en afwezigheid",
-                "body": "Medewerkers vragen verlof, recup, ziekte of (als beheer die heeft aangemaakt) een type onder Andere via Clock Point. De beheerder beslist in Time → Aanvragen — ook ziekte moet worden goedgekeurd. Er gaat geen e-mail uit. Ziekte en Andere (bv. klein verlet, baaldag) tellen niet mee voor het verlofsaldo of recup; dat verwerkt het sociaal secretariaat, niet WinProx. Een foto bij de aanvraag blijft 6 maanden bij de aanvraag. Daarna staat ze één maand in een bestand op Abonnement.",
+                "body": "Medewerkers vragen verlof, recup, ziekte of (als beheer die heeft aangemaakt) een type onder Andere via Clock Point. De beheerder beslist in Time → Aanvragen — ook ziekte moet worden goedgekeurd. Er gaat geen e-mail uit. Ziekte en Andere (bv. klein verlet, baaldag) tellen niet mee voor het verlofsaldo of recup; dat verwerkt het sociaal secretariaat, niet WinProx. Een foto bij de aanvraag blijft 6 maanden bij de aanvraag. Daarna staat ze één maand in een bestand onderaan Abonnement.",
                 "items": [
                     "Een aanvraag loopt van een begindatum tot een einddatum, maximaal 31 dagen (Andere: één dag), en niet in het verleden. De keuzelijst op Clock Point staat als Verlof, Recup, Ziek, daarna Andere op naam.",
                     "In het beheer-uurrooster ziet u open aanvragen als markering op de betreffende dagen; via die markering opent u Time → Aanvragen (dienst blijft staan tot goedkeuring).",
@@ -499,8 +501,9 @@
                     "Een gepland uurrooster is optioneel. Een vorige versie terugzetten kan alleen wie het rooster mag bewerken, en alleen gedurende een beperkte tijd.",
                     "Optionele doorgifte van aanwezigheid naar de Belgische RSZ (CIAO). Het rijksregisternummer wordt versleuteld bewaard. De klant vult het ondernemingsnummer in. Geslaagde doorgiftes worden na een beperkte termijn verwijderd. Een export zonder rijksregisternummer is beschikbaar.",
                     "Technische foutlogs staan alleen op de server en worden maximaal 14 dagen bewaard.",
-                    "Het uurrooster, de geklokte uren en de aanvragen blijven het lopende jaar en het vorige jaar in het scherm. Op 1 februari gaat het jaar daarvoor in een bestand op Abonnement en blijft daar drie jaar.",
-                    "Een foto bij een afwezigheidsaanvraag is alleen zichtbaar voor de uitvoerder en voor wie de aanvraag behandelt. WinProx bewaart ze 6 maanden bij de aanvraag. Daarna staat ze één maand in een bestand op Abonnement. Vanaf 5 maanden waarschuwt het beginscherm."
+                    "Het uurrooster, de geklokte uren en de aanvragen blijven het lopende jaar en het vorige jaar in het scherm. Op 1 februari gaat het jaar daarvoor in een bestand onderaan Abonnement en blijft daar drie jaar.",
+                    "Een foto bij een afwezigheidsaanvraag is alleen zichtbaar voor de uitvoerder en voor wie de aanvraag behandelt. WinProx bewaart ze 6 maanden bij de aanvraag. Daarna staat ze één maand in een bestand onderaan Abonnement. Vanaf 5 maanden waarschuwt het beginscherm.",
+                    "Onderaan Abonnement staat het kader Bewaarde bestanden al, ook als er nog geen bestand klaarstaat."
                 ],
                 "key": "privacy"
             },
@@ -556,6 +559,7 @@
                 "title": "Checkmate",
                 "items": [
                     "Zelfde platform en dezelfde scheiding tussen organisaties, met een kleinere set schermen voor wie bij klanten werkt.",
+                    "Afgesloten jaren van de geklokte uren staan later onderaan Abonnement, drie jaar lang.",
                     "**€5** per actieve uitvoerder per maand.",
                     "Proef: 25 licenties gedurende 30 dagen."
                 ],

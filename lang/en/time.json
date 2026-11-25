@@ -601,7 +601,7 @@
             "shift_type_placeholder": "Choose a type",
             "period_hint_single": "Tap the date. Past days cannot be selected.",
             "photos_add": "Photo of a note",
-            "photos_hint": "Optional. WinProx keeps a photo for 6 months and then deletes it. Keep your own copy if you need it longer."
+            "photos_hint": "Optional. WinProx keeps a photo with the request for 6 months. After that an administrator can still download it for one month."
         },
         "now": {
             "status_out": "Not clocked in",
@@ -1210,8 +1210,8 @@
             "photos_image": "Photos only.",
             "photos_size": "A photo is too large."
         },
-        "photos_kept": "Photos with a request are kept for 6 months. Then they are deleted. Keep your own copy if you need them longer.",
-        "photos_expiring_note": "These photos will be deleted within a month.",
+        "photos_kept": "Photos with a request stay with the request for 6 months. After that they stay for one month at the bottom of Subscription.",
+        "photos_expiring_note": "These photos leave the request within a month. After that they stay for one month at the bottom of Subscription.",
         "photos_show_all": "All requests",
         "photos_with": "With photo"
     },

@@ -374,10 +374,11 @@
     },
     "time_archives": {
         "heading": "Gespeicherte Dateien",
-        "intro": "Ein Jahr bleibt auf dem Bildschirm bis zum 1. Februar des Folgejahres. Danach liegt es hier drei Jahre. Fotos zu einem Antrag bleiben sechs Monate und danach noch einen Monat in einer Datei.",
+        "intro": "Hier erscheinen die Dateien von Dienstplan, gestempelten Stunden und Anträgen. Das laufende Jahr und das Vorjahr bleiben auf dem Bildschirm. Am 1. Februar steht das Jahr davor hier, drei Jahre lang. Fotos zu einem Antrag bleiben sechs Monate beim Antrag und danach noch einen Monat in einer Datei hier.",
         "year": "Jahr :year",
         "photos": "Fotos :period",
-        "until": "bis :date"
+        "until": "bis :date",
+        "empty": "Es liegt noch keine Datei bereit."
     },
     "public_demo_note": "Unsicher, welche Formel passt? Wir erklären es Ihnen gerne persönlich.",
     "public_demo_cta": "Demo vereinbaren"

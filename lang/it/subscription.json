@@ -374,10 +374,11 @@
     },
     "time_archives": {
         "heading": "File conservati",
-        "intro": "Un anno resta sullo schermo fino al 1° febbraio dell'anno successivo. Poi resta qui per tre anni. Le foto di una richiesta restano sei mesi e poi ancora un mese in un file.",
+        "intro": "Qui compariranno i file dei turni, delle ore timbrate e delle richieste. L'anno in corso e quello precedente restano sullo schermo. Il 1° febbraio l'anno precedente compare qui, per tre anni. Le foto di una richiesta restano sei mesi con la richiesta e poi ancora un mese in un file qui.",
         "year": "Anno :year",
         "photos": "Foto :period",
-        "until": "fino al :date"
+        "until": "fino al :date",
+        "empty": "Non c'è ancora nessun file pronto."
     },
     "public_demo_note": "Non sai quale formula fa per te? Te lo spieghiamo volentieri di persona.",
     "public_demo_cta": "Richiedi una demo"

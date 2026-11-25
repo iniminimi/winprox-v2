@@ -128,6 +128,13 @@ return [
         ],
         [
             'patterns' => [
+                'bewaarde bestanden', 'jaararchief', 'saved files', 'fichiers conservés',
+                'gespeicherte dateien', 'archivos guardados', 'file conservati',
+            ],
+            'body_key' => 'faq.items.time_archives.summary',
+        ],
+        [
+            'patterns' => [
                 'uurrooster', 'dienstplan', 'shift types', 'shifttypes', 'shiftypes', 'planned shift',
                 'herstellen', 'herstelpunt', 'restore point', 'rétablir', 'wiederherstellen', 'restaurar', 'ripristina',
                 'horaire', 'roster', 'orario', 'horario',

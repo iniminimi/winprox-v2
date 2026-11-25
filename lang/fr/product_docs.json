@@ -44,6 +44,7 @@
                     "Mettre les heures enregistrées à côté du planning.",
                     "Planifier les services et les publier.",
                     "Traiter les demandes de congé, de récup, de maladie et Autre.",
+                    "Les années clôturées du planning, des heures pointées et des demandes apparaissent plus tard en bas d'Abonnement, pendant trois ans. L'année en cours et l'année précédente restent à l'écran.",
                     "Gérer les signalements, les tâches et les tournées d’inspection.",
                     "Gérer les sites, les équipes, les personnes et les unités.",
                     "L’enregistrement ONSS/CIAO peut être activé dans les paramètres. Les visites GPS facultatives relient une visite à un lieu.",
@@ -58,6 +59,7 @@
                 "body": "Checkmate est la formule pour les personnes qui travaillent chez les clients, par exemple dans la construction ou le nettoyage. Une visite ne démarre que si le GPS est dans la distance prévue du site client.",
                 "items": [
                     "On peut pointer via l’icône Clock Point. Présence, feuille d’heures et Mes heures sont inclus.",
+                    "Les années clôturées des heures pointées apparaissent plus tard en bas d'Abonnement, pendant trois ans.",
                     "Vous gérez les clients et leurs sites sous Clients et Sites. Un site peut avoir une unité pour l’ensemble du lieu.",
                     "Vous importez les clients en masse via CSV ou Excel, avec les données du site par ligne.",
                     "Par client, vous voyez le mois : visites, temps travaillé et heures par site. Vous exportez en CSV ou vous imprimez.",
@@ -132,7 +134,7 @@
             },
             {
                 "title": "Congé et absence",
-                "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Aucun e-mail n’est envoyé. Maladie et Autre ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx. Une photo jointe à la demande reste 6 mois avec la demande. Ensuite elle reste un mois dans un fichier sur Abonnement.",
+                "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Aucun e-mail n’est envoyé. Maladie et Autre ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx. Une photo jointe à la demande reste 6 mois avec la demande. Ensuite elle reste un mois dans un fichier en bas d'Abonnement.",
                 "items": [
                     "Une demande va d’une date de début à une date de fin, 31 jours au maximum (Autre: un jour), et pas dans le passé. La liste sur Clock Point est Congé, Récup, Maladie, puis Autre par nom.",
                     "Dans le planning d’administration, les demandes ouvertes apparaissent comme un marquage sur les jours concernés ; ce marquage ouvre Time → Demandes (le service reste jusqu’à l’approbation).",
@@ -499,8 +501,9 @@
                     "Un horaire planifié est optionnel. Revenir à une version précédente est réservé à qui peut modifier l’horaire, et seulement pendant une durée limitée.",
                     "Transmission optionnelle des présences vers l’ONSS belge (CIAO). Le numéro de registre national est stocké chiffré. Le client indique le numéro d’entreprise. Les envois réussis sont supprimés après une durée limitée. Un export sans numéro de registre national est disponible.",
                     "Les journaux d'erreurs techniques restent uniquement sur le serveur et sont conservés 14 jours au maximum.",
-                    "Le planning, les heures pointées et les demandes restent à l’écran pour l’année en cours et l’année précédente. Le 1er février, l’année d’avant va dans un fichier sur Abonnement et y reste trois ans.",
-                    "Une photo jointe à une demande d’absence n’est visible que par l’intervenant et par qui traite la demande. WinProx la garde 6 mois avec la demande. Ensuite elle reste un mois dans un fichier sur Abonnement. À partir de 5 mois, l’écran d’accueil prévient."
+                    "Le planning, les heures pointées et les demandes restent à l’écran pour l’année en cours et l’année précédente. Le 1er février, l’année d’avant va dans un fichier en bas d'Abonnement et y reste trois ans.",
+                    "Une photo jointe à une demande d’absence n’est visible que par l’intervenant et par qui traite la demande. WinProx la garde 6 mois avec la demande. Ensuite elle reste un mois dans un fichier en bas d'Abonnement. À partir de 5 mois, l’écran d’accueil prévient.",
+                    "Le cadre Fichiers conservés est déjà en bas d'Abonnement, même s'il n'y a pas encore de fichier."
                 ],
                 "key": "privacy"
             },
@@ -556,6 +559,7 @@
                 "title": "Checkmate",
                 "items": [
                     "La même plateforme et la même séparation entre organisations, avec moins d’écrans pour qui travaille chez les clients.",
+                    "Les années clôturées des heures pointées apparaissent plus tard en bas d'Abonnement, pendant trois ans.",
                     "**5 €** par exécutant actif et par mois.",
                     "Essai : 25 licences pendant 30 jours."
                 ],

@@ -306,7 +306,12 @@ it('houdt een aanvraag met een foto tot de foto in het maandbestand zit', functi
 
 it('slaat een foto over als het bestand ontbreekt', function () {
     Storage::fake('local');
-    [$tenant, , , , $worker] = timeArchiveTenant();
+    [$tenant, $admin, , , $worker] = timeArchiveTenant();
+    Livewire::actingAs($admin)
+        ->test(Subscription::class)
+        ->assertSee(__('subscription.time_archives.heading'))
+        ->assertSee(__('subscription.time_archives.intro'))
+        ->assertSee(__('subscription.time_archives.empty'));
     $request = AbsenceRequest::factory()->create([
         'tenant_id' => $tenant->id,
         'worker_id' => $worker->id,
@@ -329,7 +334,7 @@ it('slaat een foto over als het bestand ontbreekt', function () {
 
 it('archiveert checkmate-uren en laat een tenant zonder time met rust', function () {
     Storage::fake('local');
-    [$checkmate, , $team, $clock, $worker] = timeArchiveTenant([
+    [$checkmate, $cmAdmin, $team, $clock, $worker] = timeArchiveTenant([
         'has_time_module' => false,
         'checkmate_mode' => true,
     ]);
@@ -342,6 +347,7 @@ it('archiveert checkmate-uren en laat een tenant zonder time met rust', function
         'clock_out_at' => Carbon::parse('2025-04-04 12:00:00', 'Europe/Brussels'),
     ]);
     $plain = Tenant::factory()->create(['has_time_module' => false, 'checkmate_mode' => false]);
+    $plainAdmin = User::factory()->admin()->create(['tenant_id' => $plain->id, 'locale' => 'nl']);
     $plainWorker = Worker::factory()->create(['tenant_id' => $plain->id]);
     $plainPlan = PlannedShift::factory()->create([
         'tenant_id' => $plain->id,
@@ -359,4 +365,13 @@ it('archiveert checkmate-uren en laat een tenant zonder time met rust', function
         ->and(PlannedShift::query()->withoutGlobalScopes()->whereKey($plainPlan->id)->exists())->toBeTrue()
         ->and(TenantTimeArchive::query()->where('tenant_id', $checkmate->id)->where('kind', 'year')->exists())->toBeTrue()
         ->and(TenantTimeArchive::query()->where('tenant_id', $plain->id)->exists())->toBeFalse();
+
+    Livewire::actingAs($cmAdmin)
+        ->test(Subscription::class)
+        ->assertSee(__('subscription.time_archives.year', ['year' => 2025]));
+
+    Livewire::actingAs($plainAdmin)
+        ->test(Subscription::class)
+        ->assertDontSee(__('subscription.time_archives.empty'))
+        ->assertDontSee(__('subscription.time_archives.intro'));
 });

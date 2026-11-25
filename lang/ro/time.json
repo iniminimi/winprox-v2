@@ -56,8 +56,8 @@
             "photos_image": "Doar fotografii.",
             "photos_size": "O fotografie este prea mare."
         },
-        "photos_kept": "Fotografiile unei cereri rămân 6 luni. Apoi sunt șterse. Păstrați o copie dacă vă trebuie mai mult timp.",
-        "photos_expiring_note": "Aceste fotografii vor fi șterse în decurs de o lună.",
+        "photos_kept": "Fotografiile unei cereri rămân 6 luni la cerere. Apoi stau o lună în josul paginii Abonament.",
+        "photos_expiring_note": "Aceste fotografii dispar din cerere în decurs de o lună. Apoi stau o lună în josul paginii Abonament.",
         "photos_show_all": "Toate cererile",
         "photos_with": "Cu fotografie"
     },
@@ -227,7 +227,7 @@
             "shift_type_placeholder": "Alegeți un tip",
             "period_hint_single": "Atingeți data. Zilele din trecut nu pot fi alese.",
             "photos_add": "Fotografie a unui document",
-            "photos_hint": "Opțional. WinProx păstrează o fotografie 6 luni și apoi o șterge. Păstrați o copie dacă vă trebuie mai mult timp."
+            "photos_hint": "Opțional. WinProx păstrează o fotografie 6 luni la cerere. Apoi un administrator o mai poate descărca o lună."
         },
         "now": {
             "status_out": "Nepontat",

@@ -601,7 +601,7 @@
             "shift_type_placeholder": "Kies een type",
             "period_hint_single": "Tik de datum. Dagen in het verleden zijn niet kiesbaar.",
             "photos_add": "Foto van een briefje",
-            "photos_hint": "Optioneel. WinProx bewaart een foto 6 maanden en wist ze daarna. Bewaar zelf een kopie als je ze langer nodig hebt."
+            "photos_hint": "Optioneel. WinProx bewaart een foto 6 maanden bij de aanvraag. Daarna kan de beheerder ze nog één maand downloaden."
         },
         "now": {
             "status_out": "Niet ingeklokt",
@@ -1210,8 +1210,8 @@
             "photos_image": "Alleen foto's.",
             "photos_size": "Een foto is te groot."
         },
-        "photos_kept": "Foto's bij een aanvraag blijven 6 maanden bewaard. Daarna worden ze gewist. Bewaar zelf een kopie als u ze langer nodig hebt.",
-        "photos_expiring_note": "Deze foto's worden binnen een maand gewist.",
+        "photos_kept": "Foto's bij een aanvraag blijven 6 maanden bij de aanvraag. Daarna staan ze één maand onderaan Abonnement.",
+        "photos_expiring_note": "Deze foto's verdwijnen binnen een maand uit de aanvraag. Daarna staan ze één maand onderaan Abonnement.",
         "photos_show_all": "Alle aanvragen",
         "photos_with": "Met foto"
     },

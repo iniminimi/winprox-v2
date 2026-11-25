@@ -374,10 +374,11 @@
     },
     "time_archives": {
         "heading": "Fichiers conservés",
-        "intro": "Une année reste à l'écran jusqu'au 1er février de l'année suivante. Ensuite elle reste ici trois ans. Les photos d'une demande restent six mois, puis encore un mois dans un fichier.",
+        "intro": "Les fichiers du planning, des heures pointées et des demandes apparaîtront ici. L'année en cours et l'année précédente restent à l'écran. Le 1er février, l'année d'avant apparaît ici, pendant trois ans. Les photos d'une demande restent six mois avec la demande, puis encore un mois dans un fichier ici.",
         "year": "Année :year",
         "photos": "Photos :period",
-        "until": "jusqu'au :date"
+        "until": "jusqu'au :date",
+        "empty": "Aucun fichier n'est encore prêt."
     },
     "public_demo_note": "Vous hésitez sur la formule ? Nous vous l'expliquons volontiers en personne.",
     "public_demo_cta": "Planifier une démonstration"

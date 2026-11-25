@@ -16,6 +16,7 @@ return [
         'time_clock',
         'worker_biometric',
         'time_schedule',
+        'time_archives',
         'time_absence',
         'ddt_number',
         'unit_checks',

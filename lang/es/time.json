@@ -601,7 +601,7 @@
             "shift_type_placeholder": "Elige un tipo",
             "period_hint_single": "Toca la fecha. Los días pasados no se pueden elegir.",
             "photos_add": "Foto de un justificante",
-            "photos_hint": "Opcional. WinProx guarda una foto 6 meses y después la borra. Guarde una copia si la necesita más tiempo."
+            "photos_hint": "Opcional. WinProx guarda una foto 6 meses con la solicitud. Después un administrador puede descargarla un mes más."
         },
         "now": {
             "status_out": "Sin fichar",
@@ -1210,8 +1210,8 @@
             "photos_image": "Solo fotos.",
             "photos_size": "Una foto es demasiado grande."
         },
-        "photos_kept": "Las fotos de una solicitud se guardan 6 meses. Después se borran. Guarde una copia si las necesita más tiempo.",
-        "photos_expiring_note": "Estas fotos se borrarán en un mes.",
+        "photos_kept": "Las fotos de una solicitud siguen 6 meses con la solicitud. Después quedan un mes al final de Suscripción.",
+        "photos_expiring_note": "Estas fotos salen de la solicitud en un mes. Después quedan un mes al final de Suscripción.",
         "photos_show_all": "Todas las solicitudes",
         "photos_with": "Con foto"
     },
