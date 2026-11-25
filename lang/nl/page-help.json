@@ -12,7 +12,7 @@
             "actions": [
                 {
                     "label": "Toestel toevoegen",
-                    "text": "Naast Uitvoerders bekijken staat Toestel toevoegen. Een beheerder ziet alle locaties. Een medewerker ziet alleen de locaties die aan haar zijn toegewezen. Zonder toewijzing gelden alle locaties.<br><br>U kiest een prikklok, een lokaalscherm of een camera. Daarna kiest u eerst de locatie en dan de unit. Een prikklok hoort bij een Clock Point op die locatie.<br><br>U krijgt een code. De technieker tikt die in op het toestel. Als het toestel vraagt om te koppelen, bevestigt u dat in hetzelfde venster. De code geldt ongeveer 10 minuten."
+                    "text": "Naast Uitvoerders bekijken staat Toestel toevoegen. Een beheerder ziet alle locaties. Een medewerker ziet alleen de locaties die aan haar zijn toegewezen. Zonder toewijzing gelden alle locaties.<br><br>U kiest een prikklok, een lokaalscherm of een camera. Daarna kiest u eerst de locatie en dan de unit. Een prikklok hoort bij een Clock Point op die locatie. Heeft de locatie er nog geen, dan wordt dat Clock Point aangemaakt.<br><br>U krijgt een code. De technieker tikt die in op het toestel. Als het toestel vraagt om te koppelen, bevestigt u dat in hetzelfde venster. De code geldt ongeveer 10 minuten."
                 },
                 {
                     "label": "Snel naar een actie",

@@ -45,14 +45,15 @@
                         </div>
 
                         @if ($locationId !== null && $locations !== [])
+                        @if ($deviceType === 'clock' && $places === [])
+                            <p class="wp-muted">{{ __('dashboard.add_device.create_clock_point') }}</p>
+                        @else
                         <div class="wp-field">
                             <label class="wp-label" for="add-device-place">
                                 {{ $deviceType === 'clock' ? __('dashboard.add_device.place_clock') : __('dashboard.add_device.place_unit') }}
                             </label>
                             @if ($places === [])
-                                <p class="wp-muted">
-                                    {{ $deviceType === 'clock' ? __('dashboard.add_device.no_clock_points') : __('dashboard.add_device.no_units') }}
-                                </p>
+                                <p class="wp-muted">{{ __('dashboard.add_device.no_units') }}</p>
                             @else
                                 <select id="add-device-place" class="wp-select" wire:model.live="placeId">
                                     <option value="">{{ __('dashboard.add_device.place_placeholder') }}</option>
@@ -62,12 +63,13 @@
                                 </select>
                             @endif
                         </div>
+                        @endif
 
                         @if ($alreadyLinked)
                             <div class="wp-flash wp-flash--danger">{{ __('dashboard.add_device.replace_warning') }}</div>
                         @endif
 
-                        @if ($places !== [])
+                        @if ($places !== [] || ($deviceType === 'clock' && $places === []))
                             <div class="wp-cluster">
                                 <button type="button" class="btn btn--primary btn--sm" wire:click="issue" wire:loading.attr="disabled">
                                     {{ __('dashboard.add_device.issue') }}

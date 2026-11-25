@@ -227,7 +227,7 @@
         "place_placeholder": "Kies…",
         "no_locations": "Er is nog geen locatie.",
         "no_location": "Zonder locatie",
-        "no_clock_points": "Deze locatie heeft geen Clock Point.",
+        "create_clock_point": "Voor deze locatie maken we een Clock Point aan. Daarna krijgt u de code.",
         "no_units": "Deze locatie heeft geen unit.",
         "issue": "Code maken",
         "code_hint": "Tik deze code in op het toestel. Daarna bevestigt u hier.",

@@ -227,7 +227,7 @@
         "place_placeholder": "Choose…",
         "no_locations": "There is no location yet.",
         "no_location": "No location",
-        "no_clock_points": "This location has no Clock Point.",
+        "create_clock_point": "We create a Clock Point for this location. Then you get the code.",
         "no_units": "This location has no unit.",
         "issue": "Create code",
         "code_hint": "Type this code on the device. Then confirm here.",

@@ -227,7 +227,7 @@
         "place_placeholder": "Choisir…",
         "no_locations": "Il n’y a pas encore de site.",
         "no_location": "Sans site",
-        "no_clock_points": "Ce site n’a pas de Clock Point.",
+        "create_clock_point": "Nous créons un Clock Point pour ce site. Vous recevez ensuite le code.",
         "no_units": "Ce site n’a pas d’unit.",
         "issue": "Créer le code",
         "code_hint": "Saisissez ce code sur l’appareil. Confirmez ensuite ici.",

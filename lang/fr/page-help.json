@@ -12,7 +12,7 @@
             "actions": [
                 {
                     "label": "Ajouter un appareil",
-                    "text": "À côté de Voir les exécutants se trouve Ajouter un appareil. Un administrateur voit tous les sites. Une collaboratrice ne voit que les sites qui lui sont attribués. Sans attribution, tous les sites s’appliquent.<br><br>Vous choisissez une pointeuse, un écran de local ou une caméra. Ensuite vous choisissez d’abord le site, puis l’unit. Une pointeuse appartient à un Clock Point de ce site.<br><br>Vous recevez un code. Le technicien le saisit sur l’appareil. Quand l’appareil demande à se relier, vous confirmez dans la même fenêtre. Le code vaut environ 10 minutes."
+                    "text": "À côté de Voir les exécutants se trouve Ajouter un appareil. Un administrateur voit tous les sites. Une collaboratrice ne voit que les sites qui lui sont attribués. Sans attribution, tous les sites s’appliquent.<br><br>Vous choisissez une pointeuse, un écran de local ou une caméra. Ensuite vous choisissez d’abord le site, puis l’unit. Une pointeuse appartient à un Clock Point de ce site. Si le site n’en a pas encore, ce Clock Point est créé.<br><br>Vous recevez un code. Le technicien le saisit sur l’appareil. Quand l’appareil demande à se relier, vous confirmez dans la même fenêtre. Le code vaut environ 10 minutes."
                 },
                 {
                     "label": "Accès rapide à une action",

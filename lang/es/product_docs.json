@@ -178,7 +178,7 @@
                     "Avisos nuevos y tareas abiertas. Con Time: quién está presente ahora.",
                     "Un aviso si alguien ficha durante vacaciones, recup, un festivo, una baja u Otro. Solicitudes abiertas de vacaciones, recup y Otro.",
                     "Ejecutores nuevos que acaba de crear un jefe de equipo, hasta que la administración los guarda o los desactiva. Briefings e informes. Las organizaciones nuevas eligen aquí una configuración de inicio.",
-                    "Un administrador vincula aquí un reloj de fichar, una pantalla de local o una cámara. Una empleada hace lo mismo, solo en sus sedes. Primero la sede, luego la unit, después un código para el técnico y la confirmación en la misma ventana."
+                    "Un administrador vincula aquí un reloj de fichar, una pantalla de local o una cámara. Una empleada hace lo mismo, solo en sus sedes. Primero la sede, luego la unit. Si la sede aún no tiene un Clock Point, se crea. Después un código para el técnico y la confirmación en la misma ventana."
                 ]
             },
             {

@@ -12,6 +12,7 @@ use App\Actions\Screens\DenyScreenClaimAction;
 use App\Actions\Screens\IssueScreenPairingCodeAction;
 use App\Actions\Time\ConfirmClockDisplayClaimAction;
 use App\Actions\Time\DenyClockDisplayClaimAction;
+use App\Actions\Time\EnsureClockPointForLocationAction;
 use App\Actions\Time\IssueClockDisplayPairingCodeAction;
 use App\Models\Camera;
 use App\Models\CameraClaim;
@@ -20,6 +21,7 @@ use App\Models\ClockPoint;
 use App\Models\Location;
 use App\Models\Screen;
 use App\Models\ScreenClaim;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
 use App\Support\Tenancy;
@@ -82,10 +84,14 @@ class AddDevice extends Component
 
     public function issue(
         IssueClockDisplayPairingCodeAction $clock,
+        EnsureClockPointForLocationAction $ensureClockPoint,
         IssueScreenPairingCodeAction $screen,
         IssueCameraPairingCodeAction $camera,
     ): void {
         $this->authorize('pairDeviceAny', Location::class);
+        if ($this->deviceType === 'clock' && $this->locationId !== null) {
+            $this->authorizePlace($this->locationId === 0 ? null : (int) $this->locationId);
+        }
         $this->validatePlace();
         $this->flash = null;
 
@@ -94,7 +100,7 @@ class AddDevice extends Component
 
         try {
             match ($this->deviceType) {
-                'clock' => $clock->handle($this->activeClockPoint(), $tenantId, $actorId),
+                'clock' => $clock->handle($this->clockPointForIssue($ensureClockPoint), $tenantId, $actorId),
                 'screen' => $screen->handle($this->activeUnit(), $tenantId, $actorId),
                 'camera' => $camera->handle($this->activeUnit(), $tenantId, $actorId),
                 default => abort(404),
@@ -205,7 +211,7 @@ class AddDevice extends Component
         $this->validate([
             'deviceType' => ['required', Rule::in($this->allowedTypes())],
             'locationId' => ['required', 'integer', 'min:0'],
-            'placeId' => ['required', 'integer'],
+            'placeId' => [Rule::requiredIf(fn (): bool => ! $this->createsClockPoint()), 'nullable', 'integer'],
         ], [], [
             'deviceType' => __('dashboard.add_device.type_label'),
             'locationId' => __('dashboard.add_device.place_location'),
@@ -279,7 +285,10 @@ class AddDevice extends Component
         $options = Location::query()
             ->where('tenant_id', $this->tenantId())
             ->where('is_active', true)
-            ->whereIn('id', (clone $places)->whereNotNull('location_id')->select('location_id'))
+            ->when(
+                $this->deviceType !== 'clock',
+                fn ($query) => $query->whereIn('id', (clone $places)->whereNotNull('location_id')->select('location_id')),
+            )
             ->when(is_array($allowedIds), fn ($query) => $query->whereIn('id', $allowedIds === [] ? [0] : $allowedIds))
             ->orderBy('name')
             ->get()
@@ -353,6 +362,42 @@ class AddDevice extends Component
         abort_if($this->locationId === null, 404);
 
         return $this->locationId === 0 ? null : $this->locationId;
+    }
+
+    private function createsClockPoint(): bool
+    {
+        if ($this->deviceType !== 'clock' || $this->locationId === null || $this->locationId === 0 || ! $this->mayListPlaces()) {
+            return false;
+        }
+
+        return ! ClockPoint::query()
+            ->where('tenant_id', $this->tenantId())
+            ->where('location_id', $this->locationId)
+            ->where('is_active', true)
+            ->exists();
+    }
+
+    private function clockPointForIssue(EnsureClockPointForLocationAction $ensure): ClockPoint
+    {
+        if ($this->placeId !== null) {
+            return $this->activeClockPoint();
+        }
+
+        abort_unless($this->createsClockPoint(), 404);
+
+        $location = Location::query()
+            ->where('tenant_id', $this->tenantId())
+            ->whereKey($this->locationId)
+            ->first();
+        abort_if($location === null, 404);
+        $this->authorize('create', ClockPoint::class);
+
+        $tenant = Tenant::query()->findOrFail($this->tenantId());
+        $actorId = auth()->id();
+        $point = $ensure->handle($tenant, $location, $actorId !== null ? (int) $actorId : null);
+        $this->placeId = (int) $point->id;
+
+        return $this->activeClockPoint();
     }
 
     private function authorizePlace(?int $locationId): void

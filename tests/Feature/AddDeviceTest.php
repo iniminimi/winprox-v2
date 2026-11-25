@@ -208,6 +208,49 @@ it('koppelt een lokaalscherm en een camera aan een unit, niet aan een andere org
     expect(Camera::query()->where('unit_id', $unit->id)->first()?->pairing_code)->not->toBeNull();
 });
 
+it('maakt een Clock Point wanneer de locatie er nog geen heeft', function () {
+    $tenant = addDeviceTenant();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+    $empty = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Loods']);
+    $hers = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn']);
+    $other = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kantoor']);
+    $employee->locations()->attach($hers->id);
+
+    Livewire::actingAs($admin)
+        ->test(AddDevice::class)
+        ->call('openModal')
+        ->set('deviceType', 'clock')
+        ->assertSee('Loods')
+        ->set('locationId', $empty->id)
+        ->assertSee(__('dashboard.add_device.create_clock_point'))
+        ->call('issue');
+
+    $point = ClockPoint::query()->where('location_id', $empty->id)->first();
+    expect($point)->not->toBeNull()
+        ->and($point->name)->toBe('Loods')
+        ->and($point->display_pairing_code)->not->toBeNull();
+
+    Livewire::actingAs($employee)
+        ->test(AddDevice::class)
+        ->call('openModal')
+        ->set('deviceType', 'clock')
+        ->assertSee('Magazijn')
+        ->assertDontSee('Kantoor')
+        ->set('locationId', $hers->id)
+        ->call('issue');
+
+    expect(ClockPoint::query()->where('location_id', $hers->id)->where('name', 'Magazijn')->first()?->display_pairing_code)->not->toBeNull();
+
+    Livewire::actingAs($employee)
+        ->test(AddDevice::class)
+        ->set('deviceType', 'clock')
+        ->set('locationId', $other->id)
+        ->call('issue')
+        ->assertForbidden();
+});
+
 it('laat een medewerker alleen een toestel koppelen op haar locatie', function () {
     $tenant = addDeviceTenant(false);
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);

@@ -227,7 +227,7 @@
         "place_placeholder": "Elegir…",
         "no_locations": "Todavía no hay una sede.",
         "no_location": "Sin sede",
-        "no_clock_points": "Esta sede no tiene un Clock Point.",
+        "create_clock_point": "Creamos un Clock Point para esta sede. Después recibe el código.",
         "no_units": "Esta sede no tiene una unit.",
         "issue": "Crear código",
         "code_hint": "Escriba este código en el dispositivo. Después confírmelo aquí.",

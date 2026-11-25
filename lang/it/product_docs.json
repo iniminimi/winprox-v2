@@ -178,7 +178,7 @@
                     "Segnalazioni nuove e compiti aperti. Con Time: chi è presente adesso.",
                     "Un avviso se qualcuno timbra durante ferie, recupero, un festivo, una malattia o Altro. Richieste aperte di ferie, recupero e Altro.",
                     "Nuovi esecutori appena creati da un caposquadra, finché la gestione li salva o li disattiva. Briefing e rapporti. Le organizzazioni nuove scelgono qui una configurazione di partenza.",
-                    "Un amministratore collega qui una timbratrice, uno schermo di locale o una telecamera. Una collaboratrice fa lo stesso, solo per le sue sedi. Prima la sede, poi la unit, poi un codice per il tecnico e la conferma nella stessa finestra."
+                    "Un amministratore collega qui una timbratrice, uno schermo di locale o una telecamera. Una collaboratrice fa lo stesso, solo per le sue sedi. Prima la sede, poi la unit. Se la sede non ha ancora un Clock Point, viene creato. Poi un codice per il tecnico e la conferma nella stessa finestra."
                 ]
             },
             {

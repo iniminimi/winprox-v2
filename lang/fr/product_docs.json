@@ -178,7 +178,7 @@
                     "Nouveaux signalements et tâches ouvertes. Avec Time : qui est présent maintenant.",
                     "Un avertissement si quelqu’un pointe pendant un congé, une récupération, un jour férié, une maladie ou Autre. Demandes de congé, de récup et Autre ouvertes.",
                     "Nouveaux exécutants qu’un chef d’équipe vient de créer, jusqu’à ce que la gestion les enregistre ou les désactive. Briefings et rapports. Les nouvelles organisations choisissent ici une configuration de départ.",
-                    "Un administrateur relie ici une pointeuse, un écran de local ou une caméra. Une collaboratrice fait de même, seulement pour ses sites. D’abord le site, puis l’unit, ensuite un code pour le technicien et la confirmation dans la même fenêtre."
+                    "Un administrateur relie ici une pointeuse, un écran de local ou une caméra. Une collaboratrice fait de même, seulement pour ses sites. D’abord le site, puis l’unit. Si le site n’a pas encore de Clock Point, celui-ci est créé. Ensuite un code pour le technicien et la confirmation dans la même fenêtre."
                 ]
             },
             {
