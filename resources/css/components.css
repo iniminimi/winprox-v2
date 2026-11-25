@@ -1205,16 +1205,25 @@ a.wp-pill:hover {
     touch-action: none;
 }
 
-.wp-dashboard-intent > .wp-kpis.is-sorting .wp-kpi {
-    transition: none;
+.wp-intent-placeholder {
+    border: 1px dashed var(--wp-border-strong);
+    border-radius: var(--wp-radius-lg);
+    background-color: var(--wp-accent-soft);
+    min-height: 6.5rem;
 }
 
-.wp-dashboard-intent .wp-kpi.is-dragging {
-    position: relative;
-    z-index: 3;
+a.wp-kpi.is-dragging,
+button.wp-kpi.is-dragging,
+a.wp-kpi.is-dragging:hover,
+button.wp-kpi.is-dragging:hover {
+    position: fixed;
+    z-index: 80;
+    margin: 0;
     cursor: grabbing;
-    transform: scale(1.03);
-    box-shadow: var(--wp-shadow);
+    transform: scale(1.04);
+    box-shadow: var(--wp-shadow-tip);
+    pointer-events: none;
+    transition: none;
 }
 
 .wp-dashboard-intent .wp-kpi-kicker {
