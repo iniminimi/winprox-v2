@@ -495,7 +495,7 @@ a.wp-pill:hover {
 .wp-page-head-main:has(.wp-flip-clock) {
     --wp-flip-clock-inset: 0;
     position: relative;
-    padding-inline-end: calc(var(--wp-flip-clock-inset) + 6.35rem + 1cm);
+    padding-inline-end: calc(var(--wp-flip-clock-inset) + 6.35rem + 2cm);
 }
 
 .wp-page-head .wp-flip-clock,
