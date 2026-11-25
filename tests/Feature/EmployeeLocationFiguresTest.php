@@ -6,6 +6,7 @@ use App\Actions\Time\ClockInAction;
 use App\Enums\TaskStatus;
 use App\Livewire\Time\AbsenceRequestsIndex;
 use App\Livewire\Time\AlarmsIndex;
+use App\Livewire\Time\ClockPointsIndex;
 use App\Livewire\Time\OvertimeIndex;
 use App\Models\AbsenceRequest;
 use App\Models\AbsenceRequestPhoto;
@@ -138,4 +139,27 @@ it('beperkt overuren, alarmen, verlof, cijfers en zoeken tot de locaties van de 
     $foundIssue = app(SearchTenantGlobalAction::class)->handle($employee, $tenant->id, 'Lek');
     expect($foundIssue->get('issues')?->pluck('title')->filter(fn (string $title) => str_contains($title, 'Lek Hier'))->isNotEmpty())->toBeTrue()
         ->and($foundIssue->get('issues')?->pluck('title')->filter(fn (string $title) => str_contains($title, 'Lek Daar'))->isEmpty())->toBeTrue();
+});
+
+it('toont een medewerker alleen de clock points van haar locatie', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $here = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn A']);
+    $away = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn B']);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $employee->locations()->sync([$here->id]);
+    $pointHere = ClockPoint::factory()->forLocation($here)->create(['name' => 'Punt Hier']);
+    $pointAway = ClockPoint::factory()->forLocation($away)->create(['name' => 'Punt Daar']);
+
+    expect(Gate::forUser($employee)->allows('view', $pointHere))->toBeTrue()
+        ->and(Gate::forUser($employee)->allows('view', $pointAway))->toBeFalse();
+
+    Livewire::actingAs($employee)
+        ->test(ClockPointsIndex::class)
+        ->assertSee('Punt Hier')
+        ->assertDontSee('Punt Daar')
+        ->assertSee('Magazijn A')
+        ->assertDontSee('Magazijn B')
+        ->call('openEdit', $pointAway->id)
+        ->assertForbidden();
 });

@@ -1742,7 +1742,7 @@
             "actions": [
                 {
                     "label": "Qu’est-ce qu’un Clock Point ?",
-                    "text": "Un Clock Point est un point d’inscription fixe sur un site. Ce peut être un simple autocollant avec un QR code, ou un écran d’horloge qui affiche en permanence un nouveau QR code.<br><br>Les exécutants scannent le QR code avec leur téléphone, puis choisissent leur nom et leur icône. C’est ainsi qu’ils s’inscrivent dans WinProx.<br><br>Important : s’inscrire n’est pas encore pointer. Pour pointer l’entrée ou la sortie, l’exécutant doit ensuite rescanner un QR code frais au même endroit.<br><br>Conseil : créez d’abord un Clock Point pour chaque site. Imprimez ensuite les QR codes et placez-les aux bons endroits."
+                    "text": "Un Clock Point est un point d’inscription fixe sur un site. Ce peut être un simple autocollant avec un QR code, ou un écran d’horloge qui affiche en permanence un nouveau QR code.<br><br>Les exécutants scannent le QR code avec leur téléphone, puis choisissent leur nom et leur icône. C’est ainsi qu’ils s’inscrivent dans WinProx.<br><br>Important : s’inscrire n’est pas encore pointer. Pour pointer l’entrée ou la sortie, l’exécutant doit ensuite rescanner un QR code frais au même endroit.<br><br>Conseil : créez d’abord un Clock Point pour chaque site. Imprimez ensuite les QR codes et placez-les aux bons endroits. Un collaborateur avec des sites choisis ne voit que les Clock Points de ces sites."
                 },
                 {
                     "label": "Ajouter un Clock Point",

@@ -17,6 +17,7 @@ use App\Models\AuditLog;
 use App\Models\ClockPoint;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Support\Checkmate\CheckmateMode;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
@@ -99,9 +100,22 @@ class ClockPointsIndex extends Component
         ]);
 
         $checkmate = $tenant->checkmateMode();
+        $locationId = $checkmate ? null : ($validated['locationId'] ?: null);
+        $viewer = auth()->user();
+        if (! $checkmate && $viewer instanceof User && $viewer->accessibleLocationIds() !== null) {
+            $location = $locationId !== null ? Location::query()->find((int) $locationId) : null;
+            if (! $location instanceof Location) {
+                $this->addError('locationId', __('validation.required', [
+                    'attribute' => __('time.clock_points.fields.location'),
+                ]));
+
+                return;
+            }
+            $this->authorize('view', $location);
+        }
         $payload = [
             'name' => $validated['name'],
-            'location_id' => $checkmate ? null : ($validated['locationId'] ?: null),
+            'location_id' => $locationId,
             'sort_order' => $checkmate ? 0 : (int) ($validated['sortOrder'] ?? 0),
         ];
 
@@ -249,13 +263,23 @@ class ClockPointsIndex extends Component
     public function render()
     {
         $tenantId = (int) Tenancy::id();
-        $clockPoints = ClockPoint::query()->with('location')->orderBy('sort_order')->orderBy('name')->get();
+        $viewer = auth()->user();
+        $clockPoints = ClockPoint::query()
+            ->with('location')
+            ->when($viewer instanceof User, fn ($query) => $query->visibleTo($viewer))
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get();
         $blockedQrLogs = AuditLog::query()
             ->where('tenant_id', $tenantId)
             ->where('action', 'clock_point.qr_blocked')
             ->where('created_at', '>=', now()->subDays(7))
             ->latest('created_at')
-            ->get(['model_id', 'payload', 'created_at']);
+            ->get(['model_id', 'payload', 'created_at'])
+            ->filter(fn (AuditLog $log) => $clockPoints->contains(
+                'id',
+                (int) (($log->payload ?? [])['clock_point_id'] ?? $log->model_id ?? 0),
+            ));
         if ($this->renewQrClockPointId === null || ! $clockPoints->contains('id', $this->renewQrClockPointId)) {
             $recommended = $clockPoints->first(fn (ClockPoint $clockPoint) => $clockPoint->isRenewalRecommended());
             $this->renewQrClockPointId = $recommended?->id ?? $clockPoints->first()?->id;
@@ -270,7 +294,11 @@ class ClockPointsIndex extends Component
             // whitelist — de knop hoort dan ook onzichtbaar, geen dode 404.
             'checkmateMode' => CheckmateMode::isActive(Tenant::query()->find($tenantId)),
             'selectedRenewClockPoint' => $clockPoints->firstWhere('id', $this->renewQrClockPointId),
-            'locations' => Location::query()->where('is_active', true)->orderBy('name')->get(),
+            'locations' => Location::query()
+                ->where('is_active', true)
+                ->when($viewer instanceof User, fn ($query) => $query->accessibleTo($viewer))
+                ->orderBy('name')
+                ->get(),
             'blockedQrSummary' => $this->summarizeBlockedQrAttempts($blockedQrLogs, $clockPoints),
             'qrPackClockPoint' => $qrPackClockPoint,
             'qrPackTemplates' => QrStickerSheetTemplate::printableDownloadCases(),

@@ -1738,7 +1738,7 @@
             "actions": [
                 {
                     "label": "Was ist ein Clock Point?",
-                    "text": "Ein Clock Point ist ein fester Anmeldepunkt an einem Standort. Das kann ein einfacher Aufkleber mit QR-Code sein oder ein Uhrbildschirm, der laufend einen neuen QR-Code zeigt.<br><br>Ausführende scannen den QR-Code mit dem Handy und wählen danach Namen und Icon. So melden sie sich bei WinProx an.<br><br>Wichtig: Anmelden ist noch nicht Einstempeln. Zum Ein- oder Ausstempeln muss der Ausführende danach erneut einen frischen QR-Code am selben Ort scannen.<br><br>Tipp: legen Sie zuerst für jeden Standort einen Clock Point an. Drucken Sie danach die QR-Codes und hängen Sie sie an die richtigen Stellen."
+                    "text": "Ein Clock Point ist ein fester Anmeldepunkt an einem Standort. Das kann ein einfacher Aufkleber mit QR-Code sein oder ein Uhrbildschirm, der laufend einen neuen QR-Code zeigt.<br><br>Ausführende scannen den QR-Code mit dem Handy und wählen danach Namen und Icon. So melden sie sich bei WinProx an.<br><br>Wichtig: Anmelden ist noch nicht Einstempeln. Zum Ein- oder Ausstempeln muss der Ausführende danach erneut einen frischen QR-Code am selben Ort scannen.<br><br>Tipp: legen Sie zuerst für jeden Standort einen Clock Point an. Drucken Sie danach die QR-Codes und hängen Sie sie an die richtigen Stellen. Ein Mitarbeitender mit ausgewählten Standorten sieht nur die Clock Points dieser Standorte."
                 },
                 {
                     "label": "Einen Clock Point hinzufügen",

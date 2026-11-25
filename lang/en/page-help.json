@@ -1738,7 +1738,7 @@
             "actions": [
                 {
                     "label": "What is a Clock Point?",
-                    "text": "A Clock Point is a fixed sign-in point at a site. That can be a simple sticker with a QR code, or a clock display that keeps showing a fresh QR code.<br><br>Workers scan the QR code with their phone and then choose their name and icon. That is how they sign in to WinProx.<br><br>Important: signing in is not the same as clocking in. To clock in or out, the worker must then scan a fresh QR code again at the same place.<br><br>Tip: create a Clock Point for each site first. Then print the QR codes and put them up in the right places."
+                    "text": "A Clock Point is a fixed sign-in point at a site. That can be a simple sticker with a QR code, or a clock display that keeps showing a fresh QR code.<br><br>Workers scan the QR code with their phone and then choose their name and icon. That is how they sign in to WinProx.<br><br>Important: signing in is not the same as clocking in. To clock in or out, the worker must then scan a fresh QR code again at the same place.<br><br>Tip: create a Clock Point for each site first. Then print the QR codes and put them up in the right places. A staff member with selected locations only sees the Clock Points of those locations."
                 },
                 {
                     "label": "Add a Clock Point",

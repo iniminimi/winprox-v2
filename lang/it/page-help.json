@@ -1738,7 +1738,7 @@
             "actions": [
                 {
                     "label": "Che cos’è un Clock Point?",
-                    "text": "Un Clock Point è un punto fisso di registrazione in una sede. Può essere un semplice adesivo con codice QR, oppure uno schermo orologio che mostra continuamente un QR nuovo.<br><br>Gli esecutori scansionano il QR con il telefono e poi scelgono nome e icona. Così si registrano in WinProx.<br><br>Importante: registrarsi non è ancora timbrare. Per timbrare l’ingresso o l’uscita, l’esecutore deve poi scansionare di nuovo un QR fresco nello stesso luogo.<br><br>Consiglio: create prima un Clock Point per ogni sede. Poi stampate i QR e appendeteli nei posti giusti."
+                    "text": "Un Clock Point è un punto fisso di registrazione in una sede. Può essere un semplice adesivo con codice QR, oppure uno schermo orologio che mostra continuamente un QR nuovo.<br><br>Gli esecutori scansionano il QR con il telefono e poi scelgono nome e icona. Così si registrano in WinProx.<br><br>Importante: registrarsi non è ancora timbrare. Per timbrare l’ingresso o l’uscita, l’esecutore deve poi scansionare di nuovo un QR fresco nello stesso luogo.<br><br>Consiglio: create prima un Clock Point per ogni sede. Poi stampate i QR e appendeteli nei posti giusti. Un dipendente con sedi scelte vede solo i Clock Point di quelle sedi."
                 },
                 {
                     "label": "Aggiungere un Clock Point",

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToTenant;
 use App\Support\Portal\TimePortalData;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -69,6 +70,17 @@ class ClockPoint extends Model
     public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
+    }
+
+    /** null bij de kijker = alle Clock Points. Anders alleen die van haar locaties. */
+    public function scopeVisibleTo(Builder $query, User $user): Builder
+    {
+        $allowed = $user->accessibleLocationIds();
+        if ($allowed === null) {
+            return $query;
+        }
+
+        return $query->whereIn($this->getTable().'.location_id', $allowed);
     }
 
     public function clockInShifts(): HasMany

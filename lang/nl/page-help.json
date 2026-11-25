@@ -1738,7 +1738,7 @@
             "actions": [
                 {
                     "label": "Wat is een Clock Point?",
-                    "text": "Een Clock Point is een vast aanmeldpunt op een vestiging. Dat kan een eenvoudige sticker met een QR-code zijn, maar ook een klokscherm waarop voortdurend een nieuwe QR-code verschijnt.<br><br>Uitvoerders scannen de QR-code met hun gsm en kiezen vervolgens hun naam en icoon. Zo melden ze zich aan bij WinProx.<br><br>Belangrijk: aanmelden is nog niet hetzelfde als inklokken. Om in of uit te klokken, moet de uitvoerder daarna opnieuw een verse QR-code scannen op dezelfde locatie.<br><br>Tip: maak eerst een Clock Point aan voor elke vestiging. Print daarna de QR-codes en hang ze op de juiste plaatsen."
+                    "text": "Een Clock Point is een vast aanmeldpunt op een vestiging. Dat kan een eenvoudige sticker met een QR-code zijn, maar ook een klokscherm waarop voortdurend een nieuwe QR-code verschijnt.<br><br>Uitvoerders scannen de QR-code met hun gsm en kiezen vervolgens hun naam en icoon. Zo melden ze zich aan bij WinProx.<br><br>Belangrijk: aanmelden is nog niet hetzelfde als inklokken. Om in of uit te klokken, moet de uitvoerder daarna opnieuw een verse QR-code scannen op dezelfde locatie.<br><br>Tip: maak eerst een Clock Point aan voor elke vestiging. Print daarna de QR-codes en hang ze op de juiste plaatsen. Een medewerker met gekozen locaties ziet alleen de Clock Points van die locaties."
                 },
                 {
                     "label": "Een Clock Point toevoegen",

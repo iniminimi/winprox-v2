@@ -20,7 +20,8 @@ class ClockPointPolicy
     public function view(User $user, ClockPoint $clockPoint): bool
     {
         return $this->sameTenant($user, (int) $clockPoint->tenant_id)
-            && ($user->isAdmin() || $user->isEmployee());
+            && ($user->isAdmin() || $user->isEmployee())
+            && $this->locationAllowed($user, $clockPoint);
     }
 
     public function create(User $user): bool
@@ -39,7 +40,8 @@ class ClockPointPolicy
     {
         return $this->moduleEnabledForUser($user)
             && $this->sameTenant($user, (int) $clockPoint->tenant_id)
-            && ($user->isAdmin() || $user->isEmployee());
+            && ($user->isAdmin() || $user->isEmployee())
+            && $this->locationAllowed($user, $clockPoint);
     }
 
     public function renewQr(User $user, ClockPoint $clockPoint): bool
@@ -66,5 +68,14 @@ class ClockPointPolicy
     private function sameTenant(User $user, int $tenantId): bool
     {
         return SuperuserTenantAccess::canAccessTenant($user, $tenantId);
+    }
+
+    private function locationAllowed(User $user, ClockPoint $clockPoint): bool
+    {
+        if ($clockPoint->location_id === null) {
+            return $user->accessibleLocationIds() === null;
+        }
+
+        return $user->canAccessLocation((int) $clockPoint->location_id);
     }
 }
