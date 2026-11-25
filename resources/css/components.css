@@ -514,11 +514,30 @@ a.wp-pill:hover {
     width: 1.3rem;
     height: 1.8375rem;
     font-size: 1.3rem;
-    font-weight: 700;
+    font-weight: 600;
     font-variant-numeric: tabular-nums;
     line-height: 1.8375rem;
     color: var(--wp-text);
     perspective: 10rem;
+    border-radius: 0.4rem;
+    background: var(--wp-surface);
+    box-shadow: var(--wp-shadow);
+}
+
+[data-theme='dark'] .wp-flip {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.wp-flip::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    left: 0.14rem;
+    right: 0.14rem;
+    top: 50%;
+    height: 1px;
+    background: color-mix(in srgb, var(--wp-accent) 45%, var(--wp-border));
+    pointer-events: none;
 }
 
 .wp-flip__face,
@@ -528,9 +547,9 @@ a.wp-pill:hover {
     width: 100%;
     height: 50%;
     overflow: hidden;
-    background: color-mix(in srgb, var(--wp-text) 7%, var(--wp-surface));
+    background: var(--wp-surface);
     border: 1px solid var(--wp-border);
-    box-shadow: inset 0 1px 0 color-mix(in srgb, white 55%, transparent);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, white 70%, transparent);
 }
 
 .wp-flip__face span,
@@ -545,15 +564,15 @@ a.wp-pill:hover {
 .wp-flip__leaf-face--front {
     top: 0;
     border-bottom: 0;
-    border-radius: 0.25rem 0.25rem 0 0;
+    border-radius: 0.4rem 0.4rem 0 0;
 }
 
 .wp-flip__face--bottom,
 .wp-flip__leaf-face--back {
     bottom: 0;
     border-top: 0;
-    border-radius: 0 0 0.25rem 0.25rem;
-    background: color-mix(in srgb, var(--wp-text) 12%, var(--wp-surface));
+    border-radius: 0 0 0.4rem 0.4rem;
+    background: color-mix(in srgb, var(--wp-accent) 8%, var(--wp-surface));
 }
 
 .wp-flip__face--bottom span,
