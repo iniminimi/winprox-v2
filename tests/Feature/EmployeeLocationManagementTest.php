@@ -2,9 +2,12 @@
 
 use App\Livewire\Locations\Index as LocationIndex;
 use App\Livewire\Pages\Settings;
+use App\Livewire\Pages\UnitsIndex;
+use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Gate;
@@ -62,4 +65,50 @@ it('weigert het vinkje voor een medewerker', function () {
         ->assertForbidden();
 
     expect($tenant->fresh()->employeesMayManageLocations())->toBeFalse();
+});
+
+it('toont een medewerker alleen zijn locaties en de units daarvan', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $allowed = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Magazijn A',
+        'is_active' => true,
+    ]);
+    $hidden = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Magazijn B',
+        'is_active' => true,
+    ]);
+    $employee->locations()->sync([$allowed->id]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $allowed->id,
+        'name' => 'Pomp A',
+        'is_active' => true,
+    ]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $hidden->id,
+        'name' => 'Pomp B',
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($employee)
+        ->test(LocationIndex::class)
+        ->assertSee('Magazijn A')
+        ->assertDontSee('Magazijn B');
+
+    $this->actingAs($employee)
+        ->get(route('locations.show', $hidden))
+        ->assertForbidden();
+
+    Livewire::actingAs($employee)
+        ->test(UnitsIndex::class)
+        ->assertSee('Pomp A')
+        ->assertDontSee('Pomp B')
+        ->assertDontSee('Magazijn B');
 });

@@ -7,6 +7,7 @@ use App\Data\Locations\ImportLocationsData;
 use App\Http\Requests\Locations\ImportLocationsRequest;
 use App\Http\Resources\LocationResource;
 use App\Models\Location;
+use App\Models\User;
 use App\Support\Tenancy;
 use Illuminate\Http\JsonResponse;
 
@@ -16,8 +17,15 @@ class LocationController extends Controller
     {
         $this->authorize('viewAny', Location::class);
 
+        $viewer = auth()->user();
+
         return $this->paginated(
-            LocationResource::collection(Location::query()->orderBy('name')->paginate(50))
+            LocationResource::collection(
+                Location::query()
+                    ->when($viewer instanceof User, fn ($query) => $query->accessibleTo($viewer))
+                    ->orderBy('name')
+                    ->paginate(50)
+            )
         );
     }
 

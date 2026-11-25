@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\LocationTranslationStatus;
 use App\Models\Concerns\BelongsToTenant;
 use App\Support\Translation\LocaleSupport;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -92,6 +93,23 @@ class Location extends Model
     public function units(): HasMany
     {
         return $this->hasMany(Unit::class);
+    }
+
+    /**
+     * null = alle locaties (beheerder, of medewerker zonder selectie).
+     *
+     * @param  Builder<Location>  $query
+     * @return Builder<Location>
+     */
+    public function scopeAccessibleTo(Builder $query, User $user): Builder
+    {
+        $allowed = $user->accessibleLocationIds();
+
+        if ($allowed === null) {
+            return $query;
+        }
+
+        return $query->whereIn($this->getTable().'.id', $allowed);
     }
 
     public function bulkBatches(): HasMany

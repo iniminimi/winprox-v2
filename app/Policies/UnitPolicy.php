@@ -16,7 +16,8 @@ class UnitPolicy
 
     public function view(User $user, Unit $unit): bool
     {
-        return SuperuserTenantAccess::canAccessTenant($user, (int) $unit->tenant_id);
+        return SuperuserTenantAccess::canAccessTenant($user, (int) $unit->tenant_id)
+            && $user->canAccessLocation((int) $unit->location_id);
     }
 
     public function create(User $user): bool

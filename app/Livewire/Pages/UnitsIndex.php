@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\User;
 use App\Support\Tenancy;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Layout;
@@ -56,7 +57,18 @@ class UnitsIndex extends Component
             );
         }
 
+        $viewer = auth()->user();
+        $allowedLocationIds = $viewer instanceof User ? $viewer->accessibleLocationIds() : null;
+        if (
+            $allowedLocationIds !== null
+            && $this->locationFilter !== null
+            && ! in_array((int) $this->locationFilter, $allowedLocationIds, true)
+        ) {
+            $this->locationFilter = null;
+        }
+
         $locations = Location::query()
+            ->when($viewer instanceof User, fn ($query) => $query->accessibleTo($viewer))
             ->orderBy('name')
             ->get(['id', 'name', 'address']);
 
@@ -66,6 +78,7 @@ class UnitsIndex extends Component
             ->get(['id', 'name', 'original_language']);
 
         $query = Unit::query()
+            ->when($viewer instanceof User, fn ($query) => $query->accessibleTo($viewer))
             ->with([
                 'location',
                 'category',

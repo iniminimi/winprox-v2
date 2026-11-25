@@ -85,6 +85,23 @@ class Unit extends Model
         return $this->belongsTo(Location::class);
     }
 
+    /**
+     * Units van locaties die deze gebruiker mag zien.
+     *
+     * @param  Builder<Unit>  $query
+     * @return Builder<Unit>
+     */
+    public function scopeAccessibleTo(Builder $query, User $user): Builder
+    {
+        $allowed = $user->accessibleLocationIds();
+
+        if ($allowed === null) {
+            return $query;
+        }
+
+        return $query->whereIn($this->getTable().'.location_id', $allowed);
+    }
+
     public function sensePoint(): HasOne
     {
         return $this->hasOne(SensePoint::class);

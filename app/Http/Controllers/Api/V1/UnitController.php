@@ -8,6 +8,7 @@ use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Http\Resources\UnitResource;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Models\User;
 use App\Support\Tenancy;
 use Illuminate\Http\JsonResponse;
 
@@ -17,9 +18,15 @@ class UnitController extends Controller
     {
         $this->authorize('viewAny', Unit::class);
 
+        $viewer = auth()->user();
+
         return $this->paginated(
             UnitResource::collection(
-                Unit::query()->with(['location', 'translations'])->orderBy('name')->paginate(50)
+                Unit::query()
+                    ->when($viewer instanceof User, fn ($query) => $query->accessibleTo($viewer))
+                    ->with(['location', 'translations'])
+                    ->orderBy('name')
+                    ->paginate(50)
             )
         );
     }

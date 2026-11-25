@@ -30,6 +30,7 @@ use App\Models\Customer;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Support\Import\MinimalXlsxWriter;
 use App\Support\Locations\LocationImportBatchRegistry;
 use App\Support\Onboarding\TenantOnboardingState;
@@ -37,6 +38,7 @@ use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenancy;
 use App\Support\Tenant\TenantWorkMenuAccess;
 use App\Support\Translation\LocaleSupport;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
@@ -896,7 +898,7 @@ class Index extends Component
 
         $locations = $isCategories
             ? collect()
-            : Location::query()
+            : $this->locationsForViewer()
                 ->withCount('units')
                 ->when(! $this->showInactive, fn ($q) => $q->where('is_active', true))
                 ->when($term !== '', function ($q) use ($term) {
@@ -915,11 +917,11 @@ class Index extends Component
 
         $hasInactiveLocations = $isCategories
             ? false
-            : Location::query()->where('is_active', false)->exists();
+            : $this->locationsForViewer()->where('is_active', false)->exists();
 
         $hasAnyLocation = $isCategories
             ? true
-            : Location::query()->exists();
+            : $this->locationsForViewer()->exists();
 
         $categoriesEnabled = Schema::hasTable('categories');
         $viewerTenantEarly = $this->viewerTenant();
@@ -1007,7 +1009,7 @@ class Index extends Component
             'checkmateMode' => $viewerTenant?->checkmateMode() ?? false,
             'emptyLocationsWithoutUnits' => $isCategories
                 ? 0
-                : Location::query()->whereDoesntHave('units')->count(),
+                : $this->locationsForViewer()->whereDoesntHave('units')->count(),
             'locationImportBatches' => ($isCategories || ($viewerTenant?->checkmateMode() ?? false))
                 ? collect()
                 : LocationImportBatchRegistry::recentBatchesForTenant((int) Tenancy::id())
@@ -1016,6 +1018,21 @@ class Index extends Component
                         LocationImportBatchRegistry::summary((int) Tenancy::id(), $batch['batch_id']),
                     )),
         ]);
+    }
+
+    /**
+     * @return Builder<Location>
+     */
+    private function locationsForViewer(): Builder
+    {
+        $query = Location::query();
+        $user = auth()->user();
+
+        if ($user instanceof User) {
+            $query->accessibleTo($user);
+        }
+
+        return $query;
     }
 
     private function viewerTenant(): ?Tenant
