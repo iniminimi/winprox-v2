@@ -481,7 +481,7 @@ a.wp-pill:hover {
     flex-wrap: wrap;
 }
 
-/* Flipklok: ongeveer 70% van de eerste maat. In de paginakop altijd rechts, ook naast knoppen. */
+/* Flipklok: ongeveer 70% van de eerste maat. Rechts, verticaal in het midden van de titelkaart. */
 .wp-flip-clock {
     display: inline-flex;
     align-items: center;
@@ -491,13 +491,15 @@ a.wp-pill:hover {
     height: 1.8375rem;
 }
 
-.wp-page-head:has(.wp-flip-clock) {
+.wp-page-head:has(.wp-flip-clock),
+.wp-page-head-main:has(.wp-flip-clock) {
     --wp-flip-clock-inset: 0;
     position: relative;
     padding-inline-end: calc(var(--wp-flip-clock-inset) + 7.1rem);
 }
 
-.wp-page-head .wp-flip-clock {
+.wp-page-head .wp-flip-clock,
+.wp-page-head-main .wp-flip-clock {
     position: absolute;
     z-index: 1;
     inset-inline-end: var(--wp-flip-clock-inset);
@@ -506,8 +508,14 @@ a.wp-pill:hover {
     transform: translateY(-50%);
 }
 
-[data-theme='modern'] .wp-page-head:has(.wp-flip-clock) {
+[data-theme='modern'] .wp-page-head:has(.wp-flip-clock),
+[data-theme='modern'] .wp-page-head-main:has(.wp-flip-clock) {
     --wp-flip-clock-inset: 1rem;
+}
+
+.wp-page-head .wp-page-head-main:has(.wp-flip-clock) {
+    position: static;
+    padding-inline-end: 0;
 }
 
 .wp-print .wp-flip-clock {
@@ -646,7 +654,8 @@ a.wp-pill:hover {
         display: none;
     }
 
-    .wp-page-head:has(.wp-flip-clock) {
+    .wp-page-head:has(.wp-flip-clock),
+    .wp-page-head-main:has(.wp-flip-clock) {
         padding-inline-end: 0;
     }
 }
