@@ -177,7 +177,8 @@
                     "Cuadrante y presencia, una nueva tarea del día o ronda de inspección, sedes y ejecutores.",
                     "Avisos nuevos y tareas abiertas. Con Time: quién está presente ahora.",
                     "Un aviso si alguien ficha durante vacaciones, recup, un festivo, una baja u Otro. Solicitudes abiertas de vacaciones, recup y Otro.",
-                    "Ejecutores nuevos que acaba de crear un jefe de equipo, hasta que la administración los guarda o los desactiva. Briefings e informes. Las organizaciones nuevas eligen aquí una configuración de inicio."
+                    "Ejecutores nuevos que acaba de crear un jefe de equipo, hasta que la administración los guarda o los desactiva. Briefings e informes. Las organizaciones nuevas eligen aquí una configuración de inicio.",
+                    "Un administrador vincula aquí un reloj de fichar, una pantalla de local o una cámara. Elige el lugar, recibe un código para el técnico y confirma el dispositivo en la misma ventana."
                 ]
             },
             {

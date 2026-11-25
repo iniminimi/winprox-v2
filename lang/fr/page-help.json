@@ -11,6 +11,10 @@
             "title": "Aide — Tableau de bord",
             "actions": [
                 {
+                    "label": "Ajouter un appareil",
+                    "text": "Au-dessus du titre Tableau de bord se trouve Ajouter un appareil. Seul un administrateur voit ce bouton.<br><br>Vous choisissez une pointeuse, un écran de local ou une caméra. Une pointeuse appartient à un Clock Point. Un écran de local ou une caméra appartient à une unit.<br><br>Vous recevez un code. Le technicien le saisit sur l’appareil. Quand l’appareil demande à se relier, vous confirmez dans la même fenêtre. Le code vaut environ 10 minutes."
+                },
+                {
                     "label": "Accès rapide à une action",
                     "text": "En haut, vous trouvez des raccourcis vers les actions courantes. Ainsi, vous n’avez pas à chercher dans les menus à chaque fois.<br><br>Selon vos droits et les modules actifs, vous voyez notamment :<br>• Nouvelle tâche du jour via favoris<br>• Planifier une nouvelle tâche du jour<br>• Ajouter un site<br>• Ajouter un exécutant ou Voir les exécutants<br>• Qui travaille où aujourd’hui<br>• Pointage manuel<br>• Quelles tâches aujourd’hui<br>• Voir le planning<br><br>Chaque bouton n’est pas toujours visible. Cela dépend de votre rôle et des modules actifs, comme Time ou le calendrier."
                 },

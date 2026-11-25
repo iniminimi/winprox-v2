@@ -177,7 +177,8 @@
                     "Planning et présence, une nouvelle tâche du jour ou tournée d’inspection, sites et exécutants.",
                     "Nouveaux signalements et tâches ouvertes. Avec Time : qui est présent maintenant.",
                     "Un avertissement si quelqu’un pointe pendant un congé, une récupération, un jour férié, une maladie ou Autre. Demandes de congé, de récup et Autre ouvertes.",
-                    "Nouveaux exécutants qu’un chef d’équipe vient de créer, jusqu’à ce que la gestion les enregistre ou les désactive. Briefings et rapports. Les nouvelles organisations choisissent ici une configuration de départ."
+                    "Nouveaux exécutants qu’un chef d’équipe vient de créer, jusqu’à ce que la gestion les enregistre ou les désactive. Briefings et rapports. Les nouvelles organisations choisissent ici une configuration de départ.",
+                    "Un administrateur relie ici une pointeuse, un écran de local ou une caméra. Il choisit l’endroit, reçoit un code pour le technicien et confirme l’appareil dans la même fenêtre."
                 ]
             },
             {

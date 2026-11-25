@@ -11,6 +11,10 @@
             "title": "Help — Dashboard",
             "actions": [
                 {
+                    "label": "Add a device",
+                    "text": "Above the Dashboard title is Add a device. Only an administrator sees that button.<br><br>You choose a time clock, a room screen or a camera. A time clock belongs to a Clock Point. A room screen or a camera belongs to a unit.<br><br>You receive a code. The technician types it on the device. When the device asks to link, you confirm in the same window. The code lasts about 10 minutes."
+                },
+                {
                     "label": "Quick actions",
                     "text": "At the top you find shortcuts to common actions, so you do not have to dig through the menus every time.<br><br>Depending on your rights and active modules you may see, among others:<br>• New day task via favourites<br>• Plan a new day task<br>• Add location<br>• Add worker or View workers<br>• Who works where today<br>• Manual clock-in<br>• Which tasks today<br>• View roster<br><br>Not every button is always visible. That depends on your role and on active modules, such as Time or the calendar."
                 },

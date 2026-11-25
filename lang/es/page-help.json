@@ -11,6 +11,10 @@
             "title": "Ayuda — Panel",
             "actions": [
                 {
+                    "label": "Añadir un dispositivo",
+                    "text": "Encima del título Panel está Añadir un dispositivo. Solo un administrador ve ese botón.<br><br>Elige un reloj de fichar, una pantalla de local o una cámara. Un reloj de fichar pertenece a un Clock Point. Una pantalla de local o una cámara pertenece a una unit.<br><br>Recibe un código. El técnico lo escribe en el dispositivo. Cuando el dispositivo pide vincularse, lo confirma en la misma ventana. El código vale unos 10 minutos."
+                },
+                {
                     "label": "Ir rápido a una acción",
                     "text": "Arriba encuentra accesos directos a acciones habituales. Así no tiene que buscar siempre en los menús.<br><br>Según sus derechos y los módulos activos, puede ver entre otras:<br>• Nueva tarea del día vía favoritos<br>• Planificar nueva tarea del día<br>• Añadir ubicación<br>• Añadir ejecutor o Ver ejecutores<br>• Quién trabaja dónde hoy<br>• Fichar manualmente<br>• Qué tareas hoy<br>• Ver cuadrante<br><br>No todos los botones están siempre visibles. Depende de su rol y de los módulos activos, como Time o el calendario."
                 },

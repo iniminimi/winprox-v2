@@ -212,5 +212,29 @@
         "title": "Fotos de ausencia",
         "body": "Algunas fotos tienen más de 5 meses. Se borrarán en un mes. Guarde una copia si las necesita más tiempo.",
         "cta": "Ver las fotos"
+    },
+    "add_device": {
+        "title": "Añadir un dispositivo",
+        "body": "Vincule un reloj de fichar, una pantalla de local o una cámara.",
+        "intro": "Elija el dispositivo y el lugar. Recibe un código para el técnico.",
+        "type_label": "Tipo de dispositivo",
+        "type_clock": "Reloj de fichar",
+        "type_screen": "Pantalla de local",
+        "type_camera": "Cámara",
+        "place_clock": "Clock Point",
+        "place_unit": "Unit",
+        "place_placeholder": "Elegir…",
+        "no_clock_points": "Todavía no hay un Clock Point.",
+        "no_units": "Todavía no hay una unit.",
+        "issue": "Crear código",
+        "code_hint": "Escriba este código en el dispositivo. Después confírmelo aquí.",
+        "valid_until": "Válido hasta :time",
+        "replace_warning": "Aquí ya hay un dispositivo vinculado. Sigue funcionando hasta que confirme el nuevo vínculo.",
+        "confirmed": "Dispositivo vinculado.",
+        "denied": "Solicitud rechazada.",
+        "pending_title": "El dispositivo pide vincularse",
+        "pending_device": "Dispositivo: :device",
+        "confirm": "Vincular",
+        "deny": "Rechazar"
     }
 }

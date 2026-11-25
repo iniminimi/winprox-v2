@@ -992,8 +992,13 @@ a.wp-pill:hover {
     margin-top: 1.25rem;
 }
 
-.wp-stack > .wp-dashboard-intent + .wp-page-head.wp-dashboard-overview {
+.wp-stack > .wp-dashboard-intent + .wp-page-head.wp-dashboard-overview,
+.wp-stack > .wp-dashboard-add-device + .wp-page-head.wp-dashboard-overview {
     margin-top: 2.75rem;
+}
+
+.wp-dashboard-add-device .wp-kpis {
+    grid-template-columns: minmax(0, 28rem);
 }
 
 .wp-dashboard-intent .wp-kpi {

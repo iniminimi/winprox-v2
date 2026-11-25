@@ -212,5 +212,29 @@
         "title": "Photos d'absence",
         "body": "Certaines photos ont plus de 5 mois. Elles seront effacées dans un mois. Gardez une copie si vous en avez besoin plus longtemps.",
         "cta": "Voir les photos"
+    },
+    "add_device": {
+        "title": "Ajouter un appareil",
+        "body": "Reliez une pointeuse, un écran de local ou une caméra.",
+        "intro": "Choisissez l’appareil et l’endroit. Vous recevez un code pour le technicien.",
+        "type_label": "Type d’appareil",
+        "type_clock": "Pointeuse",
+        "type_screen": "Écran de local",
+        "type_camera": "Caméra",
+        "place_clock": "Clock Point",
+        "place_unit": "Unit",
+        "place_placeholder": "Choisir…",
+        "no_clock_points": "Il n’y a pas encore de Clock Point.",
+        "no_units": "Il n’y a pas encore d’unit.",
+        "issue": "Créer le code",
+        "code_hint": "Saisissez ce code sur l’appareil. Confirmez ensuite ici.",
+        "valid_until": "Valable jusqu’à :time",
+        "replace_warning": "Un appareil est déjà relié ici. Il continue de fonctionner jusqu’à ce que vous confirmiez la nouvelle liaison.",
+        "confirmed": "Appareil relié.",
+        "denied": "Demande refusée.",
+        "pending_title": "L’appareil demande à se relier",
+        "pending_device": "Appareil : :device",
+        "confirm": "Relier",
+        "deny": "Refuser"
     }
 }

@@ -103,6 +103,7 @@ fouttype per uur (met het aantal herhalingen) en 10 per uur in totaal. Zie
   Een nieuwere nota toont de tegel opnieuw, opnieuw voor een week.
   Hulp → Nieuw toont alleen diezelfde week: vandaag en de zes dagen ervoor.
 - Extra ruimte tussen intent-sectie en **Dashboard**-kop; daaronder KPI’s, recente meldingen, briefing en starttemplate.
+- **Toestel toevoegen** (alleen beheerder, niet Checkmate, niet zolang de startstappen het dashboard blokkeren): één kaart boven de Dashboard-kop. Popup: type **prikklok** (Clock Point), **lokaalscherm** (unit) of **camera** (unit) → bestaande koppelcode → het toestel vraagt om te koppelen → bevestigen of weigeren in hetzelfde venster. Geen nieuwe koppeling; de bestaande issue/confirm-actions.
 
 **Starttemplate (optioneel, nieuwe organisaties)**
 - Op het dashboard zolang er nog geen teams/categorieën/units zijn: **welkomkaart**
@@ -831,7 +832,7 @@ stuurt events; WinProx zet die om in workflow.
 
 Een camera hoort bij een **unit**, los van het scherm. Een lokaal kan een scherm hebben, een camera, of allebei. De firmware van de XIAO hoort niet bij deze laag.
 
-- Op de locatie, bij de unit: knop **Camera**. Alleen een beheerder. Checkmate ziet de pagina niet (`cameras.show` staat buiten de Checkmate-whitelist).
+- Op de locatie, bij de unit: knop **Camera**. Dezelfde code kan ook via **Toestel toevoegen** op het beginscherm. Alleen een beheerder. Checkmate ziet de pagina niet (`cameras.show` staat buiten de Checkmate-whitelist).
 - Foto’s blijven op de micro-SD in het toestel. **Doorsturen** uit = geen kopie in WinProx. Aan = het toestel mag JPEG/PNG/WebP posten (max. `config/camera.php` `max_upload_kb`, standaard 8 MB).
 - Kopieën op de privé-disk `local`, pad `cameras/{tenant}/{camera}/…`. Geen publieke URL. Alleen de beheerder streamt ze via `cameras.photos.show`.
 - Bewaartermijn **30 dagen** (`camera.retention_days`), daarna `winprox:retention-prune`. Wissen van de unit of de tenant verwijdert de bestanden ook. De SD-kaart wordt niet aangeraakt.
@@ -1381,7 +1382,7 @@ binnen ~30–90 s dood.
   Clock Points toont daarvan alleen een vorige sticker-QR waarvan de grace voorbij is:
   één zin met clock point, aantal en laatste moment (7 dagen). Verlopen schermcodes
   blijven in het auditlog.
-- **Koppelen** (beheer, Clock Point → **Scherm**, route `time.clock-displays.pair` —
+- **Koppelen** (beheer, Clock Point → **Scherm**, of **Toestel toevoegen** op het beginscherm; route `time.clock-displays.pair` —
   buiten de Checkmate-whitelist): admin genereert eenmalige code `XXXX-XXXX`
   (Crockford base32, 10 min geldig, max 1 actieve code/punt) → device tikt die in →
   `POST /api/v1/time/clock-displays/claim` maakt een **pending** claim → admin

@@ -212,5 +212,29 @@
         "title": "Photos with an absence",
         "body": "Some photos are older than 5 months. They will be deleted within a month. Keep your own copy if you need them longer.",
         "cta": "View the photos"
+    },
+    "add_device": {
+        "title": "Add a device",
+        "body": "Link a time clock, a room screen or a camera.",
+        "intro": "Choose the device and where it belongs. You get a code for the technician.",
+        "type_label": "Device type",
+        "type_clock": "Time clock",
+        "type_screen": "Room screen",
+        "type_camera": "Camera",
+        "place_clock": "Clock Point",
+        "place_unit": "Unit",
+        "place_placeholder": "Choose…",
+        "no_clock_points": "There is no Clock Point yet.",
+        "no_units": "There is no unit yet.",
+        "issue": "Create code",
+        "code_hint": "Type this code on the device. Then confirm here.",
+        "valid_until": "Valid until :time",
+        "replace_warning": "A device is already linked here. It keeps working until you confirm the new link.",
+        "confirmed": "Device linked.",
+        "denied": "Request refused.",
+        "pending_title": "The device is asking to link",
+        "pending_device": "Device: :device",
+        "confirm": "Link",
+        "deny": "Refuse"
     }
 }

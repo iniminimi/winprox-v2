@@ -177,7 +177,8 @@
                     "Turni e presenza, un nuovo compito del giorno o giro di ispezione, sedi ed esecutori.",
                     "Segnalazioni nuove e compiti aperti. Con Time: chi è presente adesso.",
                     "Un avviso se qualcuno timbra durante ferie, recupero, un festivo, una malattia o Altro. Richieste aperte di ferie, recupero e Altro.",
-                    "Nuovi esecutori appena creati da un caposquadra, finché la gestione li salva o li disattiva. Briefing e rapporti. Le organizzazioni nuove scelgono qui una configurazione di partenza."
+                    "Nuovi esecutori appena creati da un caposquadra, finché la gestione li salva o li disattiva. Briefing e rapporti. Le organizzazioni nuove scelgono qui una configurazione di partenza.",
+                    "Un amministratore collega qui una timbratrice, uno schermo di locale o una telecamera. Sceglie il posto, riceve un codice per il tecnico e conferma il dispositivo nella stessa finestra."
                 ]
             },
             {

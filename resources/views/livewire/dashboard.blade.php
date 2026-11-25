@@ -465,6 +465,10 @@
             </section>
         @endif
 
+        @can('create', \App\Models\Screen::class)
+            <livewire:add-device />
+        @endcan
+
         <div @class(['wp-page-head', 'wp-dashboard-overview' => $intentHub !== null])>
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title

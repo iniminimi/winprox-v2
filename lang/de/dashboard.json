@@ -212,5 +212,29 @@
         "title": "Fotos zur Abwesenheit",
         "body": "Manche Fotos sind älter als 5 Monate. Innerhalb eines Monats werden sie gelöscht. Bewahren Sie selbst eine Kopie auf, wenn Sie sie länger brauchen.",
         "cta": "Fotos ansehen"
+    },
+    "add_device": {
+        "title": "Gerät hinzufügen",
+        "body": "Verbinden Sie eine Stechuhr, einen Raumbildschirm oder eine Kamera.",
+        "intro": "Wählen Sie das Gerät und den Ort. Sie erhalten einen Code für den Techniker.",
+        "type_label": "Gerätetyp",
+        "type_clock": "Stechuhr",
+        "type_screen": "Raumbildschirm",
+        "type_camera": "Kamera",
+        "place_clock": "Clock Point",
+        "place_unit": "Unit",
+        "place_placeholder": "Wählen…",
+        "no_clock_points": "Es gibt noch keinen Clock Point.",
+        "no_units": "Es gibt noch keine Unit.",
+        "issue": "Code erstellen",
+        "code_hint": "Geben Sie diesen Code am Gerät ein. Bestätigen Sie danach hier.",
+        "valid_until": "Gültig bis :time",
+        "replace_warning": "Hier ist bereits ein Gerät verbunden. Es arbeitet weiter, bis Sie die neue Verbindung bestätigen.",
+        "confirmed": "Gerät verbunden.",
+        "denied": "Anfrage abgelehnt.",
+        "pending_title": "Das Gerät bittet um eine Verbindung",
+        "pending_device": "Gerät: :device",
+        "confirm": "Verbinden",
+        "deny": "Ablehnen"
     }
 }

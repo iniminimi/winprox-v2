@@ -11,6 +11,10 @@
             "title": "Aiuto — Dashboard",
             "actions": [
                 {
+                    "label": "Aggiungi un dispositivo",
+                    "text": "Sopra il titolo Cruscotto c’è Aggiungi un dispositivo. Solo un amministratore vede quel pulsante.<br><br>Scegliete una timbratrice, uno schermo di locale o una telecamera. Una timbratrice appartiene a un Clock Point. Uno schermo di locale o una telecamera appartiene a una unit.<br><br>Ricevete un codice. Il tecnico lo digita sul dispositivo. Quando il dispositivo chiede di collegarsi, confermate nella stessa finestra. Il codice vale circa 10 minuti."
+                },
+                {
                     "label": "Vai subito a un’azione",
                     "text": "In alto trovate scorciatoie alle azioni più usate. Così non dovete ogni volta cercare nei menu.<br><br>A seconda dei diritti e dei moduli attivi vedete, tra le altre:<br>• Nuovo compito del giorno via preferiti<br>• Pianifica nuovo compito del giorno<br>• Aggiungi sede<br>• Aggiungi esecutore o Vedi esecutori<br>• Chi lavora dove oggi<br>• Timbratura manuale<br>• Quali compiti oggi<br>• Vedi turni<br><br>Non ogni pulsante è sempre visibile. Dipende dal vostro ruolo e dai moduli attivi, come Time o il calendario."
                 },

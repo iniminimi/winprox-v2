@@ -177,7 +177,8 @@
                     "Dienstplan und Anwesenheit, eine neue Tagesaufgabe oder Inspektionsrunde, Standorte und Ausführende.",
                     "Neue Meldungen und offene Aufgaben. Mit Time: wer jetzt anwesend ist.",
                     "Eine Warnung, wenn jemand während Urlaub, Ausgleich, einem Feiertag, Krankheit oder Sonstige einstempelt. Offene Urlaubs-, Ausgleichs- und Sonstige-Anträge.",
-                    "Neue Ausführende, die ein Teamleiter gerade angelegt hat, bis die Verwaltung sie speichert oder deaktiviert. Briefings und Berichte. Neue Organisationen wählen hier eine Startkonfiguration."
+                    "Neue Ausführende, die ein Teamleiter gerade angelegt hat, bis die Verwaltung sie speichert oder deaktiviert. Briefings und Berichte. Neue Organisationen wählen hier eine Startkonfiguration.",
+                    "Ein Administrator verbindet hier eine Stechuhr, einen Raumbildschirm oder eine Kamera. Er wählt den Ort, erhält einen Code für den Techniker und bestätigt das Gerät im selben Fenster."
                 ]
             },
             {

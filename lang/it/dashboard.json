@@ -212,5 +212,29 @@
         "title": "Foto di assenza",
         "body": "Alcune foto hanno più di 5 mesi. Saranno cancellate entro un mese. Conservi una copia se le servono più a lungo.",
         "cta": "Vedi le foto"
+    },
+    "add_device": {
+        "title": "Aggiungi un dispositivo",
+        "body": "Collegate una timbratrice, uno schermo di locale o una telecamera.",
+        "intro": "Scegliete il dispositivo e il posto. Ricevete un codice per il tecnico.",
+        "type_label": "Tipo di dispositivo",
+        "type_clock": "Timbratrice",
+        "type_screen": "Schermo di locale",
+        "type_camera": "Telecamera",
+        "place_clock": "Clock Point",
+        "place_unit": "Unit",
+        "place_placeholder": "Scegli…",
+        "no_clock_points": "Non c’è ancora un Clock Point.",
+        "no_units": "Non c’è ancora una unit.",
+        "issue": "Crea il codice",
+        "code_hint": "Digitate questo codice sul dispositivo. Poi confermate qui.",
+        "valid_until": "Valido fino alle :time",
+        "replace_warning": "Qui c’è già un dispositivo collegato. Continua a funzionare finché non confermate il nuovo collegamento.",
+        "confirmed": "Dispositivo collegato.",
+        "denied": "Richiesta rifiutata.",
+        "pending_title": "Il dispositivo chiede di collegarsi",
+        "pending_device": "Dispositivo: :device",
+        "confirm": "Collega",
+        "deny": "Rifiuta"
     }
 }

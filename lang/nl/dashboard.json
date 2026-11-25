@@ -212,5 +212,29 @@
         "title": "Foto's bij afwezigheid",
         "body": "Sommige foto's zijn ouder dan 5 maanden. Binnen een maand worden ze gewist. Bewaar zelf een kopie als u ze langer nodig hebt.",
         "cta": "Bekijk de foto's"
+    },
+    "add_device": {
+        "title": "Toestel toevoegen",
+        "body": "Koppel een prikklok, een lokaalscherm of een camera.",
+        "intro": "Kies het toestel en waar het hoort. U krijgt een code voor de technieker.",
+        "type_label": "Type toestel",
+        "type_clock": "Prikklok",
+        "type_screen": "Lokaalscherm",
+        "type_camera": "Camera",
+        "place_clock": "Clock Point",
+        "place_unit": "Unit",
+        "place_placeholder": "Kies…",
+        "no_clock_points": "Er is nog geen Clock Point.",
+        "no_units": "Er is nog geen unit.",
+        "issue": "Code maken",
+        "code_hint": "Tik deze code in op het toestel. Daarna bevestigt u hier.",
+        "valid_until": "Geldig tot :time",
+        "replace_warning": "Hier hangt al een toestel. Het blijft werken tot u de nieuwe koppeling bevestigt.",
+        "confirmed": "Toestel gekoppeld.",
+        "denied": "Aanvraag geweigerd.",
+        "pending_title": "Het toestel vraagt om te koppelen",
+        "pending_device": "Toestel: :device",
+        "confirm": "Koppelen",
+        "deny": "Weigeren"
     }
 }

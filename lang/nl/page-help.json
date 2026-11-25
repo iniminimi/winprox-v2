@@ -11,6 +11,10 @@
             "title": "Hulp — Dashboard",
             "actions": [
                 {
+                    "label": "Toestel toevoegen",
+                    "text": "Boven de titel Dashboard staat Toestel toevoegen. Alleen een beheerder ziet die knop.<br><br>U kiest een prikklok, een lokaalscherm of een camera. Een prikklok hoort bij een Clock Point. Een lokaalscherm of een camera hoort bij een unit.<br><br>U krijgt een code. De technieker tikt die in op het toestel. Als het toestel vraagt om te koppelen, bevestigt u dat in hetzelfde venster. De code geldt ongeveer 10 minuten."
+                },
+                {
                     "label": "Snel naar een actie",
                     "text": "Bovenaan vindt u snelkoppelingen naar veelgebruikte acties. Zo hoeft u niet telkens door de menu's te zoeken.<br><br>Afhankelijk van uw rechten en de actieve modules ziet u onder andere:<br>• Nieuwe dagtaak via favorieten<br>• Nieuwe dagtaak plannen<br>• Locatie toevoegen<br>• Uitvoerder toevoegen of Uitvoerders bekijken<br>• Wie werkt waar vandaag<br>• Manueel inklokken<br>• Welke taken vandaag<br>• Uurrooster bekijken<br><br>Niet elke knop is altijd zichtbaar. Dat hangt af van uw rol en van de actieve modules, zoals Time of de kalender."
                 },
