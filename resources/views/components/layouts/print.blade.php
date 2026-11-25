@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="wp-shell">
+<body class="wp-shell wp-print">
     {{ $slot }}
     @livewireScripts
 </body>

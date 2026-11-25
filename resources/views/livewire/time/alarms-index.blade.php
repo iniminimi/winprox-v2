@@ -46,10 +46,6 @@
                         'totalCount' => $totalCount,
                     ])
                 </div>
-                <p class="wp-time-presence-toolbar__updated wp-muted">
-                    <x-wp-icon name="clock" class="wp-time-presence-toolbar__updated-icon" />
-                    <span>{{ now()->format('H:i') }}</span>
-                </p>
             </div>
         </div>
     </div>

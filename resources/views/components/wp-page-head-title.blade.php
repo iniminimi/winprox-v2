@@ -33,26 +33,21 @@
         </span>
     @endif
     <div class="wp-stack-tight wp-grow">
-        @if (isset($toolbar))
-            <div class="wp-cluster">
-                <div class="wp-page-title-row">
-                    <h1 class="wp-page-title">{{ $title }}</h1>
-                    @if ($helpPage)
-                        <x-wp-page-help :page="$helpPage" />
-                    @endif
-                    {{ $titleActions ?? '' }}
-                </div>
-                {{ $toolbar }}
-            </div>
-        @else
+        <div class="wp-page-title-bar">
             <div class="wp-page-title-row">
                 <h1 class="wp-page-title">{{ $title }}</h1>
                 @if ($helpPage)
                     <x-wp-page-help :page="$helpPage" />
                 @endif
                 {{ $titleActions ?? '' }}
+                @if (isset($toolbar))
+                    {{ $toolbar }}
+                @endif
             </div>
-        @endif
+            @if ($variant === 'app')
+                <x-wp-flip-clock />
+            @endif
+        </div>
         @if ($subtitle)
             <p class="wp-muted">{{ $subtitle }}</p>
         @endif

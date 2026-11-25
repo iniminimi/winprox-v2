@@ -3,6 +3,7 @@
         "platform": "Plateforme",
         "workspace": "Espace de travail"
     },
+    "clock": "Heure actuelle",
     "nav": {
         "label": "Navigation principale",
         "collapse": "Replier le menu",

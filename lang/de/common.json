@@ -3,6 +3,7 @@
         "platform": "Plattform",
         "workspace": "Arbeitsbereich"
     },
+    "clock": "Aktuelle Uhrzeit",
     "nav": {
         "label": "Hauptnavigation",
         "collapse": "Menü einklappen",

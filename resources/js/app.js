@@ -19,3 +19,4 @@ import './wp-portal-qr-scanner';
 import './wp-ops-barcode-scanner';
 import './wp-portal-passkey';
 import './sense-scale';
+import './wp-flip-clock';

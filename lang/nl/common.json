@@ -3,6 +3,7 @@
         "platform": "Platform",
         "workspace": "Werkruimte"
     },
+    "clock": "Huidige tijd",
     "nav": {
         "label": "Hoofdnavigatie",
         "collapse": "Menu inklappen",
