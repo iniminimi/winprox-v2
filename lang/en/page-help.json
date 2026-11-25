@@ -1625,7 +1625,11 @@
                 },
                 {
                     "label": "Search and filter",
-                    "text": "With the filters you quickly find the right workers:<br>• Search worker: search by name.<br>• Team: choose a specific team, or All teams.<br>• Location: choose a site, or All locations.<br>• Clock Point: choose a specific Clock Point, or All clock points.<br><br>Do you select a location or Clock Point? Then you only see the workers clocked in there.<br><br>Workers who are not clocked in then disappear from the overview. There is no location or Clock Point for them. A staff member with selected locations only sees presence at the Clock Points of those locations, unless you allow the other locations under Settings → Your organisation."
+                    "text": "With the filters you quickly find the right workers:<br>• Search worker: search by name.<br>• Team: choose a specific team, or All teams.<br>• Location: choose a site, or All locations.<br>• Clock Point: choose a specific Clock Point, or All clock points.<br><br>Do you select a location or Clock Point? Then you only see the workers clocked in there.<br><br>Workers who are not clocked in then disappear from the overview. There is no location or Clock Point for them."
+                },
+                {
+                    "label": "Presence at other locations",
+                    "text": "Whether a staff member also sees presence at other locations is a setting. It is under Settings → Your organisation. Only an administrator can turn it on. It applies immediately.<br><br>• Off: a staff member only sees who is present at the Clock Points of her locations.<br>• On: she also sees presence at the other locations."
                 },
                 {
                     "label": "View a worker’s hours",

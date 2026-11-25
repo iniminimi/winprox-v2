@@ -1625,7 +1625,11 @@
                 },
                 {
                     "label": "Cercare e filtrare",
-                    "text": "Con i filtri trova presto gli esecutori giusti:<br>• Cerca lavoratore: cerchi per nome.<br>• Team: scelga un team oppure Tutti i team.<br>• Sede: scelga una sede oppure Tutte le sedi.<br>• Clock Point: scelga un Clock Point oppure Tutti i clock points.<br><br>Seleziona una sede o un Clock Point? Allora vede solo gli esecutori timbrati lì.<br><br>Gli esecutori che non hanno timbrato spariscono dalla panoramica. Per loro non c’è una sede né un Clock Point. Un dipendente con sedi scelte vede solo la presenza dei Clock Point di quelle sedi, salvo che lei consenta le altre sedi in Impostazioni → La sua organizzazione."
+                    "text": "Con i filtri trova presto gli esecutori giusti:<br>• Cerca lavoratore: cerchi per nome.<br>• Team: scelga un team oppure Tutti i team.<br>• Sede: scelga una sede oppure Tutte le sedi.<br>• Clock Point: scelga un Clock Point oppure Tutti i clock points.<br><br>Seleziona una sede o un Clock Point? Allora vede solo gli esecutori timbrati lì.<br><br>Gli esecutori che non hanno timbrato spariscono dalla panoramica. Per loro non c’è una sede né un Clock Point."
+                },
+                {
+                    "label": "Presenza delle altre sedi",
+                    "text": "Vedere anche la presenza delle altre sedi è un’impostazione. Si trova in Impostazioni → La sua organizzazione. Solo un amministratore può attivarla. Si applica subito.<br><br>• Disattivo: un dipendente vede solo chi è presente ai Clock Point delle sue sedi.<br>• Attivo: vede anche la presenza delle altre sedi."
                 },
                 {
                     "label": "Vedere le ore di un esecutore",

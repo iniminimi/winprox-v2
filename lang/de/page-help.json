@@ -1625,7 +1625,11 @@
                 },
                 {
                     "label": "Suchen und filtern",
-                    "text": "Mit den Filtern finden Sie schnell die richtigen Personen:<br>• Mitarbeitende suchen: suchen Sie nach dem Namen.<br>• Team: wählen Sie ein bestimmtes Team oder Alle Teams.<br>• Standort: wählen Sie einen Standort oder Alle Standorte.<br>• Clock Point: wählen Sie einen bestimmten Clock Point oder Alle Clock Points.<br><br>Wählen Sie einen Standort oder einen Clock Point? Dann sehen Sie nur die Personen, die dort eingestempelt sind.<br><br>Personen, die nicht eingestempelt sind, verschwinden dann aus der Übersicht. Für sie gibt es keinen Standort und keinen Clock Point. Ein Mitarbeitender mit ausgewählten Standorten sieht nur die Anwesenheit der Clock Points dieser Standorte, außer Sie erlauben die anderen Standorte unter Einstellungen → Ihre Organisation."
+                    "text": "Mit den Filtern finden Sie schnell die richtigen Personen:<br>• Mitarbeitende suchen: suchen Sie nach dem Namen.<br>• Team: wählen Sie ein bestimmtes Team oder Alle Teams.<br>• Standort: wählen Sie einen Standort oder Alle Standorte.<br>• Clock Point: wählen Sie einen bestimmten Clock Point oder Alle Clock Points.<br><br>Wählen Sie einen Standort oder einen Clock Point? Dann sehen Sie nur die Personen, die dort eingestempelt sind.<br><br>Personen, die nicht eingestempelt sind, verschwinden dann aus der Übersicht. Für sie gibt es keinen Standort und keinen Clock Point."
+                },
+                {
+                    "label": "Anwesenheit anderer Standorte",
+                    "text": "Ob ein Mitarbeitender auch die Anwesenheit anderer Standorte sieht, ist eine Einstellung. Sie steht unter Einstellungen → Ihre Organisation. Nur ein Administrator kann sie einschalten. Sie gilt sofort.<br><br>• Aus: ein Mitarbeitender sieht nur, wer an den Clock Points seiner Standorte anwesend ist.<br>• Ein: er sieht auch die Anwesenheit der anderen Standorte."
                 },
                 {
                     "label": "Die Stunden einer Person ansehen",

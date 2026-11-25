@@ -1625,7 +1625,11 @@
                 },
                 {
                     "label": "Buscar y filtrar",
-                    "text": "Con los filtros encuentra pronto a los ejecutores correctos:<br>• Buscar trabajador: busque por nombre.<br>• Equipo: elija un equipo o Todos los equipos.<br>• Ubicación: elija una sede o Todas las ubicaciones.<br>• Clock Point: elija un Clock Point o Todos los clock points.<br><br>¿Selecciona una ubicación o un Clock Point? Entonces solo ve a los ejecutores fichados allí.<br><br>Los ejecutores que no han fichado desaparecen del resumen. Para ellos no hay ubicación ni Clock Point. Un empleado con sedes elegidas solo ve la presencia de los Clock Points de esas sedes, salvo que permita las otras sedes en Ajustes → Su organización."
+                    "text": "Con los filtros encuentra pronto a los ejecutores correctos:<br>• Buscar trabajador: busque por nombre.<br>• Equipo: elija un equipo o Todos los equipos.<br>• Ubicación: elija una sede o Todas las ubicaciones.<br>• Clock Point: elija un Clock Point o Todos los clock points.<br><br>¿Selecciona una ubicación o un Clock Point? Entonces solo ve a los ejecutores fichados allí.<br><br>Los ejecutores que no han fichado desaparecen del resumen. Para ellos no hay ubicación ni Clock Point."
+                },
+                {
+                    "label": "Presencia de otras sedes",
+                    "text": "Ver también la presencia de otras sedes es un ajuste. Está en Ajustes → Su organización. Solo un administrador puede activarlo. Se aplica al momento.<br><br>• Desactivado: un empleado solo ve quién está presente en los Clock Points de sus sedes.<br>• Activado: también ve la presencia de las otras sedes."
                 },
                 {
                     "label": "Ver las horas de un ejecutor",

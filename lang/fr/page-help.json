@@ -1629,7 +1629,11 @@
                 },
                 {
                     "label": "Rechercher et filtrer",
-                    "text": "Avec les filtres, vous trouvez vite les bons exécutants :<br>• Rechercher un collaborateur : recherchez par nom.<br>• Équipe : choisissez une équipe, ou Toutes les équipes.<br>• Site : choisissez un site, ou Tous les sites.<br>• Clock Point : choisissez un Clock Point, ou Tous les clock points.<br><br>Vous sélectionnez un site ou un Clock Point ? Vous ne voyez alors que les exécutants pointés à cet endroit.<br><br>Les exécutants qui ne sont pas pointés disparaissent alors de l’aperçu. Il n’y a en effet ni site ni Clock Point pour eux. Un collaborateur avec des sites choisis ne voit que la présence des Clock Points de ces sites, sauf si vous autorisez les autres sites sous Paramètres → Votre organisation."
+                    "text": "Avec les filtres, vous trouvez vite les bons exécutants :<br>• Rechercher un collaborateur : recherchez par nom.<br>• Équipe : choisissez une équipe, ou Toutes les équipes.<br>• Site : choisissez un site, ou Tous les sites.<br>• Clock Point : choisissez un Clock Point, ou Tous les clock points.<br><br>Vous sélectionnez un site ou un Clock Point ? Vous ne voyez alors que les exécutants pointés à cet endroit.<br><br>Les exécutants qui ne sont pas pointés disparaissent alors de l’aperçu. Il n’y a en effet ni site ni Clock Point pour eux."
+                },
+                {
+                    "label": "Présence des autres sites",
+                    "text": "Voir aussi la présence des autres sites est un réglage. Il se trouve sous Paramètres → Votre organisation. Seul un administrateur peut l’activer. Il s’applique tout de suite.<br><br>• Désactivé : un collaborateur ne voit que qui est présent aux Clock Points de ses sites.<br>• Activé : il voit aussi la présence des autres sites."
                 },
                 {
                     "label": "Voir les heures d’un exécutant",
