@@ -426,6 +426,7 @@ it('zet een kader weg in de container en zet het terug', function () {
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.intent.hidden_box.empty'))
         ->assertSeeHtml('data-wp-intent-bin')
+        ->assertSeeHtml('data-wp-intent-hideable="1"')
         ->assertSeeHtml('data-wp-intent-tile="location"')
         ->call('hideIntentTile', 'hidden_box')
         ->call('hideIntentTile', 'arrange_hint')

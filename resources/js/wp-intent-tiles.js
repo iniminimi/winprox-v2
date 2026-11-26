@@ -164,9 +164,13 @@ function registerAlpineComponent() {
             return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
         },
 
+        tileIsHideable(tile) {
+            return tile?.getAttribute('data-wp-intent-hideable') === '1';
+        },
+
         binAt(x, y) {
             const tile = this.pending?.tile;
-            if (!tile?.hasAttribute('data-wp-intent-hideable')) {
+            if (!this.tileIsHideable(tile)) {
                 return null;
             }
             const bin = this.gridEl()?.querySelector('[data-wp-intent-bin]');
@@ -174,10 +178,20 @@ function registerAlpineComponent() {
                 return null;
             }
             const binRect = bin.getBoundingClientRect();
-            if (x >= binRect.left && x <= binRect.right && y >= binRect.top && y <= binRect.bottom) {
+            const pad = 16;
+            const pointerOnBin = x >= binRect.left - pad && x <= binRect.right + pad
+                && y >= binRect.top - pad && y <= binRect.bottom + pad;
+            if (pointerOnBin) {
                 return bin;
             }
             const tileRect = tile.getBoundingClientRect();
+            const centerX = tileRect.left + tileRect.width / 2;
+            const centerY = tileRect.top + tileRect.height / 2;
+            const centerOnBin = centerX >= binRect.left && centerX <= binRect.right
+                && centerY >= binRect.top && centerY <= binRect.bottom;
+            if (centerOnBin) {
+                return bin;
+            }
             const overlapW = Math.min(tileRect.right, binRect.right) - Math.max(tileRect.left, binRect.left);
             const overlapH = Math.min(tileRect.bottom, binRect.bottom) - Math.max(tileRect.top, binRect.top);
             if (overlapW <= 0 || overlapH <= 0 || binRect.width <= 0 || binRect.height <= 0) {
@@ -260,10 +274,10 @@ function registerAlpineComponent() {
                 return;
             }
             const moved = this.didMove;
-            const overBin = this.pending.overBin === true;
             const fromHidden = this.pending.fromHidden === true;
-            const hideable = this.pending.tile?.dataset.wpIntentHideable === '1';
+            const hideable = this.tileIsHideable(this.pending.tile);
             const key = this.pending.tile?.dataset.wpIntentTile ?? '';
+            const overBin = hideable && this.binAt(event.clientX, event.clientY) !== null;
             const keys = moved && !overBin ? this.orderKeys() : null;
             this.clearPending();
             if (!moved) {

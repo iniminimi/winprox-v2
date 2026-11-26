@@ -477,7 +477,7 @@
                                         wire:click="{{ $tile['action'] }}"
                                         @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
                                         data-wp-intent-tile="{{ $tile['key'] }}"
-                                        data-wp-intent-hideable
+                                        data-wp-intent-hideable="1"
                                         draggable="false"
                                         wire:key="intent-{{ $tile['key'] }}">
                                     <div class="wp-kpi-body">
@@ -494,7 +494,7 @@
                                 <a href="{{ $tile['href'] }}"
                                    @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
                                    data-wp-intent-tile="{{ $tile['key'] }}"
-                                   data-wp-intent-hideable
+                                   data-wp-intent-hideable="1"
                                    draggable="false"
                                    wire:key="intent-{{ $tile['key'] }}">
                                     <div class="wp-kpi-body">
@@ -544,7 +544,7 @@
                                                     wire:click="{{ $tile['action'] }}"
                                                     @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
                                                     data-wp-intent-tile="{{ $tile['key'] }}"
-                                                    data-wp-intent-hideable
+                                                    data-wp-intent-hideable="1"
                                                     data-wp-intent-hidden="1"
                                                     draggable="false"
                                                     wire:key="hidden-{{ $tile['key'] }}">
@@ -562,7 +562,7 @@
                                             <a href="{{ $tile['href'] }}"
                                                @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
                                                data-wp-intent-tile="{{ $tile['key'] }}"
-                                               data-wp-intent-hideable
+                                               data-wp-intent-hideable="1"
                                                data-wp-intent-hidden="1"
                                                draggable="false"
                                                wire:key="hidden-{{ $tile['key'] }}">
