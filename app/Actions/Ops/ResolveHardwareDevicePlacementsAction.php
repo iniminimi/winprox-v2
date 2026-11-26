@@ -8,6 +8,7 @@ use App\Models\ClockPoint;
 use App\Models\HardwareDevice;
 use App\Models\Screen;
 use App\Models\Tenant;
+use App\Support\Ops\HardwareMac;
 use Illuminate\Support\Collection;
 
 /**
@@ -43,24 +44,26 @@ final class ResolveHardwareDevicePlacementsAction
             return [];
         }
 
+        $hintVariants = $this->hintVariants($macs);
+
         $points = ClockPoint::query()
             ->withoutGlobalScopes()
             ->with([
                 'location' => fn ($query) => $query->withoutGlobalScopes(),
             ])
-            ->where(function ($query) use ($macs, $pointIds): void {
+            ->where(function ($query) use ($hintVariants, $pointIds): void {
                 if ($pointIds->isNotEmpty()) {
                     $query->whereIn('id', $pointIds->all());
                 }
-                if ($macs->isNotEmpty()) {
+                if ($hintVariants !== []) {
                     $pointIds->isNotEmpty()
-                        ? $query->orWhereIn('display_device_hint', $macs->all())
-                        : $query->whereIn('display_device_hint', $macs->all());
+                        ? $query->orWhereIn('display_device_hint', $hintVariants)
+                        : $query->whereIn('display_device_hint', $hintVariants);
                 }
             })
             ->get();
 
-        $screens = $macs->isEmpty()
+        $screens = $hintVariants === []
             ? collect()
             : Screen::query()
                 ->withoutGlobalScopes()
@@ -68,8 +71,11 @@ final class ResolveHardwareDevicePlacementsAction
                     'unit' => fn ($query) => $query->withoutGlobalScopes()->with([
                         'location' => fn ($location) => $location->withoutGlobalScopes(),
                     ]),
+                    'clockPoint' => fn ($query) => $query->withoutGlobalScopes()->with([
+                        'location' => fn ($location) => $location->withoutGlobalScopes(),
+                    ]),
                 ])
-                ->whereIn('device_hint', $macs->all())
+                ->whereIn('device_hint', $hintVariants)
                 ->whereNotNull('paired_at')
                 ->get();
 
@@ -105,17 +111,22 @@ final class ResolveHardwareDevicePlacementsAction
     {
         $mac = is_string($device->mac) && $device->mac !== '' ? $device->mac : null;
         $point = $device->clock_point_id !== null
-            ? $points->firstWhere('id', (int) $device->clock_point_id)
+            ? $points->first(fn (ClockPoint $candidate) => (int) $candidate->id === (int) $device->clock_point_id)
             : null;
         if ($point === null && $mac !== null) {
-            $point = $points->first(fn (ClockPoint $candidate) => $candidate->display_device_hint === $mac
-                && $candidate->display_paired_at !== null);
+            $point = $points->first(fn (ClockPoint $candidate) => $this->sameMac($candidate->display_device_hint, $mac));
         }
 
         $screen = null;
         if ($mac !== null) {
-            $screen = $screens->first(fn (Screen $candidate) => $candidate->device_hint === $mac && $candidate->unit_id !== null)
-                ?? $screens->first(fn (Screen $candidate) => $candidate->device_hint === $mac);
+            $matched = $screens->filter(fn (Screen $candidate) => $this->sameMac($candidate->device_hint, $mac));
+            $screen = $matched->first(fn (Screen $candidate) => $candidate->unit_id !== null)
+                ?? $matched->first(fn (Screen $candidate) => $candidate->clock_point_id !== null)
+                ?? $matched->first();
+        }
+
+        if ($point === null && $screen?->clockPoint !== null) {
+            $point = $screen->clockPoint;
         }
 
         if ($point === null && $screen === null) {
@@ -151,5 +162,39 @@ final class ResolveHardwareDevicePlacementsAction
         }
 
         return $parts === [] ? null : ['parts' => $parts];
+    }
+
+    /**
+     * @param  Collection<int, mixed>  $macs
+     * @return list<string>
+     */
+    private function hintVariants(Collection $macs): array
+    {
+        $variants = [];
+        foreach ($macs as $mac) {
+            if (! is_string($mac) || $mac === '') {
+                continue;
+            }
+            $normalized = HardwareMac::normalize($mac);
+            if ($normalized === null) {
+                continue;
+            }
+            $display = HardwareMac::formatForDisplay($normalized);
+            foreach ([$normalized, strtolower($normalized), $display, $display !== null ? strtolower($display) : null] as $variant) {
+                if (is_string($variant) && $variant !== '') {
+                    $variants[$variant] = $variant;
+                }
+            }
+        }
+
+        return array_values($variants);
+    }
+
+    private function sameMac(?string $hint, string $mac): bool
+    {
+        $left = HardwareMac::normalize($hint);
+        $right = HardwareMac::normalize($mac);
+
+        return $left !== null && $right !== null && $left === $right;
     }
 }

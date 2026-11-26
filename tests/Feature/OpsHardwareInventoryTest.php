@@ -320,6 +320,52 @@ it('toont bedrijf, locatie en unit zodra de MAC aan een toestel hangt', function
         ->assertDontSee(__('ops.devices.no_tenant'));
 });
 
+it('toont bedrijf en clock point als de MAC alleen aan het clock point hangt', function () {
+    $super = opsSuperuser();
+    $tenant = Tenant::factory()->create([
+        'name' => 'Klok Noord',
+        'street' => 'Kaai',
+        'house_number' => '8',
+        'postal_code' => '2000',
+        'city' => 'Antwerpen',
+        'country_code' => 'BE',
+    ]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Magazijn',
+        'street' => 'Industrieweg',
+        'house_number' => '2',
+        'postal_code' => '2000',
+        'city' => 'Antwerpen',
+    ]);
+    $point = ClockPoint::factory()->forLocation($location)->create([
+        'name' => 'Poort',
+        'display_device_hint' => '44:BD:8D:72:18:EC',
+        'display_paired_at' => now(),
+    ]);
+    Screen::factory()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => null,
+        'clock_point_id' => $point->id,
+        'role' => ScreenRole::Clock,
+        'device_hint' => '44:bd:8d:72:18:ec',
+        'paired_at' => now(),
+    ]);
+    HardwareDevice::factory()->withMac('44BD8D7218EC')->create([
+        'serial_number' => 'SN-CLOCK-ONLY',
+    ]);
+
+    Livewire::actingAs($super)
+        ->test(Devices::class)
+        ->set('search', 'SN-CLOCK-ONLY')
+        ->assertSee('Klok Noord')
+        ->assertSee('Kaai 8, BE 2000 Antwerpen', false)
+        ->assertSee('Magazijn')
+        ->assertSee('Industrieweg 2, 2000 Antwerpen', false)
+        ->assertSee('Poort')
+        ->assertDontSee(__('ops.devices.placement_unit').':');
+});
+
 it('weigert niet-superusers op platform toestellen', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);

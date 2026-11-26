@@ -1408,8 +1408,10 @@ binnen ~30–90 s dood.
   bevestigde claim matcht inventaris op MAC (`in_use` + clock point).
   Hangt die MAC aan een klokpunt of scherm, dan toont de rij het bedrijf
   (naam en adres), de locatie, de unit en het clock point, ook bij toestel
-  zoeken op de gsm. Een MAC die alleen op voorraad staat, blijft zonder die
-  regel. Op de gsm staat “op voorraad” alleen in het label.
+  zoeken op de gsm. Een clock point zonder unit toont bedrijf, locatie en
+  clock point; de MAC mag met of zonder dubbele punten staan. Een MAC die
+  alleen op voorraad staat, blijft zonder die regel. Op de gsm staat
+  “op voorraad” alleen in het label.
 - **Claims:** max 1 pending per punt (DB-unique via `pending_slot` generated column);
   zelfde device_hint retryt idempotent, ander device → `claim_pending`. Nieuwe code
   doodt open claims (`denied/code_reissued`); admin deny → `denied/admin`; verlopen
