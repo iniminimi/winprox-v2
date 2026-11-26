@@ -350,14 +350,24 @@
                             <p class="wp-hint">{{ __('team.colleagues.modal.punch_clock_team_hint') }}</p>
                         </div>
                     @endif
+                    @unless ($editingColleagueId)
+                        <div class="wp-cluster">
+                            <p class="wp-hint">{{ __('team.colleagues.modal.password_suggestion_hint') }}</p>
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="suggestColleaguePassword">
+                                {{ __('team.colleagues.modal.suggest_password') }}
+                            </button>
+                        </div>
+                    @endunless
                     <div class="wp-field">
                         <x-wp-password-input wireModel="colleaguePassword" id="colleaguePassword"
-                                             placeholder="{{ __('team.colleagues.modal.placeholder_password') }}" />
+                                             placeholder="{{ __('team.colleagues.modal.placeholder_password') }}"
+                                             :visibleByDefault="! $editingColleagueId" />
                         @error('colleaguePassword') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
                         <x-wp-password-input wireModel="colleaguePasswordConfirmation" id="colleaguePasswordConfirmation"
-                                             placeholder="{{ __('team.colleagues.modal.placeholder_password_confirm') }}" />
+                                             placeholder="{{ __('team.colleagues.modal.placeholder_password_confirm') }}"
+                                             :visibleByDefault="! $editingColleagueId" />
                         @error('colleaguePasswordConfirmation') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 

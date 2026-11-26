@@ -38,6 +38,8 @@
             "placeholder_email": "E-mail aziendale",
             "placeholder_password": "Password",
             "placeholder_password_confirm": "Conferma password",
+            "password_suggestion_hint": "WinProx inserisce una password forte. La modifichi o chieda un altro suggerimento.",
+            "suggest_password": "Nuovo suggerimento",
             "send_account_email": "Invia subito e-mail account con link password",
             "notify_on_new_issue_email": "Riceva un'e-mail per ogni nuova segnalazione",
             "notify_on_new_issue_email_hint": "Solo per segnalazioni inviate tramite il portale QR.",

@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Establecer una contraseña",
-                    "text": "Tiene dos posibilidades:<br><br>• Usted elige una contraseña y se la da al colega.<br>• Deja que WinProx envíe un correo. El colega puede entonces crear una contraseña con el enlace de ese correo.<br><br>¿Está editando un colega que ya existe? Deje vacíos los campos de contraseña si la contraseña actual debe mantenerse."
+                    "text": "WinProx rellena una contraseña fuerte. Puede cambiarla o pedir otra propuesta.<br><br>Tiene dos posibilidades:<br><br>• Usted elige una contraseña y se la da al colega.<br>• Deja que WinProx envíe un correo. El colega puede entonces crear una contraseña con el enlace de ese correo.<br><br>¿Está editando un colega que ya existe? Deje vacíos los campos de contraseña si la contraseña actual debe mantenerse."
                 },
                 {
                     "label": "Correo ante avisos nuevos",

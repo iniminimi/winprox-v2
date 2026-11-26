@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Set a password",
-                    "text": "You have two options:<br><br>• You choose a password yourself and give it to the colleague.<br>• You let WinProx send an email. The colleague can then set a password via the link in that email.<br><br>Editing an existing colleague? Leave the password fields empty if the current password should stay as it is."
+                    "text": "WinProx fills in a strong password. You can change it or ask for a new suggestion.<br><br>You have two options:<br><br>• You choose a password yourself and give it to the colleague.<br>• You let WinProx send an email. The colleague can then set a password via the link in that email.<br><br>Editing an existing colleague? Leave the password fields empty if the current password should stay as it is."
                 },
                 {
                     "label": "Email for new reports",

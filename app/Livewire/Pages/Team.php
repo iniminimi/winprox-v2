@@ -16,6 +16,7 @@ use App\Actions\Team\SetColleagueActiveAction;
 use App\Actions\Team\SetTeamActiveAction;
 use App\Actions\Team\SetWorkerActiveAction;
 use App\Actions\Team\SetWorkerTeamleaderAction;
+use App\Actions\Team\SuggestColleaguePasswordAction;
 use App\Actions\Team\SyncTeamCategoriesAction;
 use App\Actions\Team\SyncWorkerWeekdayMinutesAction;
 use App\Actions\Team\UpdateColleagueAction;
@@ -335,7 +336,17 @@ class Team extends Component
 
         $this->resetColleagueForm();
         $this->editingColleagueId = null;
+        $this->suggestColleaguePassword(app(SuggestColleaguePasswordAction::class));
         $this->showColleagueModal = true;
+    }
+
+    public function suggestColleaguePassword(SuggestColleaguePasswordAction $suggest): void
+    {
+        $this->authorize('create', User::class);
+
+        $password = $suggest->handle();
+        $this->colleaguePassword = $password;
+        $this->colleaguePasswordConfirmation = $password;
     }
 
     public function openEditColleague(int $id): void

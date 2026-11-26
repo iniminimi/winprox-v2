@@ -38,6 +38,8 @@
             "placeholder_email": "Adresse e-mail professionnelle",
             "placeholder_password": "Mot de passe",
             "placeholder_password_confirm": "Confirmer le mot de passe",
+            "password_suggestion_hint": "WinProx remplit un mot de passe fort. Modifiez-le ou demandez une nouvelle proposition.",
+            "suggest_password": "Nouvelle proposition",
             "send_account_email": "Envoyer immédiatement l'e-mail du compte avec lien de mot de passe",
             "notify_on_new_issue_email": "Recevoir un e-mail pour chaque nouveau signalement",
             "notify_on_new_issue_email_hint": "Uniquement pour les signalements via le portail QR.",

@@ -117,6 +117,29 @@ function tenantWithAdmin(): array
 
 // --- Collega-gebruikers (admin) -------------------------------------------
 
+it('stelt een sterk wachtwoord voor bij een nieuwe gebruiker', function () {
+    [, $admin] = tenantWithAdmin();
+
+    $component = Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openCreateColleague')
+        ->assertSee(__('team.colleagues.modal.suggest_password'));
+
+    $password = $component->get('colleaguePassword');
+
+    expect($password)->toBe($component->get('colleaguePasswordConfirmation'))
+        ->and(strlen($password))->toBe(16)
+        ->and($password)->toMatch('/[a-z]/')
+        ->and($password)->toMatch('/[A-Z]/')
+        ->and($password)->toMatch('/[2-9]/')
+        ->and($password)->toMatch('/[!@#$%&*\-_+=?]/');
+
+    $component->call('suggestColleaguePassword');
+
+    expect($component->get('colleaguePassword'))->not->toBe('')
+        ->and($component->get('colleaguePassword'))->toBe($component->get('colleaguePasswordConfirmation'));
+});
+
 it('laat een admin een collega-gebruiker aanmaken met set-wachtwoord-mail', function () {
     Mail::fake();
     [$tenant, $admin] = tenantWithAdmin();

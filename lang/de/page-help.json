@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Passwort festlegen",
-                    "text": "Sie haben zwei Möglichkeiten:<br><br>• Sie wählen selbst ein Passwort und geben es dem Kollegen.<br>• Sie lassen WinProx automatisch eine E-Mail senden. Der Kollege kann dann über den Link in dieser E-Mail selbst ein Passwort festlegen.<br><br>Bearbeiten Sie einen bestehenden Kollegen? Lassen Sie die Passwortfelder leer, wenn das aktuelle Passwort bleiben soll."
+                    "text": "WinProx füllt ein starkes Passwort ein. Sie können es ändern oder einen neuen Vorschlag anfordern.<br><br>Sie haben zwei Möglichkeiten:<br><br>• Sie wählen selbst ein Passwort und geben es dem Kollegen.<br>• Sie lassen WinProx automatisch eine E-Mail senden. Der Kollege kann dann über den Link in dieser E-Mail selbst ein Passwort festlegen.<br><br>Bearbeiten Sie einen bestehenden Kollegen? Lassen Sie die Passwortfelder leer, wenn das aktuelle Passwort bleiben soll."
                 },
                 {
                     "label": "E-Mail bei neuen Meldungen",

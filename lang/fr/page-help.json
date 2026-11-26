@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Définir un mot de passe",
-                    "text": "Vous avez deux possibilités :<br><br>• Vous choisissez vous-même un mot de passe et vous le transmettez au collègue.<br>• Vous laissez WinProx envoyer un e-mail. Le collègue peut alors définir un mot de passe via le lien de cet e-mail.<br><br>Vous modifiez un collègue existant ? Laissez les champs du mot de passe vides si le mot de passe actuel doit rester inchangé."
+                    "text": "WinProx remplit un mot de passe fort. Vous pouvez le modifier ou demander une nouvelle proposition.<br><br>Vous avez deux possibilités :<br><br>• Vous choisissez vous-même un mot de passe et vous le transmettez au collègue.<br>• Vous laissez WinProx envoyer un e-mail. Le collègue peut alors définir un mot de passe via le lien de cet e-mail.<br><br>Vous modifiez un collègue existant ? Laissez les champs du mot de passe vides si le mot de passe actuel doit rester inchangé."
                 },
                 {
                     "label": "E-mail pour les nouveaux signalements",

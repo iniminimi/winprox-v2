@@ -1525,6 +1525,8 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 ### 6.1 Collega-gebruikers (alleen admin)
 - Lijst + aanmaken/bewerken/deactiveren van gebruikers, met **rol** (admin/medewerker);
   welkomst-/accountmail (set-password-link via reset-broker). `users.is_active` → inactief = geen login.
+  Bij een nieuwe collega vult WinProx een sterk wachtwoord in (zichtbaar). De beheerder kan het
+  aanpassen of een nieuw voorstel vragen. Bij bewerken blijven de velden leeg.
 - Medewerker: optioneel **locatie-multi-select** (leeg = alle vestigingen). Met Time-module:
   optioneel **prikklok-team** → gekoppeld worker-profiel (`workers.user_id`, telt niet dubbel als licentie).
 - Sidebar **Personen → Backoffice** (`/team?section=backoffice`). Een medewerker ziet de collega’s van haar locaties. Alleen een beheerder voegt collega’s toe of bewerkt hun account. De cijfers op het beginscherm, overuren, alarmen en afwezigheidsaanvragen (ook de foto), Clock Points en het fotoalbum volgen diezelfde locaties. Zoeken toont ook meldingen en taken van andere locaties, maar die detailpagina opent niet. Onder Je organisatie kan een beheerder toelaten dat een medewerker ook de aanwezigheid van andere Clock Points ziet. Standaard uit.

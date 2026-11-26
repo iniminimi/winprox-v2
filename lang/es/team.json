@@ -38,6 +38,8 @@
             "placeholder_email": "Correo electrónico de trabajo",
             "placeholder_password": "Contraseña",
             "placeholder_password_confirm": "Confirmar contraseña",
+            "password_suggestion_hint": "WinProx rellena una contraseña fuerte. Cámbiela o pida otra propuesta.",
+            "suggest_password": "Nueva propuesta",
             "send_account_email": "Enviar correo de cuenta inmediatamente con enlace de contraseña",
             "notify_on_new_issue_email": "Recibir un correo por cada nuevo informe",
             "notify_on_new_issue_email_hint": "Solo para informes enviados mediante el portal QR.",

@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Wachtwoord instellen",
-                    "text": "U hebt twee mogelijkheden:<br><br>• U kiest zelf een wachtwoord en bezorgt dit aan de collega.<br>• U laat WinProx automatisch een e-mail versturen. De collega kan dan zelf een wachtwoord instellen via de link in die e-mail.<br><br>Bewerkt u een bestaande collega? Laat dan de wachtwoordvelden leeg als het huidige wachtwoord behouden moet blijven."
+                    "text": "WinProx vult een sterk wachtwoord in. U kunt het aanpassen of een nieuw voorstel vragen.<br><br>U hebt twee mogelijkheden:<br><br>• U kiest zelf een wachtwoord en bezorgt dit aan de collega.<br>• U laat WinProx automatisch een e-mail versturen. De collega kan dan zelf een wachtwoord instellen via de link in die e-mail.<br><br>Bewerkt u een bestaande collega? Laat dan de wachtwoordvelden leeg als het huidige wachtwoord behouden moet blijven."
                 },
                 {
                     "label": "E-mail bij nieuwe meldingen",

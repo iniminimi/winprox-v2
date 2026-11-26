@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Impostare una password",
-                    "text": "Ha due possibilità:<br><br>• Sceglie lei una password e la consegna al collega.<br>• Lascia che WinProx invii un’e-mail. Il collega può allora impostare una password tramite il link di quell’e-mail.<br><br>Sta modificando un collega già esistente? Lasci vuoti i campi della password se la password attuale deve restare."
+                    "text": "WinProx inserisce una password forte. Può modificarla o chiedere un altro suggerimento.<br><br>Ha due possibilità:<br><br>• Sceglie lei una password e la consegna al collega.<br>• Lascia che WinProx invii un’e-mail. Il collega può allora impostare una password tramite il link di quell’e-mail.<br><br>Sta modificando un collega già esistente? Lasci vuoti i campi della password se la password attuale deve restare."
                 },
                 {
                     "label": "E-mail per le nuove segnalazioni",

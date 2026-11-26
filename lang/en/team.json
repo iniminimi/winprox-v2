@@ -38,6 +38,8 @@
             "placeholder_email": "Work email address",
             "placeholder_password": "Password",
             "placeholder_password_confirm": "Confirm password",
+            "password_suggestion_hint": "WinProx fills in a strong password. Change it or ask for a new suggestion.",
+            "suggest_password": "New suggestion",
             "send_account_email": "Send account email immediately with password link",
             "notify_on_new_issue_email": "Receive an email for every new report",
             "notify_on_new_issue_email_hint": "Only for reports submitted via the QR portal.",
