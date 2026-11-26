@@ -38,13 +38,17 @@ final class RestoreDashboardIntentTileAction
             }
         }
 
+        $boxAt = array_search(BuildDashboardIntentHubAction::BOX_KEY, $clean, true);
+        if ($boxAt !== false) {
+            array_splice($clean, $boxAt, 1);
+        }
+
         if (! in_array($key, $clean, true)) {
-            $boxAt = array_search(BuildDashboardIntentHubAction::BOX_KEY, $clean, true);
-            if ($boxAt === false) {
-                $clean[] = $key;
-            } else {
-                array_splice($clean, $boxAt, 0, [$key]);
-            }
+            $clean[] = $key;
+        }
+
+        if ($boxAt !== false) {
+            $clean[] = BuildDashboardIntentHubAction::BOX_KEY;
         }
 
         $actor->update([

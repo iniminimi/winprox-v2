@@ -20,7 +20,7 @@ function registerAlpineComponent() {
 
         onPointerDown(event) {
             const tile = event.target.closest('[data-wp-intent-tile]');
-            if (!tile || !this.$el.contains(tile)) {
+            if (!tile || tile.hasAttribute('data-wp-intent-bin') || !this.$el.contains(tile)) {
                 return;
             }
             if (event.pointerType === 'mouse' && event.button !== 0) {
@@ -251,7 +251,9 @@ function registerAlpineComponent() {
             if (!grid || !placeholder) {
                 return;
             }
-            const tiles = [...grid.querySelectorAll('[data-wp-intent-tile]')];
+            const bin = grid.querySelector('[data-wp-intent-bin]');
+            const tiles = [...grid.querySelectorAll('[data-wp-intent-tile]')]
+                .filter((el) => !el.hasAttribute('data-wp-intent-bin'));
             let before = null;
             for (const other of tiles) {
                 const rect = other.getBoundingClientRect();
@@ -263,6 +265,9 @@ function registerAlpineComponent() {
                     before = other;
                     break;
                 }
+            }
+            if (!before && bin) {
+                before = bin;
             }
             if (before) {
                 if (placeholder !== before && placeholder.nextElementSibling !== before) {

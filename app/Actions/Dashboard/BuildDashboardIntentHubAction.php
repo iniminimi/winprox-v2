@@ -212,7 +212,7 @@ class BuildDashboardIntentHubAction
     private function applySavedOrder(array $tiles, ?array $saved): array
     {
         if ($saved === null || $saved === []) {
-            return $tiles;
+            return $this->withBoxLast($tiles);
         }
 
         $byKey = [];
@@ -235,7 +235,31 @@ class BuildDashboardIntentHubAction
             }
         }
 
-        return $ordered;
+        return $this->withBoxLast($ordered);
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $tiles
+     * @return list<array<string, mixed>>
+     */
+    private function withBoxLast(array $tiles): array
+    {
+        $box = null;
+        $rest = [];
+        foreach ($tiles as $tile) {
+            if (($tile['key'] ?? null) === self::BOX_KEY) {
+                $box = $tile;
+
+                continue;
+            }
+            $rest[] = $tile;
+        }
+
+        if ($box !== null) {
+            $rest[] = $box;
+        }
+
+        return $rest;
     }
 
     private function displayName(User $user): string

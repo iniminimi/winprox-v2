@@ -397,11 +397,23 @@ it('onthoudt de volgorde van de snelkoppelingen per gebruiker', function () {
 
     expect($user->refresh()->dashboard_intent_order)->toBe(['roster', 'worker']);
 
+    $ordered = Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->call('reorderIntentTiles', ['worker', 'hidden_box', 'roster']);
+
+    $html = $ordered->html();
+    $rosterAt = strpos($html, 'data-wp-intent-tile="roster"');
+    $boxAt = strpos($html, 'data-wp-intent-tile="hidden_box"');
+
+    expect($rosterAt)->not->toBeFalse()
+        ->and($boxAt)->toBeGreaterThan($rosterAt)
+        ->and($user->refresh()->dashboard_intent_order)->toBe(['worker', 'roster', 'hidden_box']);
+
     Livewire::actingAs($user)
         ->test(Dashboard::class)
         ->assertSeeInOrder([
-            __('dashboard.intent.tiles.roster.title'),
             __('dashboard.intent.tiles.worker.title'),
+            __('dashboard.intent.tiles.roster.title'),
         ]);
 });
 
@@ -473,6 +485,10 @@ it('zet een telling weg in de dashboardcontainer en niet in de snelkoppelingen',
     Livewire::actingAs($user)
         ->test(Dashboard::class)
         ->assertSeeHtml('data-wp-tile-mode="hide"')
+        ->assertSeeInOrder([
+            'data-wp-intent-tile="new_issues"',
+            'data-wp-intent-tile="hidden_kpi_box"',
+        ], false)
         ->assertSeeHtml('data-wp-intent-tile="new_issues"')
         ->assertSeeHtml('data-wp-intent-tile="location"')
         ->call('hideDashboardKpi', 'location')

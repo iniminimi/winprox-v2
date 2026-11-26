@@ -1280,6 +1280,10 @@ it('zet een checkmate-tegel weg in Weggezette kaders', function () {
     Livewire::actingAs($user)
         ->test(Dashboard::class)
         ->assertSeeHtml('data-wp-hide-method="hideCheckmateTile"')
+        ->assertSeeInOrder([
+            'data-wp-intent-tile="clock_point_qr"',
+            'data-wp-intent-tile="hidden_checkmate_box"',
+        ], false)
         ->assertSeeHtml('data-wp-intent-tile="add_customer"')
         ->assertSeeHtml('data-wp-intent-tile="present_now"')
         ->assertSee(__('dashboard.intent.hidden_box.empty'))
@@ -1394,7 +1398,10 @@ it('toont de Checkmate-instructievideo tussen de tegels en laatste activiteit, a
         ->assertSee('video/checkmate_PWA.mp4', false)
         ->assertSee(__('dashboard.checkmate.pwa_video'), false)
         ->assertSee('target="_blank"', false)
+        ->assertSee('wp-page-help-trigger', false)
         ->assertSeeInOrder([
+            'wp-page-title',
+            'video/checkmate_PWA.mp4',
             'class="wp-kpis"',
             'video/checkmate_PWA.mp4',
             __('dashboard.checkmate.recent.title'),

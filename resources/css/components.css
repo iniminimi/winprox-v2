@@ -1173,6 +1173,11 @@ a.wp-pill:hover {
     }
 }
 
+/* Weggezette kaders: altijd de rechtercel van de laatste rij. */
+.wp-kpis > [data-wp-intent-bin] {
+    grid-column: -2 / -1;
+}
+
 /* Intent-sectie + Dashboard-sectie (hergebruik page-head + wp-kpi; geen aparte tegel-component) */
 .wp-dashboard-intent {
     gap: 0;

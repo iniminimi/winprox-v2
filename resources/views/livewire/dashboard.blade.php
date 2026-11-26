@@ -9,7 +9,18 @@
                     help-page="checkmate.dashboard"
                     :title="__('dashboard.title')"
                     :subtitle="__('dashboard.checkmate.subtitle')"
-                />
+                >
+                    @if ($checkmatePwaVideoUrl)
+                        <x-slot:titleActions>
+                            <a href="{{ $checkmatePwaVideoUrl }}" target="_blank" rel="noopener noreferrer"
+                               class="wp-page-help-trigger"
+                               aria-label="{{ __('dashboard.checkmate.pwa_video') }}"
+                               title="{{ __('dashboard.checkmate.pwa_video') }}">
+                                <x-wp-icon name="video" />
+                            </a>
+                        </x-slot:titleActions>
+                    @endif
+                </x-wp-page-head-title>
             </div>
             <div class="wp-cluster">
                 @if ($portalBatteryState)
@@ -706,6 +717,21 @@
                     </div>
                 </a>
             @endforeach
+            @foreach (array_slice($senseAttention ?? [], 0, 8) as $line)
+                <a href="{{ $line->url }}"
+                   class="wp-kpi wp-kpi--sense wp-kpi--alert"
+                   wire:key="sense-attention-{{ $line->sensePointId }}-{{ $loop->index }}">
+                    <div class="wp-kpi-body">
+                        <span class="wp-kpi-icon" aria-hidden="true">
+                            <x-wp-icon name="sensor" />
+                        </span>
+                        <div class="wp-kpi-main">
+                            <p class="wp-kpi-kicker">{{ $line->room }}</p>
+                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ $line->detail }}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
             @if ($visibleKpis !== [] || $hiddenKpis !== [])
                 @php
                     $hiddenKpiCount = count($hiddenKpis);
@@ -736,21 +762,6 @@
                     </div>
                 </button>
             @endif
-            @foreach (array_slice($senseAttention ?? [], 0, 8) as $line)
-                <a href="{{ $line->url }}"
-                   class="wp-kpi wp-kpi--sense wp-kpi--alert"
-                   wire:key="sense-attention-{{ $line->sensePointId }}-{{ $loop->index }}">
-                    <div class="wp-kpi-body">
-                        <span class="wp-kpi-icon" aria-hidden="true">
-                            <x-wp-icon name="sensor" />
-                        </span>
-                        <div class="wp-kpi-main">
-                            <p class="wp-kpi-kicker">{{ $line->room }}</p>
-                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ $line->detail }}</p>
-                        </div>
-                    </div>
-                </a>
-            @endforeach
         </div>
         @if ($showHiddenKpis && $hiddenKpis !== [])
             <div data-wp-intent-hidden-modal>
