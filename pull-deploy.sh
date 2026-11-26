@@ -45,7 +45,9 @@ if [[ -f composer.lock ]] && [[ -n "$COMPOSER" ]]; then
 fi
 
 echo "==> Laravel"
-# Database blijft onaangeroerd. Migraties pas weer aanzetten als het schema mag wijzigen.
+# Alleen deze kolom. Een volle migrate maakt users opnieuw aan zolang de
+# migrations-tabel leeg is.
+php artisan migrate --force --path=database/migrations/2026_11_26_220000_add_translations_enabled_to_tenants_table.php
 php artisan schedule:clear-cache
 php artisan optimize:clear
 php artisan config:cache

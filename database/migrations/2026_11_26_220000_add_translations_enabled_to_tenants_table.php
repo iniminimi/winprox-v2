@@ -8,6 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasColumn('tenants', 'translations_enabled')) {
+            return;
+        }
+
         Schema::table('tenants', function (Blueprint $table) {
             $table->boolean('translations_enabled')->default(false)->after('photo_album_enabled');
         });
