@@ -463,6 +463,22 @@ it('weigert csv-import met allow_reservations wanneer werkmenu uit staat', funct
         ->and($result['errors'][0])->toContain(__('settings.work_menu.errors.reservations_disabled'));
 });
 
+it('verbergt inspectieronde plannen op meldingen wanneer inspectierondes uit staan', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_inspection_rounds_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    seedTenantPastOnboarding($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($admin)
+        ->get(route('issues.index'))
+        ->assertOk()
+        ->assertSee(__('issues.list.add'), false)
+        ->assertDontSee('wire:click="openRoundCreateModal"', false)
+        ->assertDontSee('wire:model.live="inspectionRoundOnly"', false);
+});
+
 it('blokkeert inspectierondes deep-link wanneer werkmenu uit staat', function () {
     $tenant = Tenant::factory()->create([
         'work_menu_inspection_rounds_enabled' => false,

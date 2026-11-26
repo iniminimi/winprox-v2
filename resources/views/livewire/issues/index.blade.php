@@ -23,16 +23,20 @@
             </div>
             <div class="wp-cluster wp-page-actions">
                 @if ($inspectionRoundOnly)
-                    <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openRoundCreateModal">
-                        {{ __('issues.list.plan_round') }}
-                    </button>
+                    @can('createInspectionRound', \App\Models\Issue::class)
+                        <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openRoundCreateModal">
+                            {{ __('issues.list.plan_round') }}
+                        </button>
+                    @endcan
                 @else
                     <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openCreateModal">
                         {{ __('issues.list.add') }}
                     </button>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openRoundCreateModal">
-                        {{ __('issues.list.plan_round') }}
-                    </button>
+                    @can('createInspectionRound', \App\Models\Issue::class)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openRoundCreateModal">
+                            {{ __('issues.list.plan_round') }}
+                        </button>
+                    @endcan
                 @endif
                 <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
             </div>
@@ -83,10 +87,12 @@
                                 <input type="checkbox" wire:model.defer="recurring">
                                 {{ __('issues.filter.recurring_only') }}
                             </label>
-                            <label class="wp-check">
-                                <input type="checkbox" wire:model.live="inspectionRoundOnly">
-                                {{ __('issues.filter.inspection_rounds_only') }}
-                            </label>
+                            @can('viewInspectionRounds', \App\Models\Issue::class)
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model.live="inspectionRoundOnly">
+                                    {{ __('issues.filter.inspection_rounds_only') }}
+                                </label>
+                            @endcan
                         </div>
                     @else
                         <div class="wp-filter-cell">
