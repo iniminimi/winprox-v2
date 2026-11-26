@@ -71,12 +71,14 @@ it('legt het Checkmate-dashboard uit in gewone taal', function (string $locale):
         ->and($text)->toContain('WhatsApp');
 
     if ($locale === 'nl') {
-        expect($labels)->toContain('Eerste stappen')
+        expect($labels)->toContain('Uw startscherm')
+            ->and($labels)->toContain('Uw eerste stappen')
             ->and($labels)->toContain('KBO-nummer invullen')
-            ->and($labels)->toContain('Instructivideo installatie app')
+            ->and($labels)->toContain('Instructievideo: installatie op de gsm')
             ->and($labels)->toContain('Weggezette kaders')
             ->and($labels)->toContain('Clock Point QR')
-            ->and($text)->toContain('Rijksregisternummer ontbreekt');
+            ->and($text)->toContain('Rijksregisternummer ontbreekt')
+            ->and($text)->toContain('Instructivideo installatie app');
     }
 })->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
 

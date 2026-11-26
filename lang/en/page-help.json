@@ -2490,85 +2490,85 @@
             "title": "Help — Dashboard",
             "actions": [
                 {
-                    "label": "What you see here",
-                    "text": "This is the Checkmate home screen. Here you see who is at work, which customer visits ran today, and what you still need to arrange for the social security office.<br><br>At the top are cards for a quick action or a count. At the bottom is recent activity.<br><br>Some cards appear only while there is something to do. For example the first worker, a missing national register number, or a company number that is still empty."
+                    "label": "Your home screen",
+                    "text": "The dashboard is the starting point of Checkmate. At a glance you see who is at work, which customer visits took place today, and whether something still needs to be arranged for the social security office (CIAO).<br><br>At the top you find handy shortcuts and overviews. At the bottom you see the most recent customer visits.<br><br>Some cards appear only when something needs your attention. For example adding your first worker, a missing national register number, or a company number that still has to be filled in."
                 },
                 {
                     "label": "Trial and subscription",
-                    "text": "At the top right, next to the title, a battery may appear. It shows how many days are left. A tap opens Subscription.<br><br>• During the trial you read <strong>Trial period: … days left.</strong> You then test with 25 licences.<br>• With a running subscription: <strong>Subscription: … days left.</strong><br>• After it ends, in the grace period: <strong>Grace period: … days of full access left.</strong><br><br>The fuller the battery, the more days remain. More about licences is under Subscription."
+                    "text": "At the top right, next to the title, you may see a battery icon. It shows how many days remain of your trial or subscription.<br><br>Click it to go to <strong>Subscription</strong>.<br><br>Depending on your situation you see:<br>• <strong>Trial period: … days left:</strong> you can try Checkmate with 25 licences.<br>• <strong>Subscription: … days left:</strong> your current subscription still runs for the number of days shown.<br>• <strong>Grace period: … days of full access left:</strong> your subscription has ended, but you temporarily keep full access to Checkmate.<br><br>The fuller the battery, the more days you still have.<br><br>More about your subscription and the available licences is under <strong>Subscription</strong>."
                 },
                 {
                     "label": "CIAO request pending",
-                    "text": "If the card <strong>CIAO request pending</strong> appears, your request to the social security office is waiting for confirmation by WinProx.<br><br>Until that confirmation, presence is not sent yet. Punches from before the confirmation are not sent later either.<br><br><strong>Go to settings</strong> opens the CIAO section, so you can check what you already filled in."
+                    "text": "Do you see the card <strong>CIAO request pending</strong>? Then your request to the social security office is still waiting for confirmation by WinProx.<br><br>Until that confirmation, presence is not sent to the social security office. Registrations from before the confirmation are not sent afterwards either.<br><br><strong>Go to settings</strong> opens the CIAO section. There you can check which details you have already filled in."
                 },
                 {
                     "label": "Enter your CBE number",
-                    "text": "If CIAO is on but your company number is missing, the card <strong>Enter your CBE number</strong> pulses.<br><br>Without that number WinProx cannot send anything to the social security office. A foreign VAT number may stand in for the company number.<br><br><strong>Go to settings</strong> opens the CIAO section. Fill in the number. The card then disappears."
+                    "text": "Do you use CIAO, but is your company number missing? Then the card <strong>Enter your CBE number</strong> appears.<br><br>This number is needed to send your details to the social security office. If your company has no Belgian company number, you can also fill in a foreign VAT number.<br><br>Click <strong>Go to settings</strong> to add the number in the CIAO section. Once the number is filled in, the card disappears."
                 },
                 {
-                    "label": "Saved files",
-                    "text": "Sometimes a card appears about a file you can still download.<br><br>• <strong>Roster saved</strong> — the roster, the clocked hours and the requests of a closed year are in a file. You download it via Subscription.<br>• <strong>Photos removed</strong> — photos with an absence have been deleted. Via Subscription you can still download them, until the date on the card.<br><br>Neither card? Then there is nothing to download right now."
+                    "label": "Files ready for you",
+                    "text": "Sometimes WinProx keeps files for a while that you can still download. You get a notice about that on your dashboard.<br><br>There are two possible notices:<br>• <strong>Roster saved:</strong> the roster, the clocked hours and the requests of a closed year are gathered in a file. You can download it via <strong>Subscription</strong>.<br>• <strong>Photos removed:</strong> photos that belonged to an absence have been removed. You can still download them via <strong>Subscription</strong> until the date shown on the card.<br><br>Do you see neither card? Then no files are ready to download at the moment."
                 },
                 {
                     "label": "National register number missing",
-                    "text": "If the card <strong>National register number missing</strong> pulses, at least one active worker has no national register number.<br><br>CIAO needs that number to send that worker’s presence to the social security office. Without it, that presence is not included.<br><br>Each name on the card opens that worker, so you can fill in the number straight away. The card disappears once every active worker has a number.<br><br>On the <strong>Workers</strong> card you see the same gap, for example <strong>(2 without NISS)</strong>."
+                    "text": "Does the card <strong>National register number missing</strong> appear? Then at least one active worker still has no national register number.<br><br>For the CIAO declaration the social security office needs this number to process a worker’s presence correctly. Without a national register number that presence is not sent.<br><br>On the card you see which workers are still missing details. Click a name to open that person’s profile and fill in the number straight away.<br><br>Once every active worker has a national register number, the card disappears.<br><br>You find the same information on <strong>Workers</strong>. There you see for example the notice <strong>(2 without NISS)</strong> when two workers have not filled in their number yet."
                 },
                 {
-                    "label": "First steps",
-                    "text": "As long as there is no worker yet, the screen asks <strong>Add your first worker</strong>. Workers have no login of their own. They sign in with the Clock Point QR on their phone, clock in and out, and start a visit at the customer’s work address.<br><br>If there is a worker but no customer yet, the screen asks <strong>Add your first customer</strong>. That customer needs at least one work address. The pin on that address is where a worker can start a visit.<br><br>First the worker, then the customer. Both cards disappear once they exist. After that you use the cards <strong>Add worker</strong> and <strong>Add customer</strong>."
+                    "label": "Your first steps",
+                    "text": "Using Checkmate for the first time? Then WinProx helps you on your way.<br><br><strong>1. Add your first worker</strong><br><br>As long as no worker has been created, the card <strong>Add your first worker</strong> appears.<br><br>Workers do not need a login of their own. They sign in with the Clock Point QR code on their phone. After that they can clock in and out and start a customer visit at the customer’s work address.<br><br><strong>2. Add your first customer</strong><br><br>Have you already added a worker, but no customer yet? Then the card <strong>Add your first customer</strong> appears.<br><br>Every customer needs at least one work address. The location pin on that address is where a worker can start a customer visit.<br><br>So start with a worker, and then add your first customer.<br><br>Once both have been created, these starter cards disappear. From then on you add new workers and customers via <strong>Add worker</strong> and <strong>Add customer</strong>."
                 },
                 {
                     "label": "What’s new?",
-                    "text": "If the card <strong>What’s new?</strong> appears at the top, something recently changed in WinProx.<br><br>The card stays visible for up to one week. Click it to view the recent changes under Help → New. After that it disappears.<br><br>If a newer note appears later, the card shows again. You cannot put this card away."
+                    "text": "Does the card <strong>What’s new?</strong> appear at the top? Then something in WinProx was recently changed or improved.<br><br>The card stays visible for at most one week. Click it to view the recent changes via <strong>Help → New</strong>. After that the card disappears automatically.<br><br>If a new update or note arrives later, the card appears again.<br><br>You cannot hide this card yourself."
                 },
                 {
                     "label": "Quick actions",
-                    "text": "The first cards are shortcuts. A tap opens the screen. Hold a card: it lifts and follows you. Drag it onto <strong>Cards put away</strong> to hide it. That choice is only for you.<br><br>• <strong>Add customer</strong> — opens the form for a new customer. You then add a work address, with the street and the pin where the work happens.<br>• <strong>Add worker</strong> — opens the form for someone who clocks in with the team. First name, last name and a team are enough to start. Fill in the national register number when CIAO should send their presence.<br>• <strong>Presence</strong> — opens the live overview: who is clocked in, and at which customer the visit is running."
+                    "text": "The first cards on your dashboard are shortcuts. One click opens the right screen straight away.<br><br>You can also arrange the cards yourself. Hold a card until it lights up and drag it to <strong>Cards put away</strong> if you no longer want it on your dashboard.<br><br>The main shortcuts are:<br>• <strong>Add customer:</strong> create a new customer. Then add at least one work address, with the address and the exact place where the work is done.<br>• <strong>Add worker:</strong> add a new person who will clock in through Checkmate. To start, a first name, last name and team are enough. You add the national register number when you want to send presence to the social security office through CIAO.<br>• <strong>Presence:</strong> see live who is clocked in now, and at which customer a visit is running."
                 },
                 {
                     "label": "Overview",
-                    "text": "Next to those are the counts. Click a card to open the matching screen. You can put these cards away too. That is only for you."
+                    "text": "Next to the shortcuts you find several cards with current figures.<br><br>Click a card to open the matching screen. You can also drag these cards to <strong>Cards put away</strong> if you would rather not see them on your dashboard."
                 },
                 {
                     "label": "Present now",
-                    "text": "The number of workers with an open shift who are not on a break. Someone on a break is not counted. The card opens Presence.",
+                    "text": "Here you see how many workers are at work right now.<br><br>Every worker with an open shift counts, except when they are on a break at that moment.<br><br>Click the card to open the live overview <strong>Presence</strong>.",
                     "nested": true
                 },
                 {
                     "label": "Visits today",
-                    "text": "The number of customer visits that started today. A visit that has already ended still counts. The card opens Clocked hours.",
+                    "text": "Here you see how many customer visits started today.<br><br>Visits that have already ended still count.<br><br>Click the card to view the matching records via <strong>Clocked hours</strong>.",
                     "nested": true
                 },
                 {
                     "label": "Workers",
-                    "text": "The number of active workers. The card opens the team screen, where you add and change workers. If it says for example <strong>(2 without NISS)</strong>, those workers have no national register number.",
+                    "text": "Here you see the number of active workers in your organisation.<br><br>This card opens the team screen. There you can add, change or manage workers.<br><br>Do you see for example <strong>(2 without NISS)</strong>? Then two active workers have not filled in a national register number yet.",
                     "nested": true
                 },
                 {
                     "label": "Licences in use",
-                    "text": "How many licences are taken, against your limit. For example <strong>8 / 25</strong>. A licence is a colleague with a login or an active worker. The card opens Subscription.<br><br>During the trial the limit is 25. After that you set the number yourself. You cannot lower it below the number already in use. Deactivate a worker or a colleague first.",
+                    "text": "Here you see how many licences are in use now, against the number available in your subscription.<br><br>For example: <strong>8 / 25</strong> means that 8 of the 25 available licences are taken.<br><br>A licence is needed for a colleague with their own login, or for an active worker.<br><br>Click the card to view your subscription and licences.<br><br>During the trial you have 25 licences. After that you decide how many licences you need.<br><br>Do you want to lower the number of licences? That is not possible while more licences are in use than your new limit. Deactivate a worker or a colleague first.",
                     "nested": true
                 },
                 {
                     "label": "Active customers",
-                    "text": "The number of customers that are still active. A customer you deactivated is not counted. The card opens the customer list.",
+                    "text": "Here you see how many customers are currently active in Checkmate.<br><br>Customers you have deactivated are not counted.<br><br>Click the card to open your customer list.",
                     "nested": true
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "This card is not a count but a button. Under the title it says <strong>Let your workers get started with the QR code.</strong><br><br>Until a shift has ever run, the card pulses. That way you see that workers still need the QR to start. After the first shift the pulse stops. The button stays.<br><br>A tap opens the same window as on the Clock Point:<br>• the QR, to show or print straight away;<br>• a Word print sheet on A6, A5 or A4;<br>• the sign-in link, to copy or share via WhatsApp;<br>• an email to the worker with that link.<br><br>Once someone has signed in, they open the portal afterwards from the icon on the phone’s home screen. On Checkmate, clocking in and out also works from that icon, without scanning again. A customer visit starts at the work address, with GPS."
+                    "text": "This card is not a counter, but a handy shortcut to your Clock Point QR code.<br><br>On it you see the message <strong>Let your workers get started with the QR code</strong>.<br><br>Until a shift has ever been recorded, the card lights up regularly. That way you know your workers still need the QR code to start.<br><br>Once the first shift has been recorded, the pulsing stops. The card of course stays available.<br><br>Click it to open the same window as when you manage your Clock Point. There you find several options:<br>• <strong>QR code:</strong> show the code on screen or print it straight away.<br>• <strong>Print sheet:</strong> make a Word document with the QR code in A6, A5 or A4 format.<br>• <strong>Sign-in link:</strong> copy the link or share it directly via WhatsApp.<br>• <strong>Email:</strong> send the personal sign-in link to a worker.<br><br>A worker signs in once with the QR code. After that they can open the Checkmate portal directly from the icon on the phone’s home screen.<br><br>Clocking in and out can then also be done from that icon, without scanning the QR code again each time.<br><br>Starting a customer visit happens at the customer’s work address, where the GPS location is checked."
                 },
                 {
                     "label": "Cards put away",
-                    "text": "On the right of the grid there is always the card <strong>Cards put away</strong>.<br><br>When it is empty, you read <strong>Drag a card here.</strong> Hold another card and drop it there. It leaves the screen. The text becomes <strong>1 card put away</strong>, or more if you put more away.<br><br>Tap the card to see them again. Hold a card that was put away and drop it on the grid to bring it back.<br><br>That is only for you. A colleague keeps their own layout. <strong>What’s new?</strong> does not go in."
+                    "text": "Want to keep your dashboard clear? Then you can easily hide cards you use less often.<br><br>On the right of the grid there is always the card <strong>Cards put away</strong>.<br><br>Is this card still empty? Then you see the text <strong>Drag a card here</strong>.<br><br>Hold a card you want to hide and drag it to <strong>Cards put away</strong>. The card then disappears from your dashboard.<br><br>You see how many cards you have put away, for example <strong>1 card put away</strong>.<br><br>Want to use a card again? Click <strong>Cards put away</strong>. You see every hidden card. Hold the card you want and drag it back onto the dashboard.<br><br>Your layout is personal. Colleagues who also have access to Checkmate keep their own dashboard layout.<br><br>The card <strong>What’s new?</strong> cannot be put away."
                 },
                 {
-                    "label": "Instruction video app installation",
-                    "text": "When the language of WinProx is Dutch, you see the button <strong>Instruction video app installation</strong> between the cards and recent activity.<br><br>It opens a video in a new window: how a worker puts WinProx on the phone’s home screen. There is no app store. In another language the button does not appear."
+                    "label": "Instruction video: installing on the phone",
+                    "text": "Do you use WinProx in Dutch? Then, between the cards and recent activity, you also find the button <strong>Instructivideo installatie app</strong>.<br><br>The video shows step by step how a worker puts Checkmate on the home screen of their phone.<br><br>Nothing has to be downloaded from an app store. Checkmate works directly in the browser.<br><br>Do you use WinProx in another language? Then this button is not shown."
                 },
                 {
                     "label": "Recent activity",
-                    "text": "At the bottom are the last eight customer visits, newest first.<br><br>For each visit you see the worker, the customer and the work address, and the time. If the visit is still running, it says <strong>Started at …</strong> and the pill <strong>Running</strong>. If it has ended, you see the start and the end and the pill <strong>Done</strong>.<br><br>A running visit opens Presence. A finished visit opens Clocked hours.<br><br>At the top right, <strong>Open presence</strong> opens the live overview. If there are no visits yet, you read <strong>No customer visits yet.</strong>"
+                    "text": "At the bottom of your dashboard you find the eight most recent customer visits, with the newest visit at the top.<br><br>For each visit you see:<br>• The worker’s name.<br>• The customer and the matching work address.<br>• The time the visit started.<br><br>Is a visit still running? Then you see <strong>Started at …</strong> with the status <strong>Running</strong>.<br><br>Has the visit ended? Then you see both the start and end time, with the status <strong>Done</strong>.<br><br>Click a running visit to open the live overview <strong>Presence</strong>.<br><br>You open a finished visit via <strong>Clocked hours</strong>.<br><br>Via <strong>Open presence</strong> at the top right you go straight to the live overview of everyone who is present.<br><br>Have no customer visits been recorded yet? Then the notice <strong>No customer visits yet</strong> appears."
                 }
             ]
         },
