@@ -190,6 +190,17 @@ return [
         ],
         [
             'patterns' => [
+                'weggezette kaders', 'kaders weg', 'kader wegzetten',
+                'cards put away', 'put cards away',
+                'cadres rangés', 'ranger un cadre',
+                'weggelegte kacheln', 'kachel weglegen',
+                'cuadros guardados', 'guardar un cuadro',
+                'schede messe da parte', 'mettere da parte',
+            ],
+            'body_key' => 'faq.items.dashboard_cards.summary',
+        ],
+        [
+            'patterns' => [
                 'pagina-hulp', 'page help', 'page-help', 'hulpknop', 'help button',
                 'hilfe-button', 'bouton aide', 'seitenhilfe', 'pagina hulp',
             ],

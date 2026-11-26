@@ -126,7 +126,7 @@ fouttype per uur (met het aantal herhalingen) en 10 per uur in totaal. Zie
 - **Proefperiode-capsule**: "Proefperiode nog X dagen." (zie §Abonnement).
 
 **KPI-kaarten** (neutraal/minimaal, emerald enkel als subtiel accent) — **klikbaar** (elke tegel
-linkt naar zijn lijst). Een vast kader **Weggezette kaders** staat in dat raster. Een telling erop loslaten zet die weg voor die persoon. Een tik toont ze; vasthouden en loslaten op het raster zet er een terug. De snelkoppelingen bovenaan gaan daar niet in, en een telling gaat niet in het kader bovenaan. Sense-aandacht blijft buiten die container.
+linkt naar zijn lijst). Een vast kader **Weggezette kaders** staat in dat raster. Een telling erop loslaten zet die weg voor die persoon. Een tik toont ze; vasthouden en loslaten op het raster zet er een terug op zijn gewone plek. Loslaten naast het kader verplaatst een telling niet. De snelkoppelingen bovenaan gaan daar niet in, en een telling gaat niet in het kader bovenaan. Sense-aandacht blijft buiten die container. Hulp, handleiding, FAQ en de assistent beschrijven dezelfde twee kaders.
 - Nieuwe meldingen — aantal nieuw/open → meldingen (status=nieuw). **Alert-accent** als > 0.
 - Open taken — "In uitvoering" → taken (open/in uitvoering).
 - Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; inbegrepen in elke WinProx-formule).

@@ -289,6 +289,13 @@
             "body": "Oui. Sous Lieux vous gérez Catégories, Sites et Units séparément. Plusieurs sites et units sur une organisation, avec filtres. Exécutants et collègues peuvent être liés à des sites ; Clock Point n'affiche les noms que sur les sites assignés (équipes volantes partout). Limites selon l'abonnement.",
             "summary": "Plusieurs sites via Lieux ; exécutants/collègues optionnel par site ; volant partout."
         },
+        "dashboard_cards": {
+            "slug": "dashboard_cards",
+            "type": "text",
+            "title": "Comment ranger des cadres sur l'écran d'accueil ?",
+            "body": "En haut, à Que voulez-vous faire ?, glissez un raccourci vers le cadre Cadres rangés. Touchez-le pour les voir et glissez-en un vers la grille. Maintenez une tuile pour changer l'ordre. Cela ne vaut que pour vous. Sous Tableau de bord, le même cadre fait cela pour les compteurs. Un raccourci n'entre pas dans le cadre sous Tableau de bord, et un compteur n'entre pas dans le cadre du haut. La tuile avec la main et Quoi de neuf n'y entrent pas.",
+            "summary": "Vous rangez les raccourcis et les compteurs dans leur propre cadre Cadres rangés. Seulement pour vous. Ils n'entrent pas dans le cadre de l'autre."
+        },
         "page_help": {
             "slug": "page_help",
             "type": "text",

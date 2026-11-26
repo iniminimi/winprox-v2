@@ -293,6 +293,13 @@
             "body": "Ja. Onder Plaatsen beheer je Categorieën, Locaties en Units apart. Meerdere locaties en units op één organisatie, met filters. Uitvoerders en collega's kunnen aan vestigingen gekoppeld worden; Clock Point toont alleen namen op toegewezen vestigingen (invallerteams overal). Limieten hangen af van uw abonnement.",
             "summary": "Meerdere locaties via Plaatsen; uitvoerders/collega's optioneel per vestiging; invallerteam overal."
         },
+        "dashboard_cards": {
+            "slug": "dashboard_cards",
+            "type": "text",
+            "title": "Hoe zet ik kaders weg op het beginscherm?",
+            "body": "Bovenaan, bij Wat wil je doen?, sleept u een snelkoppeling naar het kader Weggezette kaders. Tik erop om ze te zien en sleep er een terug op het raster. Houd een tegel vast om de volgorde te wijzigen. Dat geldt alleen voor u. Onder Dashboard doet hetzelfde kader dat met de tellingen. Een snelkoppeling gaat niet in het kader onder Dashboard, en een telling gaat niet in het kader bovenaan. Het kader met het handje en Wat is er nieuw gaan er niet in.",
+            "summary": "Snelkoppelingen en tellingen zet u weg in hun eigen kader Weggezette kaders. Alleen voor u. Ze gaan niet in elkaars kader."
+        },
         "page_help": {
             "slug": "page_help",
             "type": "text",

@@ -227,6 +227,18 @@ it('beantwoordt Microsoft-login vanuit pagina-hulp backoffice', function (): voi
         ->and($answer)->toContain('prikklok');
 });
 
+it('beantwoordt weggezette kaders vanuit pagina-hulp', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    $answer = $matcher->match('Hoe zet ik kaders weg op het beginscherm?', 'nl');
+
+    expect($answer)->toContain('Snel naar een actie')
+        ->and($answer)->toContain('handje')
+        ->and($answer)->toContain('Overzicht')
+        ->and($answer)->toContain('telling')
+        ->and($answer)->not->toBe(__('faq.items.dashboard_cards.summary'));
+});
+
 it('koppelt pagina-hulp zonder bare status-woord', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 

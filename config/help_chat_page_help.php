@@ -161,6 +161,25 @@ return [
             'prefer' => ['starttemplate', 'starter template', 'op weg', 'modèle de départ', 'startvorlage'],
         ],
         [
+            'patterns' => [
+                'weggezette kaders', 'kaders weg', 'kader wegzetten',
+                'cards put away', 'put cards away',
+                'cadres rangés', 'ranger un cadre',
+                'weggelegte kacheln', 'kachel weglegen',
+                'cuadros guardados', 'guardar un cuadro',
+                'schede messe da parte', 'mettere da parte',
+            ],
+            'page' => 'dashboard',
+            'prefer' => [
+                'handje', 'telling',
+                'tile with a hand', 'count you drag',
+                'tuile avec la main', 'compteur',
+                'kachel mit der hand', 'zählung',
+                'tarjeta con la mano', 'conteo',
+                'scheda con la mano', 'conteggio',
+            ],
+        ],
+        [
             'patterns' => ['dashboard', 'overzicht dashboard'],
             'page' => 'dashboard',
         ],
