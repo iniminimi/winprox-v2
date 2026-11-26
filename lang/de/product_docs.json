@@ -174,7 +174,7 @@
             },
             {
                 "title": "Dashboard",
-                "body": "Das Dashboard ist der Start in den Tag. Oben steht die Frage Was möchten Sie tun?, mit Kurzbefehlen zu den wichtigsten Funktionen, darunter jemanden manuell einstempeln, der es selbst nicht konnte. Eine Karte Was ist neu? weist eine Woche auf Hilfe → Neu, bis Sie sie öffnen. Ein Tippen öffnet eine Verknüpfung. Halten Sie die Kachel gedrückt: sie hebt sich und folgt Ihnen, und Sie setzen sie an eine andere Stelle. Diese Reihenfolge bleibt für Sie gespeichert. Solange Sie die Kacheln noch nicht verschoben haben, steht vorn eine Kachel mit einer Hand. Sie verschwindet nach dem ersten Mal.",
+                "body": "Das Dashboard ist der Start in den Tag. Oben steht die Frage Was möchten Sie tun?, mit Kurzbefehlen zu den wichtigsten Funktionen, darunter jemanden manuell einstempeln, der es selbst nicht konnte. Eine Karte Was ist neu? weist eine Woche auf Hilfe → Neu, bis Sie sie öffnen. Ein Tippen öffnet eine Verknüpfung. Halten Sie die Kachel gedrückt: sie hebt sich und folgt Ihnen, und Sie setzen sie an eine andere Stelle. Diese Reihenfolge bleibt für Sie gespeichert. Solange Sie die Kacheln noch nicht verschoben haben, steht vorn eine Kachel mit einer Hand. Sie verschwindet nach dem ersten Mal. Eine Kachel bewahrt Verknüpfungen, die Sie dorthin ziehen. Tippen Sie darauf, um sie zu sehen, und ziehen Sie eine zurück auf den Startbildschirm.",
                 "items": [
                     "Dienstplan und Anwesenheit, eine neue Tagesaufgabe oder Inspektionsrunde, Standorte und Ausführende.",
                     "Neue Meldungen und offene Aufgaben. Mit Time: wer jetzt anwesend ist.",

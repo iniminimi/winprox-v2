@@ -174,7 +174,7 @@
             },
             {
                 "title": "Dashboard",
-                "body": "Het dashboard is het startpunt van de dag. Bovenaan staat de vraag Wat wil je doen?, met snelkoppelingen naar de belangrijkste functies, waaronder iemand manueel inklokken die zelf niet kon. Een kaart Wat is er nieuw? wijst een week naar Hulp → Nieuw, tot je ze opent. Een tik opent een snelkoppeling. Houd de tegel vast: hij licht op en komt mee, en u zet hem op een andere plek. Die volgorde blijft voor u bewaard. Zolang u de kaders nog niet verplaatst hebt, staat vooraan een tegel met een handje. Die verdwijnt na de eerste keer.",
+                "body": "Het dashboard is het startpunt van de dag. Bovenaan staat de vraag Wat wil je doen?, met snelkoppelingen naar de belangrijkste functies, waaronder iemand manueel inklokken die zelf niet kon. Een kaart Wat is er nieuw? wijst een week naar Hulp → Nieuw, tot je ze opent. Een tik opent een snelkoppeling. Houd de tegel vast: hij licht op en komt mee, en u zet hem op een andere plek. Die volgorde blijft voor u bewaard. Zolang u de kaders nog niet verplaatst hebt, staat vooraan een tegel met een handje. Die verdwijnt na de eerste keer. Een kader waar u een snelkoppeling heen sleept, bewaart die. Tik erop en sleep het kader terug naar het beginscherm.",
                 "items": [
                     "Uurrooster en aanwezigheid, een nieuwe dagtaak of inspectieronde, locaties en uitvoerders.",
                     "Nieuwe meldingen en open taken. Met Time: wie er nu aanwezig is.",

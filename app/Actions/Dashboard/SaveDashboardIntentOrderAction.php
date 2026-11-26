@@ -15,7 +15,7 @@ final class SaveDashboardIntentOrderAction
     {
         $clean = [];
         foreach ($keys as $key) {
-            if (! is_string($key) || ! in_array($key, BuildDashboardIntentHubAction::TILE_KEYS, true)) {
+            if (! is_string($key) || ! in_array($key, [...BuildDashboardIntentHubAction::TILE_KEYS, BuildDashboardIntentHubAction::BOX_KEY], true)) {
                 continue;
             }
             if (in_array($key, $clean, true)) {

@@ -29,6 +29,8 @@ class BuildDashboardIntentHubAction
         'add_device',
     ];
 
+    public const BOX_KEY = 'hidden_box';
+
     public function handle(Tenant $tenant, User $user, ?CarbonInterface $now = null): DashboardIntentHubData
     {
         $now ??= now();
@@ -161,8 +163,31 @@ class BuildDashboardIntentHubAction
             ];
         }
 
-        $ordered = $this->applySavedOrder($tiles, $user->dashboard_intent_order);
-        if ($ordered !== [] && ($user->dashboard_intent_order === null || $user->dashboard_intent_order === [])) {
+        $hiddenKeys = array_values(array_filter(
+            $user->dashboard_hidden_tiles ?? [],
+            fn (mixed $key): bool => is_string($key) && in_array($key, self::TILE_KEYS, true),
+        ));
+        $visible = [];
+        $hidden = [];
+        foreach ($tiles as $tile) {
+            if (in_array($tile['key'], $hiddenKeys, true)) {
+                $hidden[] = $tile;
+            } else {
+                $visible[] = $tile;
+            }
+        }
+
+        $visible[] = [
+            'key' => self::BOX_KEY,
+            'icon' => 'archive-box',
+            'tone' => 'open_tasks',
+            'title' => 'dashboard.intent.hidden_box.title',
+            'body' => 'dashboard.intent.hidden_box.empty',
+        ];
+
+        $ordered = $this->applySavedOrder($visible, $user->dashboard_intent_order);
+        $savedOrder = $user->dashboard_intent_order;
+        if ($tiles !== [] && ($savedOrder === null || $savedOrder === [])) {
             array_unshift($ordered, [
                 'key' => 'arrange_hint',
                 'icon' => 'grip-hand',
@@ -175,6 +200,7 @@ class BuildDashboardIntentHubAction
         return new DashboardIntentHubData(
             greeting: __($greetingKey, ['name' => $name]),
             tiles: $ordered,
+            hiddenTiles: $hidden,
         );
     }
 

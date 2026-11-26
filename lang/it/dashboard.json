@@ -160,6 +160,12 @@
                 "title": "Puoi riordinare queste schede.",
                 "body": "Clicca e tieni premuto, puoi spostare questa."
             }
+        },
+        "hidden_box": {
+            "title": "Schede messe da parte",
+            "empty": "Trascina una scheda qui.",
+            "one": "1 scheda messa da parte",
+            "many": ":count schede messe da parte"
         }
     },
     "checkmate": {

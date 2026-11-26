@@ -405,6 +405,53 @@ it('onthoudt de volgorde van de snelkoppelingen per gebruiker', function () {
         ]);
 });
 
+it('zet een kader weg in de container en zet het terug', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'work_menu_inspection_rounds_enabled' => true,
+    ]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $other = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.intent.hidden_box.empty'))
+        ->assertSeeHtml('data-wp-intent-bin')
+        ->assertSeeHtml('data-wp-intent-tile="location"')
+        ->call('hideIntentTile', 'hidden_box')
+        ->call('hideIntentTile', 'arrange_hint')
+        ->call('hideIntentTile', 'nope')
+        ->assertSeeHtml('data-wp-intent-tile="location"')
+        ->call('hideIntentTile', 'location')
+        ->assertDontSeeHtml('data-wp-intent-tile="location"')
+        ->assertSee(__('dashboard.intent.hidden_box.one'))
+        ->call('openHiddenTiles')
+        ->assertSet('showHiddenTiles', true)
+        ->assertSeeHtml('data-wp-intent-hidden="1"')
+        ->assertSee(__('dashboard.intent.tiles.location.title'))
+        ->call('restoreIntentTile', 'location', ['worker', 'location', 'hidden_box'])
+        ->assertSet('showHiddenTiles', false)
+        ->assertSeeHtml('data-wp-intent-tile="location"')
+        ->assertSee(__('dashboard.intent.hidden_box.empty'));
+
+    expect($user->refresh()->dashboard_hidden_tiles)->toBe([])
+        ->and($user->dashboard_intent_order)->toBe(['worker', 'location', 'hidden_box']);
+
+    Livewire::actingAs($other)
+        ->test(Dashboard::class)
+        ->assertSeeHtml('data-wp-intent-tile="location"')
+        ->assertSee(__('dashboard.intent.hidden_box.empty'));
+});
+
 it('verbergt Time-tegels in de intent-hub zonder Time-module', function () {
     $tenant = Tenant::factory()->create([
         'has_time_module' => false,

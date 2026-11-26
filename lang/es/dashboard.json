@@ -160,6 +160,12 @@
                 "title": "Puedes ordenar estos cuadros.",
                 "body": "Haz clic y mantén pulsado, puedes mover este."
             }
+        },
+        "hidden_box": {
+            "title": "Cuadros guardados",
+            "empty": "Arrastra un cuadro aquí.",
+            "one": "1 cuadro guardado",
+            "many": ":count cuadros guardados"
         }
     },
     "checkmate": {

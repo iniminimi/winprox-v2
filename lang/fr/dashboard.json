@@ -160,6 +160,12 @@
                 "title": "Vous pouvez ranger ces cadres.",
                 "body": "Cliquez et maintenez, vous pouvez déplacer celui-ci."
             }
+        },
+        "hidden_box": {
+            "title": "Cadres rangés",
+            "empty": "Glissez un cadre ici.",
+            "one": "1 cadre rangé",
+            "many": ":count cadres rangés"
         }
     },
     "checkmate": {

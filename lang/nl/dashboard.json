@@ -160,6 +160,12 @@
                 "title": "Deze kaders kan je rangschikken.",
                 "body": "Klik en hou vast, je kan deze verplaatsen."
             }
+        },
+        "hidden_box": {
+            "title": "Weggezette kaders",
+            "empty": "Sleep een kader hierheen.",
+            "one": "1 kader weggezet",
+            "many": ":count kaders weggezet"
         }
     },
     "checkmate": {

@@ -7,11 +7,13 @@ namespace App\Data\Dashboard;
 final class DashboardIntentHubData
 {
     /**
-     * @param  list<array{key: string, icon: string, tone: string, title: string, body: string, href: string}>  $tiles
+     * @param  list<array<string, mixed>>  $tiles
+     * @param  list<array<string, mixed>>  $hiddenTiles
      */
     public function __construct(
         public string $greeting,
         public array $tiles,
+        public array $hiddenTiles = [],
     ) {}
 
     public function isEmpty(): bool

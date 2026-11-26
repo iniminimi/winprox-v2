@@ -7,6 +7,8 @@ use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
 use App\Actions\Dashboard\BuildDashboardIntentHubAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
+use App\Actions\Dashboard\HideDashboardIntentTileAction;
+use App\Actions\Dashboard\RestoreDashboardIntentTileAction;
 use App\Actions\Dashboard\SaveDashboardIntentOrderAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
@@ -69,6 +71,8 @@ class Dashboard extends Component
 
     public ?string $checkmateQrMailFlash = null;
 
+    public bool $showHiddenTiles = false;
+
     public function openAddDevice(): void
     {
         $this->authorize('pairDeviceAny', Location::class);
@@ -84,6 +88,38 @@ class Dashboard extends Component
         abort_unless($user instanceof User, 403);
 
         app(SaveDashboardIntentOrderAction::class)->handle($user, $keys);
+    }
+
+    public function openHiddenTiles(): void
+    {
+        abort_unless(auth()->user() instanceof User, 403);
+        $this->showHiddenTiles = true;
+    }
+
+    public function closeHiddenTiles(): void
+    {
+        $this->showHiddenTiles = false;
+    }
+
+    public function hideIntentTile(string $key): void
+    {
+        $user = auth()->user();
+        abort_unless($user instanceof User, 403);
+
+        app(HideDashboardIntentTileAction::class)->handle($user, $key);
+        $this->showHiddenTiles = false;
+    }
+
+    /**
+     * @param  list<mixed>  $order
+     */
+    public function restoreIntentTile(string $key, array $order): void
+    {
+        $user = auth()->user();
+        abort_unless($user instanceof User, 403);
+
+        app(RestoreDashboardIntentTileAction::class)->handle($user, $key, $order);
+        $this->showHiddenTiles = false;
     }
 
     public function openCheckmateClockPointQr(EnsureDefaultClockPointAction $ensureDefault): void

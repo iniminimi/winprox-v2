@@ -43,12 +43,16 @@ function registerAlpineComponent() {
             this.holdTimer = setTimeout(() => this.arm(), HOLD_MS);
         },
 
+        gridEl() {
+            return this.$el.querySelector('[data-wp-intent-grid]');
+        },
+
         arm() {
             if (!this.pending) {
                 return;
             }
             this.armed = true;
-            this.$el.classList.add('is-sorting');
+            this.gridEl()?.classList.add('is-sorting');
             this.lift();
             try {
                 this.pending.tile.setPointerCapture(this.pending.id);
@@ -70,7 +74,14 @@ function registerAlpineComponent() {
             placeholder.className = 'wp-intent-placeholder';
             placeholder.style.minHeight = `${rect.height}px`;
             placeholder.setAttribute('aria-hidden', 'true');
-            tile.before(placeholder);
+            const fromHidden = tile.dataset.wpIntentHidden === '1';
+            this.pending.home = tile.parentNode;
+            this.pending.homeNext = tile.nextSibling;
+            this.pending.fromHidden = fromHidden;
+            this.pending.overBin = false;
+            if (!fromHidden) {
+                tile.before(placeholder);
+            }
             this.pending.placeholder = placeholder;
             this.pending.offsetX = this.pending.x - rect.left;
             this.pending.offsetY = this.pending.y - rect.top;
@@ -78,6 +89,9 @@ function registerAlpineComponent() {
             tile.style.width = `${rect.width}px`;
             tile.style.height = `${rect.height}px`;
             document.body.appendChild(tile);
+            if (fromHidden) {
+                this.concealHiddenModal();
+            }
         },
 
         onPointerMove(event) {
@@ -114,15 +128,81 @@ function registerAlpineComponent() {
             }
             tile.style.left = `${x - this.pending.offsetX}px`;
             tile.style.top = `${y - this.pending.offsetY}px`;
+            const bin = this.binAt(x, y);
+            this.clearBin();
+            if (bin) {
+                this.pending.overBin = true;
+                bin.classList.add('is-bin-target');
+                if (this.pending.placeholder?.parentNode) {
+                    this.pending.placeholder.remove();
+                }
+                return;
+            }
+            this.pending.overBin = false;
+            const grid = this.gridEl();
+            const placeholder = this.pending.placeholder;
+            if (!grid || !placeholder) {
+                return;
+            }
+            if (this.pending.fromHidden && !this.pointerOverGrid(x, y)) {
+                if (placeholder.parentNode) {
+                    placeholder.remove();
+                }
+                return;
+            }
+            if (placeholder.parentNode !== grid) {
+                grid.appendChild(placeholder);
+            }
             this.place(x, y);
         },
 
+        pointerOverGrid(x, y) {
+            const rect = this.gridEl()?.getBoundingClientRect();
+            if (!rect) {
+                return false;
+            }
+            return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+        },
+
+        binAt(x, y) {
+            if (this.pending?.tile?.dataset.wpIntentHideable !== '1') {
+                return null;
+            }
+            const hit = document.elementFromPoint(x, y);
+            const bin = hit?.closest?.('[data-wp-intent-bin]');
+            if (!bin || !this.gridEl()?.contains(bin)) {
+                return null;
+            }
+            return bin;
+        },
+
+        clearBin() {
+            this.gridEl()?.querySelectorAll('[data-wp-intent-bin].is-bin-target').forEach((el) => {
+                el.classList.remove('is-bin-target');
+            });
+        },
+
+        concealHiddenModal() {
+            const modal = this.$el.querySelector('[data-wp-intent-hidden-modal]');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        },
+
+        revealHiddenModal() {
+            const modal = this.$el.querySelector('[data-wp-intent-hidden-modal]');
+            if (modal) {
+                modal.style.display = '';
+            }
+        },
+
         place(x, y) {
+            const grid = this.gridEl();
             const placeholder = this.pending?.placeholder;
-            if (!placeholder) {
+            if (!grid || !placeholder) {
                 return;
             }
-            const tiles = [...this.$el.querySelectorAll('[data-wp-intent-tile]')];
+            const tiles = [...grid.querySelectorAll('[data-wp-intent-tile]')];
             let before = null;
             for (const other of tiles) {
                 const rect = other.getBoundingClientRect();
@@ -137,14 +217,31 @@ function registerAlpineComponent() {
             }
             if (before) {
                 if (placeholder !== before && placeholder.nextElementSibling !== before) {
-                    this.$el.insertBefore(placeholder, before);
+                    grid.insertBefore(placeholder, before);
                 }
                 return;
             }
-            const last = tiles[tiles.length - 1];
-            if (last && last.nextElementSibling !== placeholder) {
-                last.after(placeholder);
+            if (placeholder.parentNode !== grid || grid.lastElementChild !== placeholder) {
+                grid.appendChild(placeholder);
             }
+        },
+
+        orderKeys() {
+            const grid = this.gridEl();
+            const placeholder = this.pending?.placeholder;
+            const key = this.pending?.tile?.dataset.wpIntentTile;
+            if (!grid || !placeholder?.parentNode || !key) {
+                return null;
+            }
+            const keys = [];
+            for (const node of grid.children) {
+                if (node === placeholder) {
+                    keys.push(key);
+                } else if (node.dataset?.wpIntentTile && node.dataset.wpIntentTile !== key) {
+                    keys.push(node.dataset.wpIntentTile);
+                }
+            }
+            return keys.length === 0 ? null : keys;
         },
 
         onPointerUp(event) {
@@ -152,18 +249,30 @@ function registerAlpineComponent() {
                 return;
             }
             const moved = this.didMove;
+            const overBin = this.pending.overBin === true;
+            const fromHidden = this.pending.fromHidden === true;
+            const hideable = this.pending.tile?.dataset.wpIntentHideable === '1';
+            const key = this.pending.tile?.dataset.wpIntentTile ?? '';
+            const keys = moved && !overBin ? this.orderKeys() : null;
             this.clearPending();
             if (!moved) {
-                return;
-            }
-            const keys = [...this.$el.querySelectorAll('[data-wp-intent-tile]')].map(
-                (el) => el.dataset.wpIntentTile,
-            );
-            if (keys.length === 0) {
+                this.revealHiddenModal();
                 return;
             }
             this.suppressClick = true;
-            this.$wire.reorderIntentTiles(keys);
+            if (overBin && hideable && key !== '') {
+                if (fromHidden) {
+                    this.$wire.closeHiddenTiles();
+                } else {
+                    this.$wire.hideIntentTile(key);
+                }
+            } else if (fromHidden && keys) {
+                this.$wire.restoreIntentTile(key, keys);
+            } else if (!fromHidden && keys) {
+                this.$wire.reorderIntentTiles(keys);
+            } else {
+                this.revealHiddenModal();
+            }
             setTimeout(() => {
                 this.suppressClick = false;
             }, 400);
@@ -204,14 +313,16 @@ function registerAlpineComponent() {
                     tile.releasePointerCapture(this.pending.id);
                 }
             }
-            if (placeholder?.parentNode) {
-                if (tile) {
-                    placeholder.replaceWith(tile);
-                } else {
-                    placeholder.remove();
-                }
+            if (placeholder?.parentNode && tile) {
+                placeholder.replaceWith(tile);
+            } else if (tile && this.pending?.home) {
+                this.pending.home.insertBefore(tile, this.pending.homeNext);
+                placeholder?.remove();
+            } else {
+                placeholder?.remove();
             }
-            this.$el.classList.remove('is-sorting');
+            this.clearBin();
+            this.gridEl()?.classList.remove('is-sorting');
             this.pending = null;
             this.armed = false;
             this.didMove = false;

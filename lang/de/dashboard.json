@@ -160,6 +160,12 @@
                 "title": "Diese Kacheln können Sie anordnen.",
                 "body": "Klicken und halten, dann können Sie diese verschieben."
             }
+        },
+        "hidden_box": {
+            "title": "Weggelegte Kacheln",
+            "empty": "Ziehen Sie eine Kachel hierher.",
+            "one": "1 Kachel weggelegt",
+            "many": ":count Kacheln weggelegt"
         }
     },
     "checkmate": {

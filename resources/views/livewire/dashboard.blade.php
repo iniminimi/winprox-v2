@@ -420,7 +420,16 @@
         @endif
 
         @if ($intentHub !== null)
-            <section class="wp-stack wp-dashboard-intent" aria-label="{{ __('dashboard.intent.title') }}">
+            <section class="wp-stack wp-dashboard-intent"
+                     aria-label="{{ __('dashboard.intent.title') }}"
+                     x-data="wpIntentTiles"
+                     @pointerdown="onPointerDown($event)"
+                     @pointermove.window="onPointerMove($event)"
+                     @pointerup.window="onPointerUp($event)"
+                     @pointercancel.window="onPointerUp($event)"
+                     @click.capture="onClick($event)"
+                     @contextmenu="onContextMenu($event)"
+                     @dragstart.prevent>
                 <x-wp-page-head-title
                     icon="home-greeting"
                     :title="$intentHub->greeting"
@@ -429,24 +438,46 @@
                 />
 
                 @if ($showWhatsNew || ! $intentHub->isEmpty() || $canAddDevice)
-                    <div class="wp-kpis"
-                         x-data="wpIntentTiles"
-                         @pointerdown="onPointerDown($event)"
-                         @pointermove.window="onPointerMove($event)"
-                         @pointerup.window="onPointerUp($event)"
-                         @pointercancel.window="onPointerUp($event)"
-                         @click.capture="onClick($event)"
-                         @contextmenu="onContextMenu($event)"
-                         @dragstart.prevent>
+                    <div class="wp-kpis" data-wp-intent-grid>
                         @if ($showWhatsNew)
                             @include('partials.whats-new-card')
                         @endif
                         @foreach ($intentHub->tiles as $tile)
-                            @if (($tile['action'] ?? null) !== null)
+                            @if ($tile['key'] === 'hidden_box')
+                                @php
+                                    $hiddenCount = count($intentHub->hiddenTiles);
+                                @endphp
+                                <button type="button"
+                                        @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                                        @if ($hiddenCount > 0) wire:click="openHiddenTiles" @endif
+                                        data-wp-intent-tile="hidden_box"
+                                        data-wp-intent-bin
+                                        draggable="false"
+                                        wire:key="intent-hidden-box">
+                                    <div class="wp-kpi-body">
+                                        <span class="wp-kpi-icon" aria-hidden="true">
+                                            <x-wp-icon name="archive-box" />
+                                        </span>
+                                        <div class="wp-kpi-main">
+                                            <p class="wp-kpi-kicker">{{ __('dashboard.intent.hidden_box.title') }}</p>
+                                            <p class="wp-kpi-meta wp-kpi-meta--wrap">
+                                                @if ($hiddenCount === 0)
+                                                    {{ __('dashboard.intent.hidden_box.empty') }}
+                                                @elseif ($hiddenCount === 1)
+                                                    {{ __('dashboard.intent.hidden_box.one') }}
+                                                @else
+                                                    {{ __('dashboard.intent.hidden_box.many', ['count' => $hiddenCount]) }}
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+                                </button>
+                            @elseif (($tile['action'] ?? null) !== null)
                                 <button type="button"
                                         wire:click="{{ $tile['action'] }}"
                                         @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
                                         data-wp-intent-tile="{{ $tile['key'] }}"
+                                        data-wp-intent-hideable
                                         draggable="false"
                                         wire:key="intent-{{ $tile['key'] }}">
                                     <div class="wp-kpi-body">
@@ -463,6 +494,7 @@
                                 <a href="{{ $tile['href'] }}"
                                    @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
                                    data-wp-intent-tile="{{ $tile['key'] }}"
+                                   data-wp-intent-hideable
                                    draggable="false"
                                    wire:key="intent-{{ $tile['key'] }}">
                                     <div class="wp-kpi-body">
@@ -495,6 +527,61 @@
                     @if ($canAddDevice)
                         <livewire:add-device />
                     @endif
+                @endif
+
+                @if ($showHiddenTiles && $intentHub->hiddenTiles !== [])
+                    <div data-wp-intent-hidden-modal>
+                        <x-wp-modal closeMethod="closeHiddenTiles" aria-labelledby="intent-hidden-title">
+                            <div class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
+                                <div class="wp-modal-head">
+                                    <h2 id="intent-hidden-title" class="wp-section-title">{{ __('dashboard.intent.hidden_box.title') }}</h2>
+                                    <x-wp-modal-close wire:click="closeHiddenTiles" />
+                                </div>
+                                <div class="wp-kpis">
+                                    @foreach ($intentHub->hiddenTiles as $tile)
+                                        @if (($tile['action'] ?? null) !== null)
+                                            <button type="button"
+                                                    wire:click="{{ $tile['action'] }}"
+                                                    @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                                                    data-wp-intent-tile="{{ $tile['key'] }}"
+                                                    data-wp-intent-hideable
+                                                    data-wp-intent-hidden="1"
+                                                    draggable="false"
+                                                    wire:key="hidden-{{ $tile['key'] }}">
+                                                <div class="wp-kpi-body">
+                                                    <span class="wp-kpi-icon" aria-hidden="true">
+                                                        <x-wp-icon :name="$tile['icon']" />
+                                                    </span>
+                                                    <div class="wp-kpi-main">
+                                                        <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                                                        <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        @else
+                                            <a href="{{ $tile['href'] }}"
+                                               @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                                               data-wp-intent-tile="{{ $tile['key'] }}"
+                                               data-wp-intent-hideable
+                                               data-wp-intent-hidden="1"
+                                               draggable="false"
+                                               wire:key="hidden-{{ $tile['key'] }}">
+                                                <div class="wp-kpi-body">
+                                                    <span class="wp-kpi-icon" aria-hidden="true">
+                                                        <x-wp-icon :name="$tile['icon']" />
+                                                    </span>
+                                                    <div class="wp-kpi-main">
+                                                        <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                                                        <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </x-wp-modal>
+                    </div>
                 @endif
             </section>
         @endif

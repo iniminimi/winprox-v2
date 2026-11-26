@@ -160,6 +160,12 @@
                 "title": "You can arrange these cards.",
                 "body": "Click and hold, then you can move this one."
             }
+        },
+        "hidden_box": {
+            "title": "Cards put away",
+            "empty": "Drag a card here.",
+            "one": "1 card put away",
+            "many": ":count cards put away"
         }
     },
     "checkmate": {
