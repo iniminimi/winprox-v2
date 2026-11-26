@@ -707,6 +707,7 @@
             @foreach (array_slice($senseAttention ?? [], 0, 8) as $line)
                 <a href="{{ $line->url }}"
                    class="wp-kpi wp-kpi--sense wp-kpi--alert"
+                   draggable="false"
                    wire:key="sense-attention-{{ $line->sensePointId }}-{{ $loop->index }}">
                     <div class="wp-kpi-body">
                         <span class="wp-kpi-icon" aria-hidden="true">

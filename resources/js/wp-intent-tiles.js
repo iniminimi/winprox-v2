@@ -372,7 +372,7 @@ function registerAlpineComponent() {
         },
 
         onDragStart(event) {
-            if (event.target.closest('[data-wp-intent-tile]')) {
+            if (event.target.closest('[data-wp-intent-grid], .wp-kpi')) {
                 event.preventDefault();
             }
         },

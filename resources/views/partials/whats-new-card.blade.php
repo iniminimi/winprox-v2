@@ -1,4 +1,4 @@
-<a href="{{ route('whats-new.index') }}" class="wp-kpi wp-kpi--units" wire:key="whats-new-card">
+<a href="{{ route('whats-new.index') }}" class="wp-kpi wp-kpi--units" draggable="false" wire:key="whats-new-card">
     <div class="wp-kpi-body">
         <span class="wp-kpi-icon" aria-hidden="true">
             <x-wp-icon name="information-circle" />
