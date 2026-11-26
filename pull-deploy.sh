@@ -45,9 +45,9 @@ if [[ -f composer.lock ]] && [[ -n "$COMPOSER" ]]; then
 fi
 
 echo "==> Laravel"
-# Alleen deze kolom. Een volle migrate maakt users opnieuw aan zolang de
-# migrations-tabel leeg is.
+# Geen volle migrate: die maakt users opnieuw aan zolang de migrations-tabel leeg is.
 php artisan migrate --force --path=database/migrations/2026_11_26_220000_add_translations_enabled_to_tenants_table.php
+php artisan migrate --force --path=database/migrations/2026_11_26_223500_comment_database_tables.php
 php artisan schedule:clear-cache
 php artisan optimize:clear
 php artisan config:cache
