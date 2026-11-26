@@ -179,7 +179,7 @@ class BuildDashboardIntentHubAction
 
         $visible[] = [
             'key' => self::BOX_KEY,
-            'icon' => 'archive-box',
+            'icon' => 'layout-dots',
             'tone' => 'open_tasks',
             'title' => 'dashboard.intent.hidden_box.title',
             'body' => 'dashboard.intent.hidden_box.empty',

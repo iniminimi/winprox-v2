@@ -456,7 +456,7 @@
                                         wire:key="intent-hidden-box">
                                     <div class="wp-kpi-body">
                                         <span class="wp-kpi-icon" aria-hidden="true">
-                                            <x-wp-icon name="archive-box" />
+                                            <x-wp-icon name="layout-dots" />
                                         </span>
                                         <div class="wp-kpi-main">
                                             <p class="wp-kpi-kicker">{{ __('dashboard.intent.hidden_box.title') }}</p>
