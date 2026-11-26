@@ -55,6 +55,31 @@ it('beschrijft Te controleren in de hulp van uitvoerders', function (): void {
         ->and($action['text'])->toContain('Clock Point');
 });
 
+it('legt het Checkmate-dashboard uit in gewone taal', function (string $locale): void {
+    app()->setLocale($locale);
+
+    $help = PageHelp::for('checkmate.dashboard');
+    $actions = $help['actions'] ?? [];
+    $labels = collect($actions)->pluck('label')->all();
+    $text = collect($actions)->pluck('text')->implode(' ');
+
+    expect($help)->not->toBeNull()
+        ->and($actions)->toHaveCount(19)
+        ->and(collect($actions)->where('nested', true))->toHaveCount(5)
+        ->and($text)->toContain('25')
+        ->and($text)->toContain('A6')
+        ->and($text)->toContain('WhatsApp');
+
+    if ($locale === 'nl') {
+        expect($labels)->toContain('Eerste stappen')
+            ->and($labels)->toContain('KBO-nummer invullen')
+            ->and($labels)->toContain('Instructivideo installatie app')
+            ->and($labels)->toContain('Weggezette kaders')
+            ->and($labels)->toContain('Clock Point QR')
+            ->and($text)->toContain('Rijksregisternummer ontbreekt');
+    }
+})->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
+
 it('legt Checkmate uit in de hulp van abonnement', function (string $locale): void {
     app()->setLocale($locale);
 

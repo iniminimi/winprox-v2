@@ -2490,50 +2490,85 @@
             "title": "Hulp — Dashboard",
             "actions": [
                 {
-                    "label": "Doel",
-                    "text": "Je dag begint hier: snelkoppelingen naar een nieuwe klant of uitvoerder en de aanwezigheid van vandaag. Daaronder de laatste klantbezoeken."
+                    "label": "Wat u hier ziet",
+                    "text": "Dit is het startscherm van Checkmate. Hier ziet u wie aan het werk is, welke klantbezoeken vandaag liepen, en wat u nog moet regelen voor de RSZ.<br><br>Bovenaan staan kaders om snel iets te doen of een telling te openen. Onderaan staat de laatste activiteit.<br><br>Sommige kaarten verschijnen alleen zolang er iets te doen is. Bijvoorbeeld de eerste uitvoerder, een ontbrekend rijksregisternummer, of een KBO-nummer dat nog ontbreekt."
                 },
                 {
-                    "label": "Tegels",
-                    "text": "Elke tegel toont een aantal of status; klikken opent het bijbehorende scherm. Sleep een tegel naar Weggezette kaders om hem weg te zetten. Tik erop om ze te zien en sleep er een terug op het raster. Dat geldt alleen voor u. Wat is er nieuw gaat er niet in."
+                    "label": "Proefperiode en abonnement",
+                    "text": "Rechtsboven, naast de titel, kan een batterij staan. Die toont hoeveel dagen er nog zijn. Een tik opent Abonnement.<br><br>• Tijdens de proef leest u <strong>Proefperiode nog … dagen.</strong> U test dan met 25 licenties.<br>• Bij een lopend abonnement: <strong>Abonnement nog … dagen.</strong><br>• Na afloop, in de nalichtperiode: <strong>Nalichtperiode: nog … dagen volledige toegang.</strong><br><br>Hoe voller de batterij, hoe meer dagen er resten. Meer uitleg over licenties vindt u onder Abonnement."
                 },
                 {
-                    "label": "Nu aanwezig",
-                    "nested": true,
-                    "text": "Aantal uitvoerders met een open dienst die niet in pauze zijn. Opent het aanwezigheidsbord."
+                    "label": "CIAO-aanvraag in behandeling",
+                    "text": "Verschijnt de kaart <strong>CIAO-aanvraag in behandeling</strong>, dan wacht uw aanvraag bij de RSZ op bevestiging door WinProx.<br><br>Zolang die bevestiging er niet is, gaan aanwezigheden nog niet naar de RSZ. Prikken van vóór die bevestiging worden achteraf ook niet doorgestuurd.<br><br><strong>Naar instellingen</strong> opent het CIAO-kader, zodat u kunt nakijken wat u al invulde."
                 },
                 {
-                    "label": "Bezoeken vandaag",
-                    "nested": true,
-                    "text": "Klantbezoeken die vandaag gestart zijn. Opent de dienstenlijst."
+                    "label": "KBO-nummer invullen",
+                    "text": "Staat CIAO aan maar ontbreekt uw KBO-nummer, dan pulseert de kaart <strong>KBO-nummer invullen</strong>.<br><br>Zonder dat nummer kan WinProx niets naar de RSZ sturen. Een buitenlands btw-nummer mag in de plaats van het KBO-nummer.<br><br><strong>Naar instellingen</strong> opent het CIAO-kader. Vul het nummer in. Daarna verdwijnt de kaart."
                 },
                 {
-                    "label": "Uitvoerders",
-                    "nested": true,
-                    "text": "Aantal actieve uitvoerders. Opent de teams- en uitvoerderlijst. Staat er “(x zonder RRN)” bij, dan missen die uitvoerders hun rijksregisternummer (nodig voor CIAO)."
-                },
-                {
-                    "label": "Licenties in gebruik",
-                    "nested": true,
-                    "text": "Bezette licenties tegenover je limiet. Opent het abonnementsscherm."
-                },
-                {
-                    "label": "Actieve klanten",
-                    "nested": true,
-                    "text": "Aantal actieve klanten. Opent de klantenlijst."
-                },
-                {
-                    "label": "Clock Point QR",
-                    "nested": true,
-                    "text": "Geen teller maar een knop: opent de Clock Point-QR om te tonen, printen, de aanmeldlink te delen (ook via WhatsApp) of te mailen. Pulseert zolang er nog geen dienst is geweest."
+                    "label": "Bewaarde bestanden",
+                    "text": "Soms staat er een kaart over een bestand dat u nog kunt downloaden.<br><br>• <strong>Uurrooster bewaard</strong> — het uurrooster, de geklokte uren en de aanvragen van een afgesloten jaar staan in een bestand. U downloadt het via Abonnement.<br>• <strong>Foto's verwijderd</strong> — foto's bij een afwezigheid zijn gewist. Via Abonnement kunt u ze nog downloaden, tot de datum op de kaart.<br><br>Geen van beide kaarten? Dan is er op dit moment niets te downloaden."
                 },
                 {
                     "label": "Rijksregisternummer ontbreekt",
-                    "text": "Een pulserende kaart noemt actieve uitvoerders zonder rijksregisternummer. Tik een naam om het nummer bij die uitvoerder in te vullen. Zonder nummer kan CIAO hun aanwezigheid niet naar de RSZ sturen. De kaart verdwijnt zodra elk nummer is ingevuld."
+                    "text": "Pulseert de kaart <strong>Rijksregisternummer ontbreekt</strong>, dan mist minstens één actieve uitvoerder een rijksregisternummer.<br><br>CIAO heeft dat nummer nodig om de aanwezigheid van die uitvoerder naar de RSZ te sturen. Zonder nummer gaat die aanwezigheid niet mee.<br><br>Elke naam op de kaart opent die uitvoerder, zodat u het nummer meteen kunt invullen. De kaart verdwijnt zodra elke actieve uitvoerder een nummer heeft.<br><br>Op het kader <strong>Uitvoerders</strong> ziet u hetzelfde tekort, bijvoorbeeld <strong>(2 zonder RRN)</strong>."
+                },
+                {
+                    "label": "Eerste stappen",
+                    "text": "Zolang er nog geen uitvoerder is, vraagt het scherm <strong>Voeg je eerste uitvoerder toe</strong>. Uitvoerders hebben geen eigen login. Ze melden zich aan via de Clock Point-QR op hun gsm, klokken in en uit, en starten een bezoek op het werkadres van de klant.<br><br>Staat er wel een uitvoerder maar nog geen klant, dan vraagt het scherm <strong>Voeg je eerste klant toe</strong>. Bij die klant hoort minstens één werkadres. De pin op dat adres bepaalt waar een uitvoerder een bezoek kan starten.<br><br>Eerst de uitvoerder, daarna de klant. Beide kaarten verdwijnen zodra ze er zijn. Daarna gebruikt u de kaders <strong>Uitvoerder toevoegen</strong> en <strong>Klant toevoegen</strong>."
+                },
+                {
+                    "label": "Wat is er nieuw?",
+                    "text": "Verschijnt bovenaan het kader <strong>Wat is er nieuw?</strong>, dan is er recent iets veranderd in WinProx.<br><br>Het kader blijft maximaal één week zichtbaar. Klik erop om de recente wijzigingen te bekijken onder Hulp → Nieuw. Daarna verdwijnt het.<br><br>Komt er later een nieuwe nota bij, dan verschijnt het kader opnieuw. Dit kader kunt u niet wegzetten."
+                },
+                {
+                    "label": "Snel naar een actie",
+                    "text": "De eerste kaders zijn snelkoppelingen. Een tik opent het scherm. Houd een kader vast: het licht op en komt mee. Sleep het naar <strong>Weggezette kaders</strong> om het te verbergen. Die keuze geldt alleen voor u.<br><br>• <strong>Klant toevoegen</strong> — opent het formulier voor een nieuwe klant. Daarna voegt u een werkadres toe, met straat en de pin waar het werk gebeurt.<br>• <strong>Uitvoerder toevoegen</strong> — opent het formulier voor iemand die meeklokt. Voor- en achternaam en een team volstaan om te starten. Het rijksregisternummer vult u in als CIAO de aanwezigheid moet doorsturen.<br>• <strong>Aanwezigheid</strong> — opent het live overzicht: wie is ingeklokt, en bij welke klant het bezoek loopt."
+                },
+                {
+                    "label": "Overzicht",
+                    "text": "Daarnaast staan de tellingen. Klik op een kader om het bijbehorende scherm te openen. Ook deze kaders kunt u wegzetten. Dat geldt alleen voor u."
+                },
+                {
+                    "label": "Nu aanwezig",
+                    "text": "Het aantal uitvoerders met een open dienst die niet in pauze zijn. Iemand die pauzeert, telt hier niet mee. Het kader opent Aanwezigheid.",
+                    "nested": true
+                },
+                {
+                    "label": "Bezoeken vandaag",
+                    "text": "Het aantal klantbezoeken dat vandaag gestart is. Een bezoek dat al afgelopen is, telt nog mee. Het kader opent Geklokte uren.",
+                    "nested": true
+                },
+                {
+                    "label": "Uitvoerders",
+                    "text": "Het aantal actieve uitvoerders. Het kader opent het teamscherm, waar u uitvoerders toevoegt en wijzigt. Staat er bijvoorbeeld <strong>(2 zonder RRN)</strong> bij, dan missen die uitvoerders hun rijksregisternummer.",
+                    "nested": true
+                },
+                {
+                    "label": "Licenties in gebruik",
+                    "text": "Hoeveel licenties bezet zijn, tegenover uw limiet. Bijvoorbeeld <strong>8 / 25</strong>. Een licentie is een collega met login of een actieve uitvoerder. Het kader opent Abonnement.<br><br>Tijdens de proef is de limiet 25. Daarna stelt u het aantal zelf in. Verlagen kan niet onder het aantal dat al in gebruik is. Deactiveer dan eerst een uitvoerder of een collega.",
+                    "nested": true
+                },
+                {
+                    "label": "Actieve klanten",
+                    "text": "Het aantal klanten dat nog actief is. Een klant die u gedeactiveerd hebt, telt niet mee. Het kader opent de klantenlijst.",
+                    "nested": true
+                },
+                {
+                    "label": "Clock Point QR",
+                    "text": "Dit kader is geen telling maar een knop. Eronder staat <strong>Laat uw werknemers beginnen met de QR-code.</strong><br><br>Zolang er nog nooit een dienst is geweest, pulseert het kader. Zo ziet u dat uitvoerders de QR nog nodig hebben om te starten. Na de eerste dienst stopt het pulseren. De knop blijft.<br><br>Een tik opent hetzelfde venster als bij het Clock Point:<br>• de QR, om te tonen of meteen af te drukken;<br>• een Word-afdrukblad op A6, A5 of A4;<br>• de aanmeldlink, om te kopiëren of via WhatsApp te delen;<br>• een mail naar de uitvoerder met die link.<br><br>Wie zich eenmaal aanmeldde, opent het portaal daarna via het icoon op het startscherm van de gsm. Op Checkmate kan in- en uitklokken ook vanuit dat icoon, zonder opnieuw te scannen. Een klantbezoek start op het werkadres, met GPS."
+                },
+                {
+                    "label": "Weggezette kaders",
+                    "text": "Rechts in het raster staat altijd het kader <strong>Weggezette kaders</strong>.<br><br>Is het leeg, dan leest u <strong>Sleep een kader hierheen.</strong> Houd een ander kader vast en laat het daar los. Het verdwijnt van het scherm. De tekst wordt <strong>1 kader weggezet</strong>, of meer als u er meer wegzet.<br><br>Tik op het kader om ze terug te zien. Houd een weggezet kader vast en laat het los op het raster om het terug te zetten.<br><br>Dat geldt alleen voor u. Een collega houdt zijn eigen indeling. <strong>Wat is er nieuw?</strong> gaat er niet in."
+                },
+                {
+                    "label": "Instructivideo installatie app",
+                    "text": "Staat de taal van WinProx op Nederlands, dan ziet u tussen de kaders en de laatste activiteit de knop <strong>Instructivideo installatie app</strong>.<br><br>Die opent een video in een nieuw venster: hoe een uitvoerder WinProx op het startscherm van de gsm zet. Er is geen appwinkel. In een andere taal verschijnt de knop niet."
                 },
                 {
                     "label": "Laatste activiteit",
-                    "text": "De laatste acht klantbezoeken, nieuwste eerst: uitvoerder, klant en werkadres, met begin- en eindtijd — of enkel de begintijd als het bezoek nog loopt. 'Loopt' linkt naar de aanwezigheidslijst, 'Klaar' naar de dienstenlijst. De knop 'Aanwezigheid openen' rechtsboven opent het live overzicht."
+                    "text": "Onderaan staan de laatste acht klantbezoeken, nieuwste eerst.<br><br>Per bezoek ziet u de uitvoerder, de klant en het werkadres, en het tijdstip. Loopt het bezoek nog, dan staat er <strong>Begonnen om …</strong> en de pil <strong>Loopt</strong>. Is het afgelopen, dan ziet u begin en einde en de pil <strong>Klaar</strong>.<br><br>Een lopend bezoek opent Aanwezigheid. Een afgerond bezoek opent Geklokte uren.<br><br>Rechtsboven opent <strong>Aanwezigheid openen</strong> het live overzicht. Zijn er nog geen bezoeken, dan leest u <strong>Nog geen klantbezoeken.</strong>"
                 }
             ]
         },

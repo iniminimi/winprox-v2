@@ -2494,50 +2494,85 @@
             "title": "Aide — Tableau de bord",
             "actions": [
                 {
-                    "label": "Objectif",
-                    "text": "Votre journée commence ici : raccourcis vers un nouveau client ou exécutant et la présence du jour. En dessous, les dernières visites clients."
+                    "label": "Ce que vous voyez ici",
+                    "text": "C’est l’écran d’accueil de Checkmate. Vous y voyez qui est au travail, quelles visites clients ont eu lieu aujourd’hui, et ce qu’il vous reste à régler pour l’ONSS.<br><br>En haut, des cadres pour une action rapide ou un compteur. En bas, la dernière activité.<br><br>Certaines cartes n’apparaissent que tant qu’il y a quelque chose à faire. Par exemple le premier exécutant, un numéro de registre national manquant, ou un numéro d’entreprise encore vide."
                 },
                 {
-                    "label": "Tuiles",
-                    "text": "Chaque tuile affiche un nombre ou un statut ; un clic ouvre l'écran correspondant. Glissez une tuile vers Cadres rangés pour la ranger. Touchez-le pour les voir et glissez-en une vers la grille. Cela ne vaut que pour vous. Quoi de neuf n'y entre pas."
+                    "label": "Période d’essai et abonnement",
+                    "text": "En haut à droite, à côté du titre, une batterie peut apparaître. Elle montre combien de jours restent. Un appui ouvre Abonnement.<br><br>• Pendant l’essai, vous lisez <strong>Période d'essai : encore … jours.</strong> Vous testez alors avec 25 licences.<br>• Avec un abonnement en cours : <strong>Abonnement : encore … jours.</strong><br>• Après la fin, pendant le délai de grâce : <strong>Délai de grâce : encore … jours d'accès complet.</strong><br><br>Plus la batterie est pleine, plus il reste de jours. Le détail des licences se trouve sous Abonnement."
                 },
                 {
-                    "label": "Présents",
-                    "nested": true,
-                    "text": "Exécutants avec une intervention ouverte qui ne sont pas en pause. Ouvre le tableau de présence."
+                    "label": "Demande CIAO en attente",
+                    "text": "Si la carte <strong>Demande CIAO en attente</strong> apparaît, votre demande à l’ONSS attend une confirmation de WinProx.<br><br>Tant que cette confirmation n’est pas là, les présences ne partent pas encore. Les pointages d’avant la confirmation ne sont pas envoyés plus tard non plus.<br><br><strong>Vers les paramètres</strong> ouvre le cadre CIAO, pour vérifier ce que vous avez déjà rempli."
                 },
                 {
-                    "label": "Visites aujourd’hui",
-                    "nested": true,
-                    "text": "Visites clients commencées aujourd'hui. Ouvre la liste des interventions."
+                    "label": "Encoder le numéro BCE",
+                    "text": "Si CIAO est activé mais que votre numéro d’entreprise manque, la carte <strong>Encoder le numéro BCE</strong> pulse.<br><br>Sans ce numéro, WinProx ne peut rien envoyer à l’ONSS. Un numéro de TVA étranger peut remplacer le numéro BCE.<br><br><strong>Vers les paramètres</strong> ouvre le cadre CIAO. Encodez le numéro. La carte disparaît ensuite."
                 },
                 {
-                    "label": "Exécutants",
-                    "nested": true,
-                    "text": "Nombre d'exécutants actifs. Ouvre la liste des équipes et exécutants. Si « (x sans NISS) » s’affiche, ces exécutants n’ont pas de numéro national (requis pour CIAO)."
-                },
-                {
-                    "label": "Licences utilisées",
-                    "nested": true,
-                    "text": "Licences occupées par rapport à votre limite. Ouvre l'écran d'abonnement."
-                },
-                {
-                    "label": "Clients actifs",
-                    "nested": true,
-                    "text": "Nombre de clients actifs. Ouvre la liste des clients."
-                },
-                {
-                    "label": "QR Clock Point",
-                    "nested": true,
-                    "text": "Pas un compteur mais un bouton : affiche le QR du Clock Point à montrer, imprimer, partager le lien de connexion (aussi via WhatsApp) ou envoyer par e-mail. Pulse tant qu'aucune intervention n'a eu lieu."
+                    "label": "Fichiers enregistrés",
+                    "text": "Parfois une carte parle d’un fichier que vous pouvez encore télécharger.<br><br>• <strong>Planning enregistré</strong> — le planning, les heures pointées et les demandes d’une année clôturée sont dans un fichier. Vous le téléchargez via Abonnement.<br>• <strong>Photos retirées</strong> — les photos d’une absence ont été effacées. Via Abonnement vous pouvez encore les télécharger, jusqu’à la date indiquée sur la carte.<br><br>Aucune des deux cartes ? Il n’y a alors rien à télécharger pour le moment."
                 },
                 {
                     "label": "Numéro de registre national manquant",
-                    "text": "Une carte qui pulse cite les exécutants actifs sans numéro de registre national. Touchez un nom pour compléter le numéro. Sans ce numéro, CIAO ne peut pas envoyer leur présence à l’ONSS. La carte disparaît dès que chaque numéro est complété."
+                    "text": "Si la carte <strong>Numéro de registre national manquant</strong> pulse, au moins un exécutant actif n’a pas de numéro de registre national.<br><br>CIAO a besoin de ce numéro pour envoyer la présence de cet exécutant à l’ONSS. Sans numéro, cette présence ne part pas.<br><br>Chaque nom sur la carte ouvre cet exécutant, pour que vous complétiez le numéro tout de suite. La carte disparaît dès que chaque exécutant actif a un numéro.<br><br>Sur le cadre <strong>Exécutants</strong> vous voyez le même manque, par exemple <strong>(2 sans NISS)</strong>."
+                },
+                {
+                    "label": "Premiers pas",
+                    "text": "Tant qu’il n’y a pas encore d’exécutant, l’écran demande <strong>Ajoutez votre premier exécutant</strong>. Les exécutants n’ont pas de login. Ils s’annoncent avec le QR du Clock Point sur leur gsm, pointent l’entrée et la sortie, et démarrent une visite à l’adresse de travail du client.<br><br>S’il y a un exécutant mais pas encore de client, l’écran demande <strong>Ajoutez votre premier client</strong>. Ce client a besoin d’au moins une adresse de travail. L’épingle sur cette adresse indique où un exécutant peut démarrer une visite.<br><br>D’abord l’exécutant, ensuite le client. Les deux cartes disparaissent dès qu’ils existent. Ensuite vous utilisez les cadres <strong>Ajouter un exécutant</strong> et <strong>Ajouter un client</strong>."
+                },
+                {
+                    "label": "Quoi de neuf ?",
+                    "text": "Si le cadre <strong>Quoi de neuf ?</strong> apparaît en haut, quelque chose a récemment changé dans WinProx.<br><br>Le cadre reste visible au maximum une semaine. Cliquez dessus pour voir les changements récents sous Aide → Nouveau. Ensuite il disparaît.<br><br>Si une note plus récente arrive plus tard, le cadre réapparaît. Vous ne pouvez pas ranger ce cadre."
+                },
+                {
+                    "label": "Accès rapide à une action",
+                    "text": "Les premiers cadres sont des raccourcis. Un appui ouvre l’écran. Maintenez un cadre : il se soulève et vous suit. Glissez-le vers <strong>Cadres rangés</strong> pour le masquer. Ce choix ne vaut que pour vous.<br><br>• <strong>Ajouter un client</strong> — ouvre le formulaire d’un nouveau client. Vous ajoutez ensuite une adresse de travail, avec la rue et l’épingle là où le travail se fait.<br>• <strong>Ajouter un exécutant</strong> — ouvre le formulaire de quelqu’un qui pointe avec l’équipe. Le prénom, le nom et une équipe suffisent pour commencer. Vous encodez le numéro de registre national quand CIAO doit envoyer la présence.<br>• <strong>Présence</strong> — ouvre l’aperçu en direct : qui est pointé, et chez quel client la visite est en cours."
+                },
+                {
+                    "label": "Aperçu",
+                    "text": "À côté se trouvent les compteurs. Cliquez sur un cadre pour ouvrir l’écran correspondant. Vous pouvez aussi ranger ces cadres. Cela ne vaut que pour vous."
+                },
+                {
+                    "label": "Présents",
+                    "text": "Le nombre d’exécutants avec un service ouvert qui ne sont pas en pause. Quelqu’un en pause n’est pas compté. Le cadre ouvre Présence.",
+                    "nested": true
+                },
+                {
+                    "label": "Visites aujourd’hui",
+                    "text": "Le nombre de visites clients commencées aujourd’hui. Une visite déjà terminée compte encore. Le cadre ouvre Heures pointées.",
+                    "nested": true
+                },
+                {
+                    "label": "Exécutants",
+                    "text": "Le nombre d’exécutants actifs. Le cadre ouvre l’écran des équipes, où vous ajoutez et modifiez les exécutants. S’il est écrit par exemple <strong>(2 sans NISS)</strong>, ces exécutants n’ont pas de numéro de registre national.",
+                    "nested": true
+                },
+                {
+                    "label": "Licences utilisées",
+                    "text": "Combien de licences sont prises, par rapport à votre limite. Par exemple <strong>8 / 25</strong>. Une licence est un collègue avec un login ou un exécutant actif. Le cadre ouvre Abonnement.<br><br>Pendant l’essai, la limite est de 25. Ensuite vous fixez le nombre vous-même. Vous ne pouvez pas descendre sous le nombre déjà utilisé. Désactivez d’abord un exécutant ou un collègue.",
+                    "nested": true
+                },
+                {
+                    "label": "Clients actifs",
+                    "text": "Le nombre de clients encore actifs. Un client que vous avez désactivé n’est pas compté. Le cadre ouvre la liste des clients.",
+                    "nested": true
+                },
+                {
+                    "label": "QR Clock Point",
+                    "text": "Ce cadre n’est pas un compteur mais un bouton. En dessous il est écrit <strong>Faites démarrer vos exécutants avec le code QR.</strong><br><br>Tant qu’aucun service n’a encore eu lieu, le cadre pulse. Vous voyez ainsi que les exécutants ont encore besoin du QR pour démarrer. Après le premier service, la pulsation s’arrête. Le bouton reste.<br><br>Un appui ouvre la même fenêtre que sur le Clock Point :<br>• le QR, pour l’afficher ou l’imprimer tout de suite ;<br>• une feuille Word en A6, A5 ou A4 ;<br>• le lien d’annonce, à copier ou à partager via WhatsApp ;<br>• un e-mail à l’exécutant avec ce lien.<br><br>Une fois annoncé, l’exécutant ouvre ensuite le portail via l’icône sur l’écran d’accueil du gsm. Sur Checkmate, le pointage d’entrée et de sortie se fait aussi depuis cette icône, sans rescanner. Une visite client démarre à l’adresse de travail, avec le GPS."
+                },
+                {
+                    "label": "Cadres rangés",
+                    "text": "À droite de la grille se trouve toujours le cadre <strong>Cadres rangés</strong>.<br><br>S’il est vide, vous lisez <strong>Glissez un cadre ici.</strong> Maintenez un autre cadre et déposez-le là. Il quitte l’écran. Le texte devient <strong>1 cadre rangé</strong>, ou plus si vous en rangez plusieurs.<br><br>Touchez le cadre pour les revoir. Maintenez un cadre rangé et déposez-le sur la grille pour le remettre.<br><br>Cela ne vaut que pour vous. Un collègue garde sa propre disposition. <strong>Quoi de neuf ?</strong> n’y entre pas."
+                },
+                {
+                    "label": "Vidéo d'instruction installation de l'application",
+                    "text": "Quand la langue de WinProx est le néerlandais, vous voyez le bouton <strong>Vidéo d'instruction installation de l'application</strong> entre les cadres et la dernière activité.<br><br>Il ouvre une vidéo dans une nouvelle fenêtre : comment un exécutant place WinProx sur l’écran d’accueil du gsm. Il n’y a pas de boutique d’applications. Dans une autre langue, le bouton n’apparaît pas."
                 },
                 {
                     "label": "Dernière activité",
-                    "text": "Les huit dernières visites clients, la plus récente d'abord : exécutant, client et adresse de chantier, avec heure de début et de fin — ou seulement l'heure de début si la visite est en cours. 'En cours' mène à la liste de présence, 'Terminé' à la liste des interventions. Le bouton 'Ouvrir la présence' en haut à droite ouvre le tableau en direct."
+                    "text": "En bas se trouvent les huit dernières visites clients, la plus récente d’abord.<br><br>Pour chaque visite vous voyez l’exécutant, le client et l’adresse de travail, et l’heure. Si la visite est encore en cours, il est écrit <strong>Commencé à …</strong> et la pastille <strong>En cours</strong>. Si elle est finie, vous voyez le début et la fin et la pastille <strong>Terminé</strong>.<br><br>Une visite en cours ouvre Présence. Une visite terminée ouvre Heures pointées.<br><br>En haut à droite, <strong>Ouvrir la présence</strong> ouvre l’aperçu en direct. S’il n’y a pas encore de visites, vous lisez <strong>Pas encore de visites clients.</strong>"
                 }
             ]
         },

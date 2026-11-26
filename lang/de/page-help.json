@@ -2490,50 +2490,85 @@
             "title": "Hilfe — Dashboard",
             "actions": [
                 {
-                    "label": "Zweck",
-                    "text": "Ihr Tag beginnt hier: Schnellzugriffe auf einen neuen Kunden oder Ausführer und die heutige Anwesenheit. Darunter die letzten Kundenbesuche."
+                    "label": "Was Sie hier sehen",
+                    "text": "Das ist der Startbildschirm von Checkmate. Hier sehen Sie, wer bei der Arbeit ist, welche Kundenbesuche heute liefen, und was Sie für die Sozialversicherung noch regeln müssen.<br><br>Oben stehen Kacheln für eine schnelle Aktion oder eine Zahl. Unten steht die letzte Aktivität.<br><br>Manche Karten erscheinen nur, solange etwas zu tun ist. Zum Beispiel der erste Mitarbeiter, eine fehlende Nationalregisternummer oder eine Unternehmensnummer, die noch leer ist."
                 },
                 {
-                    "label": "Kacheln",
-                    "text": "Jede Kachel zeigt eine Anzahl oder einen Status; ein Klick öffnet den passenden Bildschirm. Ziehen Sie eine Kachel auf Weggelegte Kacheln, um sie wegzulegen. Tippen Sie darauf, um sie zu sehen, und ziehen Sie eine zurück ins Raster. Das gilt nur für Sie. Was ist neu geht nicht hinein."
+                    "label": "Testphase und Abonnement",
+                    "text": "Oben rechts, neben dem Titel, kann eine Batterie stehen. Sie zeigt, wie viele Tage noch bleiben. Ein Tippen öffnet Abonnement.<br><br>• In der Testphase lesen Sie <strong>Testphase noch … Tage.</strong> Sie testen dann mit 25 Lizenzen.<br>• Bei einem laufenden Abonnement: <strong>Abonnement noch … Tage.</strong><br>• Danach, in der Nachlaufzeit: <strong>Nachlaufzeit: noch … Tage voller Zugriff.</strong><br><br>Je voller die Batterie, desto mehr Tage bleiben. Mehr zu den Lizenzen steht unter Abonnement."
                 },
                 {
-                    "label": "Anwesend",
-                    "nested": true,
-                    "text": "Mitarbeiter mit offener Schicht, die nicht in Pause sind. Öffnet die Anwesenheitsübersicht."
+                    "label": "CIAO-Anfrage in Bearbeitung",
+                    "text": "Erscheint die Karte <strong>CIAO-Anfrage in Bearbeitung</strong>, dann wartet Ihre Anfrage an die Sozialversicherung auf eine Bestätigung durch WinProx.<br><br>Solange diese Bestätigung fehlt, geht die Anwesenheit noch nicht mit. Stempelungen von vor der Bestätigung werden später auch nicht nachgereicht.<br><br><strong>Zu den Einstellungen</strong> öffnet den CIAO-Bereich, damit Sie nachsehen können, was Sie schon eingetragen haben."
                 },
                 {
-                    "label": "Besuche heute",
-                    "nested": true,
-                    "text": "Heute gestartete Kundenbesuche. Öffnet die Schichtliste."
+                    "label": "KBO-Nummer eintragen",
+                    "text": "Ist CIAO an, aber Ihre Unternehmensnummer fehlt, pulsiert die Karte <strong>KBO-Nummer eintragen</strong>.<br><br>Ohne diese Nummer kann WinProx nichts an die Sozialversicherung senden. Eine ausländische Umsatzsteuer-Nummer darf an die Stelle der Unternehmensnummer treten.<br><br><strong>Zu den Einstellungen</strong> öffnet den CIAO-Bereich. Tragen Sie die Nummer ein. Danach verschwindet die Karte."
                 },
                 {
-                    "label": "Mitarbeiter",
-                    "nested": true,
-                    "text": "Anzahl aktiver Mitarbeiter. Öffnet die Team- und Mitarbeiterliste. Steht dort „(x ohne NISS)“, fehlt diesen Mitarbeitern die Nationalregisternummer (für CIAO erforderlich)."
-                },
-                {
-                    "label": "Lizenzen in Gebrauch",
-                    "nested": true,
-                    "text": "Belegte Lizenzen im Verhältnis zu Ihrem Limit. Öffnet den Abonnement-Bildschirm."
-                },
-                {
-                    "label": "Aktive Kunden",
-                    "nested": true,
-                    "text": "Anzahl aktiver Kunden. Öffnet die Kundenliste."
-                },
-                {
-                    "label": "Clock-Point-QR",
-                    "nested": true,
-                    "text": "Kein Zähler, sondern ein Button: öffnet den Clock-Point-QR zum Anzeigen, Drucken, Teilen des Anmeldelinks (auch per WhatsApp) oder Mailen. Pulsiert, solange noch keine Schicht gelaufen ist."
+                    "label": "Gespeicherte Dateien",
+                    "text": "Manchmal steht dort eine Karte über eine Datei, die Sie noch herunterladen können.<br><br>• <strong>Dienstplan gespeichert</strong> — Dienstplan, gestempelte Stunden und Anträge eines abgeschlossenen Jahres liegen in einer Datei. Sie laden sie über Abonnement herunter.<br>• <strong>Fotos entfernt</strong> — Fotos zu einer Abwesenheit wurden gelöscht. Über Abonnement können Sie sie noch herunterladen, bis zum Datum auf der Karte.<br><br>Keine der beiden Karten? Dann gibt es im Moment nichts zum Herunterladen."
                 },
                 {
                     "label": "Nationalregisternummer fehlt",
-                    "text": "Eine pulsierende Karte nennt aktive Mitarbeiter ohne Nationalregisternummer. Tippen Sie einen Namen an, um die Nummer bei diesem Mitarbeiter einzutragen. Ohne diese Nummer kann CIAO ihre Anwesenheit nicht an die RSZ senden. Die Karte verschwindet, sobald jede Nummer eingetragen ist."
+                    "text": "Pulsiert die Karte <strong>Nationalregisternummer fehlt</strong>, dann fehlt mindestens einem aktiven Mitarbeiter die Nationalregisternummer.<br><br>CIAO braucht diese Nummer, um die Anwesenheit dieses Mitarbeiters an die Sozialversicherung zu senden. Ohne Nummer geht diese Anwesenheit nicht mit.<br><br>Jeder Name auf der Karte öffnet diesen Mitarbeiter, damit Sie die Nummer gleich eintragen. Die Karte verschwindet, sobald jeder aktive Mitarbeiter eine Nummer hat.<br><br>Auf der Kachel <strong>Mitarbeiter</strong> sehen Sie dieselbe Lücke, zum Beispiel <strong>(2 ohne NISS)</strong>."
+                },
+                {
+                    "label": "Erste Schritte",
+                    "text": "Solange es noch keinen Mitarbeiter gibt, bittet der Bildschirm <strong>Ersten Mitarbeiter hinzufügen</strong>. Mitarbeiter haben kein eigenes Login. Sie melden sich mit dem Clock-Point-QR auf dem Handy an, stempeln ein und aus und starten einen Besuch an der Arbeitsadresse des Kunden.<br><br>Gibt es einen Mitarbeiter, aber noch keinen Kunden, bittet der Bildschirm <strong>Ersten Kunden hinzufügen</strong>. Zu diesem Kunden gehört mindestens eine Arbeitsadresse. Die Markierung auf dieser Adresse zeigt, wo ein Mitarbeiter einen Besuch starten kann.<br><br>Zuerst der Mitarbeiter, dann der Kunde. Beide Karten verschwinden, sobald sie da sind. Danach nutzen Sie die Kacheln <strong>Mitarbeiter hinzufügen</strong> und <strong>Kunde hinzufügen</strong>."
+                },
+                {
+                    "label": "Was ist neu?",
+                    "text": "Erscheint oben die Kachel <strong>Was ist neu?</strong>, dann hat sich in WinProx kürzlich etwas geändert.<br><br>Die Kachel bleibt höchstens eine Woche sichtbar. Klicken Sie darauf, um die Änderungen unter Hilfe → Neu zu sehen. Danach verschwindet sie.<br><br>Kommt später eine neuere Notiz, erscheint die Kachel erneut. Diese Kachel können Sie nicht weglegen."
+                },
+                {
+                    "label": "Schnell zu einer Aktion",
+                    "text": "Die ersten Kacheln sind Verknüpfungen. Ein Tippen öffnet den Bildschirm. Halten Sie eine Kachel gedrückt: sie hebt sich und folgt Ihnen. Ziehen Sie sie auf <strong>Weggelegte Kacheln</strong>, um sie zu verbergen. Diese Wahl gilt nur für Sie.<br><br>• <strong>Kunde hinzufügen</strong> — öffnet das Formular für einen neuen Kunden. Danach fügen Sie eine Arbeitsadresse hinzu, mit Straße und der Markierung, wo die Arbeit stattfindet.<br>• <strong>Mitarbeiter hinzufügen</strong> — öffnet das Formular für jemanden, der vor Ort einstempelt. Vorname, Nachname und ein Team genügen für den Start. Die Nationalregisternummer tragen Sie ein, wenn CIAO die Anwesenheit senden soll.<br>• <strong>Anwesenheit</strong> — öffnet die Live-Übersicht: wer eingestempelt ist, und bei welchem Kunden der Besuch läuft."
+                },
+                {
+                    "label": "Überblick",
+                    "text": "Daneben stehen die Zahlen. Klicken Sie auf eine Kachel, um den passenden Bildschirm zu öffnen. Auch diese Kacheln können Sie weglegen. Das gilt nur für Sie."
+                },
+                {
+                    "label": "Anwesend",
+                    "text": "Die Anzahl der Mitarbeiter mit einem offenen Dienst, die nicht in der Pause sind. Wer pausiert, zählt hier nicht. Die Kachel öffnet Anwesenheit.",
+                    "nested": true
+                },
+                {
+                    "label": "Besuche heute",
+                    "text": "Die Anzahl der Kundenbesuche, die heute begonnen haben. Ein Besuch, der schon zu Ende ist, zählt noch mit. Die Kachel öffnet Gestempelte Stunden.",
+                    "nested": true
+                },
+                {
+                    "label": "Mitarbeiter",
+                    "text": "Die Anzahl der aktiven Mitarbeiter. Die Kachel öffnet den Team-Bildschirm, wo Sie Mitarbeiter hinzufügen und ändern. Steht dort zum Beispiel <strong>(2 ohne NISS)</strong>, fehlt diesen Mitarbeitern die Nationalregisternummer.",
+                    "nested": true
+                },
+                {
+                    "label": "Lizenzen in Gebrauch",
+                    "text": "Wie viele Lizenzen belegt sind, gegenüber Ihrem Limit. Zum Beispiel <strong>8 / 25</strong>. Eine Lizenz ist ein Kollege mit Login oder ein aktiver Mitarbeiter. Die Kachel öffnet Abonnement.<br><br>In der Testphase ist das Limit 25. Danach legen Sie die Zahl selbst fest. Senken geht nicht unter die Zahl, die schon in Gebrauch ist. Deaktivieren Sie dann zuerst einen Mitarbeiter oder einen Kollegen.",
+                    "nested": true
+                },
+                {
+                    "label": "Aktive Kunden",
+                    "text": "Die Anzahl der Kunden, die noch aktiv sind. Ein Kunde, den Sie deaktiviert haben, zählt nicht mit. Die Kachel öffnet die Kundenliste.",
+                    "nested": true
+                },
+                {
+                    "label": "Clock-Point-QR",
+                    "text": "Diese Kachel ist keine Zahl, sondern eine Schaltfläche. Darunter steht <strong>Lassen Sie Ihre Mitarbeiter mit dem QR-Code starten.</strong><br><br>Solange noch nie ein Dienst gelaufen ist, pulsiert die Kachel. So sehen Sie, dass die Mitarbeiter den QR noch brauchen, um zu starten. Nach dem ersten Dienst hört das Pulsieren auf. Die Schaltfläche bleibt.<br><br>Ein Tippen öffnet dasselbe Fenster wie beim Clock Point:<br>• den QR, zum Zeigen oder sofortigen Drucken;<br>• ein Word-Blatt in A6, A5 oder A4;<br>• den Anmeldelink, zum Kopieren oder Teilen über WhatsApp;<br>• eine E-Mail an den Mitarbeiter mit diesem Link.<br><br>Wer sich einmal angemeldet hat, öffnet das Portal danach über das Symbol auf dem Startbildschirm des Handys. Bei Checkmate geht Ein- und Ausstempeln auch von diesem Symbol aus, ohne erneut zu scannen. Ein Kundenbesuch startet an der Arbeitsadresse, mit GPS."
+                },
+                {
+                    "label": "Weggelegte Kacheln",
+                    "text": "Rechts im Raster steht immer die Kachel <strong>Weggelegte Kacheln</strong>.<br><br>Ist sie leer, lesen Sie <strong>Ziehen Sie eine Kachel hierher.</strong> Halten Sie eine andere Kachel und lassen Sie sie dort los. Sie verschwindet vom Bildschirm. Der Text wird <strong>1 Kachel weggelegt</strong>, oder mehr, wenn Sie mehrere weglegen.<br><br>Tippen Sie auf die Kachel, um sie wieder zu sehen. Halten Sie eine weggelegte Kachel und lassen Sie sie auf dem Raster los, um sie zurückzusetzen.<br><br>Das gilt nur für Sie. Ein Kollege behält seine eigene Anordnung. <strong>Was ist neu?</strong> geht nicht hinein."
+                },
+                {
+                    "label": "Anleitungsvideo App-Installation",
+                    "text": "Steht die Sprache von WinProx auf Niederländisch, sehen Sie zwischen den Kacheln und der letzten Aktivität die Schaltfläche <strong>Anleitungsvideo App-Installation</strong>.<br><br>Sie öffnet ein Video in einem neuen Fenster: wie ein Mitarbeiter WinProx auf den Startbildschirm des Handys legt. Es gibt keinen App-Store. In einer anderen Sprache erscheint die Schaltfläche nicht."
                 },
                 {
                     "label": "Letzte Aktivität",
-                    "text": "Die acht letzten Kundenbesuche, neueste zuerst: Mitarbeiter, Kunde und Einsatzadresse, mit Start- und Endzeit — oder nur der Startzeit, solange der Besuch läuft. 'Läuft' führt zur Anwesenheit, 'Fertig' zur Schichtliste. Der Button 'Anwesenheit öffnen' oben rechts öffnet die Live-Übersicht."
+                    "text": "Unten stehen die letzten acht Kundenbesuche, der neueste zuerst.<br><br>Pro Besuch sehen Sie den Mitarbeiter, den Kunden und die Arbeitsadresse, und die Uhrzeit. Läuft der Besuch noch, steht dort <strong>Begonnen um …</strong> und die Pille <strong>Läuft</strong>. Ist er vorbei, sehen Sie Beginn und Ende und die Pille <strong>Fertig</strong>.<br><br>Ein laufender Besuch öffnet Anwesenheit. Ein abgeschlossener Besuch öffnet Gestempelte Stunden.<br><br>Oben rechts öffnet <strong>Anwesenheit öffnen</strong> die Live-Übersicht. Gibt es noch keine Besuche, lesen Sie <strong>Noch keine Kundenbesuche.</strong>"
                 }
             ]
         },

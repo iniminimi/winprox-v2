@@ -2490,50 +2490,85 @@
             "title": "Ayuda — Panel",
             "actions": [
                 {
-                    "label": "Objetivo",
-                    "text": "Tu día empieza aquí: accesos directos a un nuevo cliente u operario y la presencia de hoy. Debajo, las últimas visitas a clientes."
+                    "label": "Lo que ve aquí",
+                    "text": "Esta es la pantalla de inicio de Checkmate. Aquí ve quién está trabajando, qué visitas a clientes hubo hoy y qué le queda por preparar para la seguridad social.<br><br>Arriba hay cuadros para una acción rápida o un recuento. Abajo está la última actividad.<br><br>Algunas tarjetas solo aparecen mientras hay algo que hacer. Por ejemplo el primer operario, un número de registro nacional que falta, o un número de empresa que aún está vacío."
                 },
                 {
-                    "label": "Tarjetas",
-                    "text": "Cada tarjeta muestra una cifra o un estado; al pulsarla se abre la pantalla correspondiente. Arrastre una tarjeta a Cuadros guardados para guardarla. Tóquelo para verlas y arrastre una de vuelta a la cuadrícula. Eso es solo para usted. ¿Qué hay de nuevo? no entra."
+                    "label": "Prueba y suscripción",
+                    "text": "Arriba a la derecha, junto al título, puede aparecer una batería. Muestra cuántos días quedan. Un toque abre Suscripción.<br><br>• Durante la prueba lee <strong>Periodo de prueba: quedan … días.</strong> Entonces prueba con 25 licencias.<br>• Con una suscripción en curso: <strong>Suscripción: quedan … días.</strong><br>• Después, en el periodo de gracia: <strong>Periodo de gracia: quedan … días de acceso completo.</strong><br><br>Cuanto más llena está la batería, más días quedan. Más información sobre las licencias está en Suscripción."
                 },
                 {
-                    "label": "Presentes",
-                    "nested": true,
-                    "text": "Operarios con un turno abierto que no están en pausa. Abre el panel de presencia."
+                    "label": "Solicitud CIAO pendiente",
+                    "text": "Si aparece la tarjeta <strong>Solicitud CIAO pendiente</strong>, su solicitud a la seguridad social espera la confirmación de WinProx.<br><br>Mientras no llegue esa confirmación, la presencia aún no se envía. Los fichajes de antes de la confirmación tampoco se envían después.<br><br><strong>Ir a configuración</strong> abre el apartado de CIAO, para que revise lo que ya rellenó."
                 },
                 {
-                    "label": "Visitas hoy",
-                    "nested": true,
-                    "text": "Visitas a clientes iniciadas hoy. Abre la lista de turnos."
+                    "label": "Indicar el número CBE",
+                    "text": "Si CIAO está activo pero falta su número de empresa, la tarjeta <strong>Indicar el número CBE</strong> parpadea.<br><br>Sin ese número WinProx no puede enviar nada a la seguridad social. Un número de IVA extranjero puede ocupar el lugar del número de empresa.<br><br><strong>Ir a configuración</strong> abre el apartado de CIAO. Indique el número. Después la tarjeta desaparece."
                 },
                 {
-                    "label": "Operarios",
-                    "nested": true,
-                    "text": "Número de operarios activos. Abre la lista de equipos y operarios. Si aparece “(x sin NISS)”, esos operarios no tienen número de registro nacional (necesario para CIAO)."
-                },
-                {
-                    "label": "Licencias en uso",
-                    "nested": true,
-                    "text": "Licencias ocupadas frente a tu límite. Abre la pantalla de suscripción."
-                },
-                {
-                    "label": "Clientes activos",
-                    "nested": true,
-                    "text": "Número de clientes activos. Abre la lista de clientes."
-                },
-                {
-                    "label": "QR del Clock Point",
-                    "nested": true,
-                    "text": "No es un contador sino un botón: abre el QR del Clock Point para mostrarlo, imprimirlo, compartir el enlace de acceso (también por WhatsApp) o enviarlo por correo. Parpadea mientras aún no ha habido ningún turno."
+                    "label": "Archivos guardados",
+                    "text": "A veces aparece una tarjeta sobre un archivo que aún puede descargar.<br><br>• <strong>Cuadrante guardado</strong> — el cuadrante, las horas fichadas y las solicitudes de un año cerrado están en un archivo. Lo descarga desde Suscripción.<br>• <strong>Fotos eliminadas</strong> — las fotos de una ausencia se han borrado. Desde Suscripción aún puede descargarlas, hasta la fecha de la tarjeta.<br><br>¿Ninguna de las dos tarjetas? Entonces ahora no hay nada que descargar."
                 },
                 {
                     "label": "Falta el número de registro nacional",
-                    "text": "Una tarjeta que parpadea nombra a los operarios activos sin número de registro nacional. Pulse un nombre para completar el número. Sin ese número, CIAO no puede enviar su presencia a la ONSS. La tarjeta desaparece en cuanto cada número está completo."
+                    "text": "Si parpadea la tarjeta <strong>Falta el número de registro nacional</strong>, al menos un operario activo no tiene número de registro nacional.<br><br>CIAO necesita ese número para enviar la presencia de ese operario a la seguridad social. Sin número, esa presencia no se envía.<br><br>Cada nombre de la tarjeta abre a ese operario, para que indique el número enseguida. La tarjeta desaparece cuando cada operario activo tiene un número.<br><br>En el cuadro <strong>Operarios</strong> ve la misma falta, por ejemplo <strong>(2 sin NISS)</strong>."
+                },
+                {
+                    "label": "Primeros pasos",
+                    "text": "Mientras no haya ningún operario, la pantalla pide <strong>Añade tu primer operario</strong>. Los operarios no tienen un acceso propio. Se anuncian con el QR del Clock Point en el móvil, fichan la entrada y la salida, y empiezan una visita en la dirección de trabajo del cliente.<br><br>Si hay un operario pero aún no hay cliente, la pantalla pide <strong>Añade tu primer cliente</strong>. Ese cliente necesita al menos una dirección de trabajo. La marca en esa dirección indica dónde un operario puede empezar una visita.<br><br>Primero el operario, después el cliente. Ambas tarjetas desaparecen en cuanto existen. Después usa los cuadros <strong>Añadir operario</strong> y <strong>Añadir cliente</strong>."
+                },
+                {
+                    "label": "¿Qué hay de nuevo?",
+                    "text": "Si arriba aparece el cuadro <strong>¿Qué hay de nuevo?</strong>, algo ha cambiado recientemente en WinProx.<br><br>El cuadro permanece visible como máximo una semana. Pulse para ver los cambios recientes en Ayuda → Nuevo. Después desaparece.<br><br>Si más adelante hay una nota más reciente, el cuadro vuelve a aparecer. Este cuadro no se puede guardar aparte."
+                },
+                {
+                    "label": "Ir rápido a una acción",
+                    "text": "Los primeros cuadros son accesos directos. Un toque abre la pantalla. Mantenga un cuadro: se levanta y le sigue. Arrástrelo a <strong>Cuadros guardados</strong> para ocultarlo. Esa elección es solo para usted.<br><br>• <strong>Añadir cliente</strong> — abre el formulario de un cliente nuevo. Después añade una dirección de trabajo, con la calle y la marca donde se hace el trabajo.<br>• <strong>Añadir operario</strong> — abre el formulario de alguien que ficha con el equipo. El nombre, el apellido y un equipo bastan para empezar. Indique el número de registro nacional cuando CIAO deba enviar la presencia.<br>• <strong>Presencia</strong> — abre el resumen en directo: quién ha fichado, y en qué cliente está la visita."
+                },
+                {
+                    "label": "Resumen",
+                    "text": "Al lado están los recuentos. Pulse un cuadro para abrir la pantalla correspondiente. También puede guardar estos cuadros. Eso es solo para usted."
+                },
+                {
+                    "label": "Presentes",
+                    "text": "El número de operarios con un servicio abierto que no están en pausa. Quien está en pausa no cuenta. El cuadro abre Presencia.",
+                    "nested": true
+                },
+                {
+                    "label": "Visitas hoy",
+                    "text": "El número de visitas a clientes que empezaron hoy. Una visita que ya terminó sigue contando. El cuadro abre Horas fichadas.",
+                    "nested": true
+                },
+                {
+                    "label": "Operarios",
+                    "text": "El número de operarios activos. El cuadro abre la pantalla de equipos, donde añade y cambia operarios. Si pone por ejemplo <strong>(2 sin NISS)</strong>, a esos operarios les falta el número de registro nacional.",
+                    "nested": true
+                },
+                {
+                    "label": "Licencias en uso",
+                    "text": "Cuántas licencias están ocupadas, frente a su límite. Por ejemplo <strong>8 / 25</strong>. Una licencia es un compañero con acceso o un operario activo. El cuadro abre Suscripción.<br><br>Durante la prueba el límite es 25. Después fija usted el número. No puede bajarlo por debajo del número que ya está en uso. Desactive primero un operario o un compañero.",
+                    "nested": true
+                },
+                {
+                    "label": "Clientes activos",
+                    "text": "El número de clientes que siguen activos. Un cliente que desactivó no cuenta. El cuadro abre la lista de clientes.",
+                    "nested": true
+                },
+                {
+                    "label": "QR del Clock Point",
+                    "text": "Este cuadro no es un recuento, sino un botón. Debajo pone <strong>Deje que sus operarios empiecen con el código QR.</strong><br><br>Mientras no haya habido ningún servicio, el cuadro parpadea. Así ve que los operarios aún necesitan el QR para empezar. Tras el primer servicio deja de parpadear. El botón sigue.<br><br>Un toque abre la misma ventana que en el Clock Point:<br>• el QR, para mostrarlo o imprimirlo enseguida;<br>• una hoja de Word en A6, A5 o A4;<br>• el enlace de acceso, para copiarlo o compartirlo por WhatsApp;<br>• un correo al operario con ese enlace.<br><br>Quien ya se anunció abre después el portal desde el icono de la pantalla de inicio del móvil. En Checkmate, fichar la entrada y la salida también se hace desde ese icono, sin volver a escanear. Una visita al cliente empieza en la dirección de trabajo, con GPS."
+                },
+                {
+                    "label": "Cuadros guardados",
+                    "text": "A la derecha de la cuadrícula está siempre el cuadro <strong>Cuadros guardados</strong>.<br><br>Si está vacío, lee <strong>Arrastra un cuadro aquí.</strong> Mantenga otro cuadro y suéltelo ahí. Desaparece de la pantalla. El texto pasa a <strong>1 cuadro guardado</strong>, o más si guarda varios.<br><br>Toque el cuadro para verlos de nuevo. Mantenga un cuadro guardado y suéltelo en la cuadrícula para devolverlo.<br><br>Eso es solo para usted. Un compañero conserva su propia disposición. <strong>¿Qué hay de nuevo?</strong> no entra."
+                },
+                {
+                    "label": "Vídeo de instrucciones instalación de la app",
+                    "text": "Cuando el idioma de WinProx es neerlandés, ve el botón <strong>Vídeo de instrucciones instalación de la app</strong> entre los cuadros y la última actividad.<br><br>Abre un vídeo en una ventana nueva: cómo un operario pone WinProx en la pantalla de inicio del móvil. No hay tienda de aplicaciones. En otro idioma el botón no aparece."
                 },
                 {
                     "label": "Última actividad",
-                    "text": "Las ocho últimas visitas a clientes, la más reciente primero: operario, cliente y dirección de obra, con hora de inicio y fin — o solo la hora de inicio si la visita sigue en curso. 'En curso' lleva a la lista de presencia, 'Listo' a la lista de turnos. El botón 'Abrir presencia' arriba a la derecha abre el panel en directo."
+                    "text": "Abajo están las últimas ocho visitas a clientes, la más reciente primero.<br><br>En cada visita ve el operario, el cliente y la dirección de trabajo, y la hora. Si la visita sigue en curso, pone <strong>Empezó a las …</strong> y la pastilla <strong>En curso</strong>. Si ya terminó, ve el inicio y el fin y la pastilla <strong>Listo</strong>.<br><br>Una visita en curso abre Presencia. Una visita terminada abre Horas fichadas.<br><br>Arriba a la derecha, <strong>Abrir presencia</strong> abre el resumen en directo. Si aún no hay visitas, lee <strong>Aún no hay visitas a clientes.</strong>"
                 }
             ]
         },
