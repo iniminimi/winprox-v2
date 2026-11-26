@@ -297,8 +297,8 @@
             "slug": "dashboard_cards",
             "type": "text",
             "title": "How do I put cards away on the home screen?",
-            "body": "At the top, under What do you want to do?, drag a shortcut onto the Cards put away card. Tap it to see them and drag one back onto the grid. Hold a tile to change the order. That is only for you. Under Dashboard the same card does that for the counts. A shortcut does not go into the card under Dashboard, and a count does not go into the card at the top. The hand card and What's new do not go in.",
-            "summary": "You put shortcuts and counts away in their own Cards put away card. Only for you. They do not go into each other's card."
+            "body": "At the top, under What do you want to do?, drag a shortcut onto the Cards put away card. Tap it to see them and drag one back onto the grid. Hold a tile to change the order. That is only for you. Under Dashboard the same card does that for the counts. A shortcut does not go into the card under Dashboard, and a count does not go into the card at the top. The hand card and What's new do not go in. On Checkmate the same card sits with the tiles.",
+            "summary": "You put shortcuts and counts away in their own Cards put away card. Only for you. They do not go into each other's card. On Checkmate the same card sits with the tiles."
         },
         "page_help": {
             "slug": "page_help",

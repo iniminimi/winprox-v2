@@ -16,7 +16,7 @@
                 },
                 {
                     "label": "Ir rápido a una acción",
-                    "text": "Arriba encuentra accesos directos a acciones habituales. Así no tiene que buscar siempre en los menús. Un toque abre el acceso. Mantenga la tarjeta: se levanta y le sigue, y la deja en otro sitio. Ese orden queda guardado para usted. Mientras no haya movido los cuadros, delante hay una tarjeta con una mano. Desaparece tras la primera vez. Un cuadro guarda los accesos que arrastra ahí. Tóquelo para verlos y arrastre uno de vuelta a la pantalla de inicio. Eso es solo para usted. La tarjeta con la mano y ¿Qué hay de nuevo? no entran.<br><br>Según sus derechos y los módulos activos, puede ver entre otras:<br>• Nueva tarea del día vía favoritos<br>• Planificar nueva tarea del día<br>• Añadir ubicación<br>• Añadir ejecutor o Ver ejecutores<br>• Quién trabaja dónde hoy<br>• Fichar manualmente<br>• Qué tareas hoy<br>• Ver cuadrante<br><br>No todos los botones están siempre visibles. Depende de su rol y de los módulos activos, como Time o el calendario."
+                    "text": "Arriba encuentra accesos directos a acciones habituales. Así no tiene que buscar siempre en los menús. Un toque abre el acceso. Mantenga la tarjeta: se levanta y le sigue, y la deja en otro sitio. Ese orden queda guardado para usted. Mientras no haya movido los cuadros, delante hay una tarjeta con una mano. Desaparece tras la primera vez. Un cuadro guarda los accesos que arrastra ahí. Tóquelo para verlos y arrastre uno de vuelta a la pantalla de inicio. Eso es solo para usted. La tarjeta con la mano y ¿Qué hay de nuevo? no entran. En Checkmate el mismo cuadro está junto a las tarjetas.<br><br>Según sus derechos y los módulos activos, puede ver entre otras:<br>• Nueva tarea del día vía favoritos<br>• Planificar nueva tarea del día<br>• Añadir ubicación<br>• Añadir ejecutor o Ver ejecutores<br>• Quién trabaja dónde hoy<br>• Fichar manualmente<br>• Qué tareas hoy<br>• Ver cuadrante<br><br>No todos los botones están siempre visibles. Depende de su rol y de los módulos activos, como Time o el calendario."
                 },
                 {
                     "label": "¿Qué hay de nuevo?",
@@ -2495,7 +2495,7 @@
                 },
                 {
                     "label": "Tarjetas",
-                    "text": "Cada tarjeta muestra una cifra o un estado; al pulsarla se abre la pantalla correspondiente."
+                    "text": "Cada tarjeta muestra una cifra o un estado; al pulsarla se abre la pantalla correspondiente. Arrastre una tarjeta a Cuadros guardados para guardarla. Tóquelo para verlas y arrastre una de vuelta a la cuadrícula. Eso es solo para usted. ¿Qué hay de nuevo? no entra."
                 },
                 {
                     "label": "Presentes",

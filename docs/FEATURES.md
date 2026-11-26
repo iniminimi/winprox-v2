@@ -1770,6 +1770,7 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   geen extra, geen deactiveren, geen vestigingslocatie. Portaal: klok,
   klantbezoek, pauze, Mijn uren. Dashboard: pulserende kaart met actieve
   uitvoerders zonder rijksregisternummer (de naam linkt naar die uitvoerder).
+  Die persoon zet tegels weg in **Weggezette kaders**. **Wat is er nieuw?** gaat er niet in.
   Volledige spec: `docs/CHECKMATE.md`.
 - **Instellingen — klanten op locatie** (`tenants.customers_on_location`): toont
   **Klanten** in het menu (Facility) of forceert aan op Checkmate. Locaties koppelen

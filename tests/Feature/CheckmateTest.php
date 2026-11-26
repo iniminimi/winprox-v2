@@ -1271,6 +1271,42 @@ it('toont het checkmate-dashboard met veldwerk-tegels en zonder facility-links',
     expect(substr_count($dashboard->getContent(), 'class="wp-kpis"'))->toBe(1);
 });
 
+it('zet een checkmate-tegel weg in Weggezette kaders', function () {
+    $tenant = checkmateTenant();
+    $user = User::factory()->admin()->for($tenant)->create();
+    $other = User::factory()->admin()->for($tenant)->create();
+    Tenancy::actAs($tenant->id);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSeeHtml('data-wp-hide-method="hideCheckmateTile"')
+        ->assertSeeHtml('data-wp-intent-tile="add_customer"')
+        ->assertSeeHtml('data-wp-intent-tile="present_now"')
+        ->assertSee(__('dashboard.intent.hidden_box.empty'))
+        ->call('hideCheckmateTile', 'new_issues')
+        ->call('hideCheckmateTile', 'hidden_box')
+        ->assertSeeHtml('data-wp-intent-tile="add_customer"')
+        ->call('hideCheckmateTile', 'add_customer')
+        ->assertDontSeeHtml('data-wp-intent-tile="add_customer"')
+        ->assertSeeHtml('data-wp-intent-tile="present_now"')
+        ->assertSee(__('dashboard.intent.hidden_box.one'))
+        ->call('openHiddenCheckmateTiles')
+        ->assertSet('showHiddenCheckmateTiles', true)
+        ->assertSeeHtml('data-wp-intent-hidden="1"')
+        ->call('restoreCheckmateTile', 'add_customer')
+        ->assertSet('showHiddenCheckmateTiles', false)
+        ->assertSeeHtml('data-wp-intent-tile="add_customer"');
+
+    expect($user->refresh()->dashboard_hidden_checkmate_tiles)->toBe([])
+        ->and($user->dashboard_hidden_kpis)->toBeNull()
+        ->and($user->dashboard_hidden_tiles)->toBeNull();
+
+    Livewire::actingAs($other)
+        ->test(Dashboard::class)
+        ->assertSeeHtml('data-wp-intent-tile="add_customer"')
+        ->assertSee(__('dashboard.intent.hidden_box.empty'));
+});
+
 it('toont op de uitvoerders-tegel hoeveel actieve uitvoerders geen RRN hebben', function () {
     $tenant = checkmateTenant();
     $admin = User::factory()->admin()->for($tenant)->create();

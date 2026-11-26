@@ -88,7 +88,10 @@ Whitelist-schermen:
   plus **Clock Point QR** rechts daarvan (zelfde popup als Time → Clock Points →
   Aanmelden: QR, aanmeldlink, WhatsApp en mail; pulse tot de eerste dienst). Pulserende kaart met actieve uitvoerders zonder
   rijksregisternummer; een naam opent die uitvoerder op het teamscherm.
-  Laatste klantbezoeken. Tussen de tegels en laatste activiteit: de knop
+  Laatste klantbezoeken. Een kader **Weggezette kaders** blijft in het raster.
+  Een tegel erop loslaten zet die weg voor die persoon. Een tik toont ze;
+  vasthouden en loslaten op het raster zet er een terug. **Wat is er nieuw?**
+  gaat er niet in. Tussen de tegels en laatste activiteit: de knop
   «Instructivideo installatie app» (`checkmate_PWA.mp4`), alleen bij Nederlands.
   Geen facility-tegels, starter packs of
   meldingen-feed.

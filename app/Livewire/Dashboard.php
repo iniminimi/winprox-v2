@@ -7,8 +7,10 @@ use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
 use App\Actions\Dashboard\BuildDashboardIntentHubAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
+use App\Actions\Dashboard\HideCheckmateDashboardTileAction;
 use App\Actions\Dashboard\HideDashboardIntentTileAction;
 use App\Actions\Dashboard\HideDashboardKpiAction;
+use App\Actions\Dashboard\RestoreCheckmateDashboardTileAction;
 use App\Actions\Dashboard\RestoreDashboardIntentTileAction;
 use App\Actions\Dashboard\RestoreDashboardKpiAction;
 use App\Actions\Dashboard\SaveDashboardIntentOrderAction;
@@ -76,6 +78,8 @@ class Dashboard extends Component
     public bool $showHiddenTiles = false;
 
     public bool $showHiddenKpis = false;
+
+    public bool $showHiddenCheckmateTiles = false;
 
     public function openAddDevice(): void
     {
@@ -153,6 +157,33 @@ class Dashboard extends Component
 
         app(RestoreDashboardKpiAction::class)->handle($user, $key);
         $this->showHiddenKpis = false;
+    }
+
+    public function openHiddenCheckmateTiles(): void
+    {
+        $this->abortUnlessCheckmate();
+        $this->showHiddenCheckmateTiles = true;
+    }
+
+    public function closeHiddenCheckmateTiles(): void
+    {
+        $this->showHiddenCheckmateTiles = false;
+    }
+
+    public function hideCheckmateTile(string $key): void
+    {
+        $user = $this->abortUnlessCheckmate();
+
+        app(HideCheckmateDashboardTileAction::class)->handle($user, $key);
+        $this->showHiddenCheckmateTiles = false;
+    }
+
+    public function restoreCheckmateTile(string $key): void
+    {
+        $user = $this->abortUnlessCheckmate();
+
+        app(RestoreCheckmateDashboardTileAction::class)->handle($user, $key);
+        $this->showHiddenCheckmateTiles = false;
     }
 
     public function openCheckmateClockPointQr(EnsureDefaultClockPointAction $ensureDefault): void
@@ -369,6 +400,9 @@ class Dashboard extends Component
             : null;
         $onboarding = $isCheckmate ? null : TenantOnboardingState::current();
         $user = auth()->user();
+        $checkmateTiles = $checkmateData?->partitionTiles(
+            $user instanceof User ? ($user->dashboard_hidden_checkmate_tiles ?? []) : [],
+        ) ?? ['quickTiles' => [], 'kpis' => [], 'hidden' => []];
         $timeArchiveNotices = ['year' => null, 'photo_until' => null];
         if ($tenantId > 0) {
             $expiringAbsencePhotos = $countExpiringAbsencePhotos->handle(
@@ -438,6 +472,9 @@ class Dashboard extends Component
 
         return view('livewire.dashboard', [
             'checkmate' => $checkmateData,
+            'checkmateQuickTiles' => $checkmateTiles['quickTiles'],
+            'checkmateKpis' => $checkmateTiles['kpis'],
+            'hiddenCheckmateTiles' => $checkmateTiles['hidden'],
             'checkmatePwaVideoUrl' => $checkmatePwaVideoUrl,
             'checkmateQrClockPoint' => $checkmateQrClockPoint,
             'checkmateQrPackTemplates' => QrStickerSheetTemplate::printableDownloadCases(),
@@ -491,6 +528,16 @@ class Dashboard extends Component
         abort_unless($tenant instanceof Tenant, 403);
 
         return $tenant;
+    }
+
+    private function abortUnlessCheckmate(): User
+    {
+        $tenant = $this->resolveTenant();
+        $user = auth()->user();
+        abort_unless($tenant instanceof Tenant && CheckmateMode::isActive($tenant), 403);
+        abort_unless($user instanceof User, 403);
+
+        return $user;
     }
 
     private function resolveTenant(): ?Tenant

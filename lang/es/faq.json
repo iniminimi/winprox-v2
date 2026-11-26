@@ -293,8 +293,8 @@
             "slug": "dashboard_cards",
             "type": "text",
             "title": "¿Cómo guardo cuadros en la pantalla de inicio?",
-            "body": "Arriba, en ¿Qué quiere hacer?, arrastre un acceso al cuadro Cuadros guardados. Tóquelo para verlos y arrastre uno de vuelta a la cuadrícula. Mantenga una tarjeta para cambiar el orden. Eso es solo para usted. Bajo Panel, el mismo cuadro hace eso con los conteos. Un acceso no entra en el cuadro bajo Panel, y un conteo no entra en el cuadro de arriba. La tarjeta con la mano y ¿Qué hay de nuevo? no entran.",
-            "summary": "Los accesos y los conteos se guardan en su propio cuadro Cuadros guardados. Solo para usted. No entran en el cuadro del otro."
+            "body": "Arriba, en ¿Qué quiere hacer?, arrastre un acceso al cuadro Cuadros guardados. Tóquelo para verlos y arrastre uno de vuelta a la cuadrícula. Mantenga una tarjeta para cambiar el orden. Eso es solo para usted. Bajo Panel, el mismo cuadro hace eso con los conteos. Un acceso no entra en el cuadro bajo Panel, y un conteo no entra en el cuadro de arriba. La tarjeta con la mano y ¿Qué hay de nuevo? no entran. En Checkmate el mismo cuadro está junto a las tarjetas.",
+            "summary": "Los accesos y los conteos se guardan en su propio cuadro Cuadros guardados. Solo para usted. No entran en el cuadro del otro. En Checkmate el mismo cuadro está junto a las tarjetas."
         },
         "page_help": {
             "slug": "page_help",

@@ -293,8 +293,8 @@
             "slug": "dashboard_cards",
             "type": "text",
             "title": "Come metto da parte le schede nella schermata iniziale?",
-            "body": "In alto, a Cosa vuole fare?, trascinate un collegamento sulla scheda Schede messe da parte. Toccatela per vederle e trascinatene una sulla griglia. Tenete premuta una scheda per cambiare l'ordine. Vale solo per voi. Sotto Dashboard la stessa scheda fa lo stesso con i conteggi. Un collegamento non entra nella scheda sotto Dashboard, e un conteggio non entra nella scheda in alto. La scheda con la mano e Che cosa c'è di nuovo non ci entrano.",
-            "summary": "Collegamenti e conteggi li mettete da parte nella loro scheda Schede messe da parte. Solo per voi. Non entrano nella scheda dell'altro."
+            "body": "In alto, a Cosa vuole fare?, trascinate un collegamento sulla scheda Schede messe da parte. Toccatela per vederle e trascinatene una sulla griglia. Tenete premuta una scheda per cambiare l'ordine. Vale solo per voi. Sotto Dashboard la stessa scheda fa lo stesso con i conteggi. Un collegamento non entra nella scheda sotto Dashboard, e un conteggio non entra nella scheda in alto. La scheda con la mano e Che cosa c'è di nuovo non ci entrano. Su Checkmate la stessa scheda sta con i riquadri.",
+            "summary": "Collegamenti e conteggi li mettete da parte nella loro scheda Schede messe da parte. Solo per voi. Non entrano nella scheda dell'altro. Su Checkmate la stessa scheda sta con i riquadri."
         },
         "page_help": {
             "slug": "page_help",

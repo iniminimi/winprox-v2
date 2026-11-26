@@ -79,68 +79,91 @@
             </div>
         @endif
 
-        <div class="wp-kpis">
-            @if ($showWhatsNew)
-                @include('partials.whats-new-card')
-            @endif
-            @foreach ($checkmate->quickTiles as $tile)
-                <a href="{{ $tile['href'] }}"
-                   @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
-                   wire:key="cm-action-{{ $tile['key'] }}">
+        <div
+            x-data="wpIntentTiles"
+            data-wp-tile-mode="hide"
+            data-wp-hide-method="hideCheckmateTile"
+            data-wp-restore-method="restoreCheckmateTile"
+            data-wp-close-method="closeHiddenCheckmateTiles"
+            @pointerdown="onPointerDown($event)"
+            @pointermove.window="onPointerMove($event)"
+            @pointerup.window="onPointerUp($event)"
+            @pointercancel.window="onPointerUp($event)"
+            @click.capture="onClick($event)"
+            @contextmenu="onContextMenu($event)"
+            @dragstart.prevent
+        >
+            <div class="wp-kpis" data-wp-intent-grid>
+                @if ($showWhatsNew)
+                    @include('partials.whats-new-card')
+                @endif
+                @foreach ($checkmateQuickTiles as $tile)
+                    @include('partials.checkmate-dashboard-tile', [
+                        'tile' => $tile,
+                        'kind' => 'quick',
+                        'hidden' => false,
+                        'wireKey' => 'cm-action-'.$tile['key'],
+                    ])
+                @endforeach
+                @foreach ($checkmateKpis as $tile)
+                    @include('partials.checkmate-dashboard-tile', [
+                        'tile' => $tile,
+                        'kind' => 'kpi',
+                        'hidden' => false,
+                        'wireKey' => 'cm-kpi-'.$tile['key'],
+                    ])
+                @endforeach
+                @php
+                    $hiddenCheckmateCount = count($hiddenCheckmateTiles);
+                @endphp
+                <button type="button"
+                        @class(['wp-kpi', 'wp-kpi--open_tasks'])
+                        @if ($hiddenCheckmateCount > 0) wire:click="openHiddenCheckmateTiles" @endif
+                        data-wp-intent-tile="hidden_checkmate_box"
+                        data-wp-intent-bin
+                        draggable="false"
+                        wire:key="cm-hidden-box">
                     <div class="wp-kpi-body">
                         <span class="wp-kpi-icon" aria-hidden="true">
-                            <x-wp-icon :name="$tile['icon']" />
+                            <x-wp-icon name="layout-dots" />
                         </span>
                         <div class="wp-kpi-main">
-                            <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
-                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                            <p class="wp-kpi-kicker">{{ __('dashboard.intent.hidden_box.title') }}</p>
+                            <p class="wp-kpi-meta wp-kpi-meta--wrap">
+                                @if ($hiddenCheckmateCount === 0)
+                                    {{ __('dashboard.intent.hidden_box.empty') }}
+                                @elseif ($hiddenCheckmateCount === 1)
+                                    {{ __('dashboard.intent.hidden_box.one') }}
+                                @else
+                                    {{ __('dashboard.intent.hidden_box.many', ['count' => $hiddenCheckmateCount]) }}
+                                @endif
+                            </p>
                         </div>
                     </div>
-                </a>
-            @endforeach
-            @foreach ($checkmate->kpis as $kpi)
-                @if (($kpi['action'] ?? null) === 'open_clock_point_qr')
-                    <button
-                        type="button"
-                        wire:click="openCheckmateClockPointQr"
-                        @class([
-                            'wp-kpi',
-                            'wp-kpi--'.$kpi['tone'],
-                            'wp-btn--prio-pulse' => $kpi['pulse'] ?? false,
-                        ])
-                        wire:key="cm-kpi-{{ $kpi['key'] }}"
-                    >
-                        <div class="wp-kpi-body">
-                            <span class="wp-kpi-icon" aria-hidden="true">
-                                <x-wp-icon :name="$kpi['icon']" />
-                            </span>
-                            <div class="wp-kpi-main">
-                                <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
-                                <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($kpi['body'] ?? '') }}</p>
+                </button>
+            </div>
+            @if ($showHiddenCheckmateTiles && $hiddenCheckmateTiles !== [])
+                <div data-wp-intent-hidden-modal>
+                    <x-wp-modal closeMethod="closeHiddenCheckmateTiles" aria-labelledby="checkmate-hidden-title">
+                        <div class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
+                            <div class="wp-modal-head">
+                                <h2 id="checkmate-hidden-title" class="wp-section-title">{{ __('dashboard.intent.hidden_box.title') }}</h2>
+                                <x-wp-modal-close wire:click="closeHiddenCheckmateTiles" />
+                            </div>
+                            <div class="wp-kpis">
+                                @foreach ($hiddenCheckmateTiles as $item)
+                                    @include('partials.checkmate-dashboard-tile', [
+                                        'tile' => $item['tile'],
+                                        'kind' => $item['kind'],
+                                        'hidden' => true,
+                                        'wireKey' => 'cm-hidden-'.$item['tile']['key'],
+                                    ])
+                                @endforeach
                             </div>
                         </div>
-                    </button>
-                @else
-                    <a href="{{ $kpi['href'] }}"
-                       @class(['wp-kpi', 'wp-kpi--'.$kpi['tone']])
-                       wire:key="cm-kpi-{{ $kpi['key'] }}">
-                        <div class="wp-kpi-body">
-                            <span class="wp-kpi-icon" aria-hidden="true">
-                                <x-wp-icon :name="$kpi['icon']" />
-                            </span>
-                            <div class="wp-kpi-main">
-                                <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
-                                <p class="wp-kpi-stats">
-                                    <span class="wp-kpi-value wp-tabular">{{ $kpi['value'] ?? '' }}</span>
-                                    @if (! empty($kpi['meta']))
-                                        <span class="wp-kpi-meta">{{ $kpi['meta'] }}</span>
-                                    @endif
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                @endif
-            @endforeach
+                    </x-wp-modal>
+                </div>
+            @endif
         </div>
 
         @if ($checkmatePwaVideoUrl)

@@ -29,4 +29,48 @@ final class CheckmateDashboardData
         public bool $presencePending,
         public bool $presenceMissingEmployer,
     ) {}
+
+    /**
+     * @param  list<mixed>  $hiddenKeys
+     * @return array{
+     *     quickTiles: list<array<string, mixed>>,
+     *     kpis: list<array<string, mixed>>,
+     *     hidden: list<array{kind: string, tile: array<string, mixed>>}
+     * }
+     */
+    public function partitionTiles(array $hiddenKeys): array
+    {
+        $hiddenLookup = [];
+        foreach ($hiddenKeys as $key) {
+            if (is_string($key)) {
+                $hiddenLookup[$key] = true;
+            }
+        }
+
+        $visibleQuick = [];
+        $visibleKpis = [];
+        $hidden = [];
+
+        foreach ($this->quickTiles as $tile) {
+            if (isset($hiddenLookup[$tile['key']])) {
+                $hidden[] = ['kind' => 'quick', 'tile' => $tile];
+            } else {
+                $visibleQuick[] = $tile;
+            }
+        }
+
+        foreach ($this->kpis as $tile) {
+            if (isset($hiddenLookup[$tile['key']])) {
+                $hidden[] = ['kind' => 'kpi', 'tile' => $tile];
+            } else {
+                $visibleKpis[] = $tile;
+            }
+        }
+
+        return [
+            'quickTiles' => $visibleQuick,
+            'kpis' => $visibleKpis,
+            'hidden' => $hidden,
+        ];
+    }
 }

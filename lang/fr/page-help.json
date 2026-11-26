@@ -16,7 +16,7 @@
                 },
                 {
                     "label": "Accès rapide à une action",
-                    "text": "En haut, vous trouvez des raccourcis vers les actions courantes. Ainsi, vous n’avez pas à chercher dans les menus à chaque fois. Un appui ouvre le raccourci. Maintenez la tuile : elle se soulève et vous suit, et vous la posez ailleurs. Cet ordre reste enregistré pour vous. Tant que vous n’avez pas déplacé les cadres, une tuile avec une main est devant. Elle disparaît après la première fois. Un cadre garde les raccourcis que vous y glissez. Touchez-le pour les voir, et glissez-en un vers l’écran d’accueil. Cela ne vaut que pour vous. La tuile avec la main et Quoi de neuf n’y entrent pas.<br><br>Selon vos droits et les modules actifs, vous voyez notamment :<br>• Nouvelle tâche du jour via favoris<br>• Planifier une nouvelle tâche du jour<br>• Ajouter un site<br>• Ajouter un exécutant ou Voir les exécutants<br>• Qui travaille où aujourd’hui<br>• Pointage manuel<br>• Quelles tâches aujourd’hui<br>• Voir le planning<br><br>Chaque bouton n’est pas toujours visible. Cela dépend de votre rôle et des modules actifs, comme Time ou le calendrier."
+                    "text": "En haut, vous trouvez des raccourcis vers les actions courantes. Ainsi, vous n’avez pas à chercher dans les menus à chaque fois. Un appui ouvre le raccourci. Maintenez la tuile : elle se soulève et vous suit, et vous la posez ailleurs. Cet ordre reste enregistré pour vous. Tant que vous n’avez pas déplacé les cadres, une tuile avec une main est devant. Elle disparaît après la première fois. Un cadre garde les raccourcis que vous y glissez. Touchez-le pour les voir, et glissez-en un vers l’écran d’accueil. Cela ne vaut que pour vous. La tuile avec la main et Quoi de neuf n’y entrent pas. Sur Checkmate, le même cadre est à côté des tuiles.<br><br>Selon vos droits et les modules actifs, vous voyez notamment :<br>• Nouvelle tâche du jour via favoris<br>• Planifier une nouvelle tâche du jour<br>• Ajouter un site<br>• Ajouter un exécutant ou Voir les exécutants<br>• Qui travaille où aujourd’hui<br>• Pointage manuel<br>• Quelles tâches aujourd’hui<br>• Voir le planning<br><br>Chaque bouton n’est pas toujours visible. Cela dépend de votre rôle et des modules actifs, comme Time ou le calendrier."
                 },
                 {
                     "label": "Quoi de neuf ?",
@@ -2499,7 +2499,7 @@
                 },
                 {
                     "label": "Tuiles",
-                    "text": "Chaque tuile affiche un nombre ou un statut ; un clic ouvre l'écran correspondant."
+                    "text": "Chaque tuile affiche un nombre ou un statut ; un clic ouvre l'écran correspondant. Glissez une tuile vers Cadres rangés pour la ranger. Touchez-le pour les voir et glissez-en une vers la grille. Cela ne vaut que pour vous. Quoi de neuf n'y entre pas."
                 },
                 {
                     "label": "Présents",

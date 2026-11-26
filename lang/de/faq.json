@@ -293,8 +293,8 @@
             "slug": "dashboard_cards",
             "type": "text",
             "title": "Wie lege ich Kacheln auf dem Startbildschirm weg?",
-            "body": "Oben, bei Was möchten Sie tun?, ziehen Sie eine Verknüpfung auf die Kachel Weggelegte Kacheln. Tippen Sie darauf, um sie zu sehen, und ziehen Sie eine zurück ins Raster. Halten Sie eine Kachel, um die Reihenfolge zu ändern. Das gilt nur für Sie. Unter Dashboard macht dieselbe Kachel das mit den Zählungen. Eine Verknüpfung geht nicht in die Kachel unter Dashboard, und eine Zählung geht nicht in die Kachel oben. Die Kachel mit der Hand und Was ist neu gehen nicht hinein.",
-            "summary": "Verknüpfungen und Zählungen legen Sie in ihrer eigenen Kachel Weggelegte Kacheln ab. Nur für Sie. Sie gehören nicht in die Kachel der anderen."
+            "body": "Oben, bei Was möchten Sie tun?, ziehen Sie eine Verknüpfung auf die Kachel Weggelegte Kacheln. Tippen Sie darauf, um sie zu sehen, und ziehen Sie eine zurück ins Raster. Halten Sie eine Kachel, um die Reihenfolge zu ändern. Das gilt nur für Sie. Unter Dashboard macht dieselbe Kachel das mit den Zählungen. Eine Verknüpfung geht nicht in die Kachel unter Dashboard, und eine Zählung geht nicht in die Kachel oben. Die Kachel mit der Hand und Was ist neu gehen nicht hinein. Bei Checkmate steht dieselbe Kachel bei den Kacheln.",
+            "summary": "Verknüpfungen und Zählungen legen Sie in ihrer eigenen Kachel Weggelegte Kacheln ab. Nur für Sie. Sie gehören nicht in die Kachel der anderen. Bei Checkmate steht dieselbe Kachel bei den Kacheln."
         },
         "page_help": {
             "slug": "page_help",

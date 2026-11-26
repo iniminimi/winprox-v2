@@ -16,7 +16,7 @@
                 },
                 {
                     "label": "Snel naar een actie",
-                    "text": "Bovenaan vindt u snelkoppelingen naar veelgebruikte acties. Zo hoeft u niet telkens door de menu's te zoeken. Een tik opent de snelkoppeling. Houd de tegel vast: hij licht op en komt mee, en u zet hem op een andere plek. Die volgorde blijft voor u bewaard. Zolang u de kaders nog niet verplaatst hebt, staat vooraan een tegel met een handje. Die verdwijnt na de eerste keer. Een kader waar u een snelkoppeling heen sleept, bewaart die. Tik erop en sleep het kader terug naar het beginscherm. Dat geldt alleen voor u. Het kader met het handje en Wat is er nieuw gaan er niet in.<br><br>Afhankelijk van uw rechten en de actieve modules ziet u onder andere:<br>• Nieuwe dagtaak via favorieten<br>• Nieuwe dagtaak plannen<br>• Locatie toevoegen<br>• Uitvoerder toevoegen of Uitvoerders bekijken<br>• Wie werkt waar vandaag<br>• Manueel inklokken<br>• Welke taken vandaag<br>• Uurrooster bekijken<br><br>Niet elke knop is altijd zichtbaar. Dat hangt af van uw rol en van de actieve modules, zoals Time of de kalender."
+                    "text": "Bovenaan vindt u snelkoppelingen naar veelgebruikte acties. Zo hoeft u niet telkens door de menu's te zoeken. Een tik opent de snelkoppeling. Houd de tegel vast: hij licht op en komt mee, en u zet hem op een andere plek. Die volgorde blijft voor u bewaard. Zolang u de kaders nog niet verplaatst hebt, staat vooraan een tegel met een handje. Die verdwijnt na de eerste keer. Een kader waar u een snelkoppeling heen sleept, bewaart die. Tik erop en sleep het kader terug naar het beginscherm. Dat geldt alleen voor u. Het kader met het handje en Wat is er nieuw gaan er niet in. Op Checkmate staat hetzelfde kader bij de tegels.<br><br>Afhankelijk van uw rechten en de actieve modules ziet u onder andere:<br>• Nieuwe dagtaak via favorieten<br>• Nieuwe dagtaak plannen<br>• Locatie toevoegen<br>• Uitvoerder toevoegen of Uitvoerders bekijken<br>• Wie werkt waar vandaag<br>• Manueel inklokken<br>• Welke taken vandaag<br>• Uurrooster bekijken<br><br>Niet elke knop is altijd zichtbaar. Dat hangt af van uw rol en van de actieve modules, zoals Time of de kalender."
                 },
                 {
                     "label": "Wat is er nieuw?",
@@ -2495,7 +2495,7 @@
                 },
                 {
                     "label": "Tegels",
-                    "text": "Elke tegel toont een aantal of status; klikken opent het bijbehorende scherm."
+                    "text": "Elke tegel toont een aantal of status; klikken opent het bijbehorende scherm. Sleep een tegel naar Weggezette kaders om hem weg te zetten. Tik erop om ze te zien en sleep er een terug op het raster. Dat geldt alleen voor u. Wat is er nieuw gaat er niet in."
                 },
                 {
                     "label": "Nu aanwezig",
