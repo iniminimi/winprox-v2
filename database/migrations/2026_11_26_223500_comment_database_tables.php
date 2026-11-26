@@ -22,7 +22,7 @@ return new class extends Migration
 
     private function setComment(string $table, string $comment): void
     {
-        if (! preg_match('/^[a-z0-9_]+$/', $table) || ! Schema::hasTable($table)) {
+        if (DB::getDriverName() !== 'mysql' || ! preg_match('/^[a-z0-9_]+$/', $table) || ! Schema::hasTable($table)) {
             return;
         }
 
