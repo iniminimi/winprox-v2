@@ -27,6 +27,7 @@ class UpdateLocationAnnouncementAction
         array $data,
         int $tenantId,
         ?int $actorUserId = null,
+        bool $translate = true,
     ): Announcement {
         $unitId = $data['unit_id'] ?? null;
         if ($unitId !== null) {
@@ -66,8 +67,10 @@ class UpdateLocationAnnouncementAction
         );
 
         $announcement = $announcement->fresh();
-        $this->invalidateTranslations->handle($announcement, $previousDescription, $actorUserId);
-        $this->ensureTranslationSlots->handle($announcement);
+        if ($translate) {
+            $this->invalidateTranslations->handle($announcement, $previousDescription, $actorUserId);
+            $this->ensureTranslationSlots->handle($announcement);
+        }
 
         return $announcement;
     }

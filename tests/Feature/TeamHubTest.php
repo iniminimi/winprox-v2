@@ -557,6 +557,35 @@ it('staat teambeheer-rollen correct toe (admin alles, medewerker enkel inhoud)',
         ->and(Gate::forUser($employee)->allows('update', $team))->toBeTrue();
 });
 
+it('zet geen teamvertaling klaar zolang het vinkje uit staat', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openCreateTeam')
+        ->assertSee(__('common.translation_enable'))
+        ->assertSet('teamTranslationEnabled', false)
+        ->set('teamName', 'Creche')
+        ->call('saveTeam')
+        ->assertHasNoErrors();
+
+    $team = InternalTeam::where('name', 'Creche')->first();
+    expect($team)->not->toBeNull()
+        ->and(InternalTeamTranslation::query()->where('internal_team_id', $team->id)->count())->toBe(0);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openCreateTeam')
+        ->set('teamName', 'Hotel')
+        ->set('teamTranslationEnabled', true)
+        ->call('saveTeam')
+        ->assertHasNoErrors();
+
+    $translated = InternalTeam::where('name', 'Hotel')->first();
+    expect($translated)->not->toBeNull()
+        ->and(InternalTeamTranslation::query()->where('internal_team_id', $translated->id)->count())->toBeGreaterThan(0);
+});
+
 it('laat een admin een team aanmaken en deactiveren', function () {
     [$tenant, $admin] = tenantWithAdmin();
 

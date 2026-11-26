@@ -110,7 +110,9 @@
                     @error('checkListName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
 
-                @if ($editingCheckListId !== null)
+                <x-wp-translation-toggle wire-model="checkListTranslationEnabled" />
+
+                @if ($editingCheckListId !== null && $checkListTranslationEnabled)
                     <div class="wp-field" x-data="{ open: false }">
                         <span class="wp-label">{{ __('unit_checks.lists.translation_edit.label') }}</span>
 

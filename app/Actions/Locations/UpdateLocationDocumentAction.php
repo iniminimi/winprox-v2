@@ -32,6 +32,7 @@ class UpdateLocationDocumentAction
         ?TemporaryUploadedFile $replacementFile,
         int $tenantId,
         ?int $actorUserId = null,
+        bool $translate = true,
     ): array {
         $unitId = $data['unit_id'] ?? null;
         if ($unitId !== null) {
@@ -86,8 +87,10 @@ class UpdateLocationDocumentAction
         );
 
         $document = $document->fresh();
-        $this->invalidateTranslations->handle($document, $previousDescription, $actorUserId);
-        $this->ensureTranslationSlots->handle($document);
+        if ($translate) {
+            $this->invalidateTranslations->handle($document, $previousDescription, $actorUserId);
+            $this->ensureTranslationSlots->handle($document);
+        }
 
         return ['metadata_partial' => $metadataPartial];
     }

@@ -22,7 +22,7 @@ class CreateUnitAction
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null): Unit
+    public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null, bool $translate = true): Unit
     {
         Tenant::query()->findOrFail($tenantId)->assertCanAddUnits(1);
 
@@ -101,7 +101,9 @@ class CreateUnitAction
         );
 
         $unit = $unit->fresh();
-        $this->ensureTranslationSlots->handle($unit);
+        if ($translate) {
+            $this->ensureTranslationSlots->handle($unit);
+        }
 
         if (array_key_exists('measure_field_ids', $data)) {
             $ids = is_array($data['measure_field_ids'])

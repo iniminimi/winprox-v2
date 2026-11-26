@@ -66,6 +66,7 @@
                     <x-wp-modal-close wire:click="closeCreateModal" />
                 </div>
                 <p class="wp-muted">{{ __('locations.documents.modal_subtitle') }}</p>
+                <x-wp-translation-toggle wire-model="translationEnabled" />
 
                 <div class="wp-field">
                     <span class="wp-label">{{ __('locations.documents.description') }}</span>
@@ -123,6 +124,8 @@
                     <x-wp-modal-close wire:click="closeEditModal" />
                 </div>
 
+                <x-wp-translation-toggle wire-model="translationEnabled" />
+
                 <div class="wp-field">
                     <span class="wp-label">{{ __('locations.documents.description') }}</span>
                     <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
@@ -134,7 +137,7 @@
                     @error('description') <span class="wp-error">{{ $message }}</span> @enderror
                 </div>
 
-                @if ($editingDocument?->is_active)
+                @if ($translationEnabled && $editingDocument?->is_active)
                     <div class="wp-card wp-card-pad wp-surface-muted wp-stack-tight">
                         <div class="wp-cluster wp-issue-description-row">
                             <span class="wp-label">{{ __('locations.documents.translation_preview') }}</span>

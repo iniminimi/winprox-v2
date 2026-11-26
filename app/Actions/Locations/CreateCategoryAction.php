@@ -17,7 +17,7 @@ class CreateCategoryAction
     /**
      * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, allow_unit_measurements?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool, show_previous_issues?: bool, original_language?: string|null}  $data
      */
-    public function handle(int $tenantId, array $data, ?int $actorUserId = null): Category
+    public function handle(int $tenantId, array $data, ?int $actorUserId = null, bool $translate = true): Category
     {
         $category = Category::query()->create([
             'tenant_id' => $tenantId,
@@ -32,7 +32,9 @@ class CreateCategoryAction
             'show_previous_issues' => (bool) ($data['show_previous_issues'] ?? true),
         ]);
 
-        $this->ensureSlots->handle($category);
+        if ($translate) {
+            $this->ensureSlots->handle($category);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

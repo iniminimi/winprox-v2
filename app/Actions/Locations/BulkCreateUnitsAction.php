@@ -173,7 +173,7 @@ class BulkCreateUnitsAction
      * @param  array<string, mixed>  $data
      * @return array{batch: UnitBulkBatch, created: int}
      */
-    public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null): array
+    public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null, bool $translate = true): array
     {
         /** @var list<array<string, mixed>> $ranges */
         $ranges = array_values($data['ranges'] ?? []);
@@ -277,6 +277,7 @@ class BulkCreateUnitsAction
             $data,
             $portal,
             $measureFieldIds,
+            $translate,
         ): array {
             $batch = UnitBulkBatch::create([
                 'tenant_id' => $tenantId,
@@ -300,7 +301,9 @@ class BulkCreateUnitsAction
                     ...$portal,
                 ]);
 
-                $this->ensureTranslationSlots->handle($unit);
+                if ($translate) {
+                    $this->ensureTranslationSlots->handle($unit);
+                }
 
                 if ($measureFieldIds !== []) {
                     $this->syncMeasureFields->handle($unit, $measureFieldIds, $actorUserId);

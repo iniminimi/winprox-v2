@@ -20,6 +20,7 @@ class UpdateTaskDetailsAction
         ?string $scheduledFor,
         int $tenantId,
         ?int $actorUserId = null,
+        bool $translate = true,
     ): Task {
         TaskIssueApproval::assertTaskMutable($task);
 
@@ -35,8 +36,10 @@ class UpdateTaskDetailsAction
         ]);
 
         $fresh = $task->fresh();
-        $this->invalidateTranslations->handle($fresh, $previousDescription, $actorUserId);
-        $this->ensureTranslationSlots->handle($fresh);
+        if ($translate) {
+            $this->invalidateTranslations->handle($fresh, $previousDescription, $actorUserId);
+            $this->ensureTranslationSlots->handle($fresh);
+        }
 
         return $fresh;
     }

@@ -339,7 +339,7 @@
                 "items": [
                     "Back-office et site : néerlandais, anglais, français, allemand, espagnol et italien.",
                     "Le portail des intervenants (Clock Point et QR) utilise ces six langues, plus le portugais, le roumain et le polonais. D’autres langues peuvent encore être ajoutées au portail, sans élargir le back-office ni le site.",
-                    "Signalements, tâches, annonces et documents sont traduits automatiquement dans ces six langues. Le portugais, le roumain et le polonais sont la langue d’écran et l’aide du portail ; le texte de l’organisation reste alors dans la langue où il a été écrit.",
+                    "Signalements, tâches, annonces et documents sont traduits dans ces six langues si vous cochez Activer la traduction. Sans cette case, le texte reste dans la langue où vous l’avez écrit. Le portugais, le roumain et le polonais sont la langue d’écran et l’aide du portail ; le texte de l’organisation reste alors dans la langue où il a été écrit.",
                     "La traduction utilise une IA locale. Pour cela, les textes ne partent pas vers un cloud d’IA externe.",
                     "Les traductions sont en général traitées chaque jour, sans délai fixe. Les gestionnaires peuvent les corriger eux-mêmes."
                 ]

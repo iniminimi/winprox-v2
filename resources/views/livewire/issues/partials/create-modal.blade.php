@@ -22,6 +22,8 @@
                 </div>
             @endif
 
+            <x-wp-translation-toggle wire-model="translationEnabled" />
+
             <div class="wp-field">
                 <label class="wp-label" for="create_location_id">{{ __('issues.create.location') }}</label>
                 <select id="create_location_id" class="wp-select" wire:model.live="location_id">

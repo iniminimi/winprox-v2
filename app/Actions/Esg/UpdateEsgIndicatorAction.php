@@ -20,7 +20,7 @@ class UpdateEsgIndicatorAction
     /**
      * @param  array{name: string, type: string|EsgIndicatorType, category?: ?EsgIndicatorCategory, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>}  $data
      */
-    public function handle(EsgIndicator $indicator, array $data, ?int $actorUserId = null): EsgIndicator
+    public function handle(EsgIndicator $indicator, array $data, ?int $actorUserId = null, bool $translate = true): EsgIndicator
     {
         $previousName = (string) $indicator->name;
         $previousOptions = $indicator->normalizedChoiceOptions();
@@ -40,8 +40,10 @@ class UpdateEsgIndicatorAction
 
         $fresh = $indicator->fresh();
 
-        $this->invalidateTranslations->handle($fresh, $previousName, $previousOptions, $actorUserId);
-        $this->ensureTranslationSlots->handle($fresh);
+        if ($translate) {
+            $this->invalidateTranslations->handle($fresh, $previousName, $previousOptions, $actorUserId);
+            $this->ensureTranslationSlots->handle($fresh);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

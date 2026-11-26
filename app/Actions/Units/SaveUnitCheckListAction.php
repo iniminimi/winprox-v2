@@ -28,6 +28,7 @@ class SaveUnitCheckListAction
         int $tenantId,
         ?UnitCheckList $list = null,
         ?int $actorUserId = null,
+        bool $translate = true,
     ): UnitCheckList {
         if ($data->itemLabels === []) {
             throw ValidationException::withMessages([
@@ -48,7 +49,7 @@ class SaveUnitCheckListAction
             }
         }
 
-        return DB::transaction(function () use ($data, $tenantId, $list, $actorUserId) {
+        return DB::transaction(function () use ($data, $tenantId, $list, $actorUserId, $translate) {
             $payload = [
                 'name' => $data->name,
                 'is_active' => $data->isActive,
@@ -101,11 +102,13 @@ class SaveUnitCheckListAction
 
             $list = $list->fresh(['items', 'internalTeam']);
 
-            if ($previousName !== null) {
+            if ($translate && $previousName !== null) {
                 $this->invalidateTranslations->handle($list, $previousName, $previousItems, $actorUserId);
             }
 
-            $this->ensureTranslationSlots->handle($list);
+            if ($translate) {
+                $this->ensureTranslationSlots->handle($list);
+            }
 
             return $list;
         });

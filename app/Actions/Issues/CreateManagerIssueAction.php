@@ -28,7 +28,7 @@ class CreateManagerIssueAction
      * @param  array<string, mixed>  $data
      * @param  array<int, UploadedFile>  $photos
      */
-    public function handle(array $data, User $actor, array $photos = []): Issue
+    public function handle(array $data, User $actor, array $photos = [], bool $translate = true): Issue
     {
         $recurring = RecurrenceSchedule::issueAttributesFromValidated($data);
         $roundStopIds = array_values(array_filter(array_map(
@@ -70,7 +70,9 @@ class CreateManagerIssueAction
         }
 
         $issue = $issue->fresh();
-        $this->ensureTranslationSlots->handle($issue);
+        if ($translate) {
+            $this->ensureTranslationSlots->handle($issue);
+        }
 
         return $issue;
     }

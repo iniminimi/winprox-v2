@@ -19,7 +19,7 @@ class CreateEsgIndicatorAction
     /**
      * @param  array{name: string, type: string|EsgIndicatorType, category?: ?EsgIndicatorCategory, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>, original_language?: ?string}  $data
      */
-    public function handle(int $tenantId, array $data, ?int $actorUserId = null): EsgIndicator
+    public function handle(int $tenantId, array $data, ?int $actorUserId = null, bool $translate = true): EsgIndicator
     {
         $type = $data['type'] instanceof EsgIndicatorType
             ? $data['type']
@@ -37,7 +37,9 @@ class CreateEsgIndicatorAction
             'options' => $data['options'] ?? null,
         ]);
 
-        $this->ensureTranslationSlots->handle($indicator);
+        if ($translate) {
+            $this->ensureTranslationSlots->handle($indicator);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

@@ -230,7 +230,9 @@
                 <div class="wp-modal-body wp-stack">
                     @include('livewire.locations.partials.location-form-fields')
 
-                    @if ($location->is_active)
+                    <x-wp-translation-toggle wire-model="locationTranslationEnabled" />
+
+                    @if ($location->is_active && $locationTranslationEnabled)
                         <div class="wp-field" x-data="{ open: false }">
                             <span class="wp-label">{{ __('locations.translation_edit.label') }}</span>
 
@@ -319,7 +321,9 @@
                     @error('unitDescription') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                @if ($editingUnitId && $previewUnit?->is_active)
+                <x-wp-translation-toggle wire-model="unitTranslationEnabled" />
+
+                @if ($editingUnitId && $previewUnit?->is_active && $unitTranslationEnabled)
                     <div class="wp-field" x-data="{ open: false }">
                         <span class="wp-label">{{ __('locations.units.translation_edit.label') }}</span>
 
@@ -643,6 +647,8 @@
                     <h2 class="wp-section-title">{{ __('locations.bulk.title') }}</h2>
                     <x-wp-modal-close wire:click="closeBulkModal" />
                 </div>
+
+                <x-wp-translation-toggle wire-model="bulkTranslationEnabled" />
 
                 <div
                     class="wp-stack"

@@ -76,9 +76,15 @@ class Show extends Component
 
     public bool $showLocationModal = false;
 
+    public bool $locationTranslationEnabled = false;
+
     public bool $showUnitModal = false;
 
+    public bool $unitTranslationEnabled = false;
+
     public bool $showBulkModal = false;
+
+    public bool $bulkTranslationEnabled = false;
 
     public bool $showCsvImportModal = false;
 
@@ -244,6 +250,7 @@ class Show extends Component
         $this->fillLocationFormFromModel();
         $this->locationPreviewLocale = $this->defaultTranslationLocaleForLocation($this->location);
         $this->hydrateLocationTranslationInput($this->location);
+        $this->locationTranslationEnabled = false;
         $this->resetErrorBag();
         $this->showLocationModal = true;
     }
@@ -319,7 +326,7 @@ class Show extends Component
     {
         $this->authorize('manage', $this->location);
         $validated = UpdateLocationRequest::validatePayload($this->locationFormPayload(), requireName: true);
-        $this->location = $updateLocation->handle($this->location, $validated, (int) auth()->id());
+        $this->location = $updateLocation->handle($this->location, $validated, (int) auth()->id(), $this->locationTranslationEnabled);
         $this->showLocationModal = false;
         $this->resetLocationForm();
         session()->flash('success', __('locations.flash.updated'));
@@ -439,6 +446,7 @@ class Show extends Component
         $this->unitMeasureFieldIds = [];
         $this->unitRequireReporterContact = false;
         $this->unitRequireReporterEmailVerification = false;
+        $this->unitTranslationEnabled = false;
         $this->resetErrorBag();
         $this->showUnitModal = true;
     }
@@ -527,6 +535,7 @@ class Show extends Component
         $this->unitPhotos = [];
         $this->previewLocale = $this->defaultTranslationLocaleFor($unit);
         $this->hydrateUnitTranslationInputs($unit->fresh('translations'));
+        $this->unitTranslationEnabled = false;
 
         $this->resetErrorBag();
         $this->showUnitModal = true;
@@ -763,7 +772,7 @@ class Show extends Component
         if ($this->editingUnitId === null) {
             $this->authorize('create', Unit::class);
             try {
-                $unit = $createUnit->handle($this->location, $payload, (int) auth()->user()->tenant_id, (int) auth()->id());
+                $unit = $createUnit->handle($this->location, $payload, (int) auth()->user()->tenant_id, (int) auth()->id(), $this->unitTranslationEnabled);
             } catch (InvalidArgumentException $e) {
                 if ($e->getMessage() === 'unit_limit_exceeded') {
                     $this->addError('unitName', __('locations.errors.unit_limit'));
@@ -778,7 +787,7 @@ class Show extends Component
         } else {
             $unit = Unit::findOrFail($this->editingUnitId);
             $this->authorize('update', $unit);
-            $updateUnit->handle($unit, $payload, (int) auth()->id(), $this->unitPhotos);
+            $updateUnit->handle($unit, $payload, (int) auth()->id(), $this->unitPhotos, $this->unitTranslationEnabled);
 
             session()->flash('success', __('locations.units.flash.updated'));
         }
@@ -922,6 +931,7 @@ class Show extends Component
         $this->authorize('create', Unit::class);
         $this->bulkRanges = [$this->emptyBulkRange()];
         $this->resetBulkPortalState();
+        $this->bulkTranslationEnabled = false;
         $this->resetErrorBag();
         $this->showBulkModal = true;
     }
@@ -1258,7 +1268,7 @@ class Show extends Component
                 'require_reporter_contact' => (bool) $validated['bulkRequireReporterContact'],
                 'require_reporter_email_verification' => (bool) $validated['bulkRequireReporterEmailVerification'],
                 'original_language' => auth()->user()->locale ?? null,
-            ], $tenantId, (int) auth()->id());
+            ], $tenantId, (int) auth()->id(), $this->bulkTranslationEnabled);
 
             session()->flash('success', __('locations.bulk.created', ['count' => $result['created']]));
             $this->showBulkModal = false;

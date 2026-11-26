@@ -22,7 +22,7 @@ class CreateInspectionRoundAction
     /**
      * @param  array<string, mixed>  $validated
      */
-    public function handle(array $validated, User $actor): Issue
+    public function handle(array $validated, User $actor, bool $translate = true): Issue
     {
         $roundStopIds = array_values(array_unique(array_map(
             'intval',
@@ -47,7 +47,7 @@ class CreateInspectionRoundAction
             $issuePayload['recurrence_lead_days'] = (int) $validated['recurrence_lead_days'];
         }
 
-        $issue = $this->createIssue->handle($issuePayload, $actor);
+        $issue = $this->createIssue->handle($issuePayload, $actor, translate: $translate);
 
         $this->assignTask->handle(
             $issue,
@@ -57,6 +57,7 @@ class CreateInspectionRoundAction
             assignedWorkerId: isset($validated['assigned_worker_id'])
                 ? (int) $validated['assigned_worker_id']
                 : null,
+            translate: $translate,
         );
 
         return $issue->fresh(['roundStops', 'tasks']);

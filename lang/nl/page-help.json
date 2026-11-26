@@ -365,7 +365,7 @@
                 },
                 {
                     "label": "Locatievertalingen",
-                    "text": "WinProx vertaalt locatienamen automatisch naar de beschikbare talen.<br><br>Klopt een vertaling niet of ontbreekt ze? Dan kunt u de naam zelf aanpassen in het bewerkformulier.<br><br>U kunt de naam per taal instellen: Nederlands, Engels, Frans, Duits, Spaans en Italiaans.<br><br>Selecteer de gewenste taal, vul de juiste naam in en sla op. Uw aangepaste vertaling wordt dan de vaste naam voor die taal."
+                    "text": "Vink Vertaling aanzetten aan als u de naam ook in andere talen wilt. Standaard staat dat uit.<br><br>WinProx vertaalt locatienamen dan automatisch naar de beschikbare talen.<br><br>Klopt een vertaling niet of ontbreekt ze? Dan kunt u de naam zelf aanpassen in het bewerkformulier.<br><br>U kunt de naam per taal instellen: Nederlands, Engels, Frans, Duits, Spaans en Italiaans.<br><br>Selecteer de gewenste taal, vul de juiste naam in en sla op. Uw aangepaste vertaling wordt dan de vaste naam voor die taal."
                 }
             ]
         },
@@ -378,7 +378,7 @@
                 },
                 {
                     "label": "De naam in andere talen",
-                    "text": "WinProx vertaalt de categorienaam automatisch naar de beschikbare talen.<br><br>Klopt een vertaling niet of ontbreekt ze? Dan kunt u ze zelf aanpassen in het categorieformulier. Selecteer de gewenste taal, vul de juiste naam in en sla op. Uw aangepaste vertaling wordt dan de vaste naam voor die taal."
+                    "text": "Vink Vertaling aanzetten aan als u de naam ook in andere talen wilt. Standaard staat dat uit.<br><br>WinProx vertaalt de categorienaam dan automatisch naar de beschikbare talen.<br><br>Klopt een vertaling niet of ontbreekt ze? Dan kunt u ze zelf aanpassen in het categorieformulier. Selecteer de gewenste taal, vul de juiste naam in en sla op. Uw aangepaste vertaling wordt dan de vaste naam voor die taal."
                 },
                 {
                     "label": "Wat gebeurt er op de QR-pagina?",
@@ -643,7 +643,7 @@
                 },
                 {
                     "label": "Teamnaam in andere talen",
-                    "text": "WinProx vertaalt de teamnaam automatisch naar de beschikbare talen: Nederlands, Engels, Frans, Duits, Spaans en Italiaans.<br><br>Klopt een vertaling niet of ontbreekt ze? Dan kunt u die zelf aanpassen:<br>1. Open het teamformulier.<br>2. Kies de taal.<br>3. Vul de gewenste naam in.<br>4. Sla op.<br><br>Uw aangepaste vertaling wordt daarna de vaste naam voor die taal."
+                    "text": "Vink Vertaling aanzetten aan als u de naam ook in andere talen wilt. Standaard staat dat uit.<br><br>WinProx vertaalt de teamnaam dan automatisch naar de beschikbare talen: Nederlands, Engels, Frans, Duits, Spaans en Italiaans.<br><br>Klopt een vertaling niet of ontbreekt ze? Dan kunt u die zelf aanpassen:<br>1. Open het teamformulier.<br>2. Kies de taal.<br>3. Vul de gewenste naam in.<br>4. Sla op.<br><br>Uw aangepaste vertaling wordt daarna de vaste naam voor die taal."
                 },
                 {
                     "label": "Uitvoerders",

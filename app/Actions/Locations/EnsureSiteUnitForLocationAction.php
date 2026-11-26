@@ -25,7 +25,7 @@ class EnsureSiteUnitForLocationAction
         private EnsureCheckmateDefaultCategoryAction $ensureCheckmateDefaultCategory,
     ) {}
 
-    public function handle(Location $location, int $tenantId, ?int $actorUserId = null): ?Unit
+    public function handle(Location $location, int $tenantId, ?int $actorUserId = null, bool $translate = true): ?Unit
     {
         if ((int) $location->tenant_id !== $tenantId) {
             return null;
@@ -69,14 +69,16 @@ class EnsureSiteUnitForLocationAction
             $payload['longitude'] = $location->longitude;
         }
 
-        $unit = $this->createUnit->handle($location, $payload, $tenantId, $actorUserId);
+        $unit = $this->createUnit->handle($location, $payload, $tenantId, $actorUserId, $translate);
 
         if (Schema::hasColumn('units', 'is_site_unit') && ! $unit->is_site_unit) {
             $unit->forceFill(['is_site_unit' => true])->save();
             $unit = $unit->fresh();
         }
 
-        $this->fillTranslations($unit);
+        if ($translate) {
+            $this->fillTranslations($unit);
+        }
 
         return $unit;
     }

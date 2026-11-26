@@ -28,6 +28,7 @@ class AssignIssueTeamTaskAction
         TaskPriority $priority = TaskPriority::Prio3,
         array $extra = [],
         ?int $assignedWorkerId = null,
+        bool $translate = true,
     ): Task {
         $openedDueAt = null;
         if ($issue->isInspectionRound()) {
@@ -50,6 +51,7 @@ class AssignIssueTeamTaskAction
             startedAt: now(),
             extra: $extra,
             assignedWorkerId: $assignedWorkerId,
+            translate: $translate,
         );
 
         if ($openedDueAt instanceof Carbon && $issue->is_recurring) {

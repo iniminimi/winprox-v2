@@ -37,6 +37,7 @@ class CreateTaskAction
         array $extra = [],
         bool $duringIssueIntake = false,
         ?int $assignedWorkerId = null,
+        bool $translate = true,
     ): Task {
         // Prevent task creation for closed issues
         if ($issue->isClosed()) {
@@ -87,7 +88,9 @@ class CreateTaskAction
         }
 
         $fresh = $task->fresh();
-        $this->ensureTranslationSlots->handle($fresh);
+        if ($translate) {
+            $this->ensureTranslationSlots->handle($fresh);
+        }
         $this->notifyWorkers->handle($fresh);
 
         if ($recalculateIssue) {

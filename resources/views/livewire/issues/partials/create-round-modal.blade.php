@@ -21,6 +21,8 @@
             </div>
         @endif
 
+        <x-wp-translation-toggle wire-model="translationEnabled" />
+
         @if (($favoriteRounds ?? collect())->isNotEmpty())
             <div class="wp-field">
                 <label class="wp-label" for="round_create_copy_from">{{ __('issues.round_create.from_favorite') }}</label>

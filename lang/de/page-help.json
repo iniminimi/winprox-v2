@@ -365,7 +365,7 @@
                 },
                 {
                     "label": "Standort-Übersetzungen",
-                    "text": "WinProx übersetzt Standortnamen automatisch in die verfügbaren Sprachen.<br><br>Stimmt eine Übersetzung nicht oder fehlt sie? Dann können Sie den Namen selbst im Bearbeitungsformular anpassen.<br><br>Sie können den Namen je Sprache festlegen: Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch.<br><br>Wählen Sie die Sprache, tragen Sie den richtigen Namen ein und speichern Sie. Ihre angepasste Übersetzung wird dann der feste Name für diese Sprache."
+                    "text": "Aktivieren Sie Übersetzung einschalten, wenn der Name auch in anderen Sprachen stehen soll. Standard ist aus.<br><br>WinProx übersetzt Standortnamen dann automatisch in die verfügbaren Sprachen.<br><br>Stimmt eine Übersetzung nicht oder fehlt sie? Dann können Sie den Namen selbst im Bearbeitungsformular anpassen.<br><br>Sie können den Namen je Sprache festlegen: Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch.<br><br>Wählen Sie die Sprache, tragen Sie den richtigen Namen ein und speichern Sie. Ihre angepasste Übersetzung wird dann der feste Name für diese Sprache."
                 }
             ]
         },
@@ -378,7 +378,7 @@
                 },
                 {
                     "label": "Der Name in anderen Sprachen",
-                    "text": "WinProx übersetzt den Kategorienamen automatisch in die verfügbaren Sprachen.<br><br>Stimmt eine Übersetzung nicht oder fehlt sie? Dann können Sie sie selbst im Kategorieformular anpassen. Wählen Sie die Sprache, tragen Sie den richtigen Namen ein und speichern Sie. Ihre angepasste Übersetzung wird dann der feste Name für diese Sprache."
+                    "text": "Aktivieren Sie Übersetzung einschalten, wenn der Name auch in anderen Sprachen stehen soll. Standard ist aus.<br><br>WinProx übersetzt den Kategorienamen dann automatisch in die verfügbaren Sprachen.<br><br>Stimmt eine Übersetzung nicht oder fehlt sie? Dann können Sie sie selbst im Kategorieformular anpassen. Wählen Sie die Sprache, tragen Sie den richtigen Namen ein und speichern Sie. Ihre angepasste Übersetzung wird dann der feste Name für diese Sprache."
                 },
                 {
                     "label": "Was passiert auf der QR-Seite?",
@@ -643,7 +643,7 @@
                 },
                 {
                     "label": "Teamname in anderen Sprachen",
-                    "text": "WinProx übersetzt den Teamnamen automatisch in die verfügbaren Sprachen: Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch.<br><br>Stimmt eine Übersetzung nicht oder fehlt sie? Dann können Sie sie selbst anpassen:<br>1. Öffnen Sie das Teamformular.<br>2. Wählen Sie die Sprache.<br>3. Tragen Sie den gewünschten Namen ein.<br>4. Speichern Sie.<br><br>Ihre angepasste Übersetzung wird danach der feste Name für diese Sprache."
+                    "text": "Aktivieren Sie Übersetzung einschalten, wenn der Name auch in anderen Sprachen stehen soll. Standard ist aus.<br><br>WinProx übersetzt den Teamnamen dann automatisch in die verfügbaren Sprachen: Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch.<br><br>Stimmt eine Übersetzung nicht oder fehlt sie? Dann können Sie sie selbst anpassen:<br>1. Öffnen Sie das Teamformular.<br>2. Wählen Sie die Sprache.<br>3. Tragen Sie den gewünschten Namen ein.<br>4. Speichern Sie.<br><br>Ihre angepasste Übersetzung wird danach der feste Name für diese Sprache."
                 },
                 {
                     "label": "Ausführende",

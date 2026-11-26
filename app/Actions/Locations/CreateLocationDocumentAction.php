@@ -30,6 +30,7 @@ class CreateLocationDocumentAction
         array $data,
         int $tenantId,
         ?int $actorUserId = null,
+        bool $translate = true,
     ): array {
         $unitId = $data['unit_id'] ?? null;
         if ($unitId !== null) {
@@ -77,7 +78,9 @@ class CreateLocationDocumentAction
         );
 
         $document = $document->fresh();
-        $this->ensureTranslationSlots->handle($document);
+        if ($translate) {
+            $this->ensureTranslationSlots->handle($document);
+        }
 
         return ['document' => $document, 'metadata_partial' => $metadataPartial];
     }

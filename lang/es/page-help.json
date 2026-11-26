@@ -365,7 +365,7 @@
                 },
                 {
                     "label": "Traducciones de la ubicación",
-                    "text": "WinProx traduce automáticamente los nombres de ubicación a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede ajustar el nombre usted mismo en el formulario de edición.<br><br>Puede fijar el nombre por idioma: neerlandés, inglés, francés, alemán, español e italiano.<br><br>Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción ajustada pasa a ser el nombre fijo de ese idioma."
+                    "text": "Marque Activar la traducción si también quiere el nombre en otros idiomas. Está desmarcado por defecto.<br><br>WinProx traduce entonces automáticamente los nombres de ubicación a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede ajustar el nombre usted mismo en el formulario de edición.<br><br>Puede fijar el nombre por idioma: neerlandés, inglés, francés, alemán, español e italiano.<br><br>Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción ajustada pasa a ser el nombre fijo de ese idioma."
                 }
             ]
         },
@@ -378,7 +378,7 @@
                 },
                 {
                     "label": "El nombre en otros idiomas",
-                    "text": "WinProx traduce el nombre de la categoría automáticamente a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo en el formulario de la categoría. Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción corregida pasa a ser el nombre fijo de ese idioma."
+                    "text": "Marque Activar la traducción si también quiere el nombre en otros idiomas. Está desmarcado por defecto.<br><br>WinProx traduce entonces el nombre de la categoría automáticamente a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo en el formulario de la categoría. Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción corregida pasa a ser el nombre fijo de ese idioma."
                 },
                 {
                     "label": "¿Qué ocurre en la página QR?",
@@ -643,7 +643,7 @@
                 },
                 {
                     "label": "Nombre del equipo en otros idiomas",
-                    "text": "WinProx traduce el nombre del equipo automáticamente a los idiomas disponibles: neerlandés, inglés, francés, alemán, español e italiano.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo:<br>1. Abra el formulario del equipo.<br>2. Elija el idioma.<br>3. Escriba el nombre que desea.<br>4. Guarde.<br><br>Su traducción corregida pasa a ser el nombre fijo de ese idioma."
+                    "text": "Marque Activar la traducción si también quiere el nombre en otros idiomas. Está desmarcado por defecto.<br><br>WinProx traduce entonces el nombre del equipo automáticamente a los idiomas disponibles: neerlandés, inglés, francés, alemán, español e italiano.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo:<br>1. Abra el formulario del equipo.<br>2. Elija el idioma.<br>3. Escriba el nombre que desea.<br>4. Guarde.<br><br>Su traducción corregida pasa a ser el nombre fijo de ese idioma."
                 },
                 {
                     "label": "Operarios",

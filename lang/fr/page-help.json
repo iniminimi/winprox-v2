@@ -365,7 +365,7 @@
                 },
                 {
                     "label": "Traductions du site",
-                    "text": "WinProx traduit automatiquement les noms de sites dans les langues disponibles.<br><br>Une traduction est incorrecte ou absente ? Vous pouvez adapter le nom vous-même dans le formulaire de modification.<br><br>Vous pouvez définir le nom par langue : néerlandais, anglais, français, allemand, espagnol et italien.<br><br>Sélectionnez la langue, saisissez le bon nom et enregistrez. Votre traduction adaptée devient alors le nom fixe pour cette langue."
+                    "text": "Cochez Activer la traduction si vous voulez aussi le nom dans d’autres langues. C’est désactivé par défaut.<br><br>WinProx traduit alors automatiquement les noms de sites dans les langues disponibles.<br><br>Une traduction est incorrecte ou absente ? Vous pouvez adapter le nom vous-même dans le formulaire de modification.<br><br>Vous pouvez définir le nom par langue : néerlandais, anglais, français, allemand, espagnol et italien.<br><br>Sélectionnez la langue, saisissez le bon nom et enregistrez. Votre traduction adaptée devient alors le nom fixe pour cette langue."
                 }
             ]
         },
@@ -378,7 +378,7 @@
                 },
                 {
                     "label": "Le nom dans d’autres langues",
-                    "text": "WinProx traduit automatiquement le nom de la catégorie dans les langues disponibles.<br><br>Une traduction est incorrecte ou manque ? Vous pouvez la corriger vous-même dans le formulaire de la catégorie. Choisissez la langue, saisissez le bon nom et enregistrez. Votre traduction corrigée devient alors le nom fixe pour cette langue."
+                    "text": "Cochez Activer la traduction si vous voulez aussi le nom dans d’autres langues. C’est désactivé par défaut.<br><br>WinProx traduit alors automatiquement le nom de la catégorie dans les langues disponibles.<br><br>Une traduction est incorrecte ou manque ? Vous pouvez la corriger vous-même dans le formulaire de la catégorie. Choisissez la langue, saisissez le bon nom et enregistrez. Votre traduction corrigée devient alors le nom fixe pour cette langue."
                 },
                 {
                     "label": "Que se passe-t-il sur la page QR ?",
@@ -647,7 +647,7 @@
                 },
                 {
                     "label": "Nom de l’équipe dans d’autres langues",
-                    "text": "WinProx traduit automatiquement le nom de l’équipe dans les langues disponibles : néerlandais, anglais, français, allemand, espagnol et italien.<br><br>Une traduction est incorrecte ou manque ? Vous pouvez la corriger vous-même :<br>1. Ouvrez le formulaire de l’équipe.<br>2. Choisissez la langue.<br>3. Saisissez le nom souhaité.<br>4. Enregistrez.<br><br>Votre traduction corrigée devient alors le nom fixe pour cette langue."
+                    "text": "Cochez Activer la traduction si vous voulez aussi le nom dans d’autres langues. C’est désactivé par défaut.<br><br>WinProx traduit alors automatiquement le nom de l’équipe dans les langues disponibles : néerlandais, anglais, français, allemand, espagnol et italien.<br><br>Une traduction est incorrecte ou manque ? Vous pouvez la corriger vous-même :<br>1. Ouvrez le formulaire de l’équipe.<br>2. Choisissez la langue.<br>3. Saisissez le nom souhaité.<br>4. Enregistrez.<br><br>Votre traduction corrigée devient alors le nom fixe pour cette langue."
                 },
                 {
                     "label": "Intervenants",

@@ -88,6 +88,8 @@ class Index extends Component
 
     public bool $showLocationModal = false;
 
+    public bool $locationTranslationEnabled = false;
+
     public ?int $locationCustomerId = null;
 
     public ?int $editingLocationId = null;
@@ -235,6 +237,7 @@ class Index extends Component
         $this->locationCustomerId = (int) $customer->id;
         $this->editingLocationId = null;
         $this->resetLocationForm();
+        $this->locationTranslationEnabled = false;
         $this->expandedCustomerIds[(int) $customer->id] = true;
         $this->showLocationModal = true;
     }
@@ -256,6 +259,7 @@ class Index extends Component
         $this->locationFormNotes = (string) ($location->notes ?? '');
         $this->locationFormLatitude = $location->latitude !== null ? (string) $location->latitude : '';
         $this->locationFormLongitude = $location->longitude !== null ? (string) $location->longitude : '';
+        $this->locationTranslationEnabled = false;
         $this->resetErrorBag();
         $this->showLocationModal = true;
     }
@@ -292,7 +296,7 @@ class Index extends Component
             $location = Location::findOrFail($this->editingLocationId);
             $this->authorize('manage', $location);
             $validated = UpdateLocationRequest::validatePayload($payload);
-            $update->handle($location, $validated, (int) auth()->id());
+            $update->handle($location, $validated, (int) auth()->id(), $this->locationTranslationEnabled);
 
             $this->expandedCustomerIds[(int) $location->customer_id] = true;
             $this->closeLocationModal();
@@ -316,7 +320,7 @@ class Index extends Component
                 'country_code' => strtoupper((string) ($validated['country_code'] ?? 'BE')),
                 'customer_id' => (int) $customer->id,
                 'with_site_unit' => true,
-            ], (int) $tenant->id, (int) auth()->id());
+            ], (int) $tenant->id, (int) auth()->id(), $this->locationTranslationEnabled);
         } catch (InvalidArgumentException $e) {
             $key = match ($e->getMessage()) {
                 'location_limit_exceeded' => 'locations.errors.location_limit',

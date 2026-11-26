@@ -4,6 +4,7 @@
         "workspace": "Espacio de trabajo"
     },
     "clock": "Hora actual",
+    "translation_enable": "Activar la traducción",
     "nav": {
         "label": "Navegación principal",
         "collapse": "Contraer el menú",

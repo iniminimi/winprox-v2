@@ -18,7 +18,7 @@ class UpdateLocationAction
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(Location $location, array $data, ?int $actorUserId = null): Location
+    public function handle(Location $location, array $data, ?int $actorUserId = null, bool $translate = true): Location
     {
         $previousName = (string) $location->name;
 
@@ -64,8 +64,10 @@ class UpdateLocationAction
 
         $fresh = $location->fresh();
 
-        $this->invalidateTranslations->handle($fresh, $previousName, $actorUserId);
-        $this->ensureTranslationSlots->handle($fresh);
+        if ($translate) {
+            $this->invalidateTranslations->handle($fresh, $previousName, $actorUserId);
+            $this->ensureTranslationSlots->handle($fresh);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

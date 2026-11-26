@@ -110,6 +110,8 @@ class Team extends Component
 
     public string $teamName = '';
 
+    public bool $teamTranslationEnabled = false;
+
     public int $teamSortOrder = 0;
 
     public bool $teamIsActive = true;
@@ -561,6 +563,7 @@ class Team extends Component
         $team = InternalTeam::query()->with('translations')->findOrFail($id);
         Gate::authorize('update', $team);
 
+        $this->teamTranslationEnabled = false;
         $this->editingTeamId = $team->id;
         $this->teamName = $team->name;
         $this->teamSortOrder = $team->sort_order;
@@ -662,7 +665,7 @@ class Team extends Component
                 'stale_shift_hours' => $validated['teamStaleShiftHours'] ?? $this->teamStaleShiftHours,
                 'long_shift_hours' => $validated['teamLongShiftHours'] ?? $this->teamLongShiftHours,
                 'session_lifespan_hours' => $sessionLifespanHours,
-            ], (int) auth()->id());
+            ], (int) auth()->id(), $this->teamTranslationEnabled);
 
             Gate::authorize('syncCategories', $team);
             $syncCategories->handle($team, $this->selectedCategoryIds, (int) auth()->id());
@@ -679,7 +682,7 @@ class Team extends Component
                 'stale_shift_hours' => $validated['teamStaleShiftHours'] ?? $this->teamStaleShiftHours,
                 'long_shift_hours' => $validated['teamLongShiftHours'] ?? $this->teamLongShiftHours,
                 'session_lifespan_hours' => $sessionLifespanHours,
-            ], (int) Tenancy::id(), (int) auth()->id());
+            ], (int) Tenancy::id(), (int) auth()->id(), $this->teamTranslationEnabled);
 
             Gate::authorize('syncCategories', $team);
             $syncCategories->handle($team, $this->selectedCategoryIds, (int) auth()->id());
@@ -812,6 +815,7 @@ class Team extends Component
             'selectedCategoryIds',
             'teamPreviewLocale',
             'teamTranslationName',
+            'teamTranslationEnabled',
         ]);
         $this->teamIsActive = true;
         $this->teamClocksAllLocations = false;

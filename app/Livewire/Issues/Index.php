@@ -75,6 +75,8 @@ class Index extends Component
 
     public bool $showCreateModal = false;
 
+    public bool $translationEnabled = false;
+
     public bool $showRoundCreateModal = false;
 
     public ?int $copyFromRoundId = null;
@@ -382,7 +384,7 @@ class Index extends Component
 
         $validated['original_language'] = app()->getLocale();
 
-        $issue = $createIssue->handle($validated, auth()->user(), $this->photos);
+        $issue = $createIssue->handle($validated, auth()->user(), $this->photos, $this->translationEnabled);
 
         $this->draftIssueId = $issue->id;
         $this->prefillTeamFromUnit();
@@ -412,6 +414,7 @@ class Index extends Component
             assignedWorkerId: isset($validated['assigned_worker_id'])
                 ? (int) $validated['assigned_worker_id']
                 : null,
+            translate: $this->translationEnabled,
         );
 
         $this->showCreateModal = false;
@@ -446,7 +449,7 @@ class Index extends Component
         $validated['is_recurring'] = (bool) $this->is_recurring;
         $validated['original_language'] = app()->getLocale();
 
-        $issue = $createRound->handle($validated, auth()->user());
+        $issue = $createRound->handle($validated, auth()->user(), $this->translationEnabled);
 
         $this->showRoundCreateModal = false;
         $this->resetRoundCreateForm();
@@ -483,6 +486,7 @@ class Index extends Component
         $this->task_note = null;
         $this->task_priority = 'prio_3';
         $this->photos = [];
+        $this->translationEnabled = false;
         $this->resetErrorBag();
         $this->dispatch('wp-clear-photo-previews');
     }
@@ -501,6 +505,7 @@ class Index extends Component
         $this->assigned_worker_id = null;
         $this->task_note = null;
         $this->task_priority = 'prio_3';
+        $this->translationEnabled = false;
         $this->resetErrorBag();
     }
 

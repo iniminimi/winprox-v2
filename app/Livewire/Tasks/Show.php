@@ -50,6 +50,8 @@ class Show extends Component
 
     public bool $showEditTaskModal = false;
 
+    public bool $taskTranslationEnabled = false;
+
     public string $taskPreviewLocale = '';
 
     public string $taskTranslationDescription = '';
@@ -89,6 +91,7 @@ class Show extends Component
         $this->task->loadMissing('translations');
         $this->taskPreviewLocale = $this->defaultTranslationLocaleForTask($this->task);
         $this->hydrateTaskTranslationInput($this->task);
+        $this->taskTranslationEnabled = false;
         $this->resetValidation();
         $this->showEditTaskModal = true;
     }
@@ -218,6 +221,7 @@ class Show extends Component
             $validated['taskScheduledFor'] ?? null,
             auth()->user()->tenant_id,
             auth()->id(),
+            $this->taskTranslationEnabled,
         );
 
         $this->closeEditTaskModal();

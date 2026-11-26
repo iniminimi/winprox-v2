@@ -18,7 +18,7 @@ class UpdateTeamAction
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(InternalTeam $team, array $data, ?int $actorUserId = null): InternalTeam
+    public function handle(InternalTeam $team, array $data, ?int $actorUserId = null, bool $translate = true): InternalTeam
     {
         $previousName = (string) $team->name;
 
@@ -47,8 +47,10 @@ class UpdateTeamAction
 
         $fresh = $team->fresh();
 
-        $this->invalidateTranslations->handle($fresh, $previousName, $actorUserId);
-        $this->ensureSlots->handle($fresh);
+        if ($translate) {
+            $this->invalidateTranslations->handle($fresh, $previousName, $actorUserId);
+            $this->ensureSlots->handle($fresh);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

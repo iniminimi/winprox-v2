@@ -20,7 +20,7 @@ class CreateLocationAnnouncementAction
     /**
      * @param  array{description: string, unit_id: ?int, is_active: bool, expires_at: ?string, original_language?: ?string}  $data
      */
-    public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null): Announcement
+    public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null, bool $translate = true): Announcement
     {
         $unitId = $data['unit_id'] ?? null;
         if ($unitId !== null) {
@@ -60,7 +60,9 @@ class CreateLocationAnnouncementAction
         );
 
         $announcement = $announcement->fresh();
-        $this->ensureTranslationSlots->handle($announcement);
+        if ($translate) {
+            $this->ensureTranslationSlots->handle($announcement);
+        }
 
         return $announcement;
     }

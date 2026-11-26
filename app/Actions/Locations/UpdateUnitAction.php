@@ -28,7 +28,7 @@ class UpdateUnitAction
      * @param  array<string, mixed>  $data
      * @param  array<int, UploadedFile>  $photos
      */
-    public function handle(Unit $unit, array $data, ?int $actorUserId = null, array $photos = []): Unit
+    public function handle(Unit $unit, array $data, ?int $actorUserId = null, array $photos = [], bool $translate = true): Unit
     {
         $previousName = (string) $unit->name;
         $previousDescription = $unit->description;
@@ -105,8 +105,10 @@ class UpdateUnitAction
             $fresh = $fresh->fresh(['category']);
         }
 
-        $this->invalidateTranslations->handle($fresh, $previousName, $previousDescription, $actorUserId);
-        $this->ensureTranslationSlots->handle($fresh);
+        if ($translate) {
+            $this->invalidateTranslations->handle($fresh, $previousName, $previousDescription, $actorUserId);
+            $this->ensureTranslationSlots->handle($fresh);
+        }
 
         $storedPhotoCount = 0;
         if (! empty($photos)) {

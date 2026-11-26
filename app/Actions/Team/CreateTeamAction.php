@@ -23,7 +23,7 @@ class CreateTeamAction
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(array $data, int $tenantId, ?int $actorUserId = null): InternalTeam
+    public function handle(array $data, int $tenantId, ?int $actorUserId = null, bool $translate = true): InternalTeam
     {
         $team = InternalTeam::create([
             'tenant_id' => $tenantId,
@@ -44,7 +44,9 @@ class CreateTeamAction
             'session_lifespan_hours' => $data['session_lifespan_hours'] ?? null,
         ]);
 
-        $this->ensureSlots->handle($team);
+        if ($translate) {
+            $this->ensureSlots->handle($team);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

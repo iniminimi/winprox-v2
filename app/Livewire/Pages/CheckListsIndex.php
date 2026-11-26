@@ -31,6 +31,8 @@ class CheckListsIndex extends Component
 
     public bool $showCheckListModal = false;
 
+    public bool $checkListTranslationEnabled = false;
+
     public ?int $editingCheckListId = null;
 
     public string $checkListName = '';
@@ -63,6 +65,7 @@ class CheckListsIndex extends Component
         $this->checkListPreviewLocale = '';
         $this->checkListTranslationName = '';
         $this->checkListTranslationItemsText = '';
+        $this->checkListTranslationEnabled = false;
         $this->showCheckListModal = true;
         $this->resetErrorBag();
     }
@@ -72,6 +75,7 @@ class CheckListsIndex extends Component
         $list = UnitCheckList::query()->with(['items', 'translations'])->findOrFail($listId);
         $this->authorize('update', $list);
         $this->editingCheckListId = (int) $list->id;
+        $this->checkListTranslationEnabled = false;
         $this->checkListName = $list->name;
         $this->checkListItemsText = $list->items->pluck('label')->implode("\n");
         $this->checkListIsActive = (bool) $list->is_active;
@@ -218,6 +222,7 @@ class CheckListsIndex extends Component
                     $tenantId,
                     null,
                     (int) auth()->id(),
+                    $this->checkListTranslationEnabled,
                 );
             } else {
                 $list = UnitCheckList::query()->findOrFail($this->editingCheckListId);
@@ -227,6 +232,7 @@ class CheckListsIndex extends Component
                     $tenantId,
                     $list,
                     (int) auth()->id(),
+                    $this->checkListTranslationEnabled,
                 );
             }
         } catch (ValidationException $exception) {

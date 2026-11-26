@@ -22,7 +22,7 @@ class UpdateCategoryAction
     /**
      * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, allow_unit_measurements?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool, show_previous_issues?: bool}  $data
      */
-    public function handle(Category $category, array $data, ?int $actorUserId = null): Category
+    public function handle(Category $category, array $data, ?int $actorUserId = null, bool $translate = true): Category
     {
         $previousName = (string) $category->name;
         $unitChecksWereAllowed = (bool) $category->allow_unit_checks;
@@ -58,8 +58,10 @@ class UpdateCategoryAction
             $this->removeFromRounds->handle($unitIds, (int) $fresh->tenant_id);
         }
 
-        $this->invalidateTranslations->handle($fresh, $previousName, $actorUserId);
-        $this->ensureSlots->handle($fresh);
+        if ($translate) {
+            $this->invalidateTranslations->handle($fresh, $previousName, $actorUserId);
+            $this->ensureSlots->handle($fresh);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

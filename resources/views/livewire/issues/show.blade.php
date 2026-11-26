@@ -259,6 +259,7 @@
                         </div>
                         @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
+                    <x-wp-translation-toggle wire-model="taskTranslationEnabled" />
                     <div class="wp-field">
                         <label class="wp-label" for="taskScheduledFor">{{ __('issues.show.task_scheduled_label') }}</label>
                         <x-wp-date-input id="taskScheduledFor" wire:model="taskScheduledFor" />
@@ -326,7 +327,9 @@
                         @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 
-                    @if ($editTask && filled(trim((string) ($editTask->description ?? ''))))
+                    <x-wp-translation-toggle wire-model="taskTranslationEnabled" />
+
+                    @if ($taskTranslationEnabled && $editTask && filled(trim((string) ($editTask->description ?? ''))))
                         <div class="wp-field" x-data="{ open: false }">
                             <span class="wp-label">{{ __('tasks.translation_edit.label') }}</span>
 

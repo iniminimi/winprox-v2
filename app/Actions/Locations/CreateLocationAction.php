@@ -22,7 +22,7 @@ class CreateLocationAction
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(array $data, int $tenantId, ?int $actorUserId = null): Location
+    public function handle(array $data, int $tenantId, ?int $actorUserId = null, bool $translate = true): Location
     {
         $tenant = Tenant::query()->findOrFail($tenantId);
         $tenant->assertCanAddLocations(1);
@@ -69,7 +69,7 @@ class CreateLocationAction
             $payload['import_batch_id'] = $data['import_batch_id'];
         }
 
-        return DB::transaction(function () use ($payload, $tenantId, $actorUserId, $withSiteUnit): Location {
+        return DB::transaction(function () use ($payload, $tenantId, $actorUserId, $withSiteUnit, $translate): Location {
             $location = Location::create($payload);
 
             $this->audit->record(
@@ -82,10 +82,12 @@ class CreateLocationAction
             );
 
             $location = $location->fresh();
-            $this->ensureTranslationSlots->handle($location);
+            if ($translate) {
+                $this->ensureTranslationSlots->handle($location);
+            }
 
             if ($withSiteUnit) {
-                $this->ensureSiteUnit->handle($location, $tenantId, $actorUserId);
+                $this->ensureSiteUnit->handle($location, $tenantId, $actorUserId, $translate);
             }
 
             return $location->fresh(['units']) ?? $location;
