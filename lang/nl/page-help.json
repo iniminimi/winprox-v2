@@ -1420,7 +1420,7 @@
                 },
                 {
                     "label": "Formule toewijzen",
-                    "text": "Kies de formule (WinProx 5/10/25/50 of Corporate) en wijs toe. Bij Corporate: vul de units-cap in. CIAO kan apart aan zonder Corporate."
+                    "text": "Kies de formule (WinProx 5/10/25/50 of Corporate) en wijs toe. Bij Corporate: vul het aantal licenties in. CIAO kan apart aan zonder Corporate."
                 }
             ]
         },

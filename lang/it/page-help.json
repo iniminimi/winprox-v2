@@ -1420,7 +1420,7 @@
                 },
                 {
                     "label": "Assegna formula",
-                    "text": "Scegli la formula (WinProx 5/10/25/50 o Corporate) e assegnala. Per Corporate: inserisci il limite unità. CIAO si può attivare senza Corporate."
+                    "text": "Scegli la formula (WinProx 5/10/25/50 o Corporate) e assegnala. Per Corporate: inserisci il numero di licenze. CIAO si può attivare senza Corporate."
                 }
             ]
         },

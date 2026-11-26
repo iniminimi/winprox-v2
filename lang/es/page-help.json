@@ -1420,7 +1420,7 @@
                 },
                 {
                     "label": "Asignar plan",
-                    "text": "Elija el plan (WinProx 5/10/25/50 o Corporate) y asígnelo. En Corporate: indique el tope de unidades. CIAO se puede activar sin Corporate."
+                    "text": "Elija el plan (WinProx 5/10/25/50 o Corporate) y asígnelo. En Corporate: indique el número de licencias. CIAO se puede activar sin Corporate."
                 }
             ]
         },

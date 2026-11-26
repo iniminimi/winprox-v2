@@ -1420,7 +1420,7 @@
                 },
                 {
                     "label": "Tarif zuweisen",
-                    "text": "Tarif wählen (WinProx 5/10/25/50 oder Corporate) und zuweisen. Bei Corporate: Units-Cap eingeben. CIAO kann ohne Corporate aktiviert werden."
+                    "text": "Tarif wählen (WinProx 5/10/25/50 oder Corporate) und zuweisen. Bei Corporate: Anzahl Lizenzen eingeben. CIAO kann ohne Corporate aktiviert werden."
                 }
             ]
         },

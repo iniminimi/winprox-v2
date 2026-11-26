@@ -1420,7 +1420,7 @@
                 },
                 {
                     "label": "Assign plan",
-                    "text": "Choose the plan (WinProx 5/10/25/50 or Corporate) and assign it. For Corporate: enter the units cap. CIAO can be enabled without Corporate."
+                    "text": "Choose the plan (WinProx 5/10/25/50 or Corporate) and assign it. For Corporate: enter the number of licences. CIAO can be enabled without Corporate."
                 }
             ]
         },

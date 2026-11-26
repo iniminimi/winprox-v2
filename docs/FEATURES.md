@@ -1750,7 +1750,7 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   inbegrepen, geen IoT/ESG/API.
 - **Corporate:** vanaf **100 licenties** of wanneer API/webhooks nodig zijn.
   Superuser zet `billing_plan=corporate` + `billing_units_cap` via Platform → Organisaties
-  (zelfde plan-kiezer). Zolang de tenant op Corporate zit, kan die zelf geen andere
+  (zelfde plan-kiezer). Op dat scherm heet het getal **licenties**. Zolang de tenant op Corporate zit, kan die zelf geen andere
   formule kiezen, ook niet via Stripe. Alleen een Superuser wijzigt het plan.
   De status op Abonnement toont het afgesproken aantal units (`billing_units_cap`).
   **Jaarlijks** (365 dagen) of op maat; niet via Stripe Checkout.

@@ -1424,7 +1424,7 @@
                 },
                 {
                     "label": "Attribuer la formule",
-                    "text": "Choisissez la formule (WinProx 5/10/25/50 ou Corporate) et attribuez-la. Pour Corporate : saisissez le plafond d’unités. CIAO peut s’activer sans Corporate."
+                    "text": "Choisissez la formule (WinProx 5/10/25/50 ou Corporate) et attribuez-la. Pour Corporate : saisissez le nombre de licences. CIAO peut s’activer sans Corporate."
                 }
             ]
         },
