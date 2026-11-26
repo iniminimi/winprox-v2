@@ -133,9 +133,7 @@ function registerAlpineComponent() {
             if (bin) {
                 this.pending.overBin = true;
                 bin.classList.add('is-bin-target');
-                if (this.pending.placeholder?.parentNode) {
-                    this.pending.placeholder.remove();
-                }
+                this.parkPlaceholder();
                 return;
             }
             this.pending.overBin = false;
@@ -201,6 +199,24 @@ function registerAlpineComponent() {
             return covered >= 0.3 ? bin : null;
         },
 
+        parkPlaceholder() {
+            const placeholder = this.pending?.placeholder;
+            const home = this.pending?.home;
+            if (!placeholder || !home) {
+                return;
+            }
+            const next = this.pending.homeNext;
+            if (next?.parentNode === home) {
+                if (placeholder.nextSibling !== next) {
+                    home.insertBefore(placeholder, next);
+                }
+                return;
+            }
+            if (placeholder.parentNode !== home) {
+                home.appendChild(placeholder);
+            }
+        },
+
         clearBin() {
             this.gridEl()?.querySelectorAll('[data-wp-intent-bin].is-bin-target').forEach((el) => {
                 el.classList.remove('is-bin-target');
@@ -255,7 +271,7 @@ function registerAlpineComponent() {
             const grid = this.gridEl();
             const placeholder = this.pending?.placeholder;
             const key = this.pending?.tile?.dataset.wpIntentTile;
-            if (!grid || !placeholder?.parentNode || !key) {
+            if (!grid || placeholder?.parentNode !== grid || !key) {
                 return null;
             }
             const keys = [];
@@ -277,7 +293,13 @@ function registerAlpineComponent() {
             const fromHidden = this.pending.fromHidden === true;
             const hideable = this.tileIsHideable(this.pending.tile);
             const key = this.pending.tile?.dataset.wpIntentTile ?? '';
+            this.parkPlaceholder();
             const overBin = hideable && this.binAt(event.clientX, event.clientY) !== null;
+            if (moved && !overBin && !fromHidden) {
+                this.place(event.clientX, event.clientY);
+            } else if (moved && !overBin && fromHidden && this.pointerOverGrid(event.clientX, event.clientY)) {
+                this.place(event.clientX, event.clientY);
+            }
             const keys = moved && !overBin ? this.orderKeys() : null;
             this.clearPending();
             if (!moved) {
