@@ -37,7 +37,6 @@
                             @if ($device->sku)
                                 · SKU {{ $device->sku }}
                             @endif
-                            · {{ $device->tenant?->name ?? __('ops.devices.no_tenant') }}
                         </p>
                         @include('livewire.ops.device-placement', ['placement' => $placements[$device->id] ?? null])
                     </div>

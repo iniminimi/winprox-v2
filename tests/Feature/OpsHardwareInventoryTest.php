@@ -295,6 +295,29 @@ it('toont bedrijf, locatie en unit zodra de MAC aan een toestel hangt', function
         ->assertSee('SN-STOCK-ONLY')
         ->assertSee(__('ops.devices.no_tenant'))
         ->assertDontSee(__('ops.devices.placement_company').':');
+
+    $portal = app(EnsureOpsPortalAction::class)->handle();
+    $phone = Livewire::test(OpsPortal::class, ['token' => $portal->token])
+        ->set('email', $super->email)
+        ->set('password', 'password')
+        ->call('login')
+        ->call('openScreen', 'devices')
+        ->set('deviceSearch', 'SN-STOCK-ONLY')
+        ->assertSee('SN-STOCK-ONLY');
+
+    expect(substr_count($phone->html(), __('ops.devices.no_tenant')))->toBe(1);
+
+    Livewire::test(OpsPortal::class, ['token' => $portal->token])
+        ->set('email', $super->email)
+        ->set('password', 'password')
+        ->call('login')
+        ->call('openScreen', 'devices')
+        ->set('deviceSearch', 'SN-PLACED-1')
+        ->assertSee('Schoonmaak Noord')
+        ->assertSee('Kerkstraat 12, BE 9000 Gent', false)
+        ->assertSee('Site Haven')
+        ->assertSee('Lokaal A')
+        ->assertDontSee(__('ops.devices.no_tenant'));
 });
 
 it('weigert niet-superusers op platform toestellen', function () {
