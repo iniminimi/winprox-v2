@@ -18,7 +18,7 @@ generiek "lite CRM". Dat betekent:
   Inklokken, pauzes, klantbezoeken, uren en CIAO lopen zonder de Time-module.
 - CIAO-scope default `CiaoCleaning`; KBO-nummer (`enterprise_number`; FR: BCE,
   EN: CBE) vult de tenant zelf in via Instellingen.
-- Prijs: **€5 per actieve seat per maand**, tenant kiest het aantal zelf.
+- Prijs: **€5 per actieve licentie per maand**, tenant kiest het aantal zelf.
 
 ## 2. Architectuur: plan-preset, geen product
 
@@ -84,7 +84,7 @@ Whitelist-schermen:
 
 - **Dashboard** — Checkmate-variant: pending-CIAO-banner (§6), mini-onboarding
   (eerste uitvoerder → eerste klant), snelacties (klant/uitvoerder/aanwezigheid).
-  KPI's (nu aanwezig, bezoeken vandaag, seats, actieve klanten)
+  KPI's (nu aanwezig, bezoeken vandaag, licenties, actieve klanten)
   plus **Clock Point QR** rechts daarvan (zelfde popup als Time → Clock Points →
   Aanmelden: QR, aanmeldlink, WhatsApp en mail; pulse tot de eerste dienst). Pulserende kaart met actieve uitvoerders zonder
   rijksregisternummer; een naam opent die uitvoerder op het teamscherm.
@@ -106,7 +106,7 @@ Whitelist-schermen:
 - **Time** — aanwezigheid, uren, CIAO-inzendingen. **Clock Points:** precies één
   («Aanmelden») — geen extra aanmaken, niet deactiveren, geen locatie-koppeling
   (klantbezoek = GPS op klantlocatie). QR printen/mailen/vernieuwen mag wel.
-- **Instellingen / Abonnement** — KBO-nummer, bedrijfsgegevens, seats, Clock Point-links.
+- **Instellingen / Abonnement** — KBO-nummer, bedrijfsgegevens, licenties, Clock Point-links.
 
 Niet op de whitelist: Meldingen, Taken, Inspectierondes, Checklists, Kalender,
 Reserveringen, Unitmetingen, ESG, IoT, API.
@@ -144,20 +144,20 @@ Reserveringen, Unitmetingen, ESG, IoT, API.
   `includes_facility = false`, `time_module = false`, `checkmate_mode = true`,
   `self_activate = true`, `public_catalog = true`, `subscription_period_days = 30`.
   De tenant kiest het plan dus zélf op Abonnement (en het staat op `/pricing`).
-  Plan `checkmate_trial` met zelfde preset + **25 seats** (30 dagen) om goed te
+  Plan `checkmate_trial` met zelfde preset + **25 licenties** (30 dagen) om goed te
   kunnen testen: `platform_assignable = true` — enkel toewijsbaar door een
   superuser via Platform → Organisaties, niet zichtbaar in de catalogus.
   Abonnementspagina toont Checkmate-copy (geen Facility units/documenten).
 - **Eén nieuwe kolom**: `tenants.billing_seats_qty` (nullable → plan-default).
-  `seats_limit` leest uit qty indien gezet. Bestaande seat-telling
+  `seats_limit` leest uit qty indien gezet. De telling
   (`currentSeatsCount()`: collega's + uitvoerders) blijft de licentie-basis.
-- **Fase-1-regel (zolang Stripe niet live is)**: seat-wijziging direct actief,
+- **Fase-1-regel (zolang Stripe niet live is)**: een wijziging van het aantal licenties is direct actief,
   gefactureerd vanaf volgende periode — **geen proratie, geen tussentijdse
   facturatie**. Bij Stripe-live: qty = subscription-quantity, Stripe doet proratie;
   de tenant merkt geen regime-wijziging.
 - **Verminder-guard**: `assertSeatsQtyNotBelowActive()` (spiegelbeeld van
   `assertCanAddSeats`) — nieuwe qty mag niet onder `currentSeatsCount()`; verlaging
-  tot exact het aantal actieve seats is geldig. Error: "deactiveer eerst seats".
+  tot exact het aantal actieve licenties is geldig. Error: "deactiveer eerst uitvoerders".
   Blokkeert op de qty-write-Action, niet in de UI alleen.
 
 ## 8. Marketing / URL
@@ -196,7 +196,7 @@ Reserveringen, Unitmetingen, ESG, IoT, API.
   - `it('evaluates compliance at event time, not at submission processing time')`
     (regressie-net: verhindert dat de enqueue ooit naar een queue verhuist zonder
     de timing-semantiek te breken).
-- Seat-guard: verlaging tot onder `currentSeatsCount()` → geblokkeerd; tot exact
+- Licentie-guard: verlaging tot onder `currentSeatsCount()` → geblokkeerd; tot exact
   gelijk → toegestaan.
 - Plan-gates: checkmate-tenant krijgt 403/404 op niet-whitelist routes
   (`/issues`, `/units`, `/esg`, ...).
