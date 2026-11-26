@@ -97,7 +97,7 @@ fouttype per uur (met het aantal herhalingen) en 10 per uur in totaal. Zie
   - **Welke taken vandaag?** → Kalender dagweergave (taken van vandaag); alleen als kalender in het werkmenu aan staat (geen briefing-fallback)
   - **Uurrooster bekijken** → Time → Planning (alleen met Time-module; rooster-icoon, geen kalender)
   - Volle titel/omschrijving op intent-tegels (geen ellipsis-afkorting); uitleg klein, titel normaal
-  - Volgorde per gebruiker: een tik opent de tegel. Vasthouden tilt hem los (schaduw) en hij volgt de aanwijzer; een leeg vak toont waar hij neerkomt. Die volgorde blijft bewaard. Een nieuwe tegel komt achteraan tot u hem verplaatst. Zolang er nog niet verschoven is, staat vooraan een tijdelijke tegel met een handje: die legt het uit en verdwijnt na de eerste keer. **Wat is er nieuw?** blijft de eerste tegel en schuift niet mee.
+  - Volgorde per gebruiker: een tik opent de tegel. Vasthouden tilt hem los (schaduw) en hij volgt de aanwijzer; een leeg vak toont waar hij neerkomt. Die volgorde blijft bewaard. Een nieuwe tegel komt achteraan tot u hem verplaatst. Zolang er nog niet verschoven is, staat vooraan een tijdelijke tegel met een groot handje in het icoonkader. Die tegel pulseert zacht, legt het uit en verdwijnt na de eerste keer. **Wat is er nieuw?** blijft de eerste tegel en schuift niet mee.
 - Tegels volgen rechten/werkmenu; icoontinten via bestaande KPI-tokens.
 - **Wat is er nieuw?**: eerste tegel zolang de nieuwste gepubliceerde nota hooguit een week oud is
   en deze gebruiker Hulp → Nieuw nog niet opende. Een klik opent die pagina en haalt de tegel weg.

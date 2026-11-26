@@ -476,7 +476,7 @@
                                     </div>
                                 </a>
                             @else
-                                <div @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                                <div @class(['wp-kpi', 'wp-kpi--'.$tile['tone'], 'wp-kpi--arrange-hint'])
                                      data-wp-intent-tile="{{ $tile['key'] }}"
                                      wire:key="intent-{{ $tile['key'] }}">
                                     <div class="wp-kpi-body">

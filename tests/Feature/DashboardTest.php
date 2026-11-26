@@ -382,6 +382,7 @@ it('onthoudt de volgorde van de snelkoppelingen per gebruiker', function () {
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)
+        ->assertSeeHtml('wp-kpi--arrange-hint')
         ->assertSeeHtml('data-wp-intent-tile="arrange_hint"')
         ->assertSee(__('dashboard.intent.tiles.arrange_hint.title'))
         ->assertSee(__('dashboard.intent.tiles.arrange_hint.body'))

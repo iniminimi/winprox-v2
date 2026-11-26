@@ -1212,10 +1212,38 @@ a.wp-pill:hover {
     min-height: 6.5rem;
 }
 
+.wp-kpi--arrange-hint {
+    animation: wp-arrange-hint-pulse 2.4s ease-in-out infinite;
+}
+
+.wp-kpi--arrange-hint .wp-kpi-icon svg {
+    width: 2.55rem;
+    height: 2.55rem;
+}
+
+.wp-kpi--arrange-hint.is-dragging {
+    animation: none;
+}
+
+@keyframes wp-arrange-hint-pulse {
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: var(--wp-shadow-sm);
+    }
+
+    50% {
+        transform: scale(1.035);
+        box-shadow: var(--wp-shadow-lg);
+    }
+}
+
 a.wp-kpi.is-dragging,
 button.wp-kpi.is-dragging,
+div.wp-kpi.is-dragging,
 a.wp-kpi.is-dragging:hover,
-button.wp-kpi.is-dragging:hover {
+button.wp-kpi.is-dragging:hover,
+div.wp-kpi.is-dragging:hover {
     position: fixed;
     z-index: 80;
     margin: 0;
