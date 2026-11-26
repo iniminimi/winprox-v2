@@ -1080,7 +1080,8 @@ class Tenant extends Model
         }
 
         if ($planKey === 'corporate') {
-            if (in_array($field, ['units_limit', 'documents_org_limit'], true)) {
+            // Kolom heet historisch billing_units_cap; het getal is het aantal licenties.
+            if ($field === 'seats_limit') {
                 $cap = $this->billing_units_cap;
 
                 return is_int($cap) ? $cap : (is_numeric($cap) ? (int) $cap : null);

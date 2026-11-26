@@ -1728,7 +1728,7 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
 
 ### 7.1 Status & toegang (behouden, generiek)
 - Tenant-velden: `trial_ends_at`, `billing_plan`, `billing_active_until`, `billing_units_cap`
-  (Corporate: afgesproken units = documentlimiet), `is_active`, `stripe_customer_id` (optioneel).
+  (Corporate: afgesproken licenties; units en documenten onbeperkt), `is_active`, `stripe_customer_id` (optioneel).
 - `hasFullAppAccess()` = trial **of** betaald **of** grace; middleware blokkeert de app
   (behalve `billing.*`, `faq.*`, logout) wanneer geen toegang.
 - **Proefperiode-capsule** (dashboard §1 + dit scherm): resterende dagen + de vijf
@@ -1752,7 +1752,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   Superuser zet `billing_plan=corporate` + `billing_units_cap` via Platform → Organisaties
   (zelfde plan-kiezer). Op dat scherm heet het getal **licenties**. Zolang de tenant op Corporate zit, kan die zelf geen andere
   formule kiezen, ook niet via Stripe. Alleen een Superuser wijzigt het plan.
-  De status op Abonnement toont het afgesproken aantal units (`billing_units_cap`).
+  De status op Abonnement toont het afgesproken aantal licenties (`billing_units_cap`).
+  Dat getal is de seatlimiet (collega's + uitvoerders). Units, documenten, locaties en foto's zijn onbeperkt.
   **Jaarlijks** (365 dagen) of op maat; niet via Stripe Checkout.
   Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
 - **Checkmate** (`checkmate` / `checkmate_trial`): veldwerk-preset op hetzelfde product —

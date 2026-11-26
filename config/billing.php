@@ -12,7 +12,8 @@
  *  - Locaties en foto's: onbeperkt (elke locatie krijgt een "Hele locatie"-unit).
  *  - Collega + prikklok-profiel = 1 licentie.
  *  - Trial = zelfde limieten als winprox_5.
- *  - Corporate: afgesproken units via `tenants.billing_units_cap` (superuser).
+ *  - Corporate: afgesproken licenties via `tenants.billing_units_cap` (superuser).
+ *    Units, documenten, locaties en foto's onbeperkt.
  *  - Legacy facility_* en winprox_100 / *_time blijven in config (geen catalogus).
  */
 

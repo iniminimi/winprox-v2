@@ -5,17 +5,21 @@ declare(strict_types=1);
 use App\Actions\Locations\CreateUnitAction;
 use App\Actions\Platform\AssignCorporateSubscriptionAction;
 use App\Actions\Platform\SetBillingUnitsCapAction;
+use App\Actions\Team\CreateColleagueAction;
 use App\Livewire\Platform\Tenants;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
 
-it('past corporate units- en documentlimiet toe via billing_units_cap', function (): void {
+it('past het afgesproken corporate-aantal toe als licentielimiet', function (): void {
+    Notification::fake();
+
     $tenant = Tenant::factory()->create([
         'billing_plan' => 'corporate',
         'billing_active_until' => now()->addMonth(),
@@ -24,20 +28,37 @@ it('past corporate units- en documentlimiet toe via billing_units_cap', function
     ]);
     $location = Location::factory()->for($tenant)->create();
     Unit::factory()->count(5)->for($location)->for($tenant)->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    User::factory()->employee()->count(4)->for($tenant)->create();
 
-    expect($tenant->maxUnitsLimit())->toBe(5)
-        ->and($tenant->maxDocumentsOrgLimit())->toBe(5)
-        ->and($tenant->isAtUnitLimit())->toBeTrue();
+    expect($tenant->maxSeatsLimit())->toBe(5)
+        ->and($tenant->maxUnitsLimit())->toBeNull()
+        ->and($tenant->maxDocumentsOrgLimit())->toBeNull()
+        ->and($tenant->maxLocationsLimit())->toBeNull()
+        ->and($tenant->maxPhotosOrgLimit())->toBeNull()
+        ->and($tenant->isAtUnitLimit())->toBeFalse()
+        ->and($tenant->fresh()->currentSeatsCount())->toBe(5)
+        ->and($tenant->canAddSeat())->toBeFalse();
 
-    $user = User::factory()->for($tenant)->create();
-    $this->actingAs($user);
-
-    $this->expectException(\InvalidArgumentException::class);
-    $this->expectExceptionMessage('unit_limit_exceeded');
+    $this->actingAs($admin);
 
     app(CreateUnitAction::class)->handle($location, [
         'name' => 'Unit 6',
         'type' => 'other',
+    ], $tenant->id);
+
+    expect($tenant->fresh()->currentUnitsCount())->toBe(6);
+
+    $this->expectException(\InvalidArgumentException::class);
+    $this->expectExceptionMessage('seat_limit_exceeded');
+
+    app(CreateColleagueAction::class)->handle([
+        'name' => 'Zesde',
+        'email' => 'zesde@example.test',
+        'locale' => 'nl',
+        'role' => User::ROLE_ADMIN,
+        'password' => 'wachtwoord123',
+        'send_account_email' => false,
     ], $tenant->id);
 });
 
@@ -58,7 +79,9 @@ it('laat superuser corporate activeren met units-cap', function (): void {
     expect($tenant->billing_plan)->toBe('corporate')
         ->and($tenant->billing_units_cap)->toBe(1500)
         ->and($tenant->hasApiAccess())->toBeTrue()
-        ->and($tenant->maxUnitsLimit())->toBe(1500)
+        ->and($tenant->maxSeatsLimit())->toBe(1500)
+        ->and($tenant->maxUnitsLimit())->toBeNull()
+        ->and($tenant->maxDocumentsOrgLimit())->toBeNull()
         ->and($tenant->subscriptionPeriodDays())->toBe(365)
         ->and($tenant->billing_active_until?->toDateString())->toBe(now()->addDays(365)->toDateString());
 });
@@ -75,7 +98,8 @@ it('werkt units-cap bij voor bestaande corporate tenant', function (): void {
     app(SetBillingUnitsCapAction::class)->handle($tenant, 2000, $super->id);
 
     expect($tenant->fresh()->billing_units_cap)->toBe(2000)
-        ->and($tenant->fresh()->maxUnitsLimit())->toBe(2000);
+        ->and($tenant->fresh()->maxSeatsLimit())->toBe(2000)
+        ->and($tenant->fresh()->maxUnitsLimit())->toBeNull();
 });
 
 it('weigert units-cap buiten corporate', function (): void {
