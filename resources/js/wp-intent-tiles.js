@@ -165,15 +165,26 @@ function registerAlpineComponent() {
         },
 
         binAt(x, y) {
-            if (this.pending?.tile?.dataset.wpIntentHideable !== '1') {
+            const tile = this.pending?.tile;
+            if (!tile?.hasAttribute('data-wp-intent-hideable')) {
                 return null;
             }
-            const hit = document.elementFromPoint(x, y);
-            const bin = hit?.closest?.('[data-wp-intent-bin]');
-            if (!bin || !this.gridEl()?.contains(bin)) {
+            const bin = this.gridEl()?.querySelector('[data-wp-intent-bin]');
+            if (!bin) {
                 return null;
             }
-            return bin;
+            const binRect = bin.getBoundingClientRect();
+            if (x >= binRect.left && x <= binRect.right && y >= binRect.top && y <= binRect.bottom) {
+                return bin;
+            }
+            const tileRect = tile.getBoundingClientRect();
+            const overlapW = Math.min(tileRect.right, binRect.right) - Math.max(tileRect.left, binRect.left);
+            const overlapH = Math.min(tileRect.bottom, binRect.bottom) - Math.max(tileRect.top, binRect.top);
+            if (overlapW <= 0 || overlapH <= 0 || binRect.width <= 0 || binRect.height <= 0) {
+                return null;
+            }
+            const covered = (overlapW * overlapH) / (binRect.width * binRect.height);
+            return covered >= 0.3 ? bin : null;
         },
 
         clearBin() {
