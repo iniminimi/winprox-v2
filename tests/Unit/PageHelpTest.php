@@ -78,7 +78,7 @@ it('legt het Checkmate-dashboard uit in gewone taal', function (string $locale):
             ->and($labels)->toContain('Weggezette kaders')
             ->and($labels)->toContain('Clock Point QR')
             ->and($text)->toContain('Rijksregisternummer ontbreekt')
-            ->and($text)->toContain('Instructivideo installatie app');
+            ->and($text)->toContain('Instructievideo installatie app');
     }
 })->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
 
