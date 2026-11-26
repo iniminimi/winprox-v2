@@ -45,6 +45,7 @@ if [[ -f composer.lock ]] && [[ -n "$COMPOSER" ]]; then
 fi
 
 echo "==> Laravel"
+php artisan winprox:baseline-existing-schema
 php artisan migrate --force
 php artisan schedule:clear-cache
 php artisan optimize:clear
