@@ -34,7 +34,7 @@
     "status_module_time": "Time (pointeuse) est actif sur votre compte.",
     "page_limits_title": "Pourquoi certaines actions sont indisponibles",
     "page_limits_units_body": "Vous utilisez :current sur :max unités. \"Ajouter une unité\" reste désactivé jusqu'à la mise à niveau.",
-    "page_limits_users_body": "Vous utilisez :current sur :max places (collègues + exécutants). N'ajoutez pas de personnes avant la mise à niveau.",
+    "page_limits_users_body": "Vous utilisez :current sur :max licences (collègues + exécutants). N'ajoutez pas de personnes avant la mise à niveau.",
     "page_limits_documents_body": "Votre organisation utilise :current sur :max documents. Supprimez ou mettez à niveau.",
     "page_limits_photos_body": "Votre organisation utilise :current sur :max photos. Supprimez ou mettez à niveau.",
     "manage_in_stripe": "Gérer l'abonnement (facture, moyen de paiement)",
@@ -56,12 +56,12 @@
     },
     "limits": {
         "units": ":count unités",
-        "users": ":count places",
+        "users": ":count licences",
         "unlimited": "illimité",
         "warning_units": "Il vous reste :remaining places d'unités.",
         "critical_units": "Limite d'unités atteinte. Mettez à niveau votre formule.",
-        "warning_users": "Il vous reste :remaining places sur votre formule.",
-        "critical_users": "Limite de places atteinte. Passez à une formule supérieure pour ajouter des collègues ou exécutants.",
+        "warning_users": "Il vous reste :remaining licences sur votre formule.",
+        "critical_users": "Limite de licences atteinte. Passez à une formule supérieure pour ajouter des collègues ou exécutants.",
         "cta": "Voir l'abonnement"
     },
     "plans": {
@@ -235,7 +235,7 @@
         "checkmate": {
             "name": "WinProx Checkmate",
             "price": "5 € par exécutant / mois",
-            "scale": "5 € par exécutant actif par mois. Nombre de sièges ajustable.",
+            "scale": "5 € par exécutant actif par mois. Nombre de licences ajustable.",
             "features": [
                 "Clients et adresses de chantier avec vérification GPS (100 m).",
                 "Pointage, pauses et visites clients via le smartphone.",
@@ -346,30 +346,30 @@
         "hint": "Pointage et pauses. Inclus dans chaque formule WinProx.",
         "public_hint": "Time (pointeuse) est inclus dans chaque formule WinProx."
     },
-    "comparison_col_seats": "Places",
+    "comparison_col_seats": "Licences",
     "payment_notice": "Paiement mensuel via Stripe. Corporate sur mesure (pas de paiement en ligne).",
     "prices_excl_vat": "Tous les prix affichés sont hors TVA.",
     "clock_rent_note": "Pointeuse incluse dans chaque formule. Écran d’horloge (en option) à louer dès €:price par mois et par écran.",
     "seats": {
-        "title": "Nombre d'exécutants (sièges)",
+        "title": "Nombre de licences",
         "current": "Actifs actuellement : :count",
         "billed_next_period": "La modification s'applique immédiatement et est facturée à partir de la période suivante.",
         "save": "Enregistrer",
-        "saved": "Nombre de sièges mis à jour.",
+        "saved": "Nombre de licences mis à jour.",
         "qty_required": "Saisissez une quantité.",
         "qty_invalid": "Saisissez une quantité valide (1-500).",
-        "below_active": "Vous ne pouvez pas descendre sous les :active sièges actifs — désactivez d'abord des exécutants.",
-        "not_editable": "Ce plan n'a pas de nombre de sièges ajustable.",
+        "below_active": "Vous ne pouvez pas descendre sous les :active licences actives — désactivez d'abord des exécutants.",
+        "not_editable": "Ce plan n'a pas de nombre de licences ajustable.",
         "stripe_failed": "Stripe n'a pas pu ajuster la quantité — veuillez réessayer."
     },
     "checkmate_page": {
-        "subtitle": "Après votre mois gratuit, choisissez le nombre de sièges. 5 € par licence active (collègue ou exécutant) par mois. Pas de limites units ni documents.",
-        "pricing_intro": "Mois d'essai gratuit avec 25 licences pour bien tester. Ensuite 5 € par siège actif par mois — vous choisissez la quantité. Paiement mensuel via Stripe.",
-        "plans_intro": "Checkmate : 5 € par siège actif par mois. Sièges = collègues avec login + exécutants. Clients, adresses de chantier, visites GPS et CIAO (ONSS) inclus. Pas de limites units ni documents.",
+        "subtitle": "Après votre mois gratuit, choisissez le nombre de licences. 5 € par licence active (collègue ou exécutant) par mois. Pas de limites units ni documents.",
+        "pricing_intro": "Mois d'essai gratuit avec 25 licences pour bien tester. Ensuite 5 € par licence active par mois — vous choisissez la quantité. Paiement mensuel via Stripe.",
+        "plans_intro": "Checkmate : 5 € par licence active par mois. Licences = collègues avec login + exécutants. Clients, adresses de chantier, visites GPS et CIAO (ONSS) inclus. Pas de limites units ni documents.",
         "glossary": {
             "heading": "Licences Checkmate",
             "seat": "Licence — un collègue avec login (admin ou collaborateur) ou un exécutant (Clock Point, sans login). Un collègue avec profil pointeuse lié compte pour une licence.",
-            "billing": "Après l'essai : 5 € par siège actif par mois. Vous réglez le nombre de sièges sur cette page."
+            "billing": "Après l'essai : 5 € par licence active par mois. Vous réglez le nombre de licences sur cette page."
         }
     },
     "time_archives": {

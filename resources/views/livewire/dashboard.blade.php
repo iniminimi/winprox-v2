@@ -623,10 +623,26 @@
             $highlightCutoff = now()->subHours(3);
         @endphp
 
-        <div class="wp-kpis">
-            @foreach ($stats->kpiTiles() as $kpi)
+        <div class="wp-dashboard-kpis"
+             x-data="wpIntentTiles"
+             data-wp-tile-mode="hide"
+             data-wp-hide-method="hideDashboardKpi"
+             data-wp-restore-method="restoreDashboardKpi"
+             data-wp-close-method="closeHiddenKpis"
+             @pointerdown="onPointerDown($event)"
+             @pointermove.window="onPointerMove($event)"
+             @pointerup.window="onPointerUp($event)"
+             @pointercancel.window="onPointerUp($event)"
+             @click.capture="onClick($event)"
+             @contextmenu="onContextMenu($event)"
+             @dragstart.prevent>
+        <div class="wp-kpis" data-wp-intent-grid>
+            @foreach ($visibleKpis as $kpi)
                 <a href="{{ $kpiLinks[$kpi['href_key']] }}"
                    @class(['wp-kpi', 'wp-kpi--'.$kpi['key'], 'wp-kpi--alert' => $kpi['alert'], 'wp-kpi--has-assistant' => $kpi['key'] === 'time_attention'])
+                   data-wp-intent-tile="{{ $kpi['key'] }}"
+                   data-wp-intent-hideable="1"
+                   draggable="false"
                    wire:key="kpi-{{ $kpi['key'] }}">
                     <div class="wp-kpi-body">
                         <span class="wp-kpi-icon" aria-hidden="true">
@@ -667,6 +683,36 @@
                     </div>
                 </a>
             @endforeach
+            @if ($visibleKpis !== [] || $hiddenKpis !== [])
+                @php
+                    $hiddenKpiCount = count($hiddenKpis);
+                @endphp
+                <button type="button"
+                        @class(['wp-kpi', 'wp-kpi--open_tasks'])
+                        @if ($hiddenKpiCount > 0) wire:click="openHiddenKpis" @endif
+                        data-wp-intent-tile="hidden_kpi_box"
+                        data-wp-intent-bin
+                        draggable="false"
+                        wire:key="kpi-hidden-box">
+                    <div class="wp-kpi-body">
+                        <span class="wp-kpi-icon" aria-hidden="true">
+                            <x-wp-icon name="layout-dots" />
+                        </span>
+                        <div class="wp-kpi-main">
+                            <p class="wp-kpi-kicker">{{ __('dashboard.intent.hidden_box.title') }}</p>
+                            <p class="wp-kpi-meta wp-kpi-meta--wrap">
+                                @if ($hiddenKpiCount === 0)
+                                    {{ __('dashboard.intent.hidden_box.empty') }}
+                                @elseif ($hiddenKpiCount === 1)
+                                    {{ __('dashboard.intent.hidden_box.one') }}
+                                @else
+                                    {{ __('dashboard.intent.hidden_box.many', ['count' => $hiddenKpiCount]) }}
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                </button>
+            @endif
             @foreach (array_slice($senseAttention ?? [], 0, 8) as $line)
                 <a href="{{ $line->url }}"
                    class="wp-kpi wp-kpi--sense wp-kpi--alert"
@@ -682,6 +728,46 @@
                     </div>
                 </a>
             @endforeach
+        </div>
+        @if ($showHiddenKpis && $hiddenKpis !== [])
+            <div data-wp-intent-hidden-modal>
+                <x-wp-modal closeMethod="closeHiddenKpis" aria-labelledby="kpi-hidden-title">
+                    <div class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
+                        <div class="wp-modal-head">
+                            <h2 id="kpi-hidden-title" class="wp-section-title">{{ __('dashboard.intent.hidden_box.title') }}</h2>
+                            <x-wp-modal-close wire:click="closeHiddenKpis" />
+                        </div>
+                        <div class="wp-kpis">
+                            @foreach ($hiddenKpis as $kpi)
+                                <a href="{{ $kpiLinks[$kpi['href_key']] }}"
+                                   @class(['wp-kpi', 'wp-kpi--'.$kpi['key'], 'wp-kpi--alert' => $kpi['alert']])
+                                   data-wp-intent-tile="{{ $kpi['key'] }}"
+                                   data-wp-intent-hideable="1"
+                                   data-wp-intent-hidden="1"
+                                   draggable="false"
+                                   wire:key="hidden-kpi-{{ $kpi['key'] }}">
+                                    <div class="wp-kpi-body">
+                                        <span class="wp-kpi-icon" aria-hidden="true">
+                                            <x-wp-icon :name="$kpi['icon']" />
+                                        </span>
+                                        <div class="wp-kpi-main">
+                                            <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
+                                            <p class="wp-kpi-stats">
+                                                @if ($kpi['key'] === 'pending_absence')
+                                                    <span class="wp-kpi-value wp-kpi-value--phrase">{{ $stats->pendingAbsenceLabel() }}</span>
+                                                @else
+                                                    <span class="wp-kpi-value wp-tabular">{{ $stats->valueFor($kpi['key']) }}</span>
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </x-wp-modal>
+            </div>
+        @endif
         </div>
 
         @if ($showIssuesTasksUi ?? true)

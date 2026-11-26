@@ -832,7 +832,7 @@
         "why": {
             "title": "Pourquoi Checkmate",
             "items": [
-                "5 € par ouvrier actif par mois — vous choisissez vous-même le nombre de sièges.",
+                "5 € par ouvrier actif par mois — vous choisissez vous-même le nombre de licences.",
                 "Aucune application à installer : un lien personnel ou un QR unique suffit.",
                 "La visite de travail GPS chez le client fait la preuve ; le seul pointage ne suffit pas.",
                 "Activation CIAO via votre numéro d'entreprise (BCE) ; nous confirmons et la transmission tourne ensuite automatiquement.",
@@ -844,7 +844,7 @@
         "start": {
             "title": "Démarrer avec Checkmate",
             "lead": "Créez un compte et encodez votre numéro d'entreprise (BCE) dans les Paramètres. Le CIAO est actif dès le départ ; la liaison ONSS est confirmée avant l'envoi.",
-            "trial": "Vous préférez d'abord tester ? Demandez une place d'essai via info@winprox.app — 25 sièges, 30 jours."
+            "trial": "Vous préférez d'abord tester ? Demandez une place d'essai via info@winprox.app — 25 licences, 30 jours."
         },
         "close": {
             "title": "Prêt pour une présence correcte ?",

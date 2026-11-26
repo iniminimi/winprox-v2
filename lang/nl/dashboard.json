@@ -189,7 +189,7 @@
         },
         "kpi": {
             "visits_today": "Bezoeken vandaag",
-            "seats": "Seats in gebruik",
+            "seats": "Licenties in gebruik",
             "customers": "Actieve klanten",
             "workers": "Uitvoerders",
             "workers_missing_ssin": "(:count zonder RRN)",

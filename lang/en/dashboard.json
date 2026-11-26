@@ -189,7 +189,7 @@
         },
         "kpi": {
             "visits_today": "Visits today",
-            "seats": "Seats in use",
+            "seats": "Licences in use",
             "customers": "Active customers",
             "workers": "Workers",
             "workers_missing_ssin": "(:count without NISS)",

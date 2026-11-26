@@ -117,7 +117,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole hotel at once. Start with 10 rooms, one floor or one team, for example.",
-            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
+            "trial": "One month free, up to 50 units (trial = 5-licence plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -248,7 +248,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole organisation at once. Start with one terminal, one building, one warehouse or one maintenance team.",
-            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
+            "trial": "One month free, up to 50 units (trial = 5-licence plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -366,7 +366,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole care site at once. Start with one ward, one building or one facility team, for example.",
-            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
+            "trial": "One month free, up to 50 units (trial = 5-licence plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -484,7 +484,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole municipality at once. Start with one building, one school or one maintenance team, for example.",
-            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
+            "trial": "One month free, up to 50 units (trial = 5-licence plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -601,7 +601,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole portfolio at once. Start with one building, one floor or one team, for example.",
-            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
+            "trial": "One month free, up to 50 units (trial = 5-licence plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -738,7 +738,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not need to convert every customer or site at once. Start with one crew, one Clock Point or a handful of locations.",
-            "trial": "One month free trial, up to 50 units (trial = 5-seat plan). No install."
+            "trial": "One month free trial, up to 50 units (trial = 5-licence plan). No install."
         },
         "close": {
             "title": "Ready to try it yourself?",
@@ -832,7 +832,7 @@
         "why": {
             "title": "Why Checkmate",
             "items": [
-                "€5 per active worker per month — you choose the number of seats yourself.",
+                "€5 per active worker per month — you choose the number of licences yourself.",
                 "No app install: a personal link or a one-time QR is enough.",
                 "The GPS work visit at the customer site is the proof; clocking in alone is not.",
                 "CIAO activation via your enterprise number (CBE); we confirm and from then on reporting runs automatically.",
@@ -844,7 +844,7 @@
         "start": {
             "title": "Getting started with Checkmate",
             "lead": "Create an account and enter your enterprise number (CBE) in Settings. CIAO is on from the start; the NSSO link is confirmed before filing begins.",
-            "trial": "Prefer to try first? Request a trial seat via info@winprox.app — 25 seats, 30 days."
+            "trial": "Prefer to try first? Request a trial licence via info@winprox.app — 25 licences, 30 days."
         },
         "close": {
             "title": "Ready for correct presence registration?",
@@ -997,7 +997,7 @@
         "start": {
             "title": "Rather see how it works first?",
             "lead": "We demonstrate the time clock and time tracking at your site or over a video call. You see right away how your staff work with it.",
-            "trial": "Starting right away works too: 30-day trial with 25 seats after your request."
+            "trial": "Starting right away works too: 30-day trial with 25 licences after your request."
         },
         "close": {
             "title": "Ready for simpler clocking?",

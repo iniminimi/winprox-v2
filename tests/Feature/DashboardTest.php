@@ -453,6 +453,50 @@ it('zet een kader weg in de container en zet het terug', function () {
         ->assertSee(__('dashboard.intent.hidden_box.empty'));
 });
 
+it('zet een telling weg in de dashboardcontainer en niet in de snelkoppelingen', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'work_menu_inspection_rounds_enabled' => true,
+    ]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $other = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSeeHtml('data-wp-tile-mode="hide"')
+        ->assertSeeHtml('data-wp-intent-tile="new_issues"')
+        ->assertSeeHtml('data-wp-intent-tile="location"')
+        ->call('hideDashboardKpi', 'location')
+        ->call('hideDashboardKpi', 'hidden_box')
+        ->assertSeeHtml('data-wp-intent-tile="new_issues"')
+        ->assertSeeHtml('data-wp-intent-tile="location"')
+        ->call('hideDashboardKpi', 'new_issues')
+        ->assertDontSeeHtml('data-wp-intent-tile="new_issues"')
+        ->assertSeeHtml('data-wp-intent-tile="location"')
+        ->call('openHiddenKpis')
+        ->assertSet('showHiddenKpis', true)
+        ->assertSeeHtml('data-wp-intent-hidden="1"')
+        ->call('restoreDashboardKpi', 'new_issues')
+        ->assertSet('showHiddenKpis', false)
+        ->assertSeeHtml('data-wp-intent-tile="new_issues"');
+
+    expect($user->refresh()->dashboard_hidden_kpis)->toBe([])
+        ->and($user->dashboard_hidden_tiles)->toBeNull();
+
+    Livewire::actingAs($other)
+        ->test(Dashboard::class)
+        ->assertSeeHtml('data-wp-intent-tile="new_issues"');
+});
+
 it('verbergt Time-tegels in de intent-hub zonder Time-module', function () {
     $tenant = Tenant::factory()->create([
         'has_time_module' => false,

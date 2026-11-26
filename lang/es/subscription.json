@@ -34,7 +34,7 @@
     "status_module_time": "Time (reloj de fichar) está activo en su cuenta.",
     "page_limits_title": "Por qué ciertas acciones no están disponibles",
     "page_limits_units_body": "Usa :current de :max unidades. \"Añadir unidad\" permanece desactivado hasta actualizar.",
-    "page_limits_users_body": "Usa :current de :max plazas (colegas + ejecutores). No añada más personas hasta actualizar.",
+    "page_limits_users_body": "Usa :current de :max licencias (colegas + ejecutores). No añada más personas hasta actualizar.",
     "page_limits_documents_body": "Su organización usa :current de :max documentos. Elimine o actualice.",
     "page_limits_photos_body": "Su organización usa :current de :max fotos. Elimine o actualice.",
     "manage_in_stripe": "Gestionar suscripción (factura, método de pago)",
@@ -56,12 +56,12 @@
     },
     "limits": {
         "units": ":count unidades",
-        "users": ":count plazas",
+        "users": ":count licencias",
         "unlimited": "ilimitado",
         "warning_units": "Le quedan :remaining plazas de unidades.",
         "critical_units": "Límite de unidades alcanzado. Actualice su plan.",
-        "warning_users": "Le quedan :remaining plazas en su plan.",
-        "critical_users": "Límite de plazas alcanzado. Actualice su plan para más colegas o ejecutores.",
+        "warning_users": "Le quedan :remaining licencias en su plan.",
+        "critical_users": "Límite de licencias alcanzado. Actualice su plan para más colegas o ejecutores.",
         "cta": "Ver suscripción"
     },
     "plans": {
@@ -235,7 +235,7 @@
         "checkmate": {
             "name": "WinProx Checkmate",
             "price": "5 € por operario / mes",
-            "scale": "5 € por operario activo al mes. Número de plazas ajustable.",
+            "scale": "5 € por operario activo al mes. Número de licencias ajustable.",
             "features": [
                 "Clientes y direcciones de trabajo con verificación GPS (100 m).",
                 "Fichaje, pausas y visitas a clientes desde el móvil.",
@@ -346,30 +346,30 @@
         "hint": "Entrada/salida y pausas. Incluido en cada fórmula WinProx.",
         "public_hint": "Time (fichaje) está incluido en cada fórmula WinProx."
     },
-    "comparison_col_seats": "Plazas",
+    "comparison_col_seats": "Licencias",
     "payment_notice": "Pago mensual con Stripe. Corporate a medida (sin pago en línea).",
     "prices_excl_vat": "Todos los precios mostrados son sin IVA.",
     "clock_rent_note": "Reloj de fichar incluido en todas las fórmulas. Pantalla de reloj (opcional) en alquiler desde €:price al mes por pantalla.",
     "seats": {
-        "title": "Número de trabajadores (plazas)",
+        "title": "Número de licencias",
         "current": "Activos actualmente: :count",
         "billed_next_period": "El cambio se aplica de inmediato y se factura a partir del siguiente período.",
         "save": "Guardar",
-        "saved": "Número de plazas actualizado.",
+        "saved": "Número de licencias actualizado.",
         "qty_required": "Introduce una cantidad.",
         "qty_invalid": "Introduce una cantidad válida (1-500).",
-        "below_active": "No puedes bajar de las :active plazas activas — desactiva primero trabajadores.",
-        "not_editable": "Este plan no tiene un número de plazas ajustable.",
+        "below_active": "No puedes bajar de las :active licencias activas — desactiva primero trabajadores.",
+        "not_editable": "Este plan no tiene un número de licencias ajustable.",
         "stripe_failed": "Stripe no pudo ajustar la cantidad — inténtalo de nuevo."
     },
     "checkmate_page": {
-        "subtitle": "Tras el mes gratis elige el número de plazas. 5 € por licencia activa (compañero u operario) al mes. Sin límites de units ni documentos.",
-        "pricing_intro": "Mes de prueba gratis con 25 licencias para probar bien. Después 5 € por plaza activa al mes — tú eliges la cantidad. Pago mensual vía Stripe.",
-        "plans_intro": "Checkmate: 5 € por plaza activa al mes. Plazas = compañeros con login + operarios. Clientes, direcciones de obra, visitas GPS y CIAO (ONSS) incluidos. Sin límites de units ni documentos.",
+        "subtitle": "Tras el mes gratis elige el número de licencias. 5 € por licencia activa (compañero u operario) al mes. Sin límites de units ni documentos.",
+        "pricing_intro": "Mes de prueba gratis con 25 licencias para probar bien. Después 5 € por licencia activa al mes — tú eliges la cantidad. Pago mensual vía Stripe.",
+        "plans_intro": "Checkmate: 5 € por licencia activa al mes. Licencias = compañeros con login + operarios. Clientes, direcciones de obra, visitas GPS y CIAO (ONSS) incluidos. Sin límites de units ni documentos.",
         "glossary": {
             "heading": "Licencias en Checkmate",
             "seat": "Licencia — un compañero con login (admin o empleado) o un operario (Clock Point, sin login). Un compañero con perfil de fichaje vinculado cuenta como una licencia.",
-            "billing": "Tras la prueba: 5 € por plaza activa al mes. Configuras el número de plazas en esta página."
+            "billing": "Tras la prueba: 5 € por licencia activa al mes. Configuras el número de licencias en esta página."
         }
     },
     "time_archives": {

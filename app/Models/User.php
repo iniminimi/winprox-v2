@@ -40,6 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'ui_theme',
         'dashboard_intent_order',
         'dashboard_hidden_tiles',
+        'dashboard_hidden_kpis',
         'password',
         'is_superuser',
         'is_active',
@@ -170,6 +171,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'ui_theme' => 'string',
             'dashboard_intent_order' => 'array',
             'dashboard_hidden_tiles' => 'array',
+            'dashboard_hidden_kpis' => 'array',
             'whats_new_dismissed_on' => 'date',
         ];
     }

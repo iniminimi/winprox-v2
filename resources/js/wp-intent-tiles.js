@@ -137,6 +137,10 @@ function registerAlpineComponent() {
                 return;
             }
             this.pending.overBin = false;
+            if (this.hideOnly()) {
+                this.parkPlaceholder();
+                return;
+            }
             const grid = this.gridEl();
             const placeholder = this.pending.placeholder;
             if (!grid || !placeholder) {
@@ -164,6 +168,10 @@ function registerAlpineComponent() {
 
         tileIsHideable(tile) {
             return tile?.getAttribute('data-wp-intent-hideable') === '1';
+        },
+
+        hideOnly() {
+            return this.$el.dataset.wpTileMode === 'hide';
         },
 
         binAt(x, y) {
@@ -295,12 +303,15 @@ function registerAlpineComponent() {
             const key = this.pending.tile?.dataset.wpIntentTile ?? '';
             this.parkPlaceholder();
             const overBin = hideable && this.binAt(event.clientX, event.clientY) !== null;
-            if (moved && !overBin && !fromHidden) {
-                this.place(event.clientX, event.clientY);
-            } else if (moved && !overBin && fromHidden && this.pointerOverGrid(event.clientX, event.clientY)) {
+            const overGrid = this.pointerOverGrid(event.clientX, event.clientY);
+            if (moved && !overBin && !this.hideOnly() && (!fromHidden || overGrid)) {
                 this.place(event.clientX, event.clientY);
             }
-            const keys = moved && !overBin ? this.orderKeys() : null;
+            const keys = moved && !overBin && !this.hideOnly() ? this.orderKeys() : null;
+            const hideMethod = this.$el.dataset.wpHideMethod || 'hideIntentTile';
+            const restoreMethod = this.$el.dataset.wpRestoreMethod || 'restoreIntentTile';
+            const reorderMethod = this.$el.dataset.wpReorderMethod || 'reorderIntentTiles';
+            const closeMethod = this.$el.dataset.wpCloseMethod || 'closeHiddenTiles';
             this.clearPending();
             if (!moved) {
                 this.revealHiddenModal();
@@ -309,14 +320,16 @@ function registerAlpineComponent() {
             this.suppressClick = true;
             if (overBin && hideable && key !== '') {
                 if (fromHidden) {
-                    this.$wire.closeHiddenTiles();
+                    this.$wire[closeMethod]();
                 } else {
-                    this.$wire.hideIntentTile(key);
+                    this.$wire[hideMethod](key);
                 }
+            } else if (fromHidden && this.hideOnly() && overGrid) {
+                this.$wire[restoreMethod](key);
             } else if (fromHidden && keys) {
-                this.$wire.restoreIntentTile(key, keys);
+                this.$wire[restoreMethod](key, keys);
             } else if (!fromHidden && keys) {
-                this.$wire.reorderIntentTiles(keys);
+                this.$wire[reorderMethod](keys);
             } else {
                 this.revealHiddenModal();
             }

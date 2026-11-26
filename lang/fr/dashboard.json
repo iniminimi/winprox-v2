@@ -189,7 +189,7 @@
         },
         "kpi": {
             "visits_today": "Visites aujourd’hui",
-            "seats": "Sièges utilisés",
+            "seats": "Licences utilisées",
             "customers": "Clients actifs",
             "workers": "Exécutants",
             "workers_missing_ssin": "(:count sans NISS)",

@@ -34,7 +34,7 @@
     "status_module_time": "Time (timbratrice) è attivo sul tuo account.",
     "page_limits_title": "Perché alcune azioni non sono disponibili",
     "page_limits_units_body": "Stai usando :current di :max unità. \"Aggiungi unità\" resta disabilitato fino all'upgrade.",
-    "page_limits_users_body": "Stai usando :current di :max posti (colleghi + esecutori). Non aggiungere persone finché non aggiorni.",
+    "page_limits_users_body": "Stai usando :current di :max licenze (colleghi + esecutori). Non aggiungere persone finché non aggiorni.",
     "page_limits_documents_body": "La tua organizzazione usa :current di :max documenti. Elimina o aggiorna.",
     "page_limits_photos_body": "La tua organizzazione usa :current di :max foto. Elimina o aggiorna.",
     "manage_in_stripe": "Gestisci abbonamento (fattura, metodo di pagamento)",
@@ -56,12 +56,12 @@
     },
     "limits": {
         "units": ":count unità",
-        "users": ":count posti",
+        "users": ":count licenze",
         "unlimited": "illimitato",
         "warning_units": "Hai ancora :remaining posti unità.",
         "critical_units": "Limite unità raggiunto. Aggiorna il piano.",
-        "warning_users": "Hai ancora :remaining posti sul piano.",
-        "critical_users": "Limite posti raggiunto. Aggiorna il piano per altri colleghi o esecutori.",
+        "warning_users": "Hai ancora :remaining licenze sul piano.",
+        "critical_users": "Limite licenze raggiunto. Aggiorna il piano per altri colleghi o esecutori.",
         "cta": "Vedi abbonamento"
     },
     "plans": {
@@ -346,30 +346,30 @@
         "hint": "Entrata/uscita e pause. Incluso in ogni formula WinProx.",
         "public_hint": "Time (timbratura) è incluso in ogni formula WinProx."
     },
-    "comparison_col_seats": "Posti",
+    "comparison_col_seats": "Licenze",
     "payment_notice": "Pagamento mensile tramite Stripe. Corporate su misura (nessun pagamento online).",
     "prices_excl_vat": "Tutti i prezzi visualizzati sono IVA esclusa.",
     "clock_rent_note": "Timbratrice inclusa in ogni formula. Schermo-orologio (opzionale) a noleggio da €:price al mese per schermo.",
     "seats": {
-        "title": "Numero di operatori (posti)",
+        "title": "Numero di licenze",
         "current": "Attivi attualmente: :count",
         "billed_next_period": "La modifica si applica subito e viene fatturata dal periodo successivo.",
         "save": "Salva",
-        "saved": "Numero di posti aggiornato.",
+        "saved": "Numero di licenze aggiornato.",
         "qty_required": "Inserisci una quantità.",
         "qty_invalid": "Inserisci una quantità valida (1-500).",
-        "below_active": "Non puoi scendere sotto i :active posti attivi — disattiva prima degli operatori.",
-        "not_editable": "Questo piano non ha un numero di posti regolabile.",
+        "below_active": "Non puoi scendere sotto le :active licenze attive — disattiva prima degli operatori.",
+        "not_editable": "Questo piano non ha un numero di licenze regolabile.",
         "stripe_failed": "Stripe non è riuscito ad aggiornare la quantità — riprova."
     },
     "checkmate_page": {
-        "subtitle": "Dopo il mese gratuito scegli il numero di posti. 5 € per licenza attiva (collega o operatore) al mese. Nessun limite di unit o documenti.",
-        "pricing_intro": "Mese di prova gratuito con 25 licenze per testare bene. Poi 5 € per posto attivo al mese — scegli tu la quantità. Pagamento mensile via Stripe.",
-        "plans_intro": "Checkmate: 5 € per posto attivo al mese. Posti = colleghi con login + operatori. Clienti, indirizzi di lavoro, visite GPS e CIAO (ONSS) inclusi. Nessun limite di unit o documenti.",
+        "subtitle": "Dopo il mese gratuito scegli il numero di licenze. 5 € per licenza attiva (collega o operatore) al mese. Nessun limite di unit o documenti.",
+        "pricing_intro": "Mese di prova gratuito con 25 licenze per testare bene. Poi 5 € per licenza attiva al mese — scegli tu la quantità. Pagamento mensile via Stripe.",
+        "plans_intro": "Checkmate: 5 € per licenza attiva al mese. Licenze = colleghi con login + operatori. Clienti, indirizzi di lavoro, visite GPS e CIAO (ONSS) inclusi. Nessun limite di unit o documenti.",
         "glossary": {
             "heading": "Licenze su Checkmate",
             "seat": "Licenza — un collega con login (admin o collaboratore) o un operatore (Clock Point, senza login). Un collega con profilo timbratura collegato conta come una licenza.",
-            "billing": "Dopo la prova: 5 € per posto attivo al mese. Imposti il numero di posti in questa pagina."
+            "billing": "Dopo la prova: 5 € per licenza attiva al mese. Imposti il numero di licenze in questa pagina."
         }
     },
     "time_archives": {

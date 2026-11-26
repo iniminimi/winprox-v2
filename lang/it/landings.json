@@ -832,7 +832,7 @@
         "why": {
             "title": "Perché Checkmate",
             "items": [
-                "5 € per operatore attivo al mese — scegli tu il numero di seat.",
+                "5 € per operatore attivo al mese — scegli tu il numero di licenze.",
                 "Nessuna app da installare: basta un link personale o un QR una tantum.",
                 "La visita di lavoro GPS presso il cliente è la prova; timbrare da solo non basta.",
                 "Attivazione CIAO tramite il tuo numero d'impresa (CBE); noi confermiamo e da lì l'invio è automatico.",
@@ -844,7 +844,7 @@
         "start": {
             "title": "Iniziare con Checkmate",
             "lead": "Crea un account e inserisci il numero d'impresa (CBE) nelle Impostazioni. Il CIAO è attivo fin dall'inizio; il collegamento ONSS viene confermato prima dell'invio.",
-            "trial": "Preferisci prima provare? Richiedi una prova via info@winprox.app — 25 seat, 30 giorni."
+            "trial": "Preferisci prima provare? Richiedi una prova via info@winprox.app — 25 licenze, 30 giorni."
         },
         "close": {
             "title": "Pronto per una presenza corretta?",

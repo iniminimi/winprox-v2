@@ -1,17 +1,17 @@
 {
     "title": "Subscription, limits & billing",
     "public_title": "Pricing & plans",
-    "public_subtitle": "Choose your seat count. Billed monthly via Stripe. Punch clock, roster, issues and CIAO (NSSO, via Settings) included.",
+    "public_subtitle": "Choose your licence count. Billed monthly via Stripe. Punch clock, roster, issues and CIAO (NSSO, via Settings) included.",
     "public_register_cta": "Start free trial",
-    "subtitle": "After your free month, pick a plan. Seats 5/10/25/50; units = 10× (50/100/250/500); documents 10/20/30/40. Locations and photos unlimited.",
+    "subtitle": "After your free month, pick a plan. Licences 5/10/25/50; units = 10× (50/100/250/500); documents 10/20/30/40. Locations and photos unlimited.",
     "plans_heading": "Plans",
-    "plans_intro": "Pay monthly. 5, 10, 25 or 50 seats (colleagues + workers); units = 10× that number; documents 10/20/30/40. Locations and photos unlimited. Punch clock, roster, issues and CIAO (NSSO, via Settings) included.",
+    "plans_intro": "Pay monthly. 5, 10, 25 or 50 licences (colleagues + workers); units = 10× that number; documents 10/20/30/40. Locations and photos unlimited. Punch clock, roster, issues and CIAO (NSSO, via Settings) included.",
     "glossary": {
-        "heading": "Seats, units and photos",
-        "unit": "Unit — an object or place with a QR code (machine, room, site). Each new location automatically gets a «whole location» unit. Units = 10× your seats: 50 / 100 / 250 / 500.",
+        "heading": "Licences, units and photos",
+        "unit": "Unit — an object or place with a QR code (machine, room, site). Each new location automatically gets a «whole location» unit. Units = 10× your licences: 50 / 100 / 250 / 500.",
         "document": "Document — a file on the QR portal, such as a manual. Limit per plan: 10 / 20 / 30 / 40.",
         "photo": "Photos — photos on issues and tasks are unlimited.",
-        "seat": "Seat — a colleague with login (admin or employee) or a worker (Clock Point, no login). A colleague with a linked punch-clock profile counts as one seat."
+        "seat": "Licence — a colleague with login (admin or employee) or a worker (Clock Point, no login). A colleague with a linked punch-clock profile counts as one licence."
     },
     "choose_plan": "Choose this plan",
     "choose_plan_loading": "Choosing...",
@@ -28,13 +28,13 @@
     "status_corporate_cap": "Agreed: :count units.",
     "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
     "status_expired": "Your trial has ended. Choose a plan below to continue.",
-    "pricing_intro": "Free trial month (5 seats, 50 units, 10 documents — same as the entry plan). Then 5/10/25/50 seats. Billed monthly via Stripe.",
+    "pricing_intro": "Free trial month (5 licences, 50 units, 10 documents — same as the entry plan). Then 5/10/25/50 licences. Billed monthly via Stripe.",
     "status_module_esg": "ESG module active on your account.",
     "status_module_time": "Time (punch clock) is active on your account.",
     "page_limits_title": "Why certain actions are unavailable",
     "page_limits_units_body": "You are using :current of :max units. \"Add unit\" stays disabled until you upgrade.",
     "page_limits_locations_body": "You are using :current of :max locations. \"Add location\" stays disabled until you upgrade.",
-    "page_limits_users_body": "You are using :current of :max seats (colleagues + workers) on your plan. Do not add more people until you upgrade.",
+    "page_limits_users_body": "You are using :current of :max licences (colleagues + workers) on your plan. Do not add more people until you upgrade.",
     "page_limits_documents_body": "Your organisation is using :current of :max documents. Delete a document or upgrade your plan to upload more.",
     "page_limits_photos_body": "Your organisation is using :current of :max photos. Delete photos or upgrade your plan to upload more.",
     "manage_in_stripe": "Manage subscription (invoice, payment method)",
@@ -56,12 +56,12 @@
     },
     "limits": {
         "units": ":count units",
-        "users": ":count seats",
+        "users": ":count licences",
         "unlimited": "unlimited",
         "warning_units": "You have :remaining unit slots left in your plan.",
         "critical_units": "Your unit limit is reached. Upgrade your plan to add more units.",
-        "warning_users": "You have :remaining seats left on your plan.",
-        "critical_users": "Your seat limit is reached. Upgrade your plan to add more colleagues or workers.",
+        "warning_users": "You have :remaining licences left on your plan.",
+        "critical_users": "Your licence limit is reached. Upgrade your plan to add more colleagues or workers.",
         "cta": "View subscription"
     },
     "plans": {
@@ -69,7 +69,7 @@
             "name": "Trial"
         },
         "winprox_5": {
-            "name": "5 seats",
+            "name": "5 licences",
             "price": "€59 / month",
             "scale": "€59 per month. Billed monthly via Stripe.",
             "features": [
@@ -78,7 +78,7 @@
             ]
         },
         "winprox_5_time": {
-            "name": "5 seats + Time (punch clock)",
+            "name": "5 licences + Time (punch clock)",
             "price": "€59 / month",
             "scale": "€59 per month. Billed monthly via Stripe.",
             "features": [
@@ -87,7 +87,7 @@
             ]
         },
         "winprox_10": {
-            "name": "10 seats",
+            "name": "10 licences",
             "price": "€99 / month",
             "scale": "€99 per month. Billed monthly via Stripe.",
             "features": [
@@ -96,7 +96,7 @@
             ]
         },
         "winprox_10_time": {
-            "name": "10 seats + Time (punch clock)",
+            "name": "10 licences + Time (punch clock)",
             "price": "€99 / month",
             "scale": "€99 per month. Billed monthly via Stripe.",
             "features": [
@@ -105,7 +105,7 @@
             ]
         },
         "winprox_25": {
-            "name": "25 seats",
+            "name": "25 licences",
             "price": "€199 / month",
             "scale": "€199 per month. Billed monthly via Stripe.",
             "features": [
@@ -114,7 +114,7 @@
             ]
         },
         "winprox_25_time": {
-            "name": "25 seats + Time (punch clock)",
+            "name": "25 licences + Time (punch clock)",
             "price": "€199 / month",
             "scale": "€199 per month. Billed monthly via Stripe.",
             "features": [
@@ -123,7 +123,7 @@
             ]
         },
         "winprox_50": {
-            "name": "50 seats",
+            "name": "50 licences",
             "price": "€349 / month",
             "scale": "€349 per month. Billed monthly via Stripe.",
             "features": [
@@ -132,7 +132,7 @@
             ]
         },
         "winprox_50_time": {
-            "name": "50 seats + Time (punch clock)",
+            "name": "50 licences + Time (punch clock)",
             "price": "€349 / month",
             "scale": "€349 per month. Billed monthly via Stripe.",
             "features": [
@@ -141,17 +141,17 @@
             ]
         },
         "winprox_100": {
-            "name": "100 seats",
+            "name": "100 licences",
             "price": "Custom",
-            "scale": "From 100 seats: WinProx Corporate.",
+            "scale": "From 100 licences: WinProx Corporate.",
             "features": [
                 "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_100_time": {
-            "name": "100 seats + Time (punch clock)",
+            "name": "100 licences + Time (punch clock)",
             "price": "Custom",
-            "scale": "From 100 seats: WinProx Corporate.",
+            "scale": "From 100 licences: WinProx Corporate.",
             "features": [
                 "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
@@ -235,7 +235,7 @@
         "checkmate": {
             "name": "WinProx Checkmate",
             "price": "€5 per worker / month",
-            "scale": "€5 per active worker per month. Seat count is adjustable.",
+            "scale": "€5 per active worker per month. Licence count is adjustable.",
             "features": [
                 "Customers and work addresses with GPS verification (100 m).",
                 "Clock in, breaks and customer visits via the phone.",
@@ -331,8 +331,8 @@
     "comparison_custom": "Custom",
     "comparison_trial_price": "Free",
     "comparison_notes": {
-        "trial": "Trial: 5 seats, 50 units and 10 documents (same as the 5-seat plan). Then billed monthly via Stripe.",
-        "unlimited": "Units = 10× your seats (50 / 100 / 250 / 500). Documents 10 / 20 / 30 / 40. Locations and photos unlimited.",
+        "trial": "Trial: 5 licences, 50 units and 10 documents (same as the 5-licence plan). Then billed monthly via Stripe.",
+        "unlimited": "Units = 10× your licences (50 / 100 / 250 / 500). Documents 10 / 20 / 30 / 40. Locations and photos unlimited.",
         "corporate": "WinProx Corporate is a contractual offer for larger organisations. ESG, IoT and API are possible components, not the only reason to choose Corporate."
     },
     "contact_sales_cta": "Contact us",
@@ -346,30 +346,30 @@
         "hint": "Clock in/out and breaks. Included in every WinProx plan.",
         "public_hint": "Time (punch clock) is included in every WinProx plan."
     },
-    "comparison_col_seats": "Seats",
+    "comparison_col_seats": "Licences",
     "payment_notice": "Billed monthly via Stripe. Corporate is custom (no online checkout).",
     "prices_excl_vat": "All displayed prices are exclusive of VAT.",
     "clock_rent_note": "Time clock included in every plan. Clock screen (optional) for rent from €:price per month per screen.",
     "seats": {
-        "title": "Number of workers (seats)",
+        "title": "Number of licences",
         "current": "Currently active: :count",
         "billed_next_period": "The change applies immediately and is billed from the next period.",
         "save": "Save",
-        "saved": "Seat count updated.",
+        "saved": "Licence count updated.",
         "qty_required": "Enter a quantity.",
         "qty_invalid": "Enter a valid quantity (1-500).",
-        "below_active": "You cannot go below the :active active seats — deactivate workers first.",
-        "not_editable": "This plan does not have an adjustable seat count.",
+        "below_active": "You cannot go below the :active active licences — deactivate workers first.",
+        "not_editable": "This plan does not have an adjustable licence count.",
         "stripe_failed": "Stripe could not update the quantity — please try again."
     },
     "checkmate_page": {
-        "subtitle": "After your free month you choose how many seats you need. €5 per active licence (colleague or field worker) per month. No unit or document limits.",
-        "pricing_intro": "Free trial month with 25 licences so you can test properly. Afterwards €5 per active seat per month — you choose the quantity. Paid monthly via Stripe.",
-        "plans_intro": "Checkmate: €5 per active seat per month. Seats = colleagues with login + field workers. Customers, work addresses, GPS visits and CIAO (NSSO) included. No unit or document limits.",
+        "subtitle": "After your free month you choose how many licences you need. €5 per active licence (colleague or field worker) per month. No unit or document limits.",
+        "pricing_intro": "Free trial month with 25 licences so you can test properly. Afterwards €5 per active licence per month — you choose the quantity. Paid monthly via Stripe.",
+        "plans_intro": "Checkmate: €5 per active licence per month. Licences = colleagues with login + field workers. Customers, work addresses, GPS visits and CIAO (NSSO) included. No unit or document limits.",
         "glossary": {
             "heading": "Licences on Checkmate",
             "seat": "Licence — a colleague with login (admin or staff) or a field worker (Clock Point, no login). A colleague with a linked time-clock profile counts as one licence.",
-            "billing": "After the trial: €5 per active seat per month. You set the seat quantity yourself on this page."
+            "billing": "After the trial: €5 per active licence per month. You set the licence quantity yourself on this page."
         }
     },
     "time_archives": {

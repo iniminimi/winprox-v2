@@ -126,7 +126,7 @@ fouttype per uur (met het aantal herhalingen) en 10 per uur in totaal. Zie
 - **Proefperiode-capsule**: "Proefperiode nog X dagen." (zie §Abonnement).
 
 **KPI-kaarten** (neutraal/minimaal, emerald enkel als subtiel accent) — **klikbaar** (elke tegel
-linkt naar zijn lijst):
+linkt naar zijn lijst). Een vast kader **Weggezette kaders** staat in dat raster. Een telling erop loslaten zet die weg voor die persoon. Een tik toont ze; vasthouden en loslaten op het raster zet er een terug. De snelkoppelingen bovenaan gaan daar niet in, en een telling gaat niet in het kader bovenaan. Sense-aandacht blijft buiten die container.
 - Nieuwe meldingen — aantal nieuw/open → meldingen (status=nieuw). **Alert-accent** als > 0.
 - Open taken — "In uitvoering" → taken (open/in uitvoering).
 - Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; inbegrepen in elke WinProx-formule).
@@ -1759,8 +1759,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   inklokken, uren, CIAO en GPS-klantbezoeken (blokkerende straal, default 100 m)
   + `customers_on_location`. Geen Time-module: geen uurrooster en geen verlof.
   Locaties krijgen «Hele locatie»-units (upgrade naar Facility zonder data-kloof).
-  **5€ per actieve uitvoerder per maand**; seats via `billing_seats_qty`.
-  Proef (`checkmate_trial`): **25 seats**, 30 dagen — Abonnement toont Checkmate-copy
+  **5€ per actieve uitvoerder per maand**; aantal licenties via `billing_seats_qty`.
+  Proef (`checkmate_trial`): **25 licenties**, 30 dagen — Abonnement toont Checkmate-copy
   (geen Facility-units/documenten).
   `checkmate_mode` whitelist: Dashboard, Plaatsen (Klanten/Locaties; Units niet
   in menu), Uitvoerders, Time, Instellingen, Abonnement. Categorieën stil

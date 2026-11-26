@@ -69,6 +69,32 @@ final class DashboardStatsData
         return $tiles;
     }
 
+    /**
+     * @param  list<mixed>  $hiddenKeys
+     * @return array{visible: list<array<string, mixed>>, hidden: list<array<string, mixed>>}
+     */
+    public function partitionKpiTiles(array $hiddenKeys): array
+    {
+        $hiddenLookup = [];
+        foreach ($hiddenKeys as $key) {
+            if (is_string($key)) {
+                $hiddenLookup[$key] = true;
+            }
+        }
+
+        $visible = [];
+        $hidden = [];
+        foreach ($this->kpiTiles() as $tile) {
+            if (isset($hiddenLookup[$tile['key']])) {
+                $hidden[] = $tile;
+            } else {
+                $visible[] = $tile;
+            }
+        }
+
+        return ['visible' => $visible, 'hidden' => $hidden];
+    }
+
     public function valueFor(string $key): int
     {
         return match ($key) {

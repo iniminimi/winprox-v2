@@ -832,7 +832,7 @@
         "why": {
             "title": "Por qué Checkmate",
             "items": [
-                "5 € por trabajador activo al mes — usted elige el número de plazas.",
+                "5 € por trabajador activo al mes — usted elige el número de licencias.",
                 "Sin app que instalar: basta un enlace personal o un QR único.",
                 "La visita de trabajo GPS en casa del cliente es la prueba; fichar solo no lo es.",
                 "Activación CIAO con su número de empresa (CBE); nosotros confirmamos y a partir de ahí el envío es automático.",
@@ -844,7 +844,7 @@
         "start": {
             "title": "Empezar con Checkmate",
             "lead": "Cree una cuenta e introduzca su número de empresa (CBE) en Ajustes. CIAO está activo desde el inicio; el enlace ONSS se confirma antes de enviar.",
-            "trial": "¿Prefiere probar primero? Pida una plaza de prueba en info@winprox.app — 25 plazas, 30 días."
+            "trial": "¿Prefiere probar primero? Pida una prueba en info@winprox.app — 25 licencias, 30 días."
         },
         "close": {
             "title": "¿Listo para una presencia correcta?",
@@ -997,7 +997,7 @@
         "start": {
             "title": "¿Prefiere ver primero cómo funciona?",
             "lead": "Le mostramos el reloj de fichar y el registro horario en su empresa o por videollamada. Verá de inmediato cómo lo usan sus empleados.",
-            "trial": "Empezar directamente también es posible: prueba de 30 días y 25 plazas tras su solicitud."
+            "trial": "Empezar directamente también es posible: prueba de 30 días y 25 licencias tras su solicitud."
         },
         "close": {
             "title": "¿Listo para fichar más fácil?",

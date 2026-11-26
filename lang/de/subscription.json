@@ -34,7 +34,7 @@
     "status_module_time": "Time (Stechuhr) ist auf Ihrem Konto aktiv.",
     "page_limits_title": "Warum bestimmte Aktionen nicht verfügbar sind",
     "page_limits_units_body": "Sie nutzen :current von :max Units. \"Unit hinzufügen\" bleibt deaktiviert bis zum Upgrade.",
-    "page_limits_users_body": "Sie nutzen :current von :max Plätzen (Kollegen + Ausführende). Keine weiteren Personen bis zum Upgrade.",
+    "page_limits_users_body": "Sie nutzen :current von :max Lizenzen (Kollegen + Ausführende). Keine weiteren Personen bis zum Upgrade.",
     "page_limits_documents_body": "Ihre Organisation nutzt :current von :max Dokumenten. Löschen Sie Dokumente oder upgraden Sie.",
     "page_limits_photos_body": "Ihre Organisation nutzt :current von :max Fotos. Löschen Sie Fotos oder upgraden Sie.",
     "manage_in_stripe": "Abonnement verwalten (Rechnung, Zahlungsmethode)",
@@ -56,12 +56,12 @@
     },
     "limits": {
         "units": ":count Units",
-        "users": ":count Plätze",
+        "users": ":count Lizenzen",
         "unlimited": "unbegrenzt",
         "warning_units": "Sie haben noch :remaining Unit-Plätze.",
         "critical_units": "Unit-Limit erreicht. Upgraden Sie Ihren Tarif.",
-        "warning_users": "Sie haben noch :remaining Plätze in Ihrem Tarif.",
-        "critical_users": "Platzlimit erreicht. Upgraden Sie Ihren Tarif für weitere Kollegen oder Ausführende.",
+        "warning_users": "Sie haben noch :remaining Lizenzen in Ihrem Tarif.",
+        "critical_users": "Lizenzlimit erreicht. Upgraden Sie Ihren Tarif für weitere Kollegen oder Ausführende.",
         "cta": "Abonnement ansehen"
     },
     "plans": {
@@ -346,30 +346,30 @@
         "hint": "Ein-/Ausstempeln und Pausen. In jeder WinProx-Formel enthalten.",
         "public_hint": "Time (Zeiterfassung) ist in jeder WinProx-Formel enthalten."
     },
-    "comparison_col_seats": "Plätze",
+    "comparison_col_seats": "Lizenzen",
     "payment_notice": "Monatliche Zahlung über Stripe. Corporate individuell (kein Online-Checkout).",
     "prices_excl_vat": "Alle angezeigten Preise verstehen sich zuzüglich MwSt.",
     "clock_rent_note": "Stempeluhr in jeder Formel inbegriffen. Uhrbildschirm (optional) zu mieten ab €:price pro Monat und Bildschirm.",
     "seats": {
-        "title": "Anzahl der Mitarbeiter (Seats)",
+        "title": "Anzahl der Lizenzen",
         "current": "Derzeit aktiv: :count",
         "billed_next_period": "Die Änderung gilt sofort und wird ab der nächsten Periode abgerechnet.",
         "save": "Speichern",
-        "saved": "Anzahl der Seats aktualisiert.",
+        "saved": "Anzahl der Lizenzen aktualisiert.",
         "qty_required": "Geben Sie eine Anzahl ein.",
         "qty_invalid": "Geben Sie eine gültige Anzahl ein (1-500).",
-        "below_active": "Sie können nicht unter die :active aktiven Seats gehen — deaktivieren Sie zuerst Mitarbeiter.",
-        "not_editable": "Dieser Plan hat keine einstellbare Seat-Anzahl.",
+        "below_active": "Sie können nicht unter die :active aktiven Lizenzen gehen — deaktivieren Sie zuerst Mitarbeiter.",
+        "not_editable": "Dieser Plan hat keine einstellbare Lizenzanzahl.",
         "stripe_failed": "Stripe konnte die Anzahl nicht anpassen — bitte erneut versuchen."
     },
     "checkmate_page": {
-        "subtitle": "Nach dem kostenlosen Monat wählen Sie die Anzahl Sitze. 5 € pro aktiver Lizenz (Kollege oder Ausführer) pro Monat. Keine Unit- oder Dokumentenlimits.",
-        "pricing_intro": "Kostenloser Probemonat mit 25 Lizenzen zum gründlichen Testen. Danach 5 € pro aktivem Seat pro Monat — die Menge wählen Sie selbst. Monatliche Zahlung über Stripe.",
-        "plans_intro": "Checkmate: 5 € pro aktivem Seat pro Monat. Seats = Kollegen mit Login + Ausführer. Kunden, Einsatzadressen, GPS-Besuche und CIAO (LSS) inklusive. Keine Unit- oder Dokumentenlimits.",
+        "subtitle": "Nach dem kostenlosen Monat wählen Sie die Anzahl Lizenzen. 5 € pro aktiver Lizenz (Kollege oder Ausführer) pro Monat. Keine Unit- oder Dokumentenlimits.",
+        "pricing_intro": "Kostenloser Probemonat mit 25 Lizenzen zum gründlichen Testen. Danach 5 € pro aktiver Lizenz pro Monat — die Menge wählen Sie selbst. Monatliche Zahlung über Stripe.",
+        "plans_intro": "Checkmate: 5 € pro aktiver Lizenz pro Monat. Lizenzen = Kollegen mit Login + Ausführer. Kunden, Einsatzadressen, GPS-Besuche und CIAO (LSS) inklusive. Keine Unit- oder Dokumentenlimits.",
         "glossary": {
             "heading": "Lizenzen bei Checkmate",
             "seat": "Lizenz — ein Kollege mit Login (Admin oder Mitarbeiter) oder ein Ausführer (Clock Point, ohne Login). Ein Kollege mit verknüpftem Stempelprofil zählt als eine Lizenz.",
-            "billing": "Nach der Probe: 5 € pro aktivem Seat pro Monat. Die Seat-Anzahl stellen Sie auf dieser Seite ein."
+            "billing": "Nach der Probe: 5 € pro aktiver Lizenz pro Monat. Die Lizenzanzahl stellen Sie auf dieser Seite ein."
         }
     },
     "time_archives": {

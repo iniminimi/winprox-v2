@@ -832,7 +832,7 @@
         "why": {
             "title": "Warum Checkmate",
             "items": [
-                "5 € pro aktivem Mitarbeiter pro Monat — Sie wählen die Zahl der Seats selbst.",
+                "5 € pro aktivem Mitarbeiter pro Monat — Sie wählen die Zahl der Lizenzen selbst.",
                 "Keine App-Installation: ein persönlicher Link oder einmaliger QR genügt.",
                 "Der GPS-Arbeitsbesuch beim Kunden ist der Beweis; Einstechen allein ist es nicht.",
                 "CIAO-Aktivierung über Ihre Unternehmensnummer (KBO); wir bestätigen und danach läuft die Meldung automatisch.",
@@ -844,7 +844,7 @@
         "start": {
             "title": "Mit Checkmate starten",
             "lead": "Konto anlegen und die Unternehmensnummer (KBO) in den Einstellungen eintragen. CIAO ist von Beginn an aktiv; die LSS-Kopplung wird bestätigt, bevor die Meldung startet.",
-            "trial": "Lieber erst testen? Fragen Sie einen Probesitz über info@winprox.app an — 25 Seats, 30 Tage."
+            "trial": "Lieber erst testen? Fragen Sie eine Probe über info@winprox.app an — 25 Lizenzen, 30 Tage."
         },
         "close": {
             "title": "Bereit für korrekte Anwesenheit?",
@@ -997,7 +997,7 @@
         "start": {
             "title": "Möchten Sie erst sehen, wie es funktioniert?",
             "lead": "Wir zeigen Ihnen die Stempeluhr und die Zeiterfassung bei Ihnen vor Ort oder per Videoanruf. Sie sehen sofort, wie Ihre Mitarbeitenden damit arbeiten.",
-            "trial": "Direkt starten geht auch: 30 Tage Testphase mit 25 Plätzen nach Ihrer Anfrage."
+            "trial": "Direkt starten geht auch: 30 Tage Testphase mit 25 Lizenzen nach Ihrer Anfrage."
         },
         "close": {
             "title": "Bereit für einfacheres Stempeln?",

@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Overzicht",
-                    "text": "Onder de titel Dashboard vindt u kaarten met actuele tellingen en aandachtspunten.<br><br>Voorbeelden zijn:<br>• Open meldingen.<br>• Open taken.<br>• Wie er momenteel aanwezig is, als Time actief is.<br><br>Sommige kaarten verschijnen alleen wanneer er iets te doen is. Bijvoorbeeld wanneer er meldingen moeten worden beoordeeld, er aandachtspunten zijn in Time, een nieuwe uitvoerder gecontroleerd moet worden of er open aanvragen of IoT-alarmen zijn.<br><br>Klik op een kaart om meteen naar het bijbehorende scherm te gaan.<br><br>Open aanvragen voor verlof, recup, ziekte of Andere verschijnen als aparte kaart. U ziet het aantal per soort. Klik erop om naar Time → Aanvragen te gaan.<br><br>Zijn er foto's bij een afwezigheid die ouder zijn dan 5 maanden, dan verschijnt een kaart. Binnen een maand worden ze gewist. Klik erop om ze bij Aanvragen te bekijken en zelf een kopie te bewaren.<br><br>Een medewerker met gekozen locaties ziet alleen de cijfers van die locaties. Het bezettingstekort telt alleen die locaties waar zij een Clock Point heeft. De zoekbalk bovenaan vindt locaties, units, uitvoerders en collega’s van die locaties. Meldingen en taken van de hele organisatie verschijnen wel. De detailpagina van een andere locatie opent niet."
+                    "text": "Onder de titel Dashboard vindt u kaarten met actuele tellingen en aandachtspunten.<br><br>Voorbeelden zijn:<br>• Open meldingen.<br>• Open taken.<br>• Wie er momenteel aanwezig is, als Time actief is.<br><br>Sommige kaarten verschijnen alleen wanneer er iets te doen is. Bijvoorbeeld wanneer er meldingen moeten worden beoordeeld, er aandachtspunten zijn in Time, een nieuwe uitvoerder gecontroleerd moet worden of er open aanvragen of IoT-alarmen zijn.<br><br>Klik op een kaart om meteen naar het bijbehorende scherm te gaan. Een kader in dit raster bewaart een kaart die u erheen sleept. De snelkoppelingen bovenaan gaan daar niet in.<br><br>Open aanvragen voor verlof, recup, ziekte of Andere verschijnen als aparte kaart. U ziet het aantal per soort. Klik erop om naar Time → Aanvragen te gaan.<br><br>Zijn er foto's bij een afwezigheid die ouder zijn dan 5 maanden, dan verschijnt een kaart. Binnen een maand worden ze gewist. Klik erop om ze bij Aanvragen te bekijken en zelf een kopie te bewaren.<br><br>Een medewerker met gekozen locaties ziet alleen de cijfers van die locaties. Het bezettingstekort telt alleen die locaties waar zij een Clock Point heeft. De zoekbalk bovenaan vindt locaties, units, uitvoerders en collega’s van die locaties. Meldingen en taken van de hele organisatie verschijnen wel. De detailpagina van een andere locatie opent niet."
                 },
                 {
                     "label": "WinProx op uw bureaublad",
@@ -2513,9 +2513,9 @@
                     "text": "Aantal actieve uitvoerders. Opent de teams- en uitvoerderlijst. Staat er “(x zonder RRN)” bij, dan missen die uitvoerders hun rijksregisternummer (nodig voor CIAO)."
                 },
                 {
-                    "label": "Seats in gebruik",
+                    "label": "Licenties in gebruik",
                     "nested": true,
-                    "text": "Bezette seats tegenover je limiet. Opent het abonnementsscherm."
+                    "text": "Bezette licenties tegenover je limiet. Opent het abonnementsscherm."
                 },
                 {
                     "label": "Actieve klanten",
@@ -2705,7 +2705,7 @@
             "actions": [
                 {
                     "label": "Formule",
-                    "text": "Checkmate rekent €5 per actieve seat (collega of uitvoerder) per maand. Tijdens de proef heb je 25 licenties om goed te testen — geen units- of documentenlimieten. Na de proef stel je het aantal seats zelf in; verlagen kan niet onder het aantal actieve seats — deactiveer dan eerst uitvoerders."
+                    "text": "Checkmate rekent €5 per actieve licentie (collega of uitvoerder) per maand. Tijdens de proef heb je 25 licenties om goed te testen — geen units- of documentenlimieten. Na de proef stel je het aantal licenties zelf in; verlagen kan niet onder het aantal actieve licenties — deactiveer dan eerst uitvoerders."
                 },
                 {
                     "label": "Bewaarde bestanden",

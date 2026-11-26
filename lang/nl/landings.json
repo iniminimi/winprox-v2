@@ -832,7 +832,7 @@
         "why": {
             "title": "Waarom Checkmate",
             "items": [
-                "€5 per actieve uitvoerder per maand — je kiest zelf het aantal seats.",
+                "€5 per actieve uitvoerder per maand — je kiest zelf het aantal licenties.",
                 "Geen app-installatie: een persoonlijke link of eenmalige QR volstaat.",
                 "Het GPS-werkbezoek op de klantlocatie is het bewijs; inklokken alleen is dat niet.",
                 "CIAO-activering via je ondernemingsnummer (KBO); wij bevestigen en vanaf dan loopt de doorgifte automatisch.",
@@ -844,7 +844,7 @@
         "start": {
             "title": "Starten met Checkmate",
             "lead": "Maak een account en vul je ondernemingsnummer (KBO) in via Instellingen. CIAO staat aan vanaf de start; de RSZ-koppeling wordt bevestigd voordat de doorgifte begint.",
-            "trial": "Liever eerst proberen? Vraag een proefplaats aan via info@winprox.app — 25 seats, 30 dagen."
+            "trial": "Liever eerst proberen? Vraag een proefplaats aan via info@winprox.app — 25 licenties, 30 dagen."
         },
         "close": {
             "title": "Klaar voor correcte aanwezigheid?",
@@ -997,7 +997,7 @@
         "start": {
             "title": "Liever eerst zien hoe het werkt?",
             "lead": "Wij demonstreren de prikklok en de urenregistratie bij u op locatie of via videocall. U ziet meteen hoe uw medewerkers ermee werken.",
-            "trial": "Direct starten kan ook: proefperiode van 30 dagen en 25 seats na uw aanvraag."
+            "trial": "Direct starten kan ook: proefperiode van 30 dagen en 25 licenties na uw aanvraag."
         },
         "close": {
             "title": "Klaar om eenvoudiger te prikken?",

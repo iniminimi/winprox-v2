@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Resumen",
-                    "text": "Bajo el título Panel encuentra tarjetas con conteos y puntos de atención actuales.<br><br>Ejemplos:<br>• Avisos abiertos.<br>• Tareas abiertas.<br>• Quién está presente ahora, si Time está activo.<br><br>Algunas tarjetas solo aparecen cuando hay algo que hacer — por ejemplo avisos por revisar, puntos de atención en Time, un nuevo ejecutor por comprobar, o solicitudes abiertas o alarmas IoT.<br><br>Pulse una tarjeta para ir directamente a la pantalla correspondiente.<br><br>Las solicitudes abiertas de vacaciones, compensación, enfermedad u Otro aparecen como tarjeta aparte. Ve el número por tipo. Pulse para ir a Time → Solicitudes.<br><br>Si hay fotos de una ausencia con más de 5 meses, aparece una tarjeta. Se borrarán en un mes. Haga clic para verlas en Solicitudes y guardar una copia.<br><br>Un empleado con sedes elegidas solo ve las cifras de esas sedes. El déficit de personal solo cuenta las sedes donde ella tiene un Clock Point. La barra de búsqueda de arriba encuentra sedes, unidades, ejecutores y compañeros de esas sedes. Los avisos y las tareas de toda la organización sí aparecen. La página de detalle de otra sede no se abre."
+                    "text": "Bajo el título Panel encuentra tarjetas con conteos y puntos de atención actuales.<br><br>Ejemplos:<br>• Avisos abiertos.<br>• Tareas abiertas.<br>• Quién está presente ahora, si Time está activo.<br><br>Algunas tarjetas solo aparecen cuando hay algo que hacer — por ejemplo avisos por revisar, puntos de atención en Time, un nuevo ejecutor por comprobar, o solicitudes abiertas o alarmas IoT.<br><br>Pulse una tarjeta para ir directamente a la pantalla correspondiente. Un cuadro en esta cuadrícula guarda una tarjeta que arrastre ahí. Los accesos de arriba no entran.<br><br>Las solicitudes abiertas de vacaciones, compensación, enfermedad u Otro aparecen como tarjeta aparte. Ve el número por tipo. Pulse para ir a Time → Solicitudes.<br><br>Si hay fotos de una ausencia con más de 5 meses, aparece una tarjeta. Se borrarán en un mes. Haga clic para verlas en Solicitudes y guardar una copia.<br><br>Un empleado con sedes elegidas solo ve las cifras de esas sedes. El déficit de personal solo cuenta las sedes donde ella tiene un Clock Point. La barra de búsqueda de arriba encuentra sedes, unidades, ejecutores y compañeros de esas sedes. Los avisos y las tareas de toda la organización sí aparecen. La página de detalle de otra sede no se abre."
                 },
                 {
                     "label": "WinProx en su escritorio",
@@ -2513,9 +2513,9 @@
                     "text": "Número de operarios activos. Abre la lista de equipos y operarios. Si aparece “(x sin NISS)”, esos operarios no tienen número de registro nacional (necesario para CIAO)."
                 },
                 {
-                    "label": "Plazas en uso",
+                    "label": "Licencias en uso",
                     "nested": true,
-                    "text": "Plazas ocupadas frente a tu límite. Abre la pantalla de suscripción."
+                    "text": "Licencias ocupadas frente a tu límite. Abre la pantalla de suscripción."
                 },
                 {
                     "label": "Clientes activos",
@@ -2705,7 +2705,7 @@
             "actions": [
                 {
                     "label": "Fórmula",
-                    "text": "Checkmate cobra 5 € por plaza activa (compañero u operario) al mes. En la prueba tienes 25 licencias para probar bien — sin límites de units ni documentos. Tras la prueba configuras el número de plazas; no por debajo de las plazas activas — desactiva primero operarios."
+                    "text": "Checkmate cobra 5 € por licencia activa (compañero u operario) al mes. En la prueba tienes 25 licencias para probar bien — sin límites de units ni documentos. Tras la prueba configuras el número de licencias; no por debajo de las licencias activas — desactiva primero operarios."
                 },
                 {
                     "label": "Archivos guardados",

@@ -8,7 +8,9 @@ use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
 use App\Actions\Dashboard\BuildDashboardIntentHubAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
 use App\Actions\Dashboard\HideDashboardIntentTileAction;
+use App\Actions\Dashboard\HideDashboardKpiAction;
 use App\Actions\Dashboard\RestoreDashboardIntentTileAction;
+use App\Actions\Dashboard\RestoreDashboardKpiAction;
 use App\Actions\Dashboard\SaveDashboardIntentOrderAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
@@ -73,6 +75,8 @@ class Dashboard extends Component
 
     public bool $showHiddenTiles = false;
 
+    public bool $showHiddenKpis = false;
+
     public function openAddDevice(): void
     {
         $this->authorize('pairDeviceAny', Location::class);
@@ -120,6 +124,35 @@ class Dashboard extends Component
 
         app(RestoreDashboardIntentTileAction::class)->handle($user, $key, $order);
         $this->showHiddenTiles = false;
+    }
+
+    public function openHiddenKpis(): void
+    {
+        abort_unless(auth()->user() instanceof User, 403);
+        $this->showHiddenKpis = true;
+    }
+
+    public function closeHiddenKpis(): void
+    {
+        $this->showHiddenKpis = false;
+    }
+
+    public function hideDashboardKpi(string $key): void
+    {
+        $user = auth()->user();
+        abort_unless($user instanceof User, 403);
+
+        app(HideDashboardKpiAction::class)->handle($user, $key);
+        $this->showHiddenKpis = false;
+    }
+
+    public function restoreDashboardKpi(string $key): void
+    {
+        $user = auth()->user();
+        abort_unless($user instanceof User, 403);
+
+        app(RestoreDashboardKpiAction::class)->handle($user, $key);
+        $this->showHiddenKpis = false;
     }
 
     public function openCheckmateClockPointQr(EnsureDefaultClockPointAction $ensureDefault): void
@@ -376,6 +409,8 @@ class Dashboard extends Component
 
         $showIssuesTasksUi = $tenant?->workMenuIssuesTasksEnabled() ?? true;
         $stats = $isCheckmate ? null : $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule, $showIssuesTasksUi, $user?->accessibleLocationIds());
+        $kpiSplit = $stats?->partitionKpiTiles($user instanceof User ? ($user->dashboard_hidden_kpis ?? []) : [])
+            ?? ['visible' => [], 'hidden' => []];
         $recent = $isCheckmate || ! $showIssuesTasksUi ? collect() : $listRecentIssues->handle($tenantId);
         $starterPackSummary = ! $isCheckmate
             && $tenant !== null
@@ -407,6 +442,8 @@ class Dashboard extends Component
             'checkmateQrClockPoint' => $checkmateQrClockPoint,
             'checkmateQrPackTemplates' => QrStickerSheetTemplate::printableDownloadCases(),
             'stats' => $stats,
+            'visibleKpis' => $kpiSplit['visible'],
+            'hiddenKpis' => $kpiSplit['hidden'],
             'recent' => $recent,
             'showIssuesTasksUi' => $showIssuesTasksUi,
             'intentHub' => $intentHub,
