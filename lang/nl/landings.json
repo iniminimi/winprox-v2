@@ -1010,6 +1010,28 @@
             "roles": "Werknemer op locatie prikt met zijn smartphone.",
             "why": "WinProx-overzicht van aanwezigheid en uurregistratie.",
             "close": "Twee collega’s bekijken WinProx samen op een tablet."
+        },
+        "models": {
+            "title": "Drie prikklokken",
+            "lead": "WinProx Time heeft drie uitvoeringen. Alle drie registreren ze de tijd in WinProx.",
+            "items": [
+                {
+                    "name": "Time",
+                    "body": "Tijdregistratie met QR-code of persoonlijke pincode. Geen app en geen badge."
+                },
+                {
+                    "name": "Sense",
+                    "body": "Tijdregistratie en het binnenklimaat.",
+                    "route": "clock.sense",
+                    "link": "Meer over Sense"
+                },
+                {
+                    "name": "Trace",
+                    "body": "Tijdregistratie, het binnenklimaat en een foto volgens de ingestelde parameters.",
+                    "route": "clock.trace",
+                    "link": "Meer over Trace"
+                }
+            ]
         }
     }
 }

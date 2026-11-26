@@ -49,7 +49,8 @@
                     "Standorte, Teams, Personen und Units verwalten.",
                     "Die RSZ/CIAO-Meldung kann in den Einstellungen aktiviert werden. Optionale GPS-Arbeitsbesuche verknüpfen einen Besuch mit einem Ort.",
                     "Optionales Fotoalbum: Ausführende machen Fotos über den QR-Code der Einheit. Standort und Name stehen dabei. Im Foto selbst stehen unten Datum, Uhrzeit, Ausführender, Einheit und Organisationsname. Sie mailen sie aus dem Fotoalbum. Die Dateien werden nach einer Woche gelöscht. Sie schalten es unter Einstellungen, Ihre Organisation, ein. Zum Beispiel: in einer Kita machen Betreuerinnen Fotos von den Kindern und schicken sie an die Eltern.",
-                    "Die ausführende Person legt WinProx zuerst auf den Startbildschirm (Logo mit Plus). Danach erscheint Push-Mitteilungen einschalten. Nach Erlauben verschwindet die Schaltfläche sofort. Bei Ablehnung oder Sperre bleibt Mitteilungen sind aus mit Schritten in den Telefoneinstellungen sichtbar; nach der Korrektur prüft die App erneut. Danach kann ein Hinweis erscheinen, wenn sich eine Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder nach Schichtende noch eingestempelt ist. Auch bei einer neuen Aufgabe für die Person oder ihr Team, einmal morgens für wiederkehrende Aufgaben und wenn Urlaub oder Ausgleich abgelehnt wird. Auf dem iPhone nur über das Symbol auf dem Startbildschirm."
+                    "Die ausführende Person legt WinProx zuerst auf den Startbildschirm (Logo mit Plus). Danach erscheint Push-Mitteilungen einschalten. Nach Erlauben verschwindet die Schaltfläche sofort. Bei Ablehnung oder Sperre bleibt Mitteilungen sind aus mit Schritten in den Telefoneinstellungen sichtbar; nach der Korrektur prüft die App erneut. Danach kann ein Hinweis erscheinen, wenn sich eine Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder nach Schichtende noch eingestempelt ist. Auch bei einer neuen Aufgabe für die Person oder ihr Team, einmal morgens für wiederkehrende Aufgaben und wenn Urlaub oder Ausgleich abgelehnt wird. Auf dem iPhone nur über das Symbol auf dem Startbildschirm.",
+                    "Drei Ausführungen: Time, Sense und Trace."
                 ],
                 "badge": "inklusive",
                 "key": "winprox_time"
@@ -295,22 +296,15 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense zeigt je Display Temperatur, Luftfeuchtigkeit, CO₂ und den VOC-Index. Sie schalten Sense in den Display-Einstellungen ein, an einem Raum oder an einem Clock Point. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt oder das Display nichts mehr sendet.",
-                "items": [
-                    "Es entsteht keine Meldung und keine Aufgabe.",
-                    "Ein Display ohne Sense zeigt kein Klima. Ausschalten behält die Grenzen.",
-                    "Das Display folgt der Jahreshälfte: Sommer vom 1. Mai bis 30. September, Winter vom 1. Oktober bis 30. April. CO₂ bittet um Aufmerksamkeit über 900. Der VOC-Index färbt von Grün bis Rot und bittet erst nach einer halben Stunde um Aufmerksamkeit."
-                ]
+                "body": "Sense ist die Stechuhr mit Zeiterfassung und Raumklima. Die Messwerte erscheinen in WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "Mehr über Sense"
             },
             {
-                "title": "Kamera",
-                "body": "Eine Kamera in einem Raum behält die Fotos auf der Karte im Gerät. Wenn Sie Weiterleiten einschalten, kommen Kopien in WinProx an. Nur ein Administrator sieht diese Kopien.",
-                "items": [
-                    "Am Standort, bei der Unit, wählen Sie Kamera. Der Raum kann ein Display haben, eine Kamera, oder beides.",
-                    "Aus heißt: die Fotos bleiben auf der Karte. An heißt: das Gerät darf Kopien senden, wenn WLAN da ist.",
-                    "Kopien in WinProx bleiben 30 Tage. Die Karte im Gerät bleibt unberührt.",
-                    "Es entsteht keine Meldung und keine Aufgabe. Keine Erkennung und kein Livebild."
-                ]
+                "title": "Trace",
+                "body": "Trace ist die Stechuhr mit Zeiterfassung, Raumklima und einem Foto nach den festgelegten Parametern.",
+                "link_route": "clock.trace",
+                "link_label": "Mehr über Trace"
             },
             {
                 "title": "API und Webhooks",
@@ -531,20 +525,15 @@
             },
             {
                 "title": "Sense (optional)",
-                "items": [
-                    "Ein Display kann auch Temperatur, Feuchte, CO₂ und Luftqualität messen. Sie schalten das je Display in den Display-Einstellungen ein, an einem Raum oder an einem Clock Point.",
-                    "Die Messungen bleiben in Ihrer Organisation. Es entsteht keine Meldung und keine Aufgabe. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt oder das Display nichts mehr sendet.",
-                    "Gleiches Netz wie das Uhrdisplay: WLAN und HTTPS."
-                ]
+                "body": "Sense misst das Raumklima. Die Messwerte erscheinen in WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "Mehr über Sense"
             },
             {
-                "title": "Kamera (optional)",
-                "items": [
-                    "Eine Kamera gehört zu einem Raum. Das Koppeln geschieht mit einem einmaligen Code. Der Schlüssel geht nur an das Gerät.",
-                    "Fotos bleiben auf der Karte im Gerät. Nur ein Administrator schaltet das Weiterleiten nach WinProx ein.",
-                    "Kopien liegen an einem geschlossenen Ort. Ein Mitarbeiter sieht sie nicht. Nach der Aufbewahrungsfrist verschwinden sie. WinProx löscht die Karte nicht.",
-                    "Gleiches Netz wie das Display: WLAN und HTTPS. Es entsteht keine Meldung und keine Aufgabe."
-                ]
+                "title": "Trace (optional)",
+                "body": "Trace macht ein Foto nach den festgelegten Parametern, neben der Zeiterfassung und dem Raumklima.",
+                "link_route": "clock.trace",
+                "link_label": "Mehr über Trace"
             },
             {
                 "title": "Integrationen",

@@ -18,6 +18,7 @@ This folder contains working documents for GDPR/AVG and legal compliance, framed
 - `data-subject-requests.md` - operational outline for rights requests (not legal advice)
 - `release-compliance-checklist.md` - quick release checks when changing legal/privacy/retention behaviour
 - `processing-register-draft.md` - draft table for processing activities (ROPA-style), to validate internally
+- `trace/` - Trace clock photos and key (draft). The public page is `/{locale}/prikklok/trace`; other files only point here.
 
 ## How to use
 

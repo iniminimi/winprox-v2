@@ -1,0 +1,28 @@
+{
+    "meta_title": "Trace: time registration, indoor climate and a photo | WinProx Time",
+    "social": {
+        "og_title": "Trace: time registration, indoor climate and a photo | WinProx Time",
+        "og_description": "Trace registers time, measures the indoor climate and takes a photo according to the parameters you set. No video."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Trace",
+    "lead": "Time registration, indoor climate, and a photo according to the parameters you set.",
+    "intro": "Trace does what Sense does, and also takes a photo at the moment your organisation has set.",
+    "section_title": "Photos",
+    "points": [
+        "The device takes a photo when your organisation has set that.",
+        "No video and no live view.",
+        "No recognition.",
+        "Photos are stored encrypted on the card in the device.",
+        "The key is kept in WinProx. A signed-in administrator of your organisation can use it.",
+        "Photos are not sent to WinProx on their own.",
+        "An administrator can request a photo and gives a reason. The request is kept.",
+        "Only an authorised administrator sees a requested photo."
+    ],
+    "privacy_title": "Responsibility",
+    "privacy_body": "Your organisation decides which duties apply to this use, and meets them. Where they apply, that can include the Belgian Camera Act, the GDPR and the rules on cameras in the workplace. WinProx supplies the device and its controls, and remains responsible for protecting the key and a photo you request.",
+    "back": "Back to the time clock",
+    "aside_route": "clock.sense",
+    "aside_link": "More about Sense",
+    "aside_hint": "Includes what Sense does."
+}

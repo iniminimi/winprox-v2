@@ -1010,6 +1010,28 @@
             "roles": "Un trabajador en el lugar ficha con su smartphone.",
             "why": "Resumen WinProx de presencia y registro horario.",
             "close": "Dos compañeros consultan WinProx juntos en una tablet."
+        },
+        "models": {
+            "title": "Tres relojes de fichar",
+            "lead": "WinProx Time tiene tres versiones. Las tres registran el tiempo en WinProx.",
+            "items": [
+                {
+                    "name": "Time",
+                    "body": "Registro horario con código QR o PIN personal. Sin aplicación y sin tarjeta."
+                },
+                {
+                    "name": "Sense",
+                    "body": "Registro horario y clima interior.",
+                    "route": "clock.sense",
+                    "link": "Más sobre Sense"
+                },
+                {
+                    "name": "Trace",
+                    "body": "Registro horario, clima interior y una foto según los parámetros definidos.",
+                    "route": "clock.trace",
+                    "link": "Más sobre Trace"
+                }
+            ]
         }
     }
 }

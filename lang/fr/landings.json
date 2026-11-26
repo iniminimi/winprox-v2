@@ -1010,6 +1010,28 @@
             "roles": "Un travailleur sur site pointe avec son smartphone.",
             "why": "Aperçu WinProx des présences et des heures.",
             "close": "Deux collègues consultent WinProx ensemble sur une tablette."
+        },
+        "models": {
+            "title": "Trois pointeuses",
+            "lead": "WinProx Time a trois exécutions. Les trois enregistrent le temps dans WinProx.",
+            "items": [
+                {
+                    "name": "Time",
+                    "body": "Pointage par QR code ou code personnel. Pas d'application et pas de badge."
+                },
+                {
+                    "name": "Sense",
+                    "body": "Pointage et climat intérieur.",
+                    "route": "clock.sense",
+                    "link": "En savoir plus sur Sense"
+                },
+                {
+                    "name": "Trace",
+                    "body": "Pointage, climat intérieur et une photo selon les paramètres définis.",
+                    "route": "clock.trace",
+                    "link": "En savoir plus sur Trace"
+                }
+            ]
         }
     }
 }

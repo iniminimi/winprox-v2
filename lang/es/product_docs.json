@@ -49,7 +49,8 @@
                     "Gestionar sedes, equipos, personas y unidades.",
                     "El registro ONSS/CIAO se puede activar en los ajustes. Las visitas GPS opcionales vinculan una visita a un lugar.",
                     "Álbum de fotos opcional: los operarios hacen fotos en el QR de la unidad. La sede y el nombre de la unidad aparecen. En la propia foto, abajo, figuran la fecha, la hora, el operario, la unidad y el nombre de la organización. Usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana. Se activa en Ajustes, bajo Su organización. Por ejemplo: en una guardería, las cuidadoras hacen fotos de los niños y las envían a los padres.",
-                    "El ejecutor pone primero WinProx en la pantalla de inicio (logo con más). Luego aparece Activar avisos push. Tras Permitir, ese botón desaparece enseguida. Si se deniega o bloquea, Avisos desactivados sigue visible con pasos en los ajustes del teléfono; tras corregirlo, la app vuelve a comprobar. Después puede aparecer un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o aviso listo, o sigue fichado tras el turno. También por una tarea nueva para él o su equipo, una vez por la mañana para las tareas recurrentes, y si se rechaza un permiso o una compensación. En un iPhone solo desde el icono de la pantalla de inicio."
+                    "El ejecutor pone primero WinProx en la pantalla de inicio (logo con más). Luego aparece Activar avisos push. Tras Permitir, ese botón desaparece enseguida. Si se deniega o bloquea, Avisos desactivados sigue visible con pasos en los ajustes del teléfono; tras corregirlo, la app vuelve a comprobar. Después puede aparecer un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o aviso listo, o sigue fichado tras el turno. También por una tarea nueva para él o su equipo, una vez por la mañana para las tareas recurrentes, y si se rechaza un permiso o una compensación. En un iPhone solo desde el icono de la pantalla de inicio.",
+                    "Tres versiones: Time, Sense y Trace."
                 ],
                 "badge": "incluido",
                 "key": "winprox_time"
@@ -295,22 +296,15 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense muestra por pantalla la temperatura, la humedad, el CO₂ y el índice VOC. Active Sense en los ajustes de la pantalla, en una sala o en un Clock Point. El inicio pide atención si un valor sale de la banda o si la pantalla deja de enviar.",
-                "items": [
-                    "No se crea ningún aviso ni tarea.",
-                    "Una pantalla sin Sense no muestra el clima. Apagarlo conserva los límites.",
-                    "La pantalla sigue la mitad del año: verano del 1 de mayo al 30 de septiembre, invierno del 1 de octubre al 30 de abril. El CO₂ pide atención por encima de 900. El índice VOC pasa de verde a rojo y pide atención solo tras media hora."
-                ]
+                "body": "Sense es el reloj de fichar con registro horario y clima interior. Las mediciones aparecen en WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "Más sobre Sense"
             },
             {
-                "title": "Cámara",
-                "body": "Una cámara en una sala guarda las fotos en la tarjeta del aparato. Si activa el reenvío, llegan copias a WinProx. Solo un administrador ve esas copias.",
-                "items": [
-                    "En el lugar, en la unidad, elige Cámara. La sala puede tener una pantalla, una cámara, o las dos.",
-                    "Desactivado: las fotos se quedan en la tarjeta. Activado: el aparato puede enviar copias si hay wifi.",
-                    "Las copias en WinProx se conservan 30 días. La tarjeta del aparato no se toca.",
-                    "No se crea ningún aviso ni tarea. Sin reconocimiento y sin imagen en directo."
-                ]
+                "title": "Trace",
+                "body": "Trace es el reloj de fichar con registro horario, clima interior y una foto según los parámetros definidos.",
+                "link_route": "clock.trace",
+                "link_label": "Más sobre Trace"
             },
             {
                 "title": "API y webhooks",
@@ -531,20 +525,15 @@
             },
             {
                 "title": "Sense (opcional)",
-                "items": [
-                    "Una pantalla también puede medir temperatura, humedad, CO₂ y calidad del aire. Lo activa por pantalla en los ajustes de la pantalla, en una sala o en un Clock Point.",
-                    "Las mediciones quedan en su organización. No se crea ningún aviso ni tarea. El inicio pide atención si un valor sale de la banda o si la pantalla deja de enviar.",
-                    "La misma red que la pantalla de reloj: Wi‑Fi y HTTPS."
-                ]
+                "body": "Sense mide el clima interior. Las mediciones aparecen en WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "Más sobre Sense"
             },
             {
-                "title": "Cámara (opcional)",
-                "items": [
-                    "Una cámara pertenece a una sala. La vinculación usa un código de un solo uso. La clave va solo al aparato.",
-                    "Las fotos se quedan en la tarjeta del aparato. Solo un administrador activa el reenvío a WinProx.",
-                    "Las copias están en un lugar cerrado. Un empleado no las ve. Tras el plazo de conservación desaparecen. WinProx no borra la tarjeta.",
-                    "La misma red que la pantalla: Wi‑Fi y HTTPS. No se crea ningún aviso ni tarea."
-                ]
+                "title": "Trace (opcional)",
+                "body": "Trace hace una foto según los parámetros definidos, además del registro horario y el clima interior.",
+                "link_route": "clock.trace",
+                "link_label": "Más sobre Trace"
             },
             {
                 "title": "Integraciones",

@@ -33,7 +33,9 @@ class BuildLlmsTxtAction
             $about = $this->pageUrl('about', $locale);
             $prikklok = $this->pageUrl('prikklok', $locale);
             $lines[] = '- [Homepage ('.$label.')]('.$home.'): Digital time clock for time tracking. Staff clock in with their phone, without an app. Hours are compared with the roster and passed to the social secretariat.';
-            $lines[] = '- [Time clock ('.$label.')]('.$prikklok.'): Digital punch clock — workers clock in with their own phone via a QR code; optional clock screen shows a rotating QR.';
+            $lines[] = '- [Time clock ('.$label.')]('.$prikklok.'): Digital punch clock — workers clock in with their own phone via a QR code; optional clock screen shows a rotating QR. Three models: Time, Sense and Trace.';
+            $lines[] = '- [Sense ('.$label.')]('.$this->pageUrl('clock.sense', $locale).'): Time registration plus indoor climate. Readings appear in WinProx.';
+            $lines[] = '- [Trace ('.$label.')]('.$this->pageUrl('clock.trace', $locale).'): Time registration, indoor climate, and a photo according to the parameters the organisation sets.';
             if (! $checkmateHidden) {
                 $checkmate = $this->pageUrl('checkmate', $locale);
                 $lines[] = '- [Checkmate ('.$label.')]('.$checkmate.'): Optional presence at the customer for the social security office (CIAO). Cleaning for third parties now. Construction on site from 1 April 2027.';

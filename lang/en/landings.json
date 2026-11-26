@@ -1010,6 +1010,28 @@
             "roles": "A worker on site clocking in with a smartphone.",
             "why": "WinProx overview of presence and time registration.",
             "close": "Two colleagues looking at WinProx together on a tablet."
+        },
+        "models": {
+            "title": "Three time clocks",
+            "lead": "WinProx Time has three models. All three register time in WinProx.",
+            "items": [
+                {
+                    "name": "Time",
+                    "body": "Time registration with a QR code or a personal PIN. No app and no badge."
+                },
+                {
+                    "name": "Sense",
+                    "body": "Time registration and the indoor climate.",
+                    "route": "clock.sense",
+                    "link": "More about Sense"
+                },
+                {
+                    "name": "Trace",
+                    "body": "Time registration, the indoor climate, and a photo according to the parameters you set.",
+                    "route": "clock.trace",
+                    "link": "More about Trace"
+                }
+            ]
         }
     }
 }

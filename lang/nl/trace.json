@@ -1,0 +1,28 @@
+{
+    "meta_title": "Trace: tijdregistratie, binnenklimaat en foto | WinProx Time",
+    "social": {
+        "og_title": "Trace: tijdregistratie, binnenklimaat en foto | WinProx Time",
+        "og_description": "Trace registreert de tijd, meet het binnenklimaat en maakt een foto volgens de parameters die u instelt. Geen film."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Trace",
+    "lead": "Tijdregistratie, binnenklimaat en een foto volgens de parameters die u instelt.",
+    "intro": "Trace doet wat Sense doet, en maakt daarnaast een foto op het moment dat uw organisatie heeft ingesteld.",
+    "section_title": "Foto's",
+    "points": [
+        "Het toestel maakt een foto wanneer uw organisatie dat heeft ingesteld.",
+        "Geen film en geen livebeeld.",
+        "Geen herkenning.",
+        "De foto's staan versleuteld op de kaart in het toestel.",
+        "De sleutel staat in WinProx. Een aangemelde beheerder van uw organisatie kan hem gebruiken.",
+        "Foto's gaan niet vanzelf naar WinProx.",
+        "Een beheerder kan een foto opvragen en geeft daarvoor een reden op. De aanvraag wordt bijgehouden.",
+        "Alleen een bevoegde beheerder ziet een opgevraagde foto."
+    ],
+    "privacy_title": "Verantwoordelijkheid",
+    "privacy_body": "Uw organisatie beoordeelt welke verplichtingen voor dit gebruik gelden, en leeft die na. Dat kan, waar het van toepassing is, de Belgische Camerawet zijn, de AVG en de regels voor camera's op de werkplek. WinProx levert het toestel en de bediening, en blijft zelf instaan voor de beveiliging van de sleutel en van een foto die u opvraagt.",
+    "back": "Terug naar de prikklok",
+    "aside_route": "clock.sense",
+    "aside_link": "Meer over Sense",
+    "aside_hint": "Inclusief wat Sense doet."
+}

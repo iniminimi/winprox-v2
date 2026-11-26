@@ -1,0 +1,22 @@
+{
+    "meta_title": "Sense: time registration and indoor climate | WinProx Time",
+    "social": {
+        "og_title": "Sense: time registration and indoor climate | WinProx Time",
+        "og_description": "Sense registers time and measures temperature, humidity, CO₂ and the VOC index. The readings appear in WinProx."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Sense",
+    "lead": "Time registration and a view of the indoor climate.",
+    "intro": "Sense does what the Time clock does, and also measures the place where people are. The readings appear in WinProx.",
+    "section_title": "What Sense measures",
+    "points": [
+        "Temperature.",
+        "Humidity.",
+        "CO₂.",
+        "VOC index, a measure of volatile substances in the air."
+    ],
+    "back": "Back to the time clock",
+    "aside_route": "clock.trace",
+    "aside_link": "More about Trace",
+    "aside_hint": "Trace adds a photo according to the parameters you set."
+}

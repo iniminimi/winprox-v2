@@ -1,0 +1,28 @@
+{
+    "meta_title": "Trace: registro horario, clima interior y foto | WinProx Time",
+    "social": {
+        "og_title": "Trace: registro horario, clima interior y foto | WinProx Time",
+        "og_description": "Trace registra el tiempo, mide el clima interior y hace una foto según los parámetros que usted define. Sin vídeo."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Trace",
+    "lead": "Registro horario, clima interior y una foto según los parámetros que usted define.",
+    "intro": "Trace hace lo que hace Sense y, además, hace una foto en el momento que su organización ha definido.",
+    "section_title": "Fotos",
+    "points": [
+        "El aparato hace una foto cuando su organización lo ha definido.",
+        "Sin vídeo y sin imagen en directo.",
+        "Sin reconocimiento.",
+        "Las fotos se guardan cifradas en la tarjeta del aparato.",
+        "La clave está en WinProx. Un administrador conectado de su organización puede usarla.",
+        "Las fotos no se envían solas a WinProx.",
+        "Un administrador puede pedir una foto e indica un motivo. La solicitud queda registrada.",
+        "Solo un administrador autorizado ve una foto solicitada."
+    ],
+    "privacy_title": "Responsabilidad",
+    "privacy_body": "Su organización valora qué obligaciones se aplican a este uso, y las cumple. Donde correspondan, pueden ser la ley belga de cámaras, el RGPD y las normas sobre cámaras en el trabajo. WinProx entrega el aparato y su manejo, y sigue respondiendo de la protección de la clave y de una foto que usted solicite.",
+    "back": "Volver al reloj de fichar",
+    "aside_route": "clock.sense",
+    "aside_link": "Más sobre Sense",
+    "aside_hint": "Incluye lo que hace Sense."
+}

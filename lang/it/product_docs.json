@@ -49,7 +49,8 @@
                     "Gestire sedi, team, persone e unità.",
                     "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo.",
                     "Album foto facoltativo: gli esecutori scattano foto sul QR dell'unità. La sede e il nome dell'unità sono indicati. Nella foto stessa, in basso, compaiono data, ora, esecutore, unità e nome dell'organizzazione. Le invia da Album foto. I file vengono cancellati dopo una settimana. Si attiva in Impostazioni, sotto La sua organizzazione. Per esempio: in un asilo nido, le educatrici scattano foto dei bambini e le inviano ai genitori.",
-                    "L’esecutore mette prima WinProx sulla schermata Home (logo con più). Poi compare Attiva le notifiche push. Dopo Consenti il pulsante sparisce subito. Se rifiuta o sono bloccati, Avvisi disattivati resta visibile con i passaggi nelle impostazioni del telefono; dopo la correzione l’app controlla di nuovo. Poi può comparire un avviso se cambia un turno, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulta ancora in servizio dopo il turno. Anche per una nuova attività per lui o il suo team, una volta al mattino per le attività ricorrenti, e se ferie o recupero vengono rifiutati. Su iPhone solo dall’icona sulla schermata Home."
+                    "L’esecutore mette prima WinProx sulla schermata Home (logo con più). Poi compare Attiva le notifiche push. Dopo Consenti il pulsante sparisce subito. Se rifiuta o sono bloccati, Avvisi disattivati resta visibile con i passaggi nelle impostazioni del telefono; dopo la correzione l’app controlla di nuovo. Poi può comparire un avviso se cambia un turno, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulta ancora in servizio dopo il turno. Anche per una nuova attività per lui o il suo team, una volta al mattino per le attività ricorrenti, e se ferie o recupero vengono rifiutati. Su iPhone solo dall’icona sulla schermata Home.",
+                    "Tre versioni: Time, Sense e Trace."
                 ],
                 "badge": "incluso",
                 "key": "winprox_time"
@@ -295,22 +296,15 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense mostra per schermo temperatura, umidità, CO₂ e indice VOC. Si attiva Sense nelle impostazioni dello schermo, su un locale o su un Clock Point. La schermata iniziale chiede attenzione se un valore esce dalla fascia o se lo schermo non invia più nulla.",
-                "items": [
-                    "Non nasce nessuna segnalazione né attività.",
-                    "Uno schermo senza Sense non mostra il clima. Spegnere conserva i limiti.",
-                    "Lo schermo segue la metà dell’anno: estate dal 1° maggio al 30 settembre, inverno dal 1° ottobre al 30 aprile. Il CO₂ chiede attenzione sopra 900. L’indice VOC va dal verde al rosso e chiede attenzione solo dopo mezz’ora."
-                ]
+                "body": "Sense è il timbratore con rilevazione ore e clima interno. Le misure compaiono in WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "Altro su Sense"
             },
             {
-                "title": "Telecamera",
-                "body": "Una telecamera in un locale tiene le foto sulla scheda nell’apparecchio. Se accendete l’inoltro, le copie arrivano in WinProx. Solo un amministratore vede quelle copie.",
-                "items": [
-                    "Nel luogo, sull’unità, scegliete Telecamera. Il locale può avere uno schermo, una telecamera, o entrambi.",
-                    "Spento: le foto restano sulla scheda. Acceso: l’apparecchio può inviare copie se c’è il Wi-Fi.",
-                    "Le copie in WinProx restano 30 giorni. La scheda nell’apparecchio non viene toccata.",
-                    "Non nasce nessuna segnalazione né attività. Nessun riconoscimento e nessuna immagine in diretta."
-                ]
+                "title": "Trace",
+                "body": "Trace è il timbratore con rilevazione ore, clima interno e una foto secondo i parametri impostati.",
+                "link_route": "clock.trace",
+                "link_label": "Altro su Trace"
             },
             {
                 "title": "API e webhook",
@@ -531,20 +525,15 @@
             },
             {
                 "title": "Sense (opzionale)",
-                "items": [
-                    "Uno schermo può anche misurare temperatura, umidità, CO₂ e qualità dell’aria. Si attiva per schermo nelle impostazioni dello schermo, su un locale o su un Clock Point.",
-                    "Le misure restano nella vostra organizzazione. Non nasce nessuna segnalazione né attività. La schermata iniziale chiede attenzione se un valore esce dalla fascia o se lo schermo non invia più nulla.",
-                    "Stessa rete dello schermo orologio: Wi‑Fi e HTTPS."
-                ]
+                "body": "Sense misura il clima interno. Le misure compaiono in WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "Altro su Sense"
             },
             {
-                "title": "Telecamera (opzionale)",
-                "items": [
-                    "Una telecamera appartiene a un locale. Il collegamento usa un codice usa e getta. La chiave va solo all’apparecchio.",
-                    "Le foto restano sulla scheda nell’apparecchio. Solo un amministratore accende l’inoltro verso WinProx.",
-                    "Le copie stanno in un posto chiuso. Un collaboratore non le vede. Dopo il periodo di conservazione spariscono. WinProx non cancella la scheda.",
-                    "Stessa rete dello schermo: Wi‑Fi e HTTPS. Non nasce nessuna segnalazione né attività."
-                ]
+                "title": "Trace (opzionale)",
+                "body": "Trace scatta una foto secondo i parametri impostati, oltre alla rilevazione ore e al clima interno.",
+                "link_route": "clock.trace",
+                "link_label": "Altro su Trace"
             },
             {
                 "title": "Integrazioni",

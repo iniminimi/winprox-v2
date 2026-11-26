@@ -1010,6 +1010,28 @@
             "roles": "Ein Mitarbeiter vor Ort stempelt mit dem Smartphone.",
             "why": "WinProx-Übersicht von Anwesenheit und Zeiterfassung.",
             "close": "Zwei Kollegen schauen gemeinsam WinProx auf einem Tablet an."
+        },
+        "models": {
+            "title": "Drei Stechuhren",
+            "lead": "WinProx Time hat drei Ausführungen. Alle drei erfassen die Zeit in WinProx.",
+            "items": [
+                {
+                    "name": "Time",
+                    "body": "Zeiterfassung mit QR-Code oder persönlicher PIN. Keine App und keine Badge."
+                },
+                {
+                    "name": "Sense",
+                    "body": "Zeiterfassung und das Raumklima.",
+                    "route": "clock.sense",
+                    "link": "Mehr über Sense"
+                },
+                {
+                    "name": "Trace",
+                    "body": "Zeiterfassung, das Raumklima und ein Foto nach den festgelegten Parametern.",
+                    "route": "clock.trace",
+                    "link": "Mehr über Trace"
+                }
+            ]
         }
     }
 }

@@ -1,0 +1,22 @@
+{
+    "meta_title": "Sense: tijdregistratie en binnenklimaat | WinProx Time",
+    "social": {
+        "og_title": "Sense: tijdregistratie en binnenklimaat | WinProx Time",
+        "og_description": "Sense registreert de tijd en meet temperatuur, luchtvochtigheid, CO₂ en de VOC-index. De metingen verschijnen in WinProx."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Sense",
+    "lead": "Tijdregistratie en inzicht in het binnenklimaat.",
+    "intro": "Sense doet wat de prikklok Time doet, en meet daarnaast de omgeving waarin mensen verblijven. De metingen verschijnen in WinProx.",
+    "section_title": "Wat Sense meet",
+    "points": [
+        "Temperatuur.",
+        "Luchtvochtigheid.",
+        "CO₂.",
+        "VOC-index, een maat voor vluchtige stoffen in de lucht."
+    ],
+    "back": "Terug naar de prikklok",
+    "aside_route": "clock.trace",
+    "aside_link": "Meer over Trace",
+    "aside_hint": "Trace voegt een foto toe volgens de ingestelde parameters."
+}

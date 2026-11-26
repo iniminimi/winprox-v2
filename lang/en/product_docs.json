@@ -49,7 +49,8 @@
                     "Manage locations, teams, people and units.",
                     "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location.",
                     "Optional photo album: workers take photos on the unit QR. The location and unit name are shown. Inside the photo, at the bottom, are the date, time, worker, unit and organisation name. You email them from Photo album. The files are deleted after a week. Turn this on in Settings, under Your organisation. For example: in a nursery, carers take photos of the children and send them to the parents.",
-                    "The worker first puts WinProx on the home screen (logo with plus). Then the phone shows Turn on push notifications. After Allow, that button disappears at once. If denied or blocked, Notifications are off stays visible with phone-settings steps; after fixing, the app checks again. Alerts can then appear when a shift changes, leave or time off is approved, a document or announcement is ready, or the worker is still clocked in after the shift. Also for a new task for them or their team, once each morning for recurring tasks, and when leave or time off is declined. On an iPhone this only works from the home screen icon."
+                    "The worker first puts WinProx on the home screen (logo with plus). Then the phone shows Turn on push notifications. After Allow, that button disappears at once. If denied or blocked, Notifications are off stays visible with phone-settings steps; after fixing, the app checks again. Alerts can then appear when a shift changes, leave or time off is approved, a document or announcement is ready, or the worker is still clocked in after the shift. Also for a new task for them or their team, once each morning for recurring tasks, and when leave or time off is declined. On an iPhone this only works from the home screen icon.",
+                    "Three models: Time, Sense and Trace."
                 ],
                 "badge": "included",
                 "key": "winprox_time"
@@ -295,22 +296,15 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense shows temperature, humidity, CO₂ and the VOC index for a screen. You turn Sense on in Screen settings, on a room or on a Clock Point. The home screen asks for attention when a value leaves the band or the screen stops sending.",
-                "items": [
-                    "No issue and no task is created.",
-                    "A screen without Sense shows no climate. Turning it off keeps the marks.",
-                    "The screen follows the half-year: summer from 1 May to 30 September, winter from 1 October to 30 April. CO₂ asks for attention above 900. The VOC index colours from green to red and asks for attention only after half an hour."
-                ]
+                "body": "Sense is the time clock with time registration and indoor climate. The readings appear in WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "More about Sense"
             },
             {
-                "title": "Camera",
-                "body": "A camera in a room keeps the photos on the card in the device. When you turn forwarding on, copies arrive in WinProx. Only an administrator sees those copies.",
-                "items": [
-                    "On the location, at the unit, you choose Camera. The room can have a screen, a camera, or both.",
-                    "Off means the photos stay on the card. On means the device may send copies when there is Wi-Fi.",
-                    "Copies in WinProx stay for 30 days. The card in the device is left untouched.",
-                    "No issue and no task is created. No recognition and no live view."
-                ]
+                "title": "Trace",
+                "body": "Trace is the time clock with time registration, indoor climate and a photo according to the parameters you set.",
+                "link_route": "clock.trace",
+                "link_label": "More about Trace"
             },
             {
                 "title": "API and webhooks",
@@ -531,20 +525,15 @@
             },
             {
                 "title": "Sense (optional)",
-                "items": [
-                    "A screen can also measure temperature, humidity, CO₂ and air quality. You turn that on per screen in Screen settings, on a room or on a Clock Point.",
-                    "The readings stay in your organisation. No issue and no task is created. The home screen asks for attention when a value leaves the band or the screen stops sending.",
-                    "Same network as the clock display: Wi‑Fi and HTTPS."
-                ]
+                "body": "Sense measures the indoor climate. The readings appear in WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "More about Sense"
             },
             {
-                "title": "Camera (optional)",
-                "items": [
-                    "A camera belongs to a room. Pairing uses a one-time code. The key goes only to the device.",
-                    "Photos stay on the card in the device. Only an administrator turns forwarding to WinProx on.",
-                    "Copies sit in a closed place. A staff member does not see them. After the retention period they disappear. WinProx does not wipe the card.",
-                    "Same network as the screen: Wi‑Fi and HTTPS. No issue and no task is created."
-                ]
+                "title": "Trace (optional)",
+                "body": "Trace takes a photo according to the parameters you set, alongside time registration and the indoor climate.",
+                "link_route": "clock.trace",
+                "link_label": "More about Trace"
             },
             {
                 "title": "Integrations",

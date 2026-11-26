@@ -51,4 +51,7 @@
     @if (! empty($card['emphasis']))
         <p class="wp-product-doc-card__emphasis">{!! preg_replace('/\*\*(.+?)\*\*/u', '<strong>$1</strong>', e((string) $card['emphasis'])) !!}</p>
     @endif
+    @if (! empty($card['link_route']) && is_string($card['link_route']))
+        <p class="wp-product-doc-card__body"><a href="{{ route($card['link_route']) }}">{{ $card['link_label'] ?? '' }}</a></p>
+    @endif
 </section>

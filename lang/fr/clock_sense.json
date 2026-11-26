@@ -1,0 +1,22 @@
+{
+    "meta_title": "Sense : pointage et climat intérieur | WinProx Time",
+    "social": {
+        "og_title": "Sense : pointage et climat intérieur | WinProx Time",
+        "og_description": "Sense enregistre le temps et mesure la température, l'humidité, le CO₂ et l'indice COV. Les mesures apparaissent dans WinProx."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Sense",
+    "lead": "Pointage et un aperçu du climat intérieur.",
+    "intro": "Sense fait ce que fait l'horloge Time, et mesure en plus le lieu où les personnes se trouvent. Les mesures apparaissent dans WinProx.",
+    "section_title": "Ce que Sense mesure",
+    "points": [
+        "Température.",
+        "Humidité de l'air.",
+        "CO₂.",
+        "Indice COV, une mesure des substances volatiles dans l'air."
+    ],
+    "back": "Retour à la pointeuse",
+    "aside_route": "clock.trace",
+    "aside_link": "En savoir plus sur Trace",
+    "aside_hint": "Trace ajoute une photo selon les paramètres que vous définissez."
+}

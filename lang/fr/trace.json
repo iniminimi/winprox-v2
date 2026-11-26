@@ -1,0 +1,28 @@
+{
+    "meta_title": "Trace : pointage, climat intérieur et photo | WinProx Time",
+    "social": {
+        "og_title": "Trace : pointage, climat intérieur et photo | WinProx Time",
+        "og_description": "Trace enregistre le temps, mesure le climat intérieur et prend une photo selon les paramètres que vous définissez. Pas de film."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Trace",
+    "lead": "Pointage, climat intérieur et une photo selon les paramètres que vous définissez.",
+    "intro": "Trace fait ce que fait Sense, et prend en plus une photo au moment que votre organisation a défini.",
+    "section_title": "Photos",
+    "points": [
+        "L'appareil prend une photo lorsque votre organisation l'a défini.",
+        "Pas de film et pas d'image en direct.",
+        "Pas de reconnaissance.",
+        "Les photos sont enregistrées chiffrées sur la carte dans l'appareil.",
+        "La clé est conservée dans WinProx. Un administrateur connecté de votre organisation peut l'utiliser.",
+        "Les photos ne partent pas d'elles-mêmes vers WinProx.",
+        "Un administrateur peut demander une photo et indique une raison. La demande est conservée.",
+        "Seul un administrateur autorisé voit une photo demandée."
+    ],
+    "privacy_title": "Responsabilité",
+    "privacy_body": "Votre organisation juge quelles obligations s'appliquent à cet usage, et les respecte. Là où elles s'appliquent, il peut s'agir de la loi belge sur les caméras, du RGPD et des règles sur les caméras au travail. WinProx fournit l'appareil et sa commande, et reste responsable de la protection de la clé et d'une photo que vous demandez.",
+    "back": "Retour à la pointeuse",
+    "aside_route": "clock.sense",
+    "aside_link": "En savoir plus sur Sense",
+    "aside_hint": "Y compris ce que fait Sense."
+}

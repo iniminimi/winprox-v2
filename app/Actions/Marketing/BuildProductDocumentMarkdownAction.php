@@ -74,7 +74,7 @@ class BuildProductDocumentMarkdownAction
                 if (! is_array($card)) {
                     continue;
                 }
-                $cardMarkdown = $this->cardToMarkdown($card);
+                $cardMarkdown = $this->cardToMarkdown($card, $locale);
                 if ($cardMarkdown !== '') {
                     $lines[] = $cardMarkdown;
                     $lines[] = '';
@@ -96,7 +96,7 @@ class BuildProductDocumentMarkdownAction
     /**
      * @param  array<string, mixed>  $card
      */
-    private function cardToMarkdown(array $card): string
+    private function cardToMarkdown(array $card, string $locale): string
     {
         $title = trim((string) ($card['title'] ?? ''));
         if ($title === '') {
@@ -129,6 +129,14 @@ class BuildProductDocumentMarkdownAction
 
         if (! empty($card['emphasis']) && is_string($card['emphasis'])) {
             $parts[] = '_'.$card['emphasis'].'_';
+        }
+
+        if (! empty($card['link_route']) && is_string($card['link_route'])) {
+            $label = trim((string) ($card['link_label'] ?? ''));
+            if ($label !== '') {
+                $url = route($card['link_route'], ['locale' => $locale], absolute: true);
+                $parts[] = '['.$label.']('.$url.')';
+            }
         }
 
         return implode("\n\n", $parts);

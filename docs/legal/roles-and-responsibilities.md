@@ -15,6 +15,7 @@ This is a working draft for legal validation under **Belgian / EU** data protect
 | Buildings and units | Address, identifiers | Controller | Processor | Operational property data |
 | Issues and tasks | Reports, descriptions, status | Controller | Processor | Maintenance workflow data |
 | Time / Clock Point | Shifts, bound device, hashed PIN, optional GPS, own-hours view, team-applied timesheet break (not RSZ), evacuation-list views | Controller | Processor | Optional punch clock; one phone per worker |
+| Trace photos and key | Photos taken under the customer's parameters; decryption key; a photo only after a logged request with a reason | Controller | Processor | See `trace/` |
 | Owner records | Name, email, phone | Controller | Processor | Contact data for owner communication |
 | Owner notification emails | Subject/body, recipients, send logs | Controller | Processor | Sent on tenant instruction |
 | Activity logs | Actor, action, timestamps | Controller | Processor | Security and audit purpose |

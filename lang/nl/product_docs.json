@@ -49,7 +49,8 @@
                     "Locaties, teams, medewerkers en units beheren.",
                     "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie.",
                     "Optioneel fotoalbum: uitvoerders maken foto's op de unit-QR. Locatie en unitnaam staan erbij. In de foto zelf staat onderaan datum, tijd, uitvoerder, unit en organisatienaam. U mailt ze vanuit Fotoalbum. De bestanden worden na een week gewist. U zet dit aan bij Instellingen, onder Je organisatie. Gebruik bijvoorbeeld: in een crèche nemen verzorgsters foto's van kindjes en sturen die door naar de ouders.",
-                    "De uitvoerder zet WinProx eerst op het startscherm (logo met plusje). Daarna verschijnt op de gsm de knop Pushmeldingen aanzetten. Na toestemming verdwijnt die knop meteen. Bij weigering of blokkering blijft Meldingen staan uit zichtbaar met stappen in de telefooninstellingen; na herstel controleert de app opnieuw. Daarna kan een melding verschijnen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de uitvoerder na het einde van de dienst nog ingeklokt is. Ook bij een nieuwe taak voor hem of zijn team, één keer per ochtend voor wederkerende taken, en als verlof of recup geweigerd wordt. Op een iPhone werkt dat alleen vanuit het startscherm-icoon."
+                    "De uitvoerder zet WinProx eerst op het startscherm (logo met plusje). Daarna verschijnt op de gsm de knop Pushmeldingen aanzetten. Na toestemming verdwijnt die knop meteen. Bij weigering of blokkering blijft Meldingen staan uit zichtbaar met stappen in de telefooninstellingen; na herstel controleert de app opnieuw. Daarna kan een melding verschijnen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de uitvoerder na het einde van de dienst nog ingeklokt is. Ook bij een nieuwe taak voor hem of zijn team, één keer per ochtend voor wederkerende taken, en als verlof of recup geweigerd wordt. Op een iPhone werkt dat alleen vanuit het startscherm-icoon.",
+                    "Drie uitvoeringen: Time, Sense en Trace."
                 ],
                 "badge": "inbegrepen",
                 "key": "winprox_time"
@@ -295,22 +296,15 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense toont per scherm temperatuur, luchtvochtigheid, CO₂ en de VOC-index. U zet Sense aan op Scherm instellingen, op een lokaal of op een Clock Point. Het beginscherm vraagt aandacht als een waarde buiten de band valt of als het scherm niets meer stuurt.",
-                "items": [
-                    "Er ontstaat geen melding en geen taak.",
-                    "Een scherm zonder Sense toont geen klimaat. Uitzetten bewaart de grenzen.",
-                    "Het scherm volgt de jaarhelft: zomer van 1 mei tot 30 september, winter van 1 oktober tot 30 april. CO₂ vraagt aandacht boven 900. De VOC-index kleurt van groen tot rood en vraagt aandacht pas na een half uur."
-                ]
+                "body": "Sense is de prikklok met tijdregistratie en binnenklimaat. De metingen verschijnen in WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "Meer over Sense"
             },
             {
-                "title": "Camera",
-                "body": "Een camera bij een lokaal bewaart de foto’s op de kaart in het toestel. Als u doorsturen aanzet, komen kopieën in WinProx. Alleen een beheerder ziet die kopieën.",
-                "items": [
-                    "Op de locatie, bij de unit, kiest u Camera. Het lokaal kan een scherm hebben, een camera, of allebei.",
-                    "Uit betekent: de foto’s blijven op de kaart. Aan betekent: het toestel mag kopieën sturen als er wifi is.",
-                    "Kopieën in WinProx blijven 30 dagen. De kaart in het toestel blijft onaangeroerd.",
-                    "Er komt geen melding en geen taak. Geen herkenning en geen livebeeld."
-                ]
+                "title": "Trace",
+                "body": "Trace is de prikklok met tijdregistratie, binnenklimaat en een foto volgens de ingestelde parameters.",
+                "link_route": "clock.trace",
+                "link_label": "Meer over Trace"
             },
             {
                 "title": "API en webhooks",
@@ -531,20 +525,15 @@
             },
             {
                 "title": "Sense (optioneel)",
-                "items": [
-                    "Een scherm kan ook temperatuur, vocht, CO₂ en luchtkwaliteit meten. U zet dat per scherm aan op Scherm instellingen, op een lokaal of op een Clock Point.",
-                    "De metingen blijven in uw organisatie. Er ontstaat geen melding en geen taak. Het beginscherm vraagt aandacht als een waarde buiten de band valt of als het scherm niets meer stuurt.",
-                    "Zelfde netwerk als het klokscherm: Wi‑Fi en HTTPS."
-                ]
+                "body": "Sense meet het binnenklimaat. De metingen verschijnen in WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "Meer over Sense"
             },
             {
-                "title": "Camera (optioneel)",
-                "items": [
-                    "Een camera hoort bij een lokaal. Koppelen gebeurt met een eenmalige code. De sleutel gaat alleen naar het toestel.",
-                    "Foto’s blijven op de kaart in het toestel. Doorsturen naar WinProx zet alleen een beheerder aan.",
-                    "Kopieën staan op een afgesloten plek. Een medewerker ziet ze niet. Na de bewaartermijn verdwijnen ze. De kaart zelf wist WinProx niet.",
-                    "Zelfde netwerk als het scherm: Wi‑Fi en HTTPS. Er ontstaat geen melding en geen taak."
-                ]
+                "title": "Trace (optioneel)",
+                "body": "Trace maakt een foto volgens de ingestelde parameters, naast de tijdregistratie en het binnenklimaat.",
+                "link_route": "clock.trace",
+                "link_label": "Meer over Trace"
             },
             {
                 "title": "Integraties",

@@ -49,7 +49,8 @@
                     "Gérer les sites, les équipes, les personnes et les unités.",
                     "L’enregistrement ONSS/CIAO peut être activé dans les paramètres. Les visites GPS facultatives relient une visite à un lieu.",
                     "Album photo facultatif : les exécutants prennent des photos sur le QR de l'unité. Le lieu et le nom de l'unité sont indiqués. Dans la photo même, en bas, figurent la date, l'heure, l'exécutant, l'unité et le nom de l'organisation. Vous les envoyez depuis Album photo. Les fichiers sont effacés après une semaine. Activez-le dans Paramètres, sous Votre organisation. Par exemple : dans une crèche, les puéricultrices prennent des photos des enfants et les envoient aux parents.",
-                    "L’exécutant met d’abord WinProx sur l’écran d’accueil (logo avec plus). Ensuite apparaît le bouton Activer les notifications push. Après Autoriser, ce bouton disparaît aussitôt. En cas de refus ou de blocage, Notifications désactivées reste visible avec les étapes dans les réglages du téléphone ; après correction, l’app vérifie à nouveau. Une alerte peut alors apparaître si un service change, si un congé ou une récupération est approuvé, si un document ou une annonce est prêt, ou si l’exécutant est encore pointé après la fin du service. Aussi pour une nouvelle tâche pour lui ou son équipe, une fois le matin pour les tâches récurrentes, et si un congé ou une récupération est refusé. Sur iPhone, uniquement depuis l’icône de l’écran d’accueil."
+                    "L’exécutant met d’abord WinProx sur l’écran d’accueil (logo avec plus). Ensuite apparaît le bouton Activer les notifications push. Après Autoriser, ce bouton disparaît aussitôt. En cas de refus ou de blocage, Notifications désactivées reste visible avec les étapes dans les réglages du téléphone ; après correction, l’app vérifie à nouveau. Une alerte peut alors apparaître si un service change, si un congé ou une récupération est approuvé, si un document ou une annonce est prêt, ou si l’exécutant est encore pointé après la fin du service. Aussi pour une nouvelle tâche pour lui ou son équipe, une fois le matin pour les tâches récurrentes, et si un congé ou une récupération est refusé. Sur iPhone, uniquement depuis l’icône de l’écran d’accueil.",
+                    "Trois exécutions : Time, Sense et Trace."
                 ],
                 "badge": "inclus",
                 "key": "winprox_time"
@@ -295,22 +296,15 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense montre par écran la température, l’humidité, le CO₂ et l’indice VOC. Vous activez Sense dans les réglages de l’écran, sur un local ou sur un Clock Point. L’accueil demande attention si une valeur sort de la bande ou si l’écran n’envoie plus rien.",
-                "items": [
-                    "Aucun signalement ni tâche n’est créé.",
-                    "Un écran sans Sense n’affiche pas le climat. Le désactiver conserve les repères.",
-                    "L’écran suit la moitié de l’année : été du 1er mai au 30 septembre, hiver du 1er octobre au 30 avril. Le CO₂ demande attention au-dessus de 900. L’indice VOC passe du vert au rouge et ne demande attention qu’après une demi-heure."
-                ]
+                "body": "Sense est la pointeuse avec pointage et climat intérieur. Les mesures apparaissent dans WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "En savoir plus sur Sense"
             },
             {
-                "title": "Caméra",
-                "body": "Une caméra dans un local garde les photos sur la carte dans l’appareil. Si vous activez le transfert, des copies arrivent dans WinProx. Seul un administrateur voit ces copies.",
-                "items": [
-                    "Sur le lieu, à l’unité, vous choisissez Caméra. Le local peut avoir un écran, une caméra, ou les deux.",
-                    "Désactivé : les photos restent sur la carte. Activé : l’appareil peut envoyer des copies s’il y a du Wi-Fi.",
-                    "Les copies dans WinProx restent 30 jours. La carte dans l’appareil n’est pas touchée.",
-                    "Aucun signalement ni tâche. Pas de reconnaissance et pas d’image en direct."
-                ]
+                "title": "Trace",
+                "body": "Trace est la pointeuse avec pointage, climat intérieur et une photo selon les paramètres définis.",
+                "link_route": "clock.trace",
+                "link_label": "En savoir plus sur Trace"
             },
             {
                 "title": "API et webhooks",
@@ -531,20 +525,15 @@
             },
             {
                 "title": "Sense (optionnel)",
-                "items": [
-                    "Un écran peut aussi mesurer la température, l’humidité, le CO₂ et la qualité de l’air. Vous l’activez par écran dans les réglages de l’écran, sur un local ou sur un Clock Point.",
-                    "Les mesures restent dans votre organisation. Aucun signalement ni tâche n’est créé. L’accueil demande attention si une valeur sort de la bande ou si l’écran n’envoie plus rien.",
-                    "Même réseau que l’écran d’horloge : Wi‑Fi et HTTPS."
-                ]
+                "body": "Sense mesure le climat intérieur. Les mesures apparaissent dans WinProx.",
+                "link_route": "clock.sense",
+                "link_label": "En savoir plus sur Sense"
             },
             {
-                "title": "Caméra (optionnel)",
-                "items": [
-                    "Une caméra appartient à un local. Le couplage se fait avec un code à usage unique. La clé va uniquement à l’appareil.",
-                    "Les photos restent sur la carte dans l’appareil. Seul un administrateur active le transfert vers WinProx.",
-                    "Les copies sont dans un endroit fermé. Un collaborateur ne les voit pas. Après le délai de conservation, elles disparaissent. WinProx n’efface pas la carte.",
-                    "Même réseau que l’écran : Wi‑Fi et HTTPS. Aucun signalement ni tâche n’est créé."
-                ]
+                "title": "Trace (optionnel)",
+                "body": "Trace prend une photo selon les paramètres définis, en plus du pointage et du climat intérieur.",
+                "link_route": "clock.trace",
+                "link_label": "En savoir plus sur Trace"
             },
             {
                 "title": "Intégrations",

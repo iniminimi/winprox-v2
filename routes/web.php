@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Backoffice\BackofficeHomescreenManifestController;
 use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
+use App\Http\Controllers\ClockModelPageController;
 use App\Http\Controllers\CameraPhotoFileController;
 use App\Http\Controllers\Customers\CustomerStatsExportController;
 use App\Http\Controllers\Customers\CustomerStatsPrintController;
@@ -335,6 +336,8 @@ Route::get('/promo', $redirectToLocalized('promo'));
 foreach (PromoLanding::cases() as $landing) {
     Route::get('/'.$landing->value, $redirectToLocalized($landing->routeName()));
 }
+Route::get('/prikklok/sense', $redirectToLocalized('clock.sense'));
+Route::get('/prikklok/trace', $redirectToLocalized('clock.trace'));
 
 // V1-legacy URL's die Google nog crawlt: 301 naar de opvolger i.p.v. 404.
 foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
@@ -395,6 +398,8 @@ Route::prefix('{locale}')
         foreach (PromoLanding::cases() as $landing) {
             Route::get('/'.$landing->value, [SectorLandingController::class, 'show'])->name($landing->routeName());
         }
+        Route::get('/prikklok/sense', [ClockModelPageController::class, 'show'])->name('clock.sense');
+        Route::get('/prikklok/trace', [ClockModelPageController::class, 'show'])->name('clock.trace');
 
         Route::withoutMiddleware(StatelessPublicWeb::sessionCookieMiddleware())->group(function () {
             foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {

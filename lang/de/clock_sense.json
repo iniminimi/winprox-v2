@@ -1,0 +1,22 @@
+{
+    "meta_title": "Sense: Zeiterfassung und Raumklima | WinProx Time",
+    "social": {
+        "og_title": "Sense: Zeiterfassung und Raumklima | WinProx Time",
+        "og_description": "Sense erfasst die Zeit und misst Temperatur, Luftfeuchtigkeit, CO₂ und den VOC-Index. Die Messwerte erscheinen in WinProx."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Sense",
+    "lead": "Zeiterfassung und Einblick in das Raumklima.",
+    "intro": "Sense leistet, was die Stechuhr Time leistet, und misst zusätzlich den Raum, in dem sich Menschen aufhalten. Die Messwerte erscheinen in WinProx.",
+    "section_title": "Was Sense misst",
+    "points": [
+        "Temperatur.",
+        "Luftfeuchtigkeit.",
+        "CO₂.",
+        "VOC-Index, ein Maß für flüchtige Stoffe in der Luft."
+    ],
+    "back": "Zurück zur Stechuhr",
+    "aside_route": "clock.trace",
+    "aside_link": "Mehr über Trace",
+    "aside_hint": "Trace ergänzt ein Foto nach den Parametern, die Sie festlegen."
+}

@@ -1010,6 +1010,28 @@
             "roles": "Un lavoratore sul posto timbra con lo smartphone.",
             "why": "Panoramica WinProx di presenze e registrazione oraria.",
             "close": "Due colleghi guardano WinProx insieme su un tablet."
+        },
+        "models": {
+            "title": "Tre timbratori",
+            "lead": "WinProx Time ha tre versioni. Tutte e tre registrano il tempo in WinProx.",
+            "items": [
+                {
+                    "name": "Time",
+                    "body": "Rilevazione ore con codice QR o PIN personale. Nessuna app e nessun badge."
+                },
+                {
+                    "name": "Sense",
+                    "body": "Rilevazione ore e clima interno.",
+                    "route": "clock.sense",
+                    "link": "Altro su Sense"
+                },
+                {
+                    "name": "Trace",
+                    "body": "Rilevazione ore, clima interno e una foto secondo i parametri impostati.",
+                    "route": "clock.trace",
+                    "link": "Altro su Trace"
+                }
+            ]
         }
     }
 }

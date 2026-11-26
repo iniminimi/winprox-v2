@@ -11,6 +11,24 @@
     };
 @endphp
 
+@if (\Illuminate\Support\Facades\Lang::has($key.'.models.title'))
+    <article class="wp-stack">
+        <h2 class="wp-welcome-h3">{{ __("{$key}.models.title") }}</h2>
+        <p class="wp-text-body">{{ __("{$key}.models.lead") }}</p>
+        <div class="wp-landing-roles">
+            @foreach (__("{$key}.models.items") as $model)
+                <article class="wp-card wp-card-pad wp-stack">
+                    <h3 class="wp-welcome-h3">{{ $model['name'] }}</h3>
+                    <p class="wp-text-body">{{ $model['body'] }}</p>
+                    @if (! empty($model['route']))
+                        <p><a href="{{ route($model['route']) }}" class="btn btn--ghost">{{ $model['link'] }}</a></p>
+                    @endif
+                </article>
+            @endforeach
+        </div>
+    </article>
+@endif
+
 @if (\Illuminate\Support\Facades\Lang::has($key.'.schedule.title'))
     <article class="wp-card wp-card-pad wp-stack">
         <h2 class="wp-welcome-h3">{{ __("{$key}.schedule.title") }}</h2>

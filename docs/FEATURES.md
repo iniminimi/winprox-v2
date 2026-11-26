@@ -1985,6 +1985,9 @@ Login, mail en `APP_URL` blijven op `.app`. `.nl` verschijnt pas in hreflang als
   op winprox.nl), **Meer** (about, technical, API & Webhooks), **Inloggen**, **Gratis proberen**.
   Geen module-badges (Facility/Time/ESG/IoT) in de nav. Navlabel **Prikklok** blijft het zoekwoord;
   de pagina en het bestaande Time-logo dragen de naam **WinProx Time**.
+  Drie korte kaarten op die pagina: Time, Sense, Trace. De uitleg staat op
+  `/{locale}/prikklok/sense` en `/{locale}/prikklok/trace`. Productfiches en
+  `docs/legal/` verwijzen alleen. De Trace-afspraak staat in `docs/legal/trace/`.
 - **Hero (één viewport):** foto `images/welcome/welcome_reception.jpg` in een afgerond kader
   (niet pagina-breed); copy-kader (80% dekkend beige) **op** de foto, links, zodat de
   receptie rechts zichtbaar blijft.

@@ -1,0 +1,28 @@
+{
+    "meta_title": "Trace: Zeiterfassung, Raumklima und Foto | WinProx Time",
+    "social": {
+        "og_title": "Trace: Zeiterfassung, Raumklima und Foto | WinProx Time",
+        "og_description": "Trace erfasst die Zeit, misst das Raumklima und macht ein Foto nach den Parametern, die Sie festlegen. Kein Film."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Trace",
+    "lead": "Zeiterfassung, Raumklima und ein Foto nach den Parametern, die Sie festlegen.",
+    "intro": "Trace leistet, was Sense leistet, und macht zusätzlich ein Foto zu dem Zeitpunkt, den Ihre Organisation festgelegt hat.",
+    "section_title": "Fotos",
+    "points": [
+        "Das Gerät macht ein Foto, wenn Ihre Organisation das festgelegt hat.",
+        "Kein Film und kein Livebild.",
+        "Keine Erkennung.",
+        "Die Fotos liegen verschlüsselt auf der Karte im Gerät.",
+        "Der Schlüssel liegt in WinProx. Ein angemeldeter Administrator Ihrer Organisation kann ihn verwenden.",
+        "Fotos gehen nicht von selbst an WinProx.",
+        "Ein Administrator kann ein Foto anfordern und gibt dafür einen Grund an. Die Anfrage wird festgehalten.",
+        "Nur ein berechtigter Administrator sieht ein angefordertes Foto."
+    ],
+    "privacy_title": "Verantwortung",
+    "privacy_body": "Ihre Organisation prüft, welche Pflichten für diese Nutzung gelten, und erfüllt sie. Wo sie gelten, können das das belgische Kameragesetz, die DSGVO und die Regeln für Kameras am Arbeitsplatz sein. WinProx liefert das Gerät und die Bedienung und bleibt selbst für den Schutz des Schlüssels und eines angeforderten Fotos verantwortlich.",
+    "back": "Zurück zur Stechuhr",
+    "aside_route": "clock.sense",
+    "aside_link": "Mehr über Sense",
+    "aside_hint": "Einschließlich dessen, was Sense leistet."
+}

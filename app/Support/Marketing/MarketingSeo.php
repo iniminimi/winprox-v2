@@ -24,6 +24,8 @@ final class MarketingSeo
             'work-on-location',
             'checkmate',
             'prikklok',
+            'clock.sense',
+            'clock.trace',
             'pricing',
             'contact.index',
             'demo',

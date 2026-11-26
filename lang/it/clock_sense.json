@@ -1,0 +1,22 @@
+{
+    "meta_title": "Sense: rilevazione ore e clima interno | WinProx Time",
+    "social": {
+        "og_title": "Sense: rilevazione ore e clima interno | WinProx Time",
+        "og_description": "Sense registra il tempo e misura temperatura, umidità, CO₂ e l'indice VOC. Le misure compaiono in WinProx."
+    },
+    "eyebrow": "WinProx Time",
+    "title": "Sense",
+    "lead": "Rilevazione delle ore e uno sguardo al clima interno.",
+    "intro": "Sense fa ciò che fa l'orologio Time e, in più, misura il luogo in cui si trovano le persone. Le misure compaiono in WinProx.",
+    "section_title": "Cosa misura Sense",
+    "points": [
+        "Temperatura.",
+        "Umidità dell'aria.",
+        "CO₂.",
+        "Indice VOC, una misura delle sostanze volatili nell'aria."
+    ],
+    "back": "Torna al timbratore",
+    "aside_route": "clock.trace",
+    "aside_link": "Altro su Trace",
+    "aside_hint": "Trace aggiunge una foto secondo i parametri che impostate."
+}
