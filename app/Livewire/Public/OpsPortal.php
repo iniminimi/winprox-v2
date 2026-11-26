@@ -9,6 +9,7 @@ use App\Actions\HelpChat\SaveHelpChatKbEntryAction;
 use App\Actions\Ops\AuthenticateOpsSuperuserAction;
 use App\Actions\Ops\EnsureOpsPortalAction;
 use App\Actions\Ops\RegisterHardwareDeviceAction;
+use App\Actions\Ops\ResolveHardwareDevicePlacementsAction;
 use App\Actions\Platform\SetPlatformUserPasswordAction;
 use App\Data\Ops\RegisterHardwareDeviceData;
 use App\Enums\HardwareDeviceCondition;
@@ -452,6 +453,9 @@ class OpsPortal extends Component
             'conditions' => HardwareDeviceCondition::cases(),
             'users' => $users,
             'devices' => $devices,
+            'placements' => $devices->isEmpty()
+                ? []
+                : app(ResolveHardwareDevicePlacementsAction::class)->handle($devices),
             'unanswered' => $unanswered,
             'unansweredCount' => $unansweredCount,
             'passwordTarget' => $passwordTarget,

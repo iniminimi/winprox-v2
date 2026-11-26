@@ -9,6 +9,7 @@ use App\Actions\Ops\BindHardwareDeviceMacAction;
 use App\Actions\Ops\EnsureOpsPortalAction;
 use App\Actions\Ops\ListHardwareDevicesAction;
 use App\Actions\Ops\RegisterHardwareDeviceAction;
+use App\Actions\Ops\ResolveHardwareDevicePlacementsAction;
 use App\Actions\Ops\UpdateHardwareDeviceAction;
 use App\Data\Ops\AssignHardwareDeviceTenantData;
 use App\Data\Ops\BindHardwareDeviceMacData;
@@ -295,8 +296,11 @@ class Devices extends Component
         $this->flashType = 'success';
     }
 
-    public function render(ListHardwareDevicesAction $list, EnsureOpsPortalAction $ensurePortal)
-    {
+    public function render(
+        ListHardwareDevicesAction $list,
+        EnsureOpsPortalAction $ensurePortal,
+        ResolveHardwareDevicePlacementsAction $placements,
+    ) {
         $statusEnum = $this->status !== '' ? HardwareDeviceStatus::tryFrom($this->status) : null;
         $typeEnum = $this->type !== '' ? HardwareDeviceType::tryFrom($this->type) : null;
         $withoutTenant = $this->tenantFilter === 'none';
@@ -317,6 +321,7 @@ class Devices extends Component
 
         return view('livewire.platform.devices', [
             'devices' => $devices,
+            'placements' => $placements->handle($devices->getCollection()),
             'tenants' => Tenant::query()->orderBy('name')->get(['id', 'name']),
             'statuses' => HardwareDeviceStatus::cases(),
             'types' => HardwareDeviceType::cases(),

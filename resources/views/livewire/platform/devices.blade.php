@@ -102,6 +102,7 @@
                                     · {{ __('ops.devices.scanned_at') }} {{ $device->sn_scanned_at->format('d-m-Y H:i') }}
                                 @endif
                             </p>
+                            @include('livewire.ops.device-placement', ['placement' => $placements[$device->id] ?? null])
                         </div>
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $device->id }})">
                             {{ __('ops.devices.edit') }}

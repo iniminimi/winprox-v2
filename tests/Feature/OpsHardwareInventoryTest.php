@@ -15,13 +15,17 @@ use App\Data\Ops\BindHardwareDeviceMacData;
 use App\Data\Ops\RegisterHardwareDeviceData;
 use App\Enums\HardwareDeviceStatus;
 use App\Enums\HardwareDeviceType;
+use App\Enums\ScreenRole;
 use App\Livewire\Platform\Devices;
 use App\Livewire\Public\OpsPortal;
 use App\Models\ClockPoint;
 use App\Models\HardwareDevice;
 use App\Models\HelpChatKnowledgeBaseEntry;
 use App\Models\HelpChatUnansweredQuestion;
+use App\Models\Location;
+use App\Models\Screen;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
@@ -227,6 +231,70 @@ it('laat via OPS gsm wachtwoord zetten, toestel zoeken en help beantwoorden', fu
     expect(Hash::check('nieuw-wachtwoord-123', $colleague->fresh()->password))->toBeTrue()
         ->and(HelpChatUnansweredQuestion::query()->whereKey($question->id)->exists())->toBeFalse()
         ->and(HelpChatKnowledgeBaseEntry::query()->where('match_key', 'like', '%wachtwoord%')->exists())->toBeTrue();
+});
+
+it('toont bedrijf, locatie en unit zodra de MAC aan een toestel hangt', function () {
+    $super = opsSuperuser();
+    $tenant = Tenant::factory()->create([
+        'name' => 'Schoonmaak Noord',
+        'street' => 'Kerkstraat',
+        'house_number' => '12',
+        'postal_code' => '9000',
+        'city' => 'Gent',
+        'country_code' => 'BE',
+    ]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Site Haven',
+        'street' => 'Dokweg',
+        'house_number' => '4',
+        'postal_code' => '9000',
+        'city' => 'Gent',
+    ]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Lokaal A',
+    ]);
+    $point = ClockPoint::factory()->forLocation($location)->create([
+        'name' => 'Ingang haven',
+        'display_device_hint' => '44BD8D7218EC',
+        'display_paired_at' => now(),
+    ]);
+    Screen::factory()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'role' => ScreenRole::Sense,
+        'device_hint' => '44BD8D7218EC',
+        'paired_at' => now(),
+    ]);
+    HardwareDevice::factory()->withMac('44BD8D7218EC')->create([
+        'serial_number' => 'SN-PLACED-1',
+        'tenant_id' => $tenant->id,
+        'clock_point_id' => $point->id,
+        'status' => HardwareDeviceStatus::InUse,
+    ]);
+
+    Livewire::actingAs($super)
+        ->test(Devices::class)
+        ->assertSee('SN-PLACED-1')
+        ->assertSee('Schoonmaak Noord')
+        ->assertSee('Kerkstraat 12, BE 9000 Gent', false)
+        ->assertSee('Site Haven')
+        ->assertSee('Dokweg 4, 9000 Gent', false)
+        ->assertSee('Lokaal A')
+        ->assertSee('Ingang haven');
+
+    HardwareDevice::factory()->withMac('44BD8D7218ED')->create([
+        'serial_number' => 'SN-STOCK-ONLY',
+    ]);
+
+    Livewire::actingAs($super)
+        ->test(Devices::class)
+        ->set('search', 'SN-STOCK-ONLY')
+        ->assertSee('SN-STOCK-ONLY')
+        ->assertSee(__('ops.devices.no_tenant'))
+        ->assertDontSee(__('ops.devices.placement_company').':');
 });
 
 it('weigert niet-superusers op platform toestellen', function () {

@@ -33,7 +33,11 @@
         "mac_missing": "no MAC",
         "mac_hint": "Paste the MAC as you get it after flashing (e.g. AA:BB:CC:DD:EE:FF). Once set, it stays with this serial.",
         "no_tenant": "In stock",
-        "scanned_at": "scanned"
+        "scanned_at": "scanned",
+        "placement_company": "Organisation",
+        "placement_location": "Location",
+        "placement_unit": "Unit",
+        "placement_clock_point": "Clock Point"
     },
     "fields": {
         "serial_number": "Serial number (S/N)",

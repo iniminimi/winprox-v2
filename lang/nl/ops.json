@@ -33,7 +33,11 @@
         "mac_missing": "geen MAC",
         "mac_hint": "Plak de MAC zoals je die na het flashen krijgt (bijv. AA:BB:CC:DD:EE:FF). Eenmaal gezet blijft die bij dit serienummer.",
         "no_tenant": "Op voorraad",
-        "scanned_at": "gescand"
+        "scanned_at": "gescand",
+        "placement_company": "Organisatie",
+        "placement_location": "Locatie",
+        "placement_unit": "Unit",
+        "placement_clock_point": "Clock Point"
     },
     "fields": {
         "serial_number": "Serienummer (S/N)",

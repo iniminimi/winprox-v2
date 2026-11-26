@@ -33,7 +33,11 @@
         "mac_missing": "pas de MAC",
         "mac_hint": "Collez la MAC telle que vous la recevez après le flash (ex. AA:BB:CC:DD:EE:FF). Une fois définie, elle reste liée à ce numéro de série.",
         "no_tenant": "En stock",
-        "scanned_at": "scanné"
+        "scanned_at": "scanné",
+        "placement_company": "Organisation",
+        "placement_location": "Site",
+        "placement_unit": "Unit",
+        "placement_clock_point": "Clock Point"
     },
     "fields": {
         "serial_number": "Numéro de série (S/N)",
