@@ -14,6 +14,7 @@ class ExportPendingIssueTranslationsAction
     {
         $items = IssueTranslation::query()
             ->where('status', IssueTranslationStatus::Pending)
+            ->whereHas('issue.tenant', fn ($query) => $query->where('translations_enabled', true))
             ->whereHas('issue', fn ($query) => $query
                 ->whereNotNull('approved_at')
                 ->where('description', '!=', ''))

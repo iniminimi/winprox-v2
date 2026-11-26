@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\EsgIndicatorTranslationStatus;
 use App\Models\EsgIndicator;
 use App\Models\EsgIndicatorTranslation;
@@ -20,6 +21,10 @@ class InvalidateEsgIndicatorTranslationsOnSourceChangeAction
         array $previousOptions,
         ?int $actorUserId = null,
     ): void {
+        if (! Tenant::translationsEnabledFor((int) $indicator->tenant_id)) {
+            return;
+        }
+
         $nameChanged = trim($previousName) !== trim((string) $indicator->name);
         $optionsChanged = $previousOptions !== $indicator->normalizedChoiceOptions();
 

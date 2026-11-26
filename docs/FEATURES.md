@@ -37,7 +37,7 @@ in die volgorde onderaan de keuzelijst. Meer portaal-talen kunnen later bijkomen
 zonder de zes uit te breiden. Extra portaal-talen vertalen alleen de schermteksten
 en de hulp (`lang/{code}/`: minstens `portal.json`, de portaal-sleutels van
 `time.json` en de portaalpagina’s in `page-help.json`). Geen Ollama-slots, en ze
-verschijnen niet in beheer of op de website. In elk beheerformulier waar een vertaling kan, staat het vinkje **Vertaling aanzetten**, standaard uit. Zonder dat vinkje worden er geen vertaalslots klaargezet (Ollama blijft dan met rust). Publiek: `product_docs` (features +
+verschijnen niet in beheer of op de website. Onder **Instellingen → Je organisatie** staat **Vertalingen aan**, standaard uit. Uit: geen vertaalslots (Ollama blijft met rust). Aan: namen en teksten gaan weer de vertaalpijplijn in, ook wat er al stond. Publiek: `product_docs` (features +
 technische fiche), FAQ-item `languages`, handleiding (internetportaal + pagina-hulp).
 
 Menu-volgorde (sidebar, accordion): Home · **Werk** (Meldingen, Taken,
@@ -532,7 +532,7 @@ de meldingenlijst te vervuilen. Los van ESG.
   checklists van teams die aan de categorie van de unit hangen.
   Op de unit-QR verschijnen de vinkjes; bij **OK** moeten alle punten afgevinkt zijn.
 - Checklistnaam en vinkpunten zijn **tenant-content**: brontaal in `original_language`,
-  overige talen via Ollama alleen als **Vertaling aanzetten** aanstaat
+  overige talen via Ollama alleen als **Vertalingen aan** aanstaat bij Je organisatie
   (`unit_check_list_translations`, pending →
   completed/failed) zoals meldingen, locaties en ESG-indicatoren. Bij bewerken: uitklap
   **Vertaling** (zoals teams/categorieën) om per taal naam + punten te bekijken of te

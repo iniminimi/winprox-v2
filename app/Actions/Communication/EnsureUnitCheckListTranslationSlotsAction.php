@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\UnitCheckListTranslationStatus;
 use App\Models\UnitCheckList;
 use App\Models\UnitCheckListTranslation;
@@ -11,6 +12,10 @@ class EnsureUnitCheckListTranslationSlotsAction
 {
     public function handle(UnitCheckList $list): void
     {
+        if (! Tenant::translationsEnabledFor((int) $list->tenant_id)) {
+            return;
+        }
+
         if (! $list->is_active) {
             return;
         }

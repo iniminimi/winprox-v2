@@ -339,7 +339,7 @@
                 "items": [
                     "Gestión y sitio web: neerlandés, inglés, francés, alemán, español e italiano.",
                     "El portal de los operarios (Clock Point y QR) usa esos seis idiomas, más portugués, rumano y polaco. Más adelante pueden añadirse otros idiomas al portal, sin ampliar la gestión ni el sitio web.",
-                    "Avisos, tareas, anuncios y documentos se traducen a esos seis idiomas si marca Activar la traducción. Sin esa casilla el texto permanece en el idioma en que lo escribió. Portugués, rumano y polaco son el idioma de pantalla y la ayuda del portal; el texto de la organización permanece entonces en el idioma en que se escribió.",
+                    "Avisos, tareas, anuncios y documentos se traducen a esos seis idiomas si activa Traducciones activadas en Ajustes, Su organización. Está desactivado por defecto y el texto permanece en el idioma en que lo escribió. Portugués, rumano y polaco son el idioma de pantalla y la ayuda del portal; el texto de la organización permanece entonces en el idioma en que se escribió.",
                     "La traducción usa IA local. Para eso, los textos no se envían a una nube de IA externa.",
                     "Las traducciones se procesan normalmente cada día, sin un plazo fijo. La administración puede corregirlas."
                 ]

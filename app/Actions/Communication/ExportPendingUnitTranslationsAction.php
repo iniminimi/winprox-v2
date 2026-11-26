@@ -14,6 +14,7 @@ class ExportPendingUnitTranslationsAction
     {
         return UnitTranslation::query()
             ->where('status', UnitTranslationStatus::Pending)
+            ->whereHas('unit.tenant', fn ($query) => $query->where('translations_enabled', true))
             ->whereHas('unit', fn ($query) => $query->where('is_active', true))
             ->with('unit')
             ->orderBy('unit_id')

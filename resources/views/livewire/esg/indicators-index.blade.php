@@ -70,7 +70,6 @@
                 <h2 class="wp-section-title">
                     {{ $editingIndicatorId ? __('esg.edit_title') : __('esg.create_title') }}
                 </h2>
-                <x-wp-translation-toggle wire-model="translationEnabled" />
 
                 <label class="wp-label" for="esg-name">{{ __('esg.fields.name') }}</label>
                 <input id="esg-name" type="text" class="wp-input" wire:model="name" autocomplete="off">

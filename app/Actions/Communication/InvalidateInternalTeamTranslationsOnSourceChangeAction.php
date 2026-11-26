@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\InternalTeamTranslationStatus;
 use App\Models\InternalTeam;
 use App\Models\InternalTeamTranslation;
@@ -13,6 +14,10 @@ class InvalidateInternalTeamTranslationsOnSourceChangeAction
 
     public function handle(InternalTeam $team, string $previousName, ?int $actorUserId = null): void
     {
+        if (! Tenant::translationsEnabledFor((int) $team->tenant_id)) {
+            return;
+        }
+
         if (trim($previousName) === trim((string) $team->name)) {
             return;
         }

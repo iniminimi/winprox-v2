@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\LocationTranslationStatus;
 use App\Models\Location;
 use App\Models\LocationTranslation;
@@ -11,6 +12,10 @@ class EnsureLocationTranslationSlotsAction
 {
     public function handle(Location $location): void
     {
+        if (! Tenant::translationsEnabledFor((int) $location->tenant_id)) {
+            return;
+        }
+
         if (! $location->is_active || trim((string) $location->name) === '') {
             return;
         }

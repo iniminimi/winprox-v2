@@ -14,6 +14,7 @@ class ExportPendingLocationTranslationsAction
     {
         return LocationTranslation::query()
             ->where('status', LocationTranslationStatus::Pending)
+            ->whereHas('location.tenant', fn ($query) => $query->where('translations_enabled', true))
             ->whereHas('location', fn ($query) => $query
                 ->where('is_active', true)
                 ->where('name', '!=', ''))

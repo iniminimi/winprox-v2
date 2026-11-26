@@ -25,8 +25,6 @@ class Documents extends Component
 
     public bool $showCreateModal = false;
 
-    public bool $translationEnabled = false;
-
     public bool $showEditModal = false;
 
     public ?int $editingDocumentId = null;
@@ -93,7 +91,6 @@ class Documents extends Component
         $this->requiresVerification = false;
         $this->isActive = true;
         $this->documentFile = null;
-        $this->translationEnabled = false;
         $this->showCreateModal = true;
     }
 
@@ -117,7 +114,6 @@ class Documents extends Component
         $this->editDocumentFile = null;
         $this->currentFileName = basename((string) $document->file_path);
         $this->previewLocale = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
-        $this->translationEnabled = false;
         $this->showEditModal = true;
     }
 
@@ -156,7 +152,6 @@ class Documents extends Component
                 ],
                 $tenantId,
                 (int) auth()->id(),
-                $this->translationEnabled,
             );
         } catch (InvalidArgumentException $e) {
             $this->addError('documentFile', __($this->documentLimitMessageKey($e->getMessage())));
@@ -214,7 +209,6 @@ class Documents extends Component
                 $validated['editDocumentFile'] ?? null,
                 $tenantId,
                 (int) auth()->id(),
-                $this->translationEnabled,
             );
         } catch (InvalidArgumentException $e) {
             $this->addError('unitId', __($this->documentLimitMessageKey($e->getMessage())));

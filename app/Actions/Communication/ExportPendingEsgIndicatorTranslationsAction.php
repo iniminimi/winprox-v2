@@ -14,6 +14,7 @@ class ExportPendingEsgIndicatorTranslationsAction
     {
         return EsgIndicatorTranslation::query()
             ->where('status', EsgIndicatorTranslationStatus::Pending)
+            ->whereHas('indicator.tenant', fn ($query) => $query->where('translations_enabled', true))
             ->whereHas('indicator', fn ($query) => $query->where('is_active', true))
             ->with('indicator')
             ->orderBy('esg_indicator_id')

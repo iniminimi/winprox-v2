@@ -339,7 +339,7 @@
                 "items": [
                     "Verwaltung und Website: Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch.",
                     "Das Portal (Clock Point und QR) nutzt diese sechs Sprachen plus Portugiesisch, Rumänisch und Polnisch. Später können dort weitere Sprachen hinzukommen, ohne Verwaltung oder Website zu erweitern.",
-                    "Meldungen, Aufgaben, Mitteilungen und Dokumente werden in diese sechs Sprachen übersetzt, wenn Sie Übersetzung einschalten aktivieren. Ohne das Häkchen bleibt der Text in der Sprache, in der Sie ihn geschrieben haben. Portugiesisch, Rumänisch und Polnisch sind die Bildschirmsprache und die Hilfe des Portals; der Text der Organisation bleibt dann in der Sprache, in der er geschrieben wurde.",
+                    "Meldungen, Aufgaben, Mitteilungen und Dokumente werden in diese sechs Sprachen übersetzt, wenn Sie unter Einstellungen, Ihre Organisation, Übersetzungen an einschalten. Standard ist aus, dann bleibt der Text in der Sprache, in der Sie ihn geschrieben haben. Portugiesisch, Rumänisch und Polnisch sind die Bildschirmsprache und die Hilfe des Portals; der Text der Organisation bleibt dann in der Sprache, in der er geschrieben wurde.",
                     "Die Übersetzung nutzt lokale KI. Dafür gehen die Texte nicht in eine externe KI-Cloud.",
                     "Übersetzungen werden in der Regel täglich verarbeitet, ohne feste Durchlaufzeit. Die Verwaltung kann sie selbst korrigieren."
                 ]

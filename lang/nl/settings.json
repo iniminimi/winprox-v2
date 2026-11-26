@@ -8,6 +8,8 @@
         "modal_title": "Gegevens organisatie",
         "modal_hint": "Deze gegevens verschijnen onder meer op afgedrukte QR-codes, unitlabels en ander meldergericht materiaal.",
         "card_hint": "Deze gegevens verschijnen onder meer op afgedrukte QR-codes en unitlabels.",
+        "translations_label": "Vertalingen aan",
+        "translations_hint": "Standaard uit. Aan: WinProx vertaalt namen en teksten naar de andere talen. Uit: alles blijft in de taal waarin u het schrijft.",
         "photo_album_label": "Fotoalbum",
         "photo_album_hint": "Uitvoerders maken foto's op de unit-QR. Locatie en unitnaam staan erbij. In Fotoalbum mailt u die naar een adres. De bestanden worden na een week gewist.",
         "label_email": "E-mail",

@@ -4,7 +4,6 @@
         "workspace": "Workspace"
     },
     "clock": "Current time",
-    "translation_enable": "Turn on translation",
     "nav": {
         "label": "Main navigation",
         "collapse": "Collapse menu",

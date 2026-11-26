@@ -557,14 +557,25 @@ it('staat teambeheer-rollen correct toe (admin alles, medewerker enkel inhoud)',
         ->and(Gate::forUser($employee)->allows('update', $team))->toBeTrue();
 });
 
-it('zet geen teamvertaling klaar zolang het vinkje uit staat', function () {
+it('zet geen teamvertaling klaar zolang de organisatie die uit heeft', function () {
     [$tenant, $admin] = tenantWithAdmin();
+    $tenant->update(['translations_enabled' => false]);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->assertSee(__('settings.org.translations_label'))
+        ->assertSet('translationsEnabled', false)
+        ->set('translationsEnabled', true);
+
+    expect($tenant->fresh()->translationsEnabled())->toBeTrue();
+
+    $tenant->refresh()->update(['translations_enabled' => false]);
+
+    expect($tenant->fresh()->translationsEnabled())->toBeFalse();
 
     Livewire::actingAs($admin)
         ->test(Team::class)
         ->call('openCreateTeam')
-        ->assertSee(__('common.translation_enable'))
-        ->assertSet('teamTranslationEnabled', false)
         ->set('teamName', 'Creche')
         ->call('saveTeam')
         ->assertHasNoErrors();
@@ -573,11 +584,12 @@ it('zet geen teamvertaling klaar zolang het vinkje uit staat', function () {
     expect($team)->not->toBeNull()
         ->and(InternalTeamTranslation::query()->where('internal_team_id', $team->id)->count())->toBe(0);
 
+    $tenant->update(['translations_enabled' => true]);
+
     Livewire::actingAs($admin)
         ->test(Team::class)
         ->call('openCreateTeam')
         ->set('teamName', 'Hotel')
-        ->set('teamTranslationEnabled', true)
         ->call('saveTeam')
         ->assertHasNoErrors();
 

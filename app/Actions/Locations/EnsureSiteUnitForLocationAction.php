@@ -85,6 +85,10 @@ class EnsureSiteUnitForLocationAction
 
     private function fillTranslations(Unit $unit): void
     {
+        if (! \App\Models\Tenant::translationsEnabledFor((int) $unit->tenant_id)) {
+            return;
+        }
+
         $sourceLocale = LocaleSupport::normalize($unit->original_language) ?? SiteUnitCatalog::SOURCE_LOCALE;
 
         foreach (SiteUnitCatalog::namesByLocale() as $locale => $translatedName) {

@@ -20,8 +20,6 @@ class Announcements extends Component
 
     public bool $showCreateModal = false;
 
-    public bool $translationEnabled = false;
-
     public bool $showEditModal = false;
 
     public ?int $editingAnnouncementId = null;
@@ -71,7 +69,6 @@ class Announcements extends Component
         $this->unitId = '';
         $this->isActive = true;
         $this->expiresAt = '';
-        $this->translationEnabled = false;
         $this->showCreateModal = true;
     }
 
@@ -93,7 +90,6 @@ class Announcements extends Component
         $this->isActive = (bool) $announcement->is_active;
         $this->expiresAt = $announcement->expires_at?->format('Y-m-d') ?? '';
         $this->previewLocale = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
-        $this->translationEnabled = false;
         $this->showEditModal = true;
     }
 
@@ -123,7 +119,7 @@ class Announcements extends Component
                 'is_active' => (bool) $validated['isActive'],
                 'expires_at' => $validated['expiresAt'] ?: null,
                 'original_language' => auth()->user()?->locale,
-            ], $tenantId, (int) auth()->id(), $this->translationEnabled);
+            ], $tenantId, (int) auth()->id());
         } catch (InvalidArgumentException $e) {
             if ($e->getMessage() === 'announcement_unit_limit_exceeded') {
                 $this->addError('unitId', __('locations.announcements.errors.unit_limit'));
@@ -159,7 +155,7 @@ class Announcements extends Component
                 'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
                 'is_active' => (bool) $validated['isActive'],
                 'expires_at' => $validated['expiresAt'] ?: null,
-            ], $tenantId, (int) auth()->id(), $this->translationEnabled);
+            ], $tenantId, (int) auth()->id());
         } catch (InvalidArgumentException $e) {
             if ($e->getMessage() === 'announcement_unit_limit_exceeded') {
                 $this->addError('unitId', __('locations.announcements.errors.unit_limit'));

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\DocumentTranslationStatus;
 use App\Models\Document;
 use App\Models\DocumentTranslation;
@@ -13,6 +14,10 @@ class InvalidateDocumentTranslationsOnSourceChangeAction
 
     public function handle(Document $document, string $previousDescription, ?int $actorUserId = null): void
     {
+        if (! Tenant::translationsEnabledFor((int) $document->tenant_id)) {
+            return;
+        }
+
         if (trim($previousDescription) === trim((string) $document->description)) {
             return;
         }

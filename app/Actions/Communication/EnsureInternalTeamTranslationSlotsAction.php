@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\InternalTeamTranslationStatus;
 use App\Models\InternalTeam;
 use App\Models\InternalTeamTranslation;
@@ -11,6 +12,10 @@ class EnsureInternalTeamTranslationSlotsAction
 {
     public function handle(InternalTeam $team): void
     {
+        if (! Tenant::translationsEnabledFor((int) $team->tenant_id)) {
+            return;
+        }
+
         if (! $team->is_active || trim((string) $team->name) === '') {
             return;
         }

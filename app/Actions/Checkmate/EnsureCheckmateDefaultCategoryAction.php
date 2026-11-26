@@ -60,6 +60,10 @@ class EnsureCheckmateDefaultCategoryAction
 
     private function fillTranslations(Category $category): void
     {
+        if (! \App\Models\Tenant::translationsEnabledFor((int) $category->tenant_id)) {
+            return;
+        }
+
         $sourceLocale = LocaleSupport::normalize($category->original_language)
             ?? CheckmateDefaultCategoryCatalog::SOURCE_LOCALE;
 

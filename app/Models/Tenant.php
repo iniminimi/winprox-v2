@@ -68,6 +68,7 @@ class Tenant extends Model
         'work_menu_issues_tasks_enabled',
         'work_menu_unit_measurements_enabled',
         'photo_album_enabled',
+        'translations_enabled',
         'employees_may_manage_locations',
         'employees_may_view_other_presence',
         'starter_pack_key',
@@ -112,6 +113,7 @@ class Tenant extends Model
             'work_menu_issues_tasks_enabled' => 'boolean',
             'work_menu_unit_measurements_enabled' => 'boolean',
             'photo_album_enabled' => 'boolean',
+            'translations_enabled' => 'boolean',
             'employees_may_manage_locations' => 'boolean',
             'employees_may_view_other_presence' => 'boolean',
             'starter_pack_applied_at' => 'datetime',
@@ -432,6 +434,21 @@ class Tenant extends Model
     public function employeesMayViewOtherLocationsPresence(): bool
     {
         return (bool) $this->employees_may_view_other_presence;
+    }
+
+    /** Automatische vertaling voor de hele organisatie. Standaard uit. */
+    public function translationsEnabled(): bool
+    {
+        return (bool) $this->translations_enabled;
+    }
+
+    public static function translationsEnabledFor(int $tenantId): bool
+    {
+        if ($tenantId < 1) {
+            return false;
+        }
+
+        return (bool) static::query()->whereKey($tenantId)->first()?->translations_enabled;
     }
 
     /** Fotoalbum voor de hele organisatie. Nooit in Checkmate. */

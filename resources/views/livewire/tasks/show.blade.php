@@ -140,9 +140,8 @@
                         @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 
-                    <x-wp-translation-toggle wire-model="taskTranslationEnabled" />
 
-                    @if ($taskTranslationEnabled && filled(trim((string) ($task->description ?? ''))))
+                    @if (auth()->user()?->tenant?->translationsEnabled() && filled(trim((string) ($task->description ?? ''))))
                         <div class="wp-field" x-data="{ open: false }">
                             <span class="wp-label">{{ __('tasks.translation_edit.label') }}</span>
 

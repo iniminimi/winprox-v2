@@ -365,7 +365,7 @@
                 },
                 {
                     "label": "Location translations",
-                    "text": "Tick Turn on translation if you also want the name in other languages. That is off by default.<br><br>WinProx then translates location names automatically into the available languages.<br><br>Is a translation wrong or missing? You can adjust the name yourself in the edit form.<br><br>You can set the name per language: Dutch, English, French, German, Spanish and Italian.<br><br>Select the language, enter the correct name and save. Your adjusted translation then becomes the fixed name for that language."
+                    "text": "Turn Translations on under Settings → Your organisation if you also want the name in other languages. That is off by default.<br><br>WinProx then translates location names automatically into the available languages.<br><br>Is a translation wrong or missing? You can adjust the name yourself in the edit form.<br><br>You can set the name per language: Dutch, English, French, German, Spanish and Italian.<br><br>Select the language, enter the correct name and save. Your adjusted translation then becomes the fixed name for that language."
                 }
             ]
         },
@@ -378,7 +378,7 @@
                 },
                 {
                     "label": "The name in other languages",
-                    "text": "Tick Turn on translation if you also want the name in other languages. That is off by default.<br><br>WinProx then translates the category name automatically into the available languages.<br><br>Is a translation wrong or missing? You can correct it yourself in the category form. Select the language, enter the right name and save. Your corrected translation then becomes the fixed name for that language."
+                    "text": "Turn Translations on under Settings → Your organisation if you also want the name in other languages. That is off by default.<br><br>WinProx then translates the category name automatically into the available languages.<br><br>Is a translation wrong or missing? You can correct it yourself in the category form. Select the language, enter the right name and save. Your corrected translation then becomes the fixed name for that language."
                 },
                 {
                     "label": "What happens on the QR page?",
@@ -643,7 +643,7 @@
                 },
                 {
                     "label": "Team name in other languages",
-                    "text": "Tick Turn on translation if you also want the name in other languages. That is off by default.<br><br>WinProx then translates the team name automatically into the available languages: Dutch, English, French, German, Spanish and Italian.<br><br>Is a translation wrong or missing? You can correct it yourself:<br>1. Open the team form.<br>2. Choose the language.<br>3. Enter the name you want.<br>4. Save.<br><br>Your corrected translation then becomes the fixed name for that language."
+                    "text": "Turn Translations on under Settings → Your organisation if you also want the name in other languages. That is off by default.<br><br>WinProx then translates the team name automatically into the available languages: Dutch, English, French, German, Spanish and Italian.<br><br>Is a translation wrong or missing? You can correct it yourself:<br>1. Open the team form.<br>2. Choose the language.<br>3. Enter the name you want.<br>4. Save.<br><br>Your corrected translation then becomes the fixed name for that language."
                 },
                 {
                     "label": "Workers",
@@ -844,6 +844,11 @@
                 {
                     "label": "Your organisation",
                     "text": "Here you find the settings and details that belong to your organisation."
+                },
+                {
+                    "label": "Translations",
+                    "nested": true,
+                    "text": "Only an administrator can turn this on. The setting applies at once and is off by default.<br><br>• Off: names and texts stay in the language you write them in. Nothing is queued for translation.<br>• On: WinProx translates names and texts into the other languages. Existing texts are queued too."
                 },
                 {
                     "label": "Organisation details",

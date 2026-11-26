@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\UnitTranslationStatus;
 use App\Models\Unit;
 use App\Models\UnitTranslation;
@@ -11,6 +12,10 @@ class EnsureUnitTranslationSlotsAction
 {
     public function handle(Unit $unit): void
     {
+        if (! Tenant::translationsEnabledFor((int) $unit->tenant_id)) {
+            return;
+        }
+
         if (! $unit->is_active) {
             return;
         }

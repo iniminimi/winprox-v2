@@ -339,7 +339,7 @@
                 "items": [
                     "Gestione e sito: olandese, inglese, francese, tedesco, spagnolo e italiano.",
                     "Il portale degli operatori (Clock Point e QR) usa quelle sei lingue, più portoghese, rumeno e polacco. In seguito si possono aggiungere altre lingue al portale, senza allargare gestione o sito.",
-                    "Segnalazioni, attività, annunci e documenti sono tradotti in quelle sei lingue se spuntate Attiva la traduzione. Senza quella casella il testo resta nella lingua in cui lo avete scritto. Portoghese, rumeno e polacco sono la lingua a schermo e l’aiuto del portale; il testo dell’organizzazione resta allora nella lingua in cui è stato scritto.",
+                    "Segnalazioni, attività, annunci e documenti sono tradotti in quelle sei lingue se attivate Traduzioni attive in Impostazioni, La Sua organizzazione. È disattivato per impostazione predefinita e il testo resta nella lingua in cui lo avete scritto. Portoghese, rumeno e polacco sono la lingua a schermo e l’aiuto del portale; il testo dell’organizzazione resta allora nella lingua in cui è stato scritto.",
                     "La traduzione usa IA locale. Per questo, i testi non vanno a un cloud di IA esterno.",
                     "Le traduzioni si elaborano di solito ogni giorno, senza un tempo fisso. La gestione può correggerle da sé."
                 ]

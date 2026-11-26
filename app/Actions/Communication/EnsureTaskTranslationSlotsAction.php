@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\TaskTranslationStatus;
 use App\Models\Task;
 use App\Models\TaskTranslation;
@@ -11,6 +12,10 @@ class EnsureTaskTranslationSlotsAction
 {
     public function handle(Task $task): void
     {
+        if (! Tenant::translationsEnabledFor((int) $task->tenant_id)) {
+            return;
+        }
+
         if (! filled(trim((string) ($task->description ?? '')))) {
             return;
         }

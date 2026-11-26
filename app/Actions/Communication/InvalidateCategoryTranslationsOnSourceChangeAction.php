@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\CategoryTranslationStatus;
 use App\Models\Category;
 use App\Models\CategoryTranslation;
@@ -13,6 +14,10 @@ class InvalidateCategoryTranslationsOnSourceChangeAction
 
     public function handle(Category $category, string $previousName, ?int $actorUserId = null): void
     {
+        if (! Tenant::translationsEnabledFor((int) $category->tenant_id)) {
+            return;
+        }
+
         if (trim($previousName) === trim((string) $category->name)) {
             return;
         }

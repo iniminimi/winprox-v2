@@ -14,6 +14,7 @@ class ExportPendingCategoryTranslationsAction
     {
         return CategoryTranslation::query()
             ->where('status', CategoryTranslationStatus::Pending)
+            ->whereHas('category.tenant', fn ($query) => $query->where('translations_enabled', true))
             ->whereHas('category', fn ($query) => $query->where('name', '!=', ''))
             ->with('category')
             ->orderBy('category_id')

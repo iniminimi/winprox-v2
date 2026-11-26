@@ -6,6 +6,7 @@ use App\Actions\Qr\RenderBrandedQrStickerPreviewAction;
 use App\Actions\Settings\UpdateTenantEmployeesMayManageLocationsAction;
 use App\Actions\Settings\UpdateTenantEmployeesMayViewOtherPresenceAction;
 use App\Actions\Settings\UpdateTenantPhotoAlbumAction;
+use App\Actions\Settings\UpdateTenantTranslationsAction;
 use App\Actions\Settings\UpdateUserNotifyOnNewIssueEmailAction;
 use App\Actions\Settings\UpdateUserUiThemeAction;
 use App\Data\Qr\BrandedQrStickerPreviewData;
@@ -122,6 +123,8 @@ class Settings extends Component
 
     public bool $photoAlbumEnabled = false;
 
+    public bool $translationsEnabled = false;
+
     public bool $employeesMayManageLocations = false;
 
     public bool $employeesMayViewOtherLocationsPresence = false;
@@ -198,6 +201,7 @@ class Settings extends Component
         $this->uiTheme = $user->uiThemeEnum()->value;
         $this->notifyOnNewIssueEmail = (bool) $user->notify_on_new_issue_email;
         $this->photoAlbumEnabled = (bool) $tenant->photo_album_enabled;
+        $this->translationsEnabled = $tenant->translationsEnabled();
         $this->employeesMayManageLocations = $tenant->employeesMayManageLocations();
         $this->employeesMayViewOtherLocationsPresence = $tenant->employeesMayViewOtherLocationsPresence();
 
@@ -1088,6 +1092,19 @@ class Settings extends Component
         }
 
         $this->photoAlbumEnabled = (bool) $updated->photo_album_enabled;
+    }
+
+    public function updatedTranslationsEnabled(bool $value, UpdateTenantTranslationsAction $update): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $updated = $update->handle($tenant, $value, (int) auth()->id());
+        $this->translationsEnabled = $updated->translationsEnabled();
     }
 
     public function loadConfigOverview(AdminHealthService $healthService): void

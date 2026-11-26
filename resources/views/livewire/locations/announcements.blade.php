@@ -53,7 +53,6 @@
                     <x-wp-modal-close wire:click="closeCreateModal" />
                 </div>
                 <p class="wp-muted">{{ __('locations.announcements.modal_subtitle') }}</p>
-                <x-wp-translation-toggle wire-model="translationEnabled" />
 
                 <div class="wp-field">
                     <span class="wp-label">{{ __('locations.announcements.description') }}</span>
@@ -107,7 +106,6 @@
                     <x-wp-modal-close wire:click="closeEditModal" />
                 </div>
 
-                <x-wp-translation-toggle wire-model="translationEnabled" />
 
                 <div class="wp-field">
                     <span class="wp-label">{{ __('locations.announcements.description') }}</span>
@@ -122,7 +120,7 @@
                     </div>
                 </div>
 
-                @if ($translationEnabled && $editingAnnouncement?->is_active)
+                @if (auth()->user()?->tenant?->translationsEnabled() && $editingAnnouncement?->is_active)
                     <div class="wp-card wp-card-pad wp-surface-muted wp-stack-tight">
                         <div class="wp-cluster wp-issue-description-row">
                             <span class="wp-label">{{ __('locations.announcements.translation_preview') }}</span>

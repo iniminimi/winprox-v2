@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\IssueTranslationStatus;
 use App\Models\Issue;
 use App\Support\Translation\LocaleSupport;
@@ -11,6 +12,10 @@ class EnsureIssueTranslationSlotsAction
 {
     public function handle(Issue $issue): void
     {
+        if (! Tenant::translationsEnabledFor((int) $issue->tenant_id)) {
+            return;
+        }
+
         if (! $issue->isApproved() || trim((string) $issue->description) === '') {
             return;
         }

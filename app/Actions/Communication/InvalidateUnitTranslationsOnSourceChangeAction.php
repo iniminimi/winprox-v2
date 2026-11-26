@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\UnitTranslationStatus;
 use App\Models\Unit;
 use App\Models\UnitTranslation;
@@ -13,6 +14,10 @@ class InvalidateUnitTranslationsOnSourceChangeAction
 
     public function handle(Unit $unit, string $previousName, ?string $previousDescription, ?int $actorUserId = null): void
     {
+        if (! Tenant::translationsEnabledFor((int) $unit->tenant_id)) {
+            return;
+        }
+
         $nameChanged = trim($previousName) !== trim((string) $unit->name);
         $descriptionChanged = trim((string) $previousDescription) !== trim((string) ($unit->description ?? ''));
 

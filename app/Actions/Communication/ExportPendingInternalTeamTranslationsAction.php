@@ -14,6 +14,7 @@ class ExportPendingInternalTeamTranslationsAction
     {
         return InternalTeamTranslation::query()
             ->where('status', InternalTeamTranslationStatus::Pending)
+            ->whereHas('team.tenant', fn ($query) => $query->where('translations_enabled', true))
             ->whereHas('team', fn ($query) => $query
                 ->where('is_active', true)
                 ->where('name', '!=', ''))

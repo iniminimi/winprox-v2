@@ -238,9 +238,8 @@
                 <div class="wp-modal-body wp-stack">
                     @include('livewire.locations.partials.location-form-fields')
 
-                    <x-wp-translation-toggle wire-model="locationTranslationEnabled" />
 
-                    @if ($editingLocationId && $editingLocation?->is_active && $locationTranslationEnabled)
+                    @if ($editingLocationId && $editingLocation?->is_active && auth()->user()?->tenant?->translationsEnabled())
                         <div class="wp-field" x-data="{ open: false }">
                             <span class="wp-label">{{ __('locations.translation_edit.label') }}</span>
 
@@ -315,9 +314,8 @@
                     @error('categoryName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
 
-                <x-wp-translation-toggle wire-model="categoryTranslationEnabled" />
 
-                @if ($editingCategoryId !== null && $categoryTranslationEnabled)
+                @if ($editingCategoryId !== null && auth()->user()?->tenant?->translationsEnabled())
                     <div class="wp-field" x-data="{ open: false }">
                         <span class="wp-label">{{ __('locations.categories.translation_edit.label') }}</span>
 

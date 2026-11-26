@@ -47,9 +47,7 @@ class Show extends Component
 
     public bool $showAddTaskModal = false;
 
-    public bool $taskTranslationEnabled = false;
-
-    public bool $showEditTaskModal = false;
+        public bool $showEditTaskModal = false;
 
     public bool $showCloseModal = false;
 
@@ -282,7 +280,6 @@ class Show extends Component
         $this->taskNote = trim((string) $this->issue->description);
         $this->taskScheduledFor = $this->issue->recurrence_next_due_at?->format('Y-m-d');
         $this->taskPriority = 'prio_3';
-        $this->taskTranslationEnabled = false;
 
         $this->resetValidation();
         $this->showAddTaskModal = true;
@@ -320,7 +317,6 @@ class Show extends Component
         $task->loadMissing('translations');
         $this->taskPreviewLocale = $this->defaultTranslationLocaleForTask($task);
         $this->hydrateTaskTranslationInput($task);
-        $this->taskTranslationEnabled = false;
 
         $this->resetValidation();
         $this->showEditTaskModal = true;
@@ -461,7 +457,6 @@ class Show extends Component
             $validated['taskScheduledFor'] ?? null,
             $this->issue->tenant_id,
             (int) auth()->id(),
-            $this->taskTranslationEnabled,
         );
 
         $this->closeEditTaskModal();
@@ -508,7 +503,6 @@ class Show extends Component
             description: $validated['taskNote'],
             extra: $extra,
             assignedWorkerId: isset($validated['assignedWorkerId']) ? (int) $validated['assignedWorkerId'] : null,
-            translate: $this->taskTranslationEnabled,
         );
 
         $this->closeAddTaskModal();

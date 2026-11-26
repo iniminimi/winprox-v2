@@ -14,6 +14,7 @@ class ExportPendingDocumentTranslationsAction
     {
         return DocumentTranslation::query()
             ->where('status', DocumentTranslationStatus::Pending)
+            ->whereHas('document.tenant', fn ($query) => $query->where('translations_enabled', true))
             ->whereHas('document', fn ($query) => $query->where('is_active', true))
             ->with('document')
             ->orderBy('document_id')

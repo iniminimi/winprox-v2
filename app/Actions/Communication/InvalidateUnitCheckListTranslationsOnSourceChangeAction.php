@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\UnitCheckListTranslationStatus;
 use App\Models\UnitCheckList;
 use App\Models\UnitCheckListTranslation;
@@ -20,6 +21,10 @@ class InvalidateUnitCheckListTranslationsOnSourceChangeAction
         array $previousItems,
         ?int $actorUserId = null,
     ): void {
+        if (! Tenant::translationsEnabledFor((int) $list->tenant_id)) {
+            return;
+        }
+
         $nameChanged = trim($previousName) !== trim((string) $list->name);
         $itemsChanged = $previousItems !== $list->sourceItemLabels();
 

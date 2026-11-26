@@ -14,6 +14,7 @@ class ExportPendingTaskTranslationsAction
     {
         return TaskTranslation::query()
             ->where('status', TaskTranslationStatus::Pending)
+            ->whereHas('task.tenant', fn ($query) => $query->where('translations_enabled', true))
             ->whereHas('task', fn ($query) => $query->whereNotNull('description')->where('description', '!=', ''))
             ->with('task')
             ->orderBy('task_id')

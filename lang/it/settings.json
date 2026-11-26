@@ -8,6 +8,8 @@
         "modal_title": "Dati organizzazione",
         "modal_hint": "Questi dati compaiono sui codici QR stampati, sulle etichette unità e altri materiali rivolti ai reporter.",
         "card_hint": "Questi dati compaiono sui codici QR stampati e sulle etichette unità.",
+        "translations_label": "Traduzioni attive",
+        "translations_hint": "Disattivato per impostazione predefinita. Attivo: WinProx traduce nomi e testi nelle altre lingue. Disattivato: tutto resta nella lingua in cui lo avete scritto.",
         "photo_album_label": "Album foto",
         "photo_album_hint": "Gli esecutori scattano foto sul QR dell'unità. La sede e il nome dell'unità sono indicati. In Album foto le invia a un indirizzo. I file vengono cancellati dopo una settimana.",
         "label_email": "E-mail",

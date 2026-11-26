@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\TaskTranslationStatus;
 use App\Models\Task;
 use App\Models\TaskTranslation;
@@ -13,6 +14,10 @@ class InvalidateTaskTranslationsOnSourceChangeAction
 
     public function handle(Task $task, ?string $previousDescription, ?int $actorUserId = null): void
     {
+        if (! Tenant::translationsEnabledFor((int) $task->tenant_id)) {
+            return;
+        }
+
         $descriptionChanged = trim((string) $previousDescription) !== trim((string) ($task->description ?? ''));
 
         if (! $descriptionChanged) {

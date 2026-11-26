@@ -14,6 +14,8 @@ class TenantFactory extends Factory
     {
         return [
             'name' => fake()->company(),
+            // Productiestandaard is uit. Tests houden de vertaalpijplijn aan.
+            'translations_enabled' => true,
         ];
     }
 }

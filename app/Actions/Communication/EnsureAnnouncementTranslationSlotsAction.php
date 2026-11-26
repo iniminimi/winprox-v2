@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\AnnouncementTranslationStatus;
 use App\Models\Announcement;
 use App\Models\AnnouncementTranslation;
@@ -11,6 +12,10 @@ class EnsureAnnouncementTranslationSlotsAction
 {
     public function handle(Announcement $announcement): void
     {
+        if (! Tenant::translationsEnabledFor((int) $announcement->tenant_id)) {
+            return;
+        }
+
         if (! $announcement->is_active || trim((string) $announcement->description) === '') {
             return;
         }

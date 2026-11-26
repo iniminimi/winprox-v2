@@ -143,6 +143,20 @@
                     @endif
                 @endif
 
+                @if ($canManageOrganisation)
+                    <div class="wp-settings-subblock">
+                        <h3 class="wp-settings-subblock-title">{{ __('settings.org.translations_label') }}</h3>
+                        <label class="wp-switch wp-check--boxed">
+                            <input type="checkbox" wire:model.live="translationsEnabled">
+                            <span class="wp-switch__track" aria-hidden="true"></span>
+                            <span>
+                                {{ __('settings.org.translations_label') }}
+                                <br><span class="wp-hint">{{ __('settings.org.translations_hint') }}</span>
+                            </span>
+                        </label>
+                    </div>
+                @endif
+
                 @if ($canManageOrganisation && ! ($checkmateMode ?? false))
                     <div class="wp-settings-subblock">
                         <h3 class="wp-settings-subblock-title">{{ __('settings.org.photo_album_label') }}</h3>

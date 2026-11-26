@@ -79,9 +79,7 @@ class Index extends Component
 
     public ?int $editingLocationId = null;
 
-    public bool $locationTranslationEnabled = false;
-
-    public string $locationFormName = '';
+        public string $locationFormName = '';
 
     public string $locationFormStreet = '';
 
@@ -114,9 +112,7 @@ class Index extends Component
 
     public ?int $editingCategoryId = null;
 
-    public bool $categoryTranslationEnabled = false;
-
-    public string $categoryName = '';
+        public string $categoryName = '';
 
     public bool $categoryAllowGpsLocation = false;
 
@@ -181,7 +177,6 @@ class Index extends Component
         $location = Location::findOrFail($locationId);
         $this->authorize('manage', $location);
 
-        $this->locationTranslationEnabled = false;
         $this->editingLocationId = $location->id;
         $this->locationFormName = (string) $location->name;
         $this->locationFormStreet = (string) ($location->street ?? $location->address ?? '');
@@ -326,7 +321,7 @@ class Index extends Component
             $validated = StoreLocationRequest::validatePayload($payload, requireName: true);
             $validated['original_language'] = auth()->user()?->locale;
             try {
-                $createLocation->handle($validated, (int) auth()->user()->tenant_id, (int) auth()->id(), $this->locationTranslationEnabled);
+                $createLocation->handle($validated, (int) auth()->user()->tenant_id, (int) auth()->id());
             } catch (InvalidArgumentException $e) {
                 if ($e->getMessage() === 'location_limit_exceeded') {
                     $this->addError('locationFormName', __('locations.errors.location_limit'));
@@ -346,7 +341,7 @@ class Index extends Component
             $location = Location::findOrFail($this->editingLocationId);
             $this->authorize('manage', $location);
             $validated = UpdateLocationRequest::validatePayload($payload, requireName: true);
-            $updateLocation->handle($location, $validated, (int) auth()->id(), $this->locationTranslationEnabled);
+            $updateLocation->handle($location, $validated, (int) auth()->id());
             session()->flash('success', __('locations.flash.updated'));
         }
 
@@ -565,7 +560,7 @@ class Index extends Component
     {
         $this->reset([
             'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'locationFormDdt', 'locationFormLatitude', 'locationFormLongitude', 'locationFormCustomerId', 'editingLocationId',
-            'locationPreviewLocale', 'locationTranslationName', 'locationTranslationEnabled',
+            'locationPreviewLocale', 'locationTranslationName',
         ]);
         $this->editingLocationId = null;
         $this->locationFormCountryCode = 'BE';
@@ -634,7 +629,6 @@ class Index extends Component
     {
         $category = Category::query()->findOrFail($categoryId);
         $this->authorize('view', $category);
-        $this->categoryTranslationEnabled = false;
         $this->editingCategoryId = (int) $category->id;
         $this->categoryName = (string) $category->name;
         $this->categoryAllowGpsLocation = (bool) $category->allow_gps_location;
@@ -761,7 +755,7 @@ class Index extends Component
                 'require_reporter_email_verification' => (bool) $validated['categoryRequireReporterEmailVerification'],
                 'show_previous_issues' => (bool) $validated['categoryShowPreviousIssues'],
                 'original_language' => auth()->user()?->locale,
-            ], (int) auth()->id(), $this->categoryTranslationEnabled);
+            ], (int) auth()->id());
         } else {
             $category = Category::query()->findOrFail($this->editingCategoryId);
             $updateCategory->handle($category, [
@@ -773,7 +767,7 @@ class Index extends Component
                 'require_reporter_contact' => (bool) $validated['categoryRequireReporterContact'],
                 'require_reporter_email_verification' => (bool) $validated['categoryRequireReporterEmailVerification'],
                 'show_previous_issues' => (bool) $validated['categoryShowPreviousIssues'],
-            ], (int) auth()->id(), $this->categoryTranslationEnabled);
+            ], (int) auth()->id());
         }
 
         $this->authorize('syncTeams', $category);
@@ -863,7 +857,6 @@ class Index extends Component
         $this->selectedCategoryTeamIds = [];
         $this->categoryPreviewLocale = '';
         $this->categoryTranslationName = '';
-        $this->categoryTranslationEnabled = false;
     }
 
     private function hydrateCategoryTranslationInput(?Category $category): void

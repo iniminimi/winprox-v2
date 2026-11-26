@@ -21,7 +21,6 @@
             </div>
         @endif
 
-        <x-wp-translation-toggle wire-model="translationEnabled" />
 
         @if (($favoriteRounds ?? collect())->isNotEmpty())
             <div class="wp-field">

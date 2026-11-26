@@ -365,7 +365,7 @@
                 },
                 {
                     "label": "Traducciones de la ubicación",
-                    "text": "Marque Activar la traducción si también quiere el nombre en otros idiomas. Está desmarcado por defecto.<br><br>WinProx traduce entonces automáticamente los nombres de ubicación a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede ajustar el nombre usted mismo en el formulario de edición.<br><br>Puede fijar el nombre por idioma: neerlandés, inglés, francés, alemán, español e italiano.<br><br>Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción ajustada pasa a ser el nombre fijo de ese idioma."
+                    "text": "Active Traducciones activadas en Ajustes → Su organización si también quiere el nombre en otros idiomas. Está desactivado por defecto.<br><br>WinProx traduce entonces automáticamente los nombres de ubicación a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede ajustar el nombre usted mismo en el formulario de edición.<br><br>Puede fijar el nombre por idioma: neerlandés, inglés, francés, alemán, español e italiano.<br><br>Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción ajustada pasa a ser el nombre fijo de ese idioma."
                 }
             ]
         },
@@ -378,7 +378,7 @@
                 },
                 {
                     "label": "El nombre en otros idiomas",
-                    "text": "Marque Activar la traducción si también quiere el nombre en otros idiomas. Está desmarcado por defecto.<br><br>WinProx traduce entonces el nombre de la categoría automáticamente a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo en el formulario de la categoría. Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción corregida pasa a ser el nombre fijo de ese idioma."
+                    "text": "Active Traducciones activadas en Ajustes → Su organización si también quiere el nombre en otros idiomas. Está desactivado por defecto.<br><br>WinProx traduce entonces el nombre de la categoría automáticamente a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo en el formulario de la categoría. Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción corregida pasa a ser el nombre fijo de ese idioma."
                 },
                 {
                     "label": "¿Qué ocurre en la página QR?",
@@ -643,7 +643,7 @@
                 },
                 {
                     "label": "Nombre del equipo en otros idiomas",
-                    "text": "Marque Activar la traducción si también quiere el nombre en otros idiomas. Está desmarcado por defecto.<br><br>WinProx traduce entonces el nombre del equipo automáticamente a los idiomas disponibles: neerlandés, inglés, francés, alemán, español e italiano.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo:<br>1. Abra el formulario del equipo.<br>2. Elija el idioma.<br>3. Escriba el nombre que desea.<br>4. Guarde.<br><br>Su traducción corregida pasa a ser el nombre fijo de ese idioma."
+                    "text": "Active Traducciones activadas en Ajustes → Su organización si también quiere el nombre en otros idiomas. Está desactivado por defecto.<br><br>WinProx traduce entonces el nombre del equipo automáticamente a los idiomas disponibles: neerlandés, inglés, francés, alemán, español e italiano.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo:<br>1. Abra el formulario del equipo.<br>2. Elija el idioma.<br>3. Escriba el nombre que desea.<br>4. Guarde.<br><br>Su traducción corregida pasa a ser el nombre fijo de ese idioma."
                 },
                 {
                     "label": "Operarios",
@@ -844,6 +844,11 @@
                 {
                     "label": "Su organización",
                     "text": "Aquí encuentra los ajustes y los datos de su organización."
+                },
+                {
+                    "label": "Traducciones",
+                    "nested": true,
+                    "text": "Solo un administrador puede activarlo. El ajuste se aplica al momento y está desactivado por defecto.<br><br>• Desactivado: los nombres y los textos permanecen en el idioma en que los escribe. No se prepara ninguna traducción.<br>• Activado: WinProx traduce nombres y textos a los otros idiomas. Los textos existentes también entran en la cola."
                 },
                 {
                     "label": "Datos de la organización",

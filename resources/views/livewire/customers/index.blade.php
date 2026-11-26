@@ -282,7 +282,6 @@
                 </div>
 
                 <div class="wp-modal-body wp-stack">
-                    <x-wp-translation-toggle wire-model="locationTranslationEnabled" />
                     <div class="wp-field">
                         <x-wp-tooltip :text="__('customers.location_form.maps_tooltip')" wrap class="wp-tooltip--below">
                             <label class="wp-label" for="locationFormName">{{ __('customers.location_form.name') }}</label>

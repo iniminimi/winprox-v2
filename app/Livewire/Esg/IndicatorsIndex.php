@@ -24,8 +24,6 @@ class IndicatorsIndex extends Component
 
     public bool $showModal = false;
 
-    public bool $translationEnabled = false;
-
     public ?int $editingIndicatorId = null;
 
     public string $name = '';
@@ -62,7 +60,6 @@ class IndicatorsIndex extends Component
     {
         $indicator = EsgIndicator::query()->findOrFail($indicatorId);
         $this->authorize('update', $indicator);
-        $this->translationEnabled = false;
 
         $this->editingIndicatorId = (int) $indicator->id;
         $this->name = (string) $indicator->name;
@@ -144,12 +141,12 @@ class IndicatorsIndex extends Component
             $create->handle($tenantId, [
                 ...$payload,
                 'original_language' => auth()->user()?->locale ?? app()->getLocale(),
-            ], (int) auth()->id(), $this->translationEnabled);
+            ], (int) auth()->id());
             session()->flash('success', __('esg.flash.created'));
         } else {
             $indicator = EsgIndicator::query()->findOrFail($this->editingIndicatorId);
             $this->authorize('update', $indicator);
-            $update->handle($indicator, $payload, (int) auth()->id(), $this->translationEnabled);
+            $update->handle($indicator, $payload, (int) auth()->id());
             session()->flash('success', __('esg.flash.updated'));
         }
 
@@ -217,6 +214,5 @@ class IndicatorsIndex extends Component
         $this->thresholdMax = null;
         $this->choiceOptions = ['', ''];
         $this->lockedChoiceOptions = [];
-        $this->translationEnabled = false;
     }
 }

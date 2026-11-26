@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\AnnouncementTranslationStatus;
 use App\Models\Announcement;
 use App\Models\AnnouncementTranslation;
@@ -13,6 +14,10 @@ class InvalidateAnnouncementTranslationsOnSourceChangeAction
 
     public function handle(Announcement $announcement, string $previousDescription, ?int $actorUserId = null): void
     {
+        if (! Tenant::translationsEnabledFor((int) $announcement->tenant_id)) {
+            return;
+        }
+
         if (trim($previousDescription) === trim((string) $announcement->description)) {
             return;
         }

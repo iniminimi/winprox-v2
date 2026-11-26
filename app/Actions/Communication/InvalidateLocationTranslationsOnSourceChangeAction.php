@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\LocationTranslationStatus;
 use App\Models\Location;
 use App\Models\LocationTranslation;
@@ -13,6 +14,10 @@ class InvalidateLocationTranslationsOnSourceChangeAction
 
     public function handle(Location $location, string $previousName, ?int $actorUserId = null): void
     {
+        if (! Tenant::translationsEnabledFor((int) $location->tenant_id)) {
+            return;
+        }
+
         if (trim($previousName) === trim((string) $location->name)) {
             return;
         }

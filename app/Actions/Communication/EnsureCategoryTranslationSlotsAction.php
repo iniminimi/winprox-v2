@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Models\Tenant;
 use App\Enums\CategoryTranslationStatus;
 use App\Models\Category;
 use App\Models\CategoryTranslation;
@@ -11,6 +12,10 @@ class EnsureCategoryTranslationSlotsAction
 {
     public function handle(Category $category): void
     {
+        if (! Tenant::translationsEnabledFor((int) $category->tenant_id)) {
+            return;
+        }
+
         if (trim((string) $category->name) === '') {
             return;
         }

@@ -808,9 +808,8 @@
                         @error('teamName') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 
-                    <x-wp-translation-toggle wire-model="teamTranslationEnabled" />
 
-                    @if ($editingTeamId !== null && $teamTranslationEnabled)
+                    @if ($editingTeamId !== null && auth()->user()?->tenant?->translationsEnabled())
                         <div class="wp-field" x-data="{ open: false }">
                             <div class="wp-cluster">
                                 <span class="wp-label">{{ __('team.teams.translation_edit.label') }}</span>

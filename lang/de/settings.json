@@ -8,6 +8,8 @@
         "modal_title": "Organisationsdaten",
         "modal_hint": "Diese Angaben erscheinen u. a. auf gedruckten QR-Codes, Unit-Etiketten und anderem Melder-Material.",
         "card_hint": "Diese Angaben erscheinen u. a. auf gedruckten QR-Codes und Unit-Etiketten.",
+        "translations_label": "Übersetzungen an",
+        "translations_hint": "Standard ist aus. An: WinProx übersetzt Namen und Texte in die anderen Sprachen. Aus: alles bleibt in der Sprache, in der Sie es geschrieben haben.",
         "photo_album_label": "Fotoalbum",
         "photo_album_hint": "Ausführende machen Fotos über den QR-Code der Einheit. Standort und Name stehen dabei. Im Fotoalbum mailen Sie diese an eine Adresse. Die Dateien werden nach einer Woche gelöscht.",
         "label_email": "E-Mail",
