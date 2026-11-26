@@ -45,8 +45,7 @@ if [[ -f composer.lock ]] && [[ -n "$COMPOSER" ]]; then
 fi
 
 echo "==> Laravel"
-php artisan winprox:baseline-existing-schema
-php artisan migrate --force
+# Database blijft onaangeroerd. Migraties pas weer aanzetten als het schema mag wijzigen.
 php artisan schedule:clear-cache
 php artisan optimize:clear
 php artisan config:cache
