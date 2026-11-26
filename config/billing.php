@@ -13,8 +13,8 @@
  *  - Collega + prikklok-profiel = 1 licentie.
  *  - Trial = zelfde limieten als winprox_5.
  *  - Corporate: afgesproken licenties via `tenants.billing_units_cap` (superuser).
- *    Units, documenten, locaties en foto's onbeperkt.
- *  - Legacy facility_* en winprox_100 / *_time blijven in config (geen catalogus).
+ *    Documenten: 500. Units, locaties en foto's onbeperkt.
+ *  - winprox_100 / *_time blijven in config (geen catalogus).
  */
 
 $winproxShared = static function (int $seats, int $units, int $documents): array {
@@ -64,31 +64,6 @@ $winproxPlan = static function (
             'time_variant'         => null,
             'package_monthly_eur'  => $packageMonthlyEur,
         ]),
-    ];
-};
-
-$legacyFacility = static function (int $units, bool $iotEsg): array {
-    return [
-        'label_key'              => 'subscription.plans.facility_'.$units.'.name',
-        'units_limit'            => $units,
-        'locations_limit'        => null,
-        'users_limit'            => null,
-        'seats_limit'            => null,
-        'documents_org_limit'    => $units,
-        'photos_org_limit'       => null,
-        'documents_per_unit'     => null,
-        'announcements_per_unit' => null,
-        'includes_facility'      => true,
-        'time_module'            => true,
-        'esg_module'             => $iotEsg,
-        'iot_module'             => $iotEsg,
-        'api_access'             => false,
-        'csv_workers_import'     => true,
-        'csv_units_import'       => true,
-        'csv_customers_import'   => true,
-        'subscription_period_days' => 30,
-        'self_activate'          => false,
-        'public_catalog'         => false,
     ];
 };
 
@@ -150,13 +125,6 @@ return [
         'winprox_50_time'  => ['max_attempts' => 60,    'decay_seconds' => 60],
         'winprox_100'      => ['max_attempts' => 60,    'decay_seconds' => 60],
         'winprox_100_time' => ['max_attempts' => 60,    'decay_seconds' => 60],
-        'facility_10'      => ['max_attempts' => 60,    'decay_seconds' => 60],
-        'facility_25'      => ['max_attempts' => 60,    'decay_seconds' => 60],
-        'facility_50'      => ['max_attempts' => 60,    'decay_seconds' => 60],
-        'facility_100'     => ['max_attempts' => 60,    'decay_seconds' => 60],
-        'facility_250'     => ['max_attempts' => 200,   'decay_seconds' => 60],
-        'facility_500'     => ['max_attempts' => 200,   'decay_seconds' => 60],
-        'facility_1000'    => ['max_attempts' => 200,   'decay_seconds' => 60],
         'corporate'        => ['max_attempts' => 10000, 'decay_seconds' => 60],
         'checkmate'        => ['max_attempts' => 60,    'decay_seconds' => 60],
         'checkmate_trial'  => ['max_attempts' => 30,    'decay_seconds' => 60],
@@ -197,22 +165,13 @@ return [
         $winproxPlan(50, 500, 40, 349, true),
         $winproxPlan(100, 1000, 100, 0, false),
         [
-            // Legacy maandtiers — grandfather, niet in de catalogus.
-            'facility_10' => $legacyFacility(10, false),
-            'facility_25' => $legacyFacility(25, false),
-            'facility_50' => $legacyFacility(50, false),
-            'facility_100' => $legacyFacility(100, false),
-            'facility_250' => $legacyFacility(250, true),
-            'facility_500' => $legacyFacility(500, true),
-            'facility_1000' => $legacyFacility(1000, true),
-
             'corporate' => [
                 'label_key'              => 'subscription.plans.corporate.name',
                 'units_limit'            => null,
                 'locations_limit'        => null,
                 'users_limit'            => null,
                 'seats_limit'            => null,
-                'documents_org_limit'    => null,
+                'documents_org_limit'    => 500,
                 'photos_org_limit'       => null,
                 'documents_per_unit'     => null,
                 'announcements_per_unit' => null,

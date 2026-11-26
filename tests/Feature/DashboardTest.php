@@ -195,7 +195,7 @@ it('toont de proefperiode-batterijcapsule op het dashboard', function () {
 it('toont de abonnements-batterijcapsule na planactivatie', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now(),
-        'billing_plan' => 'facility_100',
+        'billing_plan' => 'winprox_10',
         'billing_active_until' => now()->addDays(29),
     ]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

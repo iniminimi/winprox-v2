@@ -287,7 +287,7 @@ it('laadt paginahulp voor werkbezoeken', function (): void {
 it('verbergt API-hulp bij unitmetingen zonder API-toegang', function (): void {
     app()->setLocale('nl');
 
-    $tenant = Tenant::factory()->create(['billing_plan' => 'facility_100', 'billing_active_until' => now()->addDays(30)]);
+    $tenant = Tenant::factory()->create(['billing_plan' => 'winprox_10', 'billing_active_until' => now()->addDays(30)]);
     Tenancy::actAs($tenant->id);
 
     $help = PageHelp::for('unit-measurements.index');

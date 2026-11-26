@@ -156,78 +156,13 @@
                 "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
-        "facility_10": {
-            "name": "10 units",
-            "price": "€99 / month",
-            "scale": "Up to 10 units and 10 documents.",
-            "features": [
-                "Time included.",
-                "No IoT, ESG or API."
-            ]
-        },
-        "facility_25": {
-            "name": "25 units",
-            "price": "€129 / month",
-            "scale": "Up to 25 units and 25 documents.",
-            "features": [
-                "Time included.",
-                "No IoT, ESG or API."
-            ]
-        },
-        "facility_50": {
-            "name": "50 units",
-            "price": "€179 / month",
-            "scale": "Up to 50 units and 50 documents.",
-            "features": [
-                "Time included.",
-                "No IoT, ESG or API."
-            ]
-        },
-        "facility_100": {
-            "name": "100 units",
-            "price": "€249 / month",
-            "scale": "Up to 100 units and 100 documents.",
-            "features": [
-                "Time included.",
-                "No IoT, ESG or API."
-            ]
-        },
-        "facility_250": {
-            "name": "250 units",
-            "price": "€399 / month",
-            "scale": "Up to 250 units and 250 documents.",
-            "features": [
-                "Time included.",
-                "IoT Connect and ESG included.",
-                "No API or webhooks."
-            ]
-        },
-        "facility_500": {
-            "name": "500 units",
-            "price": "€599 / month",
-            "scale": "Up to 500 units and 500 documents.",
-            "features": [
-                "Time included.",
-                "IoT Connect and ESG included.",
-                "No API or webhooks."
-            ]
-        },
-        "facility_1000": {
-            "name": "1,000 units",
-            "price": "€999 / month",
-            "scale": "Up to 1,000 units and 1,000 documents.",
-            "features": [
-                "Time included.",
-                "IoT Connect and ESG included.",
-                "No API or webhooks."
-            ]
-        },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Custom pricing",
             "scale": "Contractual offer for larger organisations. Custom pricing.",
             "features": [
                 "For larger organisations, with contractual pricing.",
+                "Up to 500 documents. Licences as agreed. Units unlimited.",
                 "Punch clock, roster, CIAO (NSSO), ESG, IoT Connect and API according to the agreement.",
                 "Integrations, SLA and support tailored to you."
             ]
@@ -333,7 +268,7 @@
     "comparison_notes": {
         "trial": "Trial: 5 licences, 50 units and 10 documents (same as the 5-licence plan). Then billed monthly via Stripe.",
         "unlimited": "Units = 10× your licences (50 / 100 / 250 / 500). Documents 10 / 20 / 30 / 40. Locations and photos unlimited.",
-        "corporate": "WinProx Corporate is a contractual offer for larger organisations. ESG, IoT and API are possible components, not the only reason to choose Corporate."
+        "corporate": "WinProx Corporate is a contractual offer for larger organisations. Documents are limited to 500. ESG, IoT and API are possible components, not the only reason to choose Corporate."
     },
     "contact_sales_cta": "Contact us",
     "public_contact_cta": "Request a quote",

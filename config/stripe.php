@@ -24,14 +24,6 @@ return [
         'winprox_100_time' => env('STRIPE_PRICE_WINPROX_100_TIME'),
         // Checkmate: per-seat prijs (€5/licentie); quantity = aantal seats.
         'checkmate'        => env('STRIPE_PRICE_WINPROX_CHECKMATE'),
-        // Legacy maandtiers (bestaande abonnees / oude Price IDs).
-        'facility_10'   => env('STRIPE_PRICE_FACILITY_10'),
-        'facility_25'   => env('STRIPE_PRICE_FACILITY_25'),
-        'facility_50'   => env('STRIPE_PRICE_FACILITY_50'),
-        'facility_100'  => env('STRIPE_PRICE_FACILITY_100'),
-        'facility_250'  => env('STRIPE_PRICE_FACILITY_250'),
-        'facility_500'  => env('STRIPE_PRICE_FACILITY_500'),
-        'facility_1000' => env('STRIPE_PRICE_FACILITY_1000'),
         // Corporate heeft geen vaste Stripe-prijs — custom pricing per klant.
     ],
 ];

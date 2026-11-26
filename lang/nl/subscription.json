@@ -156,78 +156,13 @@
                 "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
-        "facility_10": {
-            "name": "10 units",
-            "price": "€99 / maand",
-            "scale": "Tot 10 units en 10 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "Geen IoT, ESG of API."
-            ]
-        },
-        "facility_25": {
-            "name": "25 units",
-            "price": "€129 / maand",
-            "scale": "Tot 25 units en 25 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "Geen IoT, ESG of API."
-            ]
-        },
-        "facility_50": {
-            "name": "50 units",
-            "price": "€179 / maand",
-            "scale": "Tot 50 units en 50 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "Geen IoT, ESG of API."
-            ]
-        },
-        "facility_100": {
-            "name": "100 units",
-            "price": "€249 / maand",
-            "scale": "Tot 100 units en 100 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "Geen IoT, ESG of API."
-            ]
-        },
-        "facility_250": {
-            "name": "250 units",
-            "price": "€399 / maand",
-            "scale": "Tot 250 units en 250 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "IoT Connect en ESG inbegrepen.",
-                "Geen API of webhooks."
-            ]
-        },
-        "facility_500": {
-            "name": "500 units",
-            "price": "€599 / maand",
-            "scale": "Tot 500 units en 500 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "IoT Connect en ESG inbegrepen.",
-                "Geen API of webhooks."
-            ]
-        },
-        "facility_1000": {
-            "name": "1.000 units",
-            "price": "€999 / maand",
-            "scale": "Tot 1.000 units en 1.000 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "IoT Connect en ESG inbegrepen.",
-                "Geen API of webhooks."
-            ]
-        },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Prijs op maat",
             "scale": "Contractueel aanbod voor grotere organisaties. Prijs op maat.",
             "features": [
                 "Voor grotere organisaties, met contractuele prijsafspraken.",
+                "Maximaal 500 documenten. Licenties volgens afspraak. Units onbeperkt.",
                 "Prikklok, uurrooster, CIAO (RSZ), ESG, IoT Connect en API mogelijk volgens afspraak.",
                 "Integraties, SLA en support op maat."
             ]
@@ -333,7 +268,7 @@
     "comparison_notes": {
         "trial": "Proefperiode: 5 licenties, 50 units en 10 documenten (zelfde als de 5-licentiesformule). Daarna maandelijks via Stripe.",
         "unlimited": "Units = 10× je licenties (50 / 100 / 250 / 500). Documenten 10 / 20 / 30 / 40. Locaties en foto's onbeperkt.",
-        "corporate": "WinProx Corporate is een contractueel aanbod voor grotere organisaties. ESG, IoT en API zijn mogelijke onderdelen, niet de enige reden om Corporate te kiezen."
+        "corporate": "WinProx Corporate is een contractueel aanbod voor grotere organisaties. Documenten zijn beperkt tot 500. ESG, IoT en API zijn mogelijke onderdelen, niet de enige reden om Corporate te kiezen."
     },
     "contact_sales_cta": "Neem contact op",
     "public_contact_cta": "Vraag offerte aan",

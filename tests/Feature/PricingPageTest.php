@@ -30,7 +30,6 @@ it('toont publieke prijzenpagina met WinProx-maandformules en Corporate voor gas
         ->assertSee(__('subscription.comparison_notes.trial'))
         ->assertSee(__('subscription.comparison_notes.unlimited'))
         ->assertSee(__('subscription.comparison_notes.corporate'))
-        ->assertDontSee(__('subscription.plans.facility_25.price'))
         ->assertDontSee(__('subscription.time_addon.public_hint', ['price' => '€29']), false);
 
     $html = $this->get(route('pricing'))->getContent();
@@ -72,8 +71,7 @@ it('toont self-activate knoppen op abonnementenpagina voor beheerder', function 
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.payment_notice'))
         ->assertSee(__('subscription.prices_excl_vat'))
-        ->assertSee(__('subscription.contact_sales_cta'))
-        ->assertDontSee(__('subscription.plans.facility_25.price'));
+        ->assertSee(__('subscription.contact_sales_cta'));
 });
 
 it('toont een afdrukknop op de publieke prijzenpagina die niet mee afgedrukt wordt', function () {

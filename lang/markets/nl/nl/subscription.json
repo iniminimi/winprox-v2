@@ -56,12 +56,13 @@
       "scale": "Contractueel aanbod voor grotere organisaties. Prijs op maat.",
       "features": [
         "Voor grotere organisaties, met contractuele prijsafspraken.",
+        "Maximaal 500 documenten. Licenties volgens afspraak. Units onbeperkt.",
         "Prikklok, uurrooster, ESG, IoT Connect en API mogelijk volgens afspraak.",
         "Integraties, SLA en support op maat."
       ]
     }
   },
   "comparison_notes": {
-    "corporate": "WinProx Corporate is een contractueel aanbod voor grotere organisaties. ESG, IoT en API zijn mogelijke onderdelen, niet de enige reden om Corporate te kiezen."
+    "corporate": "WinProx Corporate is een contractueel aanbod voor grotere organisaties. Documenten zijn beperkt tot 500. ESG, IoT en API zijn mogelijke onderdelen, niet de enige reden om Corporate te kiezen."
   }
 }

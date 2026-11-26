@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Actions\Billing\ActivateSubscriptionPlanAction;
-use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\StartTenantTrialAction;
 use App\Actions\Platform\AssignTenantSubscriptionPlanAction;
 use App\Actions\Platform\TogglePresenceComplianceAction;
@@ -155,32 +154,6 @@ it('laat een superuser een Corporate-tenant naar een andere formule zetten', fun
 
     expect($tenant->billing_plan)->toBe('winprox_10')
         ->and($tenant->billing_units_cap)->toBeNull();
-});
-
-it('weigert self-activate van legacy facility-tiers', function () {
-    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
-    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
-
-    expect(fn () => app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'facility_100', 'manual'))
-        ->toThrow(InvalidArgumentException::class, 'plan_not_self_activate');
-});
-
-it('behoudt entitlements van een bestaande facility_100-abonnee', function () {
-    $tenant = Tenant::factory()->create([
-        'trial_ends_at' => now()->subDay(),
-        'billing_plan' => 'facility_100',
-        'billing_active_until' => now()->addDays(20),
-        'has_time_module' => false,
-    ]);
-    Tenancy::actAs($tenant->id);
-
-    app(ApplyPlanEntitlementsAction::class)->handle($tenant);
-
-    $fresh = $tenant->fresh();
-
-    expect($fresh->maxUnitsLimit())->toBe(100)
-        ->and($fresh->hasTimeModule())->toBeTrue()
-        ->and($fresh->hasIotModule())->toBeFalse();
 });
 
 it('zet CIAO aan zonder Corporate en schakelt Time mee in', function () {

@@ -156,78 +156,13 @@
                 "Stempeluhr, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
-        "facility_10": {
-            "name": "10 Einheiten",
-            "price": "€99 / Monat",
-            "scale": "Bis zu 10 Einheiten und 10 Dokumente.",
-            "features": [
-                "Time enthalten.",
-                "Kein IoT, ESG oder API."
-            ]
-        },
-        "facility_25": {
-            "name": "25 Einheiten",
-            "price": "€129 / Monat",
-            "scale": "Bis zu 25 Einheiten und 25 Dokumente.",
-            "features": [
-                "Time enthalten.",
-                "Kein IoT, ESG oder API."
-            ]
-        },
-        "facility_50": {
-            "name": "50 Einheiten",
-            "price": "€179 / Monat",
-            "scale": "Bis zu 50 Einheiten und 50 Dokumente.",
-            "features": [
-                "Time enthalten.",
-                "Kein IoT, ESG oder API."
-            ]
-        },
-        "facility_100": {
-            "name": "100 Einheiten",
-            "price": "€249 / Monat",
-            "scale": "Bis zu 100 Einheiten und 100 Dokumente.",
-            "features": [
-                "Time enthalten.",
-                "Kein IoT, ESG oder API."
-            ]
-        },
-        "facility_250": {
-            "name": "250 Einheiten",
-            "price": "€399 / Monat",
-            "scale": "Bis zu 250 Einheiten und 250 Dokumente.",
-            "features": [
-                "Time enthalten.",
-                "IoT Connect und ESG enthalten.",
-                "Kein API oder Webhooks."
-            ]
-        },
-        "facility_500": {
-            "name": "500 Einheiten",
-            "price": "€599 / Monat",
-            "scale": "Bis zu 500 Einheiten und 500 Dokumente.",
-            "features": [
-                "Time enthalten.",
-                "IoT Connect und ESG enthalten.",
-                "Kein API oder Webhooks."
-            ]
-        },
-        "facility_1000": {
-            "name": "1.000 Einheiten",
-            "price": "€999 / Monat",
-            "scale": "Bis zu 1.000 Einheiten und 1.000 Dokumente.",
-            "features": [
-                "Time enthalten.",
-                "IoT Connect und ESG enthalten.",
-                "Kein API oder Webhooks."
-            ]
-        },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Individueller Preis",
             "scale": "Vertragliches Angebot für größere Organisationen. Individueller Preis.",
             "features": [
                 "Für größere Organisationen, mit vertraglicher Preisvereinbarung.",
+                "Höchstens 500 Dokumente. Lizenzen nach Vereinbarung. Units unbegrenzt.",
                 "Stempeluhr, Dienstplan, CIAO (LSS), ESG, IoT Connect und API gemäß Vereinbarung.",
                 "Integrationen, SLA und Support nach Maß."
             ]
@@ -333,7 +268,7 @@
     "comparison_notes": {
         "trial": "Testphase: 5 Lizenzen, 50 Units und 10 Dokumente (wie die 5-Lizenzen-Formel). Danach monatlich über Stripe.",
         "unlimited": "Units = 10× Ihre Lizenzen (50 / 100 / 250 / 500). Dokumente 10 / 20 / 30 / 40. Standorte und Fotos unbegrenzt.",
-        "corporate": "WinProx Corporate ist ein vertragliches Angebot für größere Organisationen. ESG, IoT und API sind mögliche Bestandteile, nicht der einzige Grund für Corporate."
+        "corporate": "WinProx Corporate ist ein vertragliches Angebot für größere Organisationen. Dokumente sind auf 500 begrenzt. ESG, IoT und API sind mögliche Bestandteile, nicht der einzige Grund für Corporate."
     },
     "contact_sales_cta": "Kontakt aufnehmen",
     "public_contact_cta": "Angebot anfragen",

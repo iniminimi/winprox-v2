@@ -37,7 +37,8 @@ function iotAlarmFixture(bool $withEsg = false): array
     $tenant = Tenant::factory()->create([
         'has_iot_module' => true,
         'has_esg_module' => $withEsg,
-        'billing_plan' => $withEsg ? 'corporate' : 'facility_250',
+        'billing_plan' => 'corporate',
+        'billing_units_cap' => 10,
         'billing_active_until' => now()->addMonth(),
         'is_active' => true,
     ]);

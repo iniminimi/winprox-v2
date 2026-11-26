@@ -50,11 +50,11 @@ class StripeBillingTest extends TestCase
         $this->assertFalse($service->isConfiguredForPlan('winprox_10'));
     }
 
-    public function test_realigns_facility_subscription_after_yearly_misactivation(): void
+    public function test_realigns_monthly_subscription_after_yearly_misactivation(): void
     {
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now(),
-            'billing_plan' => 'facility_100',
+            'billing_plan' => 'winprox_10',
             'billing_active_until' => now()->addDays(364),
         ]);
 

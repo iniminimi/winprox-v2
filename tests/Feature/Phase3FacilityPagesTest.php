@@ -388,14 +388,13 @@ it('toont WinProx-maandformules en Corporate op abonnement', function () {
         ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.payment_notice'))
-        ->assertSee(__('subscription.prices_excl_vat'))
-        ->assertDontSee(__('subscription.plans.facility_25.price'));
+        ->assertSee(__('subscription.prices_excl_vat'));
 });
 
 it('toont planlabel correct bij billing_plan met hoofdletter', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => null,
-        'billing_plan' => 'Facility_100',
+        'billing_plan' => 'WinProx_10',
         'billing_active_until' => now()->addMonth(),
         'is_active' => true,
     ]);
@@ -406,17 +405,17 @@ it('toont planlabel correct bij billing_plan met hoofdletter', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->assertSee(__('subscription.plans.facility_100.name'))
-        ->assertDontSee('subscription.plans.Facility_100.name');
+        ->assertSee(__('subscription.plans.winprox_10.name'))
+        ->assertDontSee('subscription.plans.WinProx_10.name');
 
-    expect($tenant->effectivePlanKey())->toBe('facility_100')
+    expect($tenant->effectivePlanKey())->toBe('winprox_10')
         ->and($tenant->hasCsvUnitsImport())->toBeTrue();
 });
 
-it('toont csv-import knop op locatie-detail bij facility_100-plan', function () {
+it('toont csv-import knop op locatie-detail bij winprox-plan', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => null,
-        'billing_plan' => 'facility_100',
+        'billing_plan' => 'winprox_10',
         'billing_active_until' => now()->addMonth(),
         'is_active' => true,
     ]);

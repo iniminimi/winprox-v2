@@ -7,6 +7,7 @@ use App\Actions\Platform\AssignCorporateSubscriptionAction;
 use App\Actions\Platform\SetBillingUnitsCapAction;
 use App\Actions\Team\CreateColleagueAction;
 use App\Livewire\Platform\Tenants;
+use App\Models\Document;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -33,7 +34,7 @@ it('past het afgesproken corporate-aantal toe als licentielimiet', function (): 
 
     expect($tenant->maxSeatsLimit())->toBe(5)
         ->and($tenant->maxUnitsLimit())->toBeNull()
-        ->and($tenant->maxDocumentsOrgLimit())->toBeNull()
+        ->and($tenant->maxDocumentsOrgLimit())->toBe(500)
         ->and($tenant->maxLocationsLimit())->toBeNull()
         ->and($tenant->maxPhotosOrgLimit())->toBeNull()
         ->and($tenant->isAtUnitLimit())->toBeFalse()
@@ -81,7 +82,7 @@ it('laat superuser corporate activeren met units-cap', function (): void {
         ->and($tenant->hasApiAccess())->toBeTrue()
         ->and($tenant->maxSeatsLimit())->toBe(1500)
         ->and($tenant->maxUnitsLimit())->toBeNull()
-        ->and($tenant->maxDocumentsOrgLimit())->toBeNull()
+        ->and($tenant->maxDocumentsOrgLimit())->toBe(500)
         ->and($tenant->subscriptionPeriodDays())->toBe(365)
         ->and($tenant->billing_active_until?->toDateString())->toBe(now()->addDays(365)->toDateString());
 });
@@ -99,11 +100,35 @@ it('werkt units-cap bij voor bestaande corporate tenant', function (): void {
 
     expect($tenant->fresh()->billing_units_cap)->toBe(2000)
         ->and($tenant->fresh()->maxSeatsLimit())->toBe(2000)
-        ->and($tenant->fresh()->maxUnitsLimit())->toBeNull();
+        ->and($tenant->fresh()->maxUnitsLimit())->toBeNull()
+        ->and($tenant->fresh()->maxDocumentsOrgLimit())->toBe(500);
+});
+
+it('blokkeert een corporate-document boven 500', function (): void {
+    $tenant = Tenant::factory()->create([
+        'billing_plan' => 'corporate',
+        'billing_active_until' => now()->addMonth(),
+        'billing_units_cap' => 10,
+        'trial_ends_at' => now()->subDay(),
+    ]);
+
+    expect($tenant->maxDocumentsOrgLimit())->toBe(500);
+
+    $previous = config('billing.plans.corporate.documents_org_limit');
+    config(['billing.plans.corporate.documents_org_limit' => 1]);
+
+    try {
+        Document::factory()->for($tenant)->create();
+
+        expect(fn () => $tenant->fresh()->assertCanAddDocument(null))
+            ->toThrow(\InvalidArgumentException::class, 'document_org_limit_exceeded');
+    } finally {
+        config(['billing.plans.corporate.documents_org_limit' => $previous]);
+    }
 });
 
 it('weigert units-cap buiten corporate', function (): void {
-    $tenant = Tenant::factory()->create(['billing_plan' => 'facility_100']);
+    $tenant = Tenant::factory()->create(['billing_plan' => 'winprox_10']);
 
     app(SetBillingUnitsCapAction::class)->handle($tenant, 500, null);
 })->throws(\InvalidArgumentException::class);

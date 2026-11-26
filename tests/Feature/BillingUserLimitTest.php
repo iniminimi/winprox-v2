@@ -36,16 +36,6 @@ class BillingUserLimitTest extends TestCase
         $this->assertSame(10, $tenant->fresh()->maxSeatsLimit());
     }
 
-    public function test_legacy_facility_plan_has_unlimited_seats(): void
-    {
-        $tenant = Tenant::factory()->create([
-            'billing_plan' => 'facility_250',
-            'billing_active_until' => now()->addMonth(),
-        ]);
-
-        $this->assertNull($tenant->maxSeatsLimit());
-    }
-
     public function test_current_seats_count_includes_admins_employees_and_workers(): void
     {
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);

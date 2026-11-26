@@ -36,7 +36,7 @@ class BillingPortalContentLimitTest extends TestCase
         // Foto's zijn onbeperkt in alle tiers — client-side verkleind, geen server-limiet.
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now()->subDay(),
-            'billing_plan' => 'facility_10',
+            'billing_plan' => 'winprox_5',
             'billing_active_until' => now()->addMonth(),
         ]);
 
@@ -58,11 +58,11 @@ class BillingPortalContentLimitTest extends TestCase
 
     public function test_active_announcements_per_unit_limit_is_enforced(): void
     {
-        config(['billing.plans.facility_10.announcements_per_unit' => 2]);
+        config(['billing.plans.winprox_5.announcements_per_unit' => 2]);
 
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now()->subDay(),
-            'billing_plan' => 'facility_10',
+            'billing_plan' => 'winprox_5',
             'billing_active_until' => now()->addMonth(),
         ]);
         $user = User::factory()->for($tenant)->create();
@@ -97,7 +97,7 @@ class BillingPortalContentLimitTest extends TestCase
     {
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now()->subDay(),
-            'billing_plan' => 'facility_10',
+            'billing_plan' => 'winprox_5',
             'billing_active_until' => now()->addMonth(),
         ]);
         $user = User::factory()->for($tenant)->create();
@@ -123,11 +123,11 @@ class BillingPortalContentLimitTest extends TestCase
 
     public function test_toggle_announcement_active_respects_unit_limit(): void
     {
-        config(['billing.plans.facility_10.announcements_per_unit' => 2]);
+        config(['billing.plans.winprox_5.announcements_per_unit' => 2]);
 
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now()->subDay(),
-            'billing_plan' => 'facility_10',
+            'billing_plan' => 'winprox_5',
             'billing_active_until' => now()->addMonth(),
         ]);
         $user = User::factory()->for($tenant)->create();

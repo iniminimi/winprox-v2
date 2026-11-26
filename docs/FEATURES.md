@@ -1728,7 +1728,7 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
 
 ### 7.1 Status & toegang (behouden, generiek)
 - Tenant-velden: `trial_ends_at`, `billing_plan`, `billing_active_until`, `billing_units_cap`
-  (Corporate: afgesproken licenties; units en documenten onbeperkt), `is_active`, `stripe_customer_id` (optioneel).
+  (Corporate: afgesproken licenties; documenten tot 500; units onbeperkt), `is_active`, `stripe_customer_id` (optioneel).
 - `hasFullAppAccess()` = trial **of** betaald **of** grace; middleware blokkeert de app
   (behalve `billing.*`, `faq.*`, logout) wanneer geen toegang.
 - **Proefperiode-capsule** (dashboard §1 + dit scherm): resterende dagen + de vijf
@@ -1753,7 +1753,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   (zelfde plan-kiezer). Op dat scherm heet het getal **licenties**. Zolang de tenant op Corporate zit, kan die zelf geen andere
   formule kiezen, ook niet via Stripe. Alleen een Superuser wijzigt het plan.
   De status op Abonnement toont het afgesproken aantal licenties (`billing_units_cap`).
-  Dat getal is de seatlimiet (collega's + uitvoerders). Units, documenten, locaties en foto's zijn onbeperkt.
+  Dat getal is de seatlimiet (collega's + uitvoerders). Documenten zijn beperkt tot 500.
+  Units, locaties en foto's zijn onbeperkt.
   **Jaarlijks** (365 dagen) of op maat; niet via Stripe Checkout.
   Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
 - **Checkmate** (`checkmate` / `checkmate_trial`): veldwerk-preset op hetzelfde product —
@@ -1776,7 +1777,7 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
 - **Instellingen — klanten op locatie** (`tenants.customers_on_location`): toont
   **Klanten** in het menu (Facility) of forceert aan op Checkmate. Locaties koppelen
   aan een klant (DDT/GPS op de locatie). Uit = eigen sites (bv. crèche).
-- **Legacy `facility_*` en `winprox_100`:** blijven in config (niet in catalogus).
+- **`winprox_100`:** blijft in config (niet in catalogus).
 - Plankaarten + vergelijkingstabel op publieke `/pricing` (informatief + trial-registratie).
   Rechtsboven een knop **Afdrukken** (`window.print()`); bij afdrukken verdwijnen de menubalk,
   de knoppen en de schaduwen, en blijven plankaarten en tabelrijen heel op één pagina.

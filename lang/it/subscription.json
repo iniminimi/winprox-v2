@@ -156,78 +156,13 @@
                 "Timbratrice, turno e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
-        "facility_10": {
-            "name": "10 unità",
-            "price": "€99 / mese",
-            "scale": "Fino a 10 unità e 10 documenti.",
-            "features": [
-                "Time incluso.",
-                "Senza IoT, ESG o API."
-            ]
-        },
-        "facility_25": {
-            "name": "25 unità",
-            "price": "€129 / mese",
-            "scale": "Fino a 25 unità e 25 documenti.",
-            "features": [
-                "Time incluso.",
-                "Senza IoT, ESG o API."
-            ]
-        },
-        "facility_50": {
-            "name": "50 unità",
-            "price": "€179 / mese",
-            "scale": "Fino a 50 unità e 50 documenti.",
-            "features": [
-                "Time incluso.",
-                "Senza IoT, ESG o API."
-            ]
-        },
-        "facility_100": {
-            "name": "100 unità",
-            "price": "€249 / mese",
-            "scale": "Fino a 100 unità e 100 documenti.",
-            "features": [
-                "Time incluso.",
-                "Senza IoT, ESG o API."
-            ]
-        },
-        "facility_250": {
-            "name": "250 unità",
-            "price": "€399 / mese",
-            "scale": "Fino a 250 unità e 250 documenti.",
-            "features": [
-                "Time incluso.",
-                "IoT Connect e ESG inclusi.",
-                "Senza API o webhooks."
-            ]
-        },
-        "facility_500": {
-            "name": "500 unità",
-            "price": "€599 / mese",
-            "scale": "Fino a 500 unità e 500 documenti.",
-            "features": [
-                "Time incluso.",
-                "IoT Connect e ESG inclusi.",
-                "Senza API o webhooks."
-            ]
-        },
-        "facility_1000": {
-            "name": "1.000 unità",
-            "price": "€999 / mese",
-            "scale": "Fino a 1.000 unità e 1.000 documenti.",
-            "features": [
-                "Time incluso.",
-                "IoT Connect e ESG inclusi.",
-                "Senza API o webhooks."
-            ]
-        },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Prezzo personalizzato",
             "scale": "Offerta contrattuale per organizzazioni più grandi. Prezzo personalizzato.",
             "features": [
                 "Per organizzazioni più grandi, con prezzo contrattuale.",
+                "Massimo 500 documenti. Licenze secondo l'accordo. Units illimitate.",
                 "Timbratrice, turno, CIAO (ONSS), ESG, IoT Connect e API secondo l'accordo.",
                 "Integrazioni, SLA e supporto su misura."
             ]
@@ -333,7 +268,7 @@
     "comparison_notes": {
         "trial": "Prova: 5 licenze, 50 unità e 10 documenti (come la formula da 5). Poi pagamento mensile tramite Stripe.",
         "unlimited": "Unità = 10× le tue licenze (50 / 100 / 250 / 500). Documenti 10 / 20 / 30 / 40. Sedi e foto illimitate.",
-        "corporate": "WinProx Corporate è un'offerta contrattuale per organizzazioni più grandi. ESG, IoT e API sono componenti possibili, non l'unico motivo per scegliere Corporate."
+        "corporate": "WinProx Corporate è un'offerta contrattuale per organizzazioni più grandi. I documenti sono limitati a 500. ESG, IoT e API sono componenti possibili, non l'unico motivo per scegliere Corporate."
     },
     "contact_sales_cta": "Contattaci",
     "public_contact_cta": "Richiedi preventivo",

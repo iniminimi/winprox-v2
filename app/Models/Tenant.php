@@ -1079,15 +1079,11 @@ class Tenant extends Model
             return null;
         }
 
-        if ($planKey === 'corporate') {
+        if ($planKey === 'corporate' && $field === 'seats_limit') {
             // Kolom heet historisch billing_units_cap; het getal is het aantal licenties.
-            if ($field === 'seats_limit') {
-                $cap = $this->billing_units_cap;
+            $cap = $this->billing_units_cap;
 
-                return is_int($cap) ? $cap : (is_numeric($cap) ? (int) $cap : null);
-            }
-
-            return null;
+            return is_int($cap) ? $cap : (is_numeric($cap) ? (int) $cap : null);
         }
 
         $configKey = $planKey === config('billing.trial_plan_facility')
