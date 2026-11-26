@@ -26,9 +26,15 @@ function registerAlpineComponent() {
             if (event.pointerType === 'mouse' && event.button !== 0) {
                 return;
             }
+            const root = tile.closest('[data-wp-intent-root]');
+            const grid = tile.closest('[data-wp-intent-grid]')
+                ?? root?.querySelector('[data-wp-intent-grid]')
+                ?? null;
             this.clearHold();
             this.pending = {
                 tile,
+                grid,
+                root,
                 x: event.clientX,
                 y: event.clientY,
                 pointerX: event.clientX,
@@ -44,7 +50,21 @@ function registerAlpineComponent() {
         },
 
         gridEl() {
+            const grid = this.pending?.grid;
+            if (grid?.isConnected) {
+                return grid;
+            }
+
             return this.$el.querySelector('[data-wp-intent-grid]');
+        },
+
+        dragRoot() {
+            const root = this.pending?.root;
+            if (root?.isConnected) {
+                return root;
+            }
+
+            return this.gridEl()?.closest('[data-wp-intent-root]') ?? this.$el;
         },
 
         arm() {
@@ -171,7 +191,7 @@ function registerAlpineComponent() {
         },
 
         hideOnly() {
-            return this.$el.dataset.wpTileMode === 'hide';
+            return this.dragRoot().dataset.wpTileMode === 'hide';
         },
 
         binAt(x, y) {
@@ -182,6 +202,10 @@ function registerAlpineComponent() {
             const bin = this.gridEl()?.querySelector('[data-wp-intent-bin]');
             if (!bin) {
                 return null;
+            }
+            const under = document.elementsFromPoint(x, y);
+            if (under.some((el) => el === bin || bin.contains(el))) {
+                return bin;
             }
             const binRect = bin.getBoundingClientRect();
             const pad = 16;
@@ -232,16 +256,9 @@ function registerAlpineComponent() {
         },
 
         concealHiddenModal() {
-            const modal = this.$el.querySelector('[data-wp-intent-hidden-modal]');
+            const modal = this.dragRoot().querySelector('[data-wp-intent-hidden-modal]');
             if (modal) {
                 modal.style.display = 'none';
-            }
-        },
-
-        revealHiddenModal() {
-            const modal = this.$el.querySelector('[data-wp-intent-hidden-modal]');
-            if (modal) {
-                modal.style.display = '';
             }
         },
 
@@ -306,20 +323,24 @@ function registerAlpineComponent() {
             const fromHidden = this.pending.fromHidden === true;
             const hideable = this.tileIsHideable(this.pending.tile);
             const key = this.pending.tile?.dataset.wpIntentTile ?? '';
+            const root = this.dragRoot();
+            const onlyHide = this.hideOnly();
+            const overBin = hideable && (
+                this.pending.overBin === true || this.binAt(event.clientX, event.clientY) !== null
+            );
             this.parkPlaceholder();
-            const overBin = hideable && this.binAt(event.clientX, event.clientY) !== null;
             const overGrid = this.pointerOverGrid(event.clientX, event.clientY);
-            if (moved && !overBin && !this.hideOnly() && (!fromHidden || overGrid)) {
+            if (moved && !overBin && !onlyHide && (!fromHidden || overGrid)) {
                 this.place(event.clientX, event.clientY);
             }
-            const keys = moved && !overBin && !this.hideOnly() ? this.orderKeys() : null;
-            const hideMethod = this.$el.dataset.wpHideMethod || 'hideIntentTile';
-            const restoreMethod = this.$el.dataset.wpRestoreMethod || 'restoreIntentTile';
-            const reorderMethod = this.$el.dataset.wpReorderMethod || 'reorderIntentTiles';
-            const closeMethod = this.$el.dataset.wpCloseMethod || 'closeHiddenTiles';
+            const keys = moved && !overBin && !onlyHide ? this.orderKeys() : null;
+            const hideMethod = root.dataset.wpHideMethod || 'hideIntentTile';
+            const restoreMethod = root.dataset.wpRestoreMethod || 'restoreIntentTile';
+            const reorderMethod = root.dataset.wpReorderMethod || 'reorderIntentTiles';
+            const closeMethod = root.dataset.wpCloseMethod || 'closeHiddenTiles';
             this.clearPending();
             if (!moved) {
-                this.revealHiddenModal();
+                this.revealModal(root);
                 return;
             }
             this.suppressClick = true;
@@ -329,18 +350,31 @@ function registerAlpineComponent() {
                 } else {
                     this.$wire[hideMethod](key);
                 }
-            } else if (fromHidden && this.hideOnly() && overGrid) {
+            } else if (fromHidden && onlyHide && overGrid) {
                 this.$wire[restoreMethod](key);
             } else if (fromHidden && keys) {
                 this.$wire[restoreMethod](key, keys);
             } else if (!fromHidden && keys) {
                 this.$wire[reorderMethod](keys);
             } else {
-                this.revealHiddenModal();
+                this.revealModal(root);
             }
             setTimeout(() => {
                 this.suppressClick = false;
             }, 400);
+        },
+
+        revealModal(root) {
+            const modal = root?.querySelector('[data-wp-intent-hidden-modal]');
+            if (modal) {
+                modal.style.display = '';
+            }
+        },
+
+        onDragStart(event) {
+            if (event.target.closest('[data-wp-intent-tile]')) {
+                event.preventDefault();
+            }
         },
 
         onClick(event) {

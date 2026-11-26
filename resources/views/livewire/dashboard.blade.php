@@ -1,4 +1,12 @@
-<div class="wp-stack" data-manual-capture="dashboard">
+<div class="wp-stack" data-manual-capture="dashboard"
+     x-data="wpIntentTiles"
+     @pointerdown="onPointerDown($event)"
+     @pointermove.window="onPointerMove($event)"
+     @pointerup.window="onPointerUp($event)"
+     @pointercancel.window="onPointerUp($event)"
+     @click.capture="onClick($event)"
+     @contextmenu="onContextMenu($event)"
+     @dragstart="onDragStart($event)">
     @if ($checkmate !== null)
         {{-- Checkmate-dashboard (docs/CHECKMATE.md): wie is waar — geen
              facility-tegels, meldingen of starter packs. --}}
@@ -91,18 +99,11 @@
         @endif
 
         <div
-            x-data="wpIntentTiles"
+            data-wp-intent-root
             data-wp-tile-mode="hide"
             data-wp-hide-method="hideCheckmateTile"
             data-wp-restore-method="restoreCheckmateTile"
             data-wp-close-method="closeHiddenCheckmateTiles"
-            @pointerdown="onPointerDown($event)"
-            @pointermove.window="onPointerMove($event)"
-            @pointerup.window="onPointerUp($event)"
-            @pointercancel.window="onPointerUp($event)"
-            @click.capture="onClick($event)"
-            @contextmenu="onContextMenu($event)"
-            @dragstart.prevent
         >
             <div class="wp-kpis" data-wp-intent-grid>
                 @if ($showWhatsNew)
@@ -456,14 +457,7 @@
         @if ($intentHub !== null)
             <section class="wp-stack wp-dashboard-intent"
                      aria-label="{{ __('dashboard.intent.title') }}"
-                     x-data="wpIntentTiles"
-                     @pointerdown="onPointerDown($event)"
-                     @pointermove.window="onPointerMove($event)"
-                     @pointerup.window="onPointerUp($event)"
-                     @pointercancel.window="onPointerUp($event)"
-                     @click.capture="onClick($event)"
-                     @contextmenu="onContextMenu($event)"
-                     @dragstart.prevent>
+                     data-wp-intent-root>
                 <x-wp-page-head-title
                     icon="home-greeting"
                     :title="$intentHub->greeting"
@@ -658,18 +652,11 @@
         @endphp
 
         <div class="wp-dashboard-kpis"
-             x-data="wpIntentTiles"
+             data-wp-intent-root
              data-wp-tile-mode="hide"
              data-wp-hide-method="hideDashboardKpi"
              data-wp-restore-method="restoreDashboardKpi"
-             data-wp-close-method="closeHiddenKpis"
-             @pointerdown="onPointerDown($event)"
-             @pointermove.window="onPointerMove($event)"
-             @pointerup.window="onPointerUp($event)"
-             @pointercancel.window="onPointerUp($event)"
-             @click.capture="onClick($event)"
-             @contextmenu="onContextMenu($event)"
-             @dragstart.prevent>
+             data-wp-close-method="closeHiddenKpis">
         <div class="wp-kpis" data-wp-intent-grid>
             @foreach ($visibleKpis as $kpi)
                 <a href="{{ $kpiLinks[$kpi['href_key']] }}"

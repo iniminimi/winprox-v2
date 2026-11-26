@@ -1199,14 +1199,14 @@ a.wp-pill:hover {
     height: auto;
 }
 
-.wp-dashboard-intent .wp-kpi[data-wp-intent-tile] {
+.wp-kpi[data-wp-intent-tile] {
     touch-action: manipulation;
     -webkit-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
 }
 
-.wp-dashboard-intent > .wp-kpis.is-sorting {
+.wp-kpis.is-sorting {
     touch-action: none;
 }
 
@@ -1217,11 +1217,10 @@ a.wp-pill:hover {
     min-height: 6.5rem;
 }
 
-.wp-dashboard-intent .wp-kpi.is-bin-target {
+.wp-kpi.is-bin-target {
     outline: 2px solid var(--wp-accent);
     outline-offset: 2px;
     background-color: var(--wp-accent-soft);
-    transform: scale(1.03);
 }
 
 .wp-kpi--arrange-hint {

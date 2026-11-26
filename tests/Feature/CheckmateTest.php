@@ -1277,8 +1277,12 @@ it('zet een checkmate-tegel weg in Weggezette kaders', function () {
     $other = User::factory()->admin()->for($tenant)->create();
     Tenancy::actAs($tenant->id);
 
-    Livewire::actingAs($user)
-        ->test(Dashboard::class)
+    $dashboard = Livewire::actingAs($user)->test(Dashboard::class);
+    $html = $dashboard->html();
+    expect(substr_count($html, 'x-data="wpIntentTiles"'))->toBe(1)
+        ->and(substr_count($html, 'data-wp-intent-root'))->toBe(1);
+
+    $dashboard
         ->assertSeeHtml('data-wp-hide-method="hideCheckmateTile"')
         ->assertSeeInOrder([
             'data-wp-intent-tile="clock_point_qr"',

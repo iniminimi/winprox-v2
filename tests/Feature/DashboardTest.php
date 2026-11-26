@@ -482,8 +482,14 @@ it('zet een telling weg in de dashboardcontainer en niet in de snelkoppelingen',
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
     ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
-    Livewire::actingAs($user)
-        ->test(Dashboard::class)
+    $dashboard = Livewire::actingAs($user)->test(Dashboard::class);
+    $html = $dashboard->html();
+    expect(substr_count($html, 'x-data="wpIntentTiles"'))->toBe(1)
+        ->and(substr_count($html, 'data-wp-intent-root'))->toBe(2)
+        ->and($html)->toContain('data-wp-hide-method="hideDashboardKpi"')
+        ->and($html)->not->toContain('data-wp-hide-method="hideIntentTile"');
+
+    $dashboard
         ->assertSeeHtml('data-wp-tile-mode="hide"')
         ->assertSeeInOrder([
             'data-wp-intent-tile="new_issues"',
