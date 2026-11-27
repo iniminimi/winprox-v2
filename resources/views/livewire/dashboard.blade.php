@@ -7,7 +7,6 @@
      @click.capture="onClick($event)"
      @contextmenu="onContextMenu($event)"
      @dragstart="onDragStart($event)">
-    @include('livewire.dashboard.security-notices')
     @if ($checkmate !== null)
         {{-- Checkmate-dashboard (docs/CHECKMATE.md): wie is waar — geen
              facility-tegels, meldingen of starter packs. --}}
@@ -37,6 +36,8 @@
                 @endif
             </div>
         </div>
+
+        @include('livewire.dashboard.security-notices')
 
         @if ($checkmate->presencePending)
             <div class="wp-card wp-card-pad wp-stack-tight">
@@ -466,6 +467,8 @@
                     :subtitle="__('dashboard.intent.title')"
                 />
 
+                @include('livewire.dashboard.security-notices')
+
                 @if ($showWhatsNew || ! $intentHub->isEmpty() || $canAddDevice)
                     <div class="wp-kpis" data-wp-intent-grid>
                         @if ($showWhatsNew)
@@ -812,6 +815,8 @@
                 </div>
             </div>
         @endif
+    @else
+        @include('livewire.dashboard.security-notices')
     @endif
 
     @if ($showRemoveStarterPackModal)

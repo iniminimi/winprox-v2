@@ -155,6 +155,10 @@ it('noteert een aanmelding buiten de uren en een reeks nieuwe aanmeldingen', fun
 
     expect(DB::table('audit_logs')->where('action', 'auth.login_outside_hours')->count())->toBe(3)
         ->and(DB::table('audit_logs')->where('action', 'auth.session_burst')->count())->toBe(1);
+
+    Livewire::actingAs($user)->test(Dashboard::class)
+        ->assertSee('Piet')
+        ->assertSeeHtml('wp-pill--progress');
 });
 
 it('stopt een sessie na twaalf uur en toont de kaart alleen aan een beheerder', function () {
