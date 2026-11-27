@@ -467,8 +467,6 @@
                     :subtitle="__('dashboard.intent.title')"
                 />
 
-                @include('livewire.dashboard.security-notices')
-
                 @if ($showWhatsNew || ! $intentHub->isEmpty() || $canAddDevice)
                     <div class="wp-kpis" data-wp-intent-grid>
                         @if ($showWhatsNew)
@@ -639,6 +637,8 @@
                 @endif
             </div>
         </div>
+
+        @include('livewire.dashboard.security-notices')
 
         @php
             $kpiLinks = [

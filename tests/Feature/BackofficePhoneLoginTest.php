@@ -156,9 +156,18 @@ it('noteert een aanmelding buiten de uren en een reeks nieuwe aanmeldingen', fun
     expect(DB::table('audit_logs')->where('action', 'auth.login_outside_hours')->count())->toBe(3)
         ->and(DB::table('audit_logs')->where('action', 'auth.session_burst')->count())->toBe(1);
 
-    Livewire::actingAs($user)->test(Dashboard::class)
+    seedTenantPastOnboarding($tenant);
+
+    $html = Livewire::actingAs($user)->test(Dashboard::class)
         ->assertSee('Piet')
-        ->assertSeeHtml('wp-pill--progress');
+        ->assertSeeHtml('wp-pill--progress')
+        ->html();
+    $intent = strpos($html, __('dashboard.intent.title'));
+    $dashboard = strpos($html, __('dashboard.title'));
+    $alert = strpos($html, 'wp-pill--progress');
+    expect($intent)->not->toBeFalse()
+        ->and($dashboard)->toBeGreaterThan($intent)
+        ->and($alert)->toBeGreaterThan($dashboard);
 });
 
 it('stopt een sessie na twaalf uur en toont de kaart alleen aan een beheerder', function () {
