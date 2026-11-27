@@ -9,19 +9,62 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('tenants', function (Blueprint $table) {
-            $table->boolean('backoffice_phone_login_enabled')->default(false)->after('translations_enabled');
-            $table->timestamp('backoffice_phone_login_decided_at')->nullable()->after('backoffice_phone_login_enabled');
-            $table->boolean('login_alert_enabled')->default(false)->after('backoffice_phone_login_decided_at');
-            $table->char('login_alert_start', 5)->default('22:00')->after('login_alert_enabled');
-            $table->char('login_alert_end', 5)->default('06:00')->after('login_alert_start');
-        });
+        if (! Schema::hasColumn('tenants', 'backoffice_phone_login_enabled')) {
+            Schema::table('tenants', function (Blueprint $table) {
+                $table->boolean('backoffice_phone_login_enabled')->default(false)->after('translations_enabled');
+            });
+        }
 
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('phone_reregistration_open')->default(false)->after('role');
-            $table->string('phone_revoked_label')->nullable()->after('phone_reregistration_open');
-        });
+        if (! Schema::hasColumn('tenants', 'backoffice_phone_login_decided_at')) {
+            Schema::table('tenants', function (Blueprint $table) {
+                $table->timestamp('backoffice_phone_login_decided_at')->nullable()->after('backoffice_phone_login_enabled');
+            });
+        }
 
+        if (! Schema::hasColumn('tenants', 'login_alert_enabled')) {
+            Schema::table('tenants', function (Blueprint $table) {
+                $table->boolean('login_alert_enabled')->default(false)->after('backoffice_phone_login_decided_at');
+            });
+        }
+
+        if (! Schema::hasColumn('tenants', 'login_alert_start')) {
+            Schema::table('tenants', function (Blueprint $table) {
+                $table->char('login_alert_start', 5)->default('22:00')->after('login_alert_enabled');
+            });
+        }
+
+        if (! Schema::hasColumn('tenants', 'login_alert_end')) {
+            Schema::table('tenants', function (Blueprint $table) {
+                $table->char('login_alert_end', 5)->default('06:00')->after('login_alert_start');
+            });
+        }
+
+        if (! Schema::hasColumn('users', 'phone_reregistration_open')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->boolean('phone_reregistration_open')->default(false)->after('role');
+            });
+        }
+
+        if (! Schema::hasColumn('users', 'phone_revoked_label')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('phone_revoked_label')->nullable()->after('phone_reregistration_open');
+            });
+        }
+
+        if (! Schema::hasTable('user_passkey_credentials')) {
+            $this->createUserPasskeyCredentials();
+        }
+
+        if (! Schema::hasTable('backoffice_login_challenges')) {
+            $this->createBackofficeLoginChallenges();
+        }
+
+        $this->comment('user_passkey_credentials', 'Passkey van een beheerder of medewerker.');
+        $this->comment('backoffice_login_challenges', 'Eenmalige QR-aanmelding voor de computer.');
+    }
+
+    private function createUserPasskeyCredentials(): void
+    {
         Schema::create('user_passkey_credentials', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tenant_id')->constrained()->cascadeOnDelete();
@@ -40,7 +83,10 @@ return new class extends Migration
 
             $table->unique('user_id');
         });
+    }
 
+    private function createBackofficeLoginChallenges(): void
+    {
         Schema::create('backoffice_login_challenges', function (Blueprint $table) {
             $table->id();
             $table->string('token_hash', 64)->unique();
@@ -57,9 +103,6 @@ return new class extends Migration
 
             $table->index(['session_id', 'status']);
         });
-
-        $this->comment('user_passkey_credentials', 'Passkey van een beheerder of medewerker.');
-        $this->comment('backoffice_login_challenges', 'Eenmalige QR-aanmelding voor de computer.');
     }
 
     public function down(): void

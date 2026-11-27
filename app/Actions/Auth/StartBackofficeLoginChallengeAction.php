@@ -5,6 +5,7 @@ namespace App\Actions\Auth;
 use App\Models\BackofficeLoginChallenge;
 use App\Models\User;
 use App\Support\Auth\ComputerLabel;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
 /**
@@ -27,7 +28,9 @@ class StartBackofficeLoginChallengeAction
             ->first();
 
         if ($user === null || ! $user->tenant?->allowsBackofficePhoneLogin()) {
-            $this->dropPending($sessionId);
+            if ($currentToken !== null && $currentToken !== '') {
+                $this->dropPending($sessionId);
+            }
 
             return null;
         }
@@ -71,6 +74,10 @@ class StartBackofficeLoginChallengeAction
 
     private function dropPending(string $sessionId): void
     {
+        if (! Schema::hasTable('backoffice_login_challenges')) {
+            return;
+        }
+
         BackofficeLoginChallenge::query()
             ->where('session_id', $sessionId)
             ->where('status', BackofficeLoginChallenge::STATUS_PENDING)
