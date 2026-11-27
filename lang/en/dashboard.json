@@ -263,6 +263,7 @@
         "prompt_body": "Do you want administrators and staff to also sign in by scanning a code on the login screen and entering their email and password on the phone? The password on the computer still works.",
         "prompt_yes": "Yes, turn it on",
         "prompt_no": "No, not now",
+        "alerts_heading": "Attention for sign-ins on WinProx :tenant",
         "alerts_title": "Sign-in",
         "outside_hours": ":name signed in at :time, outside the hours you set.",
         "throttled": "Too many failed attempts for :name at :time.",

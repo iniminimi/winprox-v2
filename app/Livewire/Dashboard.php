@@ -510,6 +510,7 @@ class Dashboard extends Component
             'manualClockInClockPoints' => $manualClockInOptions['clockPoints'],
             'showWhatsNew' => $user instanceof User && $shouldShowWhatsNew->handle($user),
             'securityAlerts' => $securityAlerts,
+            'securityAlertTenantName' => (string) ($tenant?->name ?? ''),
             'showPhoneLoginPrompt' => $showPhoneLoginPrompt,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'onboarding' => $onboarding,

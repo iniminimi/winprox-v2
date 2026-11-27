@@ -181,7 +181,8 @@ it('noteert een aanmelding buiten de uren en een reeks nieuwe aanmeldingen', fun
     ]), "\0", true);
     $html = Livewire::actingAs($user)->test(Dashboard::class)
         ->assertSee('Piet')
-        ->assertSeeHtml('wp-card wp-card-pad wp-stack-tight')
+        ->assertSee(__('dashboard.security.alerts_heading', ['tenant' => $tenant->name]), false)
+        ->assertSeeHtml('wp-pill wp-pill--progress')
         ->assertSee($marker, false)
         ->html();
     $intent = strpos($html, __('dashboard.intent.title'));

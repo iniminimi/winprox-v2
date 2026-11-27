@@ -263,6 +263,7 @@
         "prompt_body": "Vuoi che amministratori e collaboratori possano entrare anche scansionando un codice nella schermata di accesso e inserendo e-mail e password sul telefono? La password sul computer resta possibile.",
         "prompt_yes": "Sì, attivalo",
         "prompt_no": "No, non ora",
+        "alerts_heading": "Attenzione agli accessi su WinProx :tenant",
         "alerts_title": "Accesso",
         "outside_hours": ":name è entrato alle :time, fuori dall'orario impostato.",
         "throttled": "Troppi tentativi falliti per :name alle :time.",

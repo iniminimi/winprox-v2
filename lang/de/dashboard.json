@@ -263,6 +263,7 @@
         "prompt_body": "Sollen Administratoren und Mitarbeitende sich auch anmelden können, indem sie einen Code auf dem Anmeldebildschirm scannen und auf dem Telefon E-Mail und Passwort eingeben? Das Passwort am Computer bleibt möglich.",
         "prompt_yes": "Ja, einschalten",
         "prompt_no": "Nein, nicht jetzt",
+        "alerts_heading": "Achtung bei Anmeldungen auf WinProx :tenant",
         "alerts_title": "Anmeldung",
         "outside_hours": ":name hat sich um :time angemeldet, außerhalb der eingestellten Stunden.",
         "throttled": "Zu viele Fehlversuche für :name um :time.",

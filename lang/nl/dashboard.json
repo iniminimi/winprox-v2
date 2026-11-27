@@ -263,6 +263,7 @@
         "prompt_body": "Wil je dat beheerders en medewerkers ook kunnen aanmelden door een code op het loginscherm te scannen en op de telefoon hun e-mail en wachtwoord in te geven? Het wachtwoord op de computer blijft werken.",
         "prompt_yes": "Ja, zet het aan",
         "prompt_no": "Nee, niet nu",
+        "alerts_heading": "Aandacht bij aanmeldingen op WinProx :tenant",
         "alerts_title": "Aanmelden",
         "outside_hours": ":name meldde zich aan om :time, buiten de ingestelde uren.",
         "throttled": "Te veel mislukte pogingen voor :name om :time.",
