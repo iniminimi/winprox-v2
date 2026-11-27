@@ -10,8 +10,11 @@
 @endif
 
 @if ($securityAlerts !== [])
-    <section class="wp-card wp-card-pad wp-stack-tight">
-        <h2 class="wp-section-title">{{ __('dashboard.security.alerts_heading', ['tenant' => $securityAlertTenantName]) }}</h2>
+    <x-wp-disclosure-card
+        :title="__('dashboard.security.alerts_heading', ['tenant' => $securityAlertTenantName])"
+        :count="count($securityAlerts)"
+        :subtitle="trans_choice('dashboard.security.alerts_count', count($securityAlerts), ['count' => count($securityAlerts)])"
+    >
         @foreach ($securityAlerts as $alert)
             <div class="wp-cluster wp-cluster--tight">
                 <span class="wp-pill wp-pill--progress">{{ __('dashboard.security.alerts_title') }}</span>
@@ -32,5 +35,5 @@
                 </span>
             </div>
         @endforeach
-    </section>
+    </x-wp-disclosure-card>
 @endif

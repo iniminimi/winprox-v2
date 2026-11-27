@@ -264,6 +264,7 @@
         "prompt_yes": "Sì, attivalo",
         "prompt_no": "No, non ora",
         "alerts_heading": "Attenzione agli accessi su WinProx :tenant",
+        "alerts_count": "{1} :count nuovo avviso di accesso|[2,*] :count nuovi avvisi di accesso",
         "alerts_title": "Accesso",
         "outside_hours": ":name è entrato alle :time, fuori dall'orario impostato.",
         "throttled": "Troppi tentativi falliti per :name alle :time.",

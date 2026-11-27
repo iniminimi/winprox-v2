@@ -264,6 +264,7 @@
         "prompt_yes": "Ja, einschalten",
         "prompt_no": "Nein, nicht jetzt",
         "alerts_heading": "Achtung bei Anmeldungen auf WinProx :tenant",
+        "alerts_count": "{1} :count neuer Anmeldehinweis|[2,*] :count neue Anmeldehinweise",
         "alerts_title": "Anmeldung",
         "outside_hours": ":name hat sich um :time angemeldet, außerhalb der eingestellten Stunden.",
         "throttled": "Zu viele Fehlversuche für :name um :time.",

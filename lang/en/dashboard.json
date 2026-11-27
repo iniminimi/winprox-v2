@@ -264,6 +264,7 @@
         "prompt_yes": "Yes, turn it on",
         "prompt_no": "No, not now",
         "alerts_heading": "Attention for sign-ins on WinProx :tenant",
+        "alerts_count": "{1} :count new sign-in notice|[2,*] :count new sign-in notices",
         "alerts_title": "Sign-in",
         "outside_hours": ":name signed in at :time, outside the hours you set.",
         "throttled": "Too many failed attempts for :name at :time.",

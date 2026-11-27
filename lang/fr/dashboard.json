@@ -264,6 +264,7 @@
         "prompt_yes": "Oui, activer",
         "prompt_no": "Non, pas maintenant",
         "alerts_heading": "Attention aux connexions sur WinProx :tenant",
+        "alerts_count": "{1} :count nouvel avertissement de connexion|[2,*] :count nouveaux avertissements de connexion",
         "alerts_title": "Connexion",
         "outside_hours": ":name s'est connecté à :time, en dehors des heures choisies.",
         "throttled": "Trop de tentatives échouées pour :name à :time.",

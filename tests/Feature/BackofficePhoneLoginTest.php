@@ -231,6 +231,8 @@ it('noteert een aanmelding buiten de uren en een reeks nieuwe aanmeldingen', fun
     $html = Livewire::actingAs($user)->test(Dashboard::class)
         ->assertSee('Piet')
         ->assertSee(__('dashboard.security.alerts_heading', ['tenant' => $tenant->name]), false)
+        ->assertSee(trans_choice('dashboard.security.alerts_count', 4, ['count' => 4]), false)
+        ->assertSeeHtml('wp-settings-section-toggle')
         ->assertSeeHtml('wp-pill wp-pill--progress')
         ->assertSee($marker, false)
         ->html();
