@@ -16,7 +16,6 @@
             <p class="wp-text-body"><strong>{{ $organization }}</strong></p>
         @endif
         <p class="wp-text-body">{{ $computer }}</p>
-        <p class="wp-text-body">{{ __('auth.phone.code') }} <strong>{{ $code }}</strong></p>
 
         @if ($status === \App\Models\BackofficeLoginChallenge::STATUS_APPROVED || $status === \App\Models\BackofficeLoginChallenge::STATUS_CONSUMED)
             <p class="wp-text-body" role="status">{{ __('auth.phone.done') }}</p>

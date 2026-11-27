@@ -55,7 +55,6 @@
             <div class="wp-auth-login-qr" wire:poll.3s="pollPhoneLogin">
                 <div>{!! $phoneLoginSvg !!}</div>
                 <p class="wp-muted">{{ __('auth.phone.qr_hint') }}</p>
-                <p class="wp-text-body">{{ __('auth.phone.code') }} <strong>{{ $phoneLoginCode }}</strong></p>
             </div>
         @endif
 

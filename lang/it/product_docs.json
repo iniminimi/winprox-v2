@@ -460,7 +460,7 @@
             {
                 "title": "Accesso",
                 "items": [
-                    "Gestione: e-mail e una password lunga che non compare in fughe note. Le password sono salvate con hash. I tentativi falliti ripetuti vengono bloccati temporaneamente. Un amministratore attiva o disattiva l’accesso con il telefono nelle impostazioni dell’organizzazione: il computer mostra un codice, il telefono conferma con impronta o volto. E-mail e password restano possibili. Quei dati biometrici non lasciano il telefono. Solo un amministratore libera un telefono.",
+                    "Gestione: e-mail e una password lunga che non compare in fughe note. Le password sono salvate con hash. I tentativi falliti ripetuti vengono bloccati temporaneamente. Un amministratore attiva o disattiva l’accesso con il telefono nelle impostazioni dell’organizzazione: il computer mostra un QR, il telefono conferma con impronta o volto. E-mail e password restano possibili. Quei dati biometrici non lasciano il telefono. Solo un amministratore libera un telefono.",
                     "Su uno smartphone la gestione non si apre. Se l’organizzazione ha attivato l’accesso con il telefono, il telefono conferma solo il computer. La gestione resta su un computer o un tablet.",
                     "L’auto-registrazione vale solo dopo il link nell’e-mail di conferma. Le registrazioni non confermate sono eliminate dopo 7 giorni.",
                     "**Accedi con Microsoft** (desktop): solo un account esistente il cui indirizzo e-mail coincide. Nessun account nuovo automatico. E-mail e password restano possibili.",
