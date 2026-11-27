@@ -1434,7 +1434,7 @@
             "actions": [
                 {
                     "label": "Neues Passwort",
-                    "text": "Setzen Sie ein neues Passwort für einen Benutzer einer Organisation. Es wird keine E-Mail gesendet. Geben Sie das Passwort selbst weiter. Ein Superuser erhält hier kein neues Passwort."
+                    "text": "Setzen Sie ein neues Passwort für einen Benutzer einer Organisation oder für einen Superuser. Es wird keine E-Mail gesendet. Geben Sie das Passwort selbst weiter."
                 }
             ]
         },

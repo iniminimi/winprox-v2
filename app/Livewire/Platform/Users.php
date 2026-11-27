@@ -67,7 +67,13 @@ class Users extends Component
             SetPlatformUserPasswordRequest::messagesFor(),
         );
 
-        $setPassword->handle($target, $validated['password'], (int) auth()->id());
+        $actorId = (int) auth()->id();
+        $setPassword->handle(
+            $target,
+            $validated['password'],
+            $actorId,
+            (int) $target->id === $actorId ? (string) session()->getId() : null,
+        );
         $name = $target->name;
         $this->closePassword();
         session()->flash('success', __('platform.users.password.saved', ['name' => $name]));

@@ -283,7 +283,12 @@ class OpsPortal extends Component
             'newPasswordConfirmation.same' => __('auth.errors.password_confirmed'),
         ]);
 
-        $setPassword->handle($target, $this->newPassword, (int) $actor->id);
+        $setPassword->handle(
+            $target,
+            $this->newPassword,
+            (int) $actor->id,
+            (int) $target->id === (int) $actor->id ? (string) session()->getId() : null,
+        );
         $name = $target->name;
         $this->closePassword();
         $this->flashMessage = __('platform.users.password.saved', ['name' => $name]);

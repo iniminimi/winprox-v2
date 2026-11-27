@@ -1434,7 +1434,7 @@
             "actions": [
                 {
                     "label": "Nuova password",
-                    "text": "Imposti una nuova password per un utente di un'organizzazione. Non parte nessuna e-mail. Comunichi lei la password. Un superuser non riceve qui una nuova password."
+                    "text": "Imposti una nuova password per un utente di un'organizzazione o per un superuser. Non parte nessuna e-mail. Comunichi lei la password."
                 }
             ]
         },

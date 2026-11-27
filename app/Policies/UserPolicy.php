@@ -74,7 +74,7 @@ class UserPolicy
 
     public function setPassword(User $actor, User $target): bool
     {
-        return $actor->is_superuser && ! $target->is_superuser;
+        return $actor->is_superuser;
     }
 
     private function isTenantAdmin(User $user): bool

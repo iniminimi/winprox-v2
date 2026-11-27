@@ -1434,7 +1434,7 @@
             "actions": [
                 {
                     "label": "Nieuw wachtwoord",
-                    "text": "Zet een nieuw wachtwoord voor een gebruiker van een organisatie. Er gaat geen e-mail uit. Geef het wachtwoord zelf door. Een superuser krijgt hier geen nieuw wachtwoord."
+                    "text": "Zet een nieuw wachtwoord voor een gebruiker van een organisatie of voor een superuser. Er gaat geen e-mail uit. Geef het wachtwoord zelf door."
                 }
             ]
         },

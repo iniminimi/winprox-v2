@@ -1434,7 +1434,7 @@
             "actions": [
                 {
                     "label": "New password",
-                    "text": "Set a new password for a user of an organisation. No email is sent. Pass the password on yourself. A superuser does not get a new password here."
+                    "text": "Set a new password for a user of an organisation or for a superuser. No email is sent. Pass the password on yourself."
                 }
             ]
         },

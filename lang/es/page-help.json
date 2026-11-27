@@ -1434,7 +1434,7 @@
             "actions": [
                 {
                     "label": "Nueva contraseña",
-                    "text": "Ponga una contraseña nueva para un usuario de una organización. No se envía ningún correo. Comunique la contraseña usted mismo. Un superusuario no recibe una contraseña nueva aquí."
+                    "text": "Ponga una contraseña nueva para un usuario de una organización o para un superusuario. No se envía ningún correo. Comunique la contraseña usted mismo."
                 }
             ]
         },

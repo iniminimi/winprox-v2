@@ -9,21 +9,25 @@ use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Zet een nieuw wachtwoord voor een organisatiegebruiker, zonder e-mail.
+ * Zet een nieuw wachtwoord zonder e-mail, ook voor een superuser.
  * De superuser geeft het wachtwoord zelf door.
  */
 final class SetPlatformUserPasswordAction
 {
     public function __construct(private AuditRecorder $audit) {}
 
-    public function handle(User $user, string $password, int $actorUserId): User
+    public function handle(User $user, string $password, int $actorUserId, ?string $keepSessionId = null): User
     {
         $user->update([
             'password' => $password,
             'remember_token' => null,
         ]);
 
-        DB::table('sessions')->where('user_id', $user->id)->delete();
+        $sessions = DB::table('sessions')->where('user_id', $user->id);
+        if ($keepSessionId !== null && $keepSessionId !== '') {
+            $sessions->where('id', '!=', $keepSessionId);
+        }
+        $sessions->delete();
         DB::table('password_reset_tokens')->where('email', $user->email)->delete();
 
         $this->audit->record(
