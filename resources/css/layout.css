@@ -1279,6 +1279,15 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     gap: 0.75rem;
 }
 
+@keyframes wp-on-autofill {
+    from {}
+    to {}
+}
+
+.wp-auth-form input:-webkit-autofill {
+    animation: wp-on-autofill 0.01s;
+}
+
 .wp-auth-login-qr {
     display: flex;
     flex-direction: column;
