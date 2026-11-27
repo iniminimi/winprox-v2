@@ -260,7 +260,7 @@
     },
     "security": {
         "prompt_title": "Aanmelden met je telefoon",
-        "prompt_body": "Wil je dat beheerders en medewerkers ook kunnen aanmelden door een code op het loginscherm te scannen en te bevestigen met vingerafdruk of gezicht? Het gewone wachtwoord blijft werken.",
+        "prompt_body": "Wil je dat beheerders en medewerkers ook kunnen aanmelden door een code op het loginscherm te scannen en op de telefoon hun e-mail en wachtwoord in te geven? Het wachtwoord op de computer blijft werken.",
         "prompt_yes": "Ja, zet het aan",
         "prompt_no": "Nee, niet nu",
         "alerts_title": "Aanmelden",

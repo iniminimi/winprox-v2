@@ -260,7 +260,7 @@
     },
     "security": {
         "prompt_title": "Accesso con il telefono",
-        "prompt_body": "Vuoi che amministratori e collaboratori possano entrare anche scansionando un codice nella schermata di accesso e confermando con impronta o volto? La password abituale resta possibile.",
+        "prompt_body": "Vuoi che amministratori e collaboratori possano entrare anche scansionando un codice nella schermata di accesso e inserendo e-mail e password sul telefono? La password sul computer resta possibile.",
         "prompt_yes": "Sì, attivalo",
         "prompt_no": "No, non ora",
         "alerts_title": "Accesso",

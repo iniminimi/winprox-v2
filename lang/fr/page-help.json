@@ -857,7 +857,7 @@
                 {
                     "label": "Connexion avec le téléphone",
                     "nested": true,
-                    "text": "Seul un administrateur peut l’activer ou le désactiver. Le réglage s’applique tout de suite et est désactivé par défaut.<br><br>• Désactivé : chacun se connecte avec e-mail et mot de passe.<br>• Activé : l’écran de connexion montre aussi un code. Le téléphone confirme l’ordinateur. Le mot de passe reste utilisable."
+                    "text": "Seul un administrateur peut l’activer ou le désactiver. Le réglage s’applique tout de suite et est désactivé par défaut.<br><br>• Désactivé : chacun se connecte avec e-mail et mot de passe.<br>• Activé : l’écran de connexion montre aussi un code. Sur le téléphone, vous saisissez e-mail et mot de passe. Le mot de passe sur l’ordinateur reste utilisable."
                 },
                 {
                     "label": "Données de l’organisation",

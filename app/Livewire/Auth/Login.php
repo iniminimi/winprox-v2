@@ -10,6 +10,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Support\Auth\EntraSso;
 use App\Support\Http\PhoneUserAgent;
 use App\Support\Qr\QrSvg;
+use BaconQrCode\Common\ErrorCorrectionLevel;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -95,7 +96,7 @@ class Login extends Component
         return view('livewire.auth.login', [
             'entraEnabled' => EntraSso::enabled(),
             'phoneLoginSvg' => $this->phoneLoginToken !== null
-                ? QrSvg::svg(route('login.phone', ['token' => $this->phoneLoginToken]), 180)
+                ? QrSvg::svg(route('login.phone', ['token' => $this->phoneLoginToken]), 96, ErrorCorrectionLevel::L(), 2)
                 : null,
         ])->layoutData(['hideAuthLogo' => true, 'title' => __('auth.title').' — WinProx']);
     }

@@ -15,6 +15,8 @@ class PhoneLogin extends Component
 {
     public string $token = '';
 
+    public string $email = '';
+
     public string $password = '';
 
     public bool $ready = false;
@@ -40,12 +42,15 @@ class PhoneLogin extends Component
     public function submitPassword(SubmitPhonePasswordAction $submit, ShowPhoneLoginChallengeAction $show): void
     {
         $this->validate([
+            'email' => ['required', 'email'],
             'password' => ['required', 'string'],
         ], [
+            'email.required' => __('auth.errors.email_required'),
+            'email.email' => __('auth.errors.email_invalid'),
             'password.required' => __('auth.errors.password_required'),
         ]);
 
-        $result = $submit->handle($this->token, $this->password, (string) request()->ip());
+        $result = $submit->handle($this->token, $this->email, $this->password, (string) request()->ip());
         $this->password = '';
 
         if (! ($result['ok'] ?? false)) {

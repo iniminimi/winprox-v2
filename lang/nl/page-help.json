@@ -853,7 +853,7 @@
                 {
                     "label": "Aanmelden met de telefoon",
                     "nested": true,
-                    "text": "Alleen een beheerder kan dit aan- of uitzetten. De instelling wordt meteen toegepast en staat standaard uit.<br><br>• Uit: iedereen meldt aan met e-mail en wachtwoord.<br>• Aan: op het loginscherm staat ook een code. De telefoon bevestigt de computer. Het wachtwoord blijft werken."
+                    "text": "Alleen een beheerder kan dit aan- of uitzetten. De instelling wordt meteen toegepast en staat standaard uit.<br><br>• Uit: iedereen meldt aan met e-mail en wachtwoord.<br>• Aan: op het loginscherm staat ook een code. Op de telefoon geeft u e-mail en wachtwoord in. Het wachtwoord op de computer blijft werken."
                 },
                 {
                     "label": "Organisatiegegevens",

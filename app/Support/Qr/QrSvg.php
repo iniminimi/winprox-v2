@@ -14,14 +14,14 @@ use BaconQrCode\Writer;
  */
 final class QrSvg
 {
-    public static function svg(string $url, int $size = 320): string
+    public static function svg(string $url, int $size = 320, ?ErrorCorrectionLevel $level = null, int $margin = 1): string
     {
         $renderer = new ImageRenderer(
-            new RendererStyle($size, 1),
+            new RendererStyle($size, $margin),
             new SvgImageBackEnd(),
         );
 
-        $svg = (new Writer($renderer))->writeString($url, 'UTF-8', ErrorCorrectionLevel::H());
+        $svg = (new Writer($renderer))->writeString($url, 'UTF-8', $level ?? ErrorCorrectionLevel::H());
 
         // Strip de XML-declaratie zodat de SVG inline in HTML kan.
         return preg_replace('/^<\?xml[^>]*\?>\s*/', '', $svg) ?? $svg;

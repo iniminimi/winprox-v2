@@ -460,7 +460,7 @@
             {
                 "title": "Sign-in",
                 "items": [
-                    "Back office: email and a long password that does not appear in known leaks. Passwords are stored hashed. Repeated failed attempts are temporarily blocked. An administrator turns sign-in with a phone on or off in the organisation settings: the computer shows a code, the phone confirms with a fingerprint or face. That biometric data never leaves the phone. Only an administrator can release a phone.",
+                    "Back office: email and a long password that does not appear in known leaks. Passwords are stored hashed. Repeated failed attempts are temporarily blocked. An administrator turns sign-in with a phone on or off in the organisation settings: the computer shows a code, and the phone asks for the same email and password. Biometrics on that phone can come afterwards and do not replace the password. Only an administrator can release a phone.",
                     "The back office does not open on a smartphone. If the organisation has turned on phone sign-in, the phone only confirms the computer. The back office itself stays on a computer or tablet.",
                     "Self-registration works only after the link in the confirmation email. Unconfirmed sign-ups are deleted after 7 days.",
                     "**Sign in with Microsoft** (desktop): only an existing account whose email matches. No automatic new accounts. Email and password still work.",

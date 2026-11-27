@@ -460,7 +460,7 @@
             {
                 "title": "Connexion",
                 "items": [
-                    "Back-office : e-mail et un mot de passe long qui ne figure pas dans des fuites connues. Les mots de passe sont stockés hachés. Les tentatives échouées répétées sont bloquées temporairement. Un administrateur active ou désactive la connexion avec le téléphone dans les paramètres de l’organisation : l’ordinateur montre un code, le téléphone confirme avec l’empreinte ou le visage. Ces données biométriques ne quittent pas le téléphone. Seul un gestionnaire libère un téléphone.",
+                    "Back-office : e-mail et un mot de passe long qui ne figure pas dans des fuites connues. Les mots de passe sont stockés hachés. Les tentatives échouées répétées sont bloquées temporairement. Un administrateur active ou désactive la connexion avec le téléphone dans les paramètres de l’organisation : l’ordinateur montre un code, le téléphone demande le même e-mail et le même mot de passe. La biométrie sur ce téléphone peut venir ensuite et ne remplace pas le mot de passe. Seul un gestionnaire libère un téléphone.",
                     "Sur un smartphone, la gestion ne s’ouvre pas. Si l’organisation a activé la connexion par téléphone, le téléphone ne fait que confirmer l’ordinateur. La gestion elle-même reste sur un ordinateur ou une tablette.",
                     "L’auto-inscription ne fonctionne qu’après le lien dans l’e-mail de confirmation. Les inscriptions non confirmées sont supprimées après 7 jours.",
                     "**Se connecter avec Microsoft** (ordinateur) : uniquement un compte existant dont l’e-mail correspond. Pas de nouveaux comptes automatiques. L’e-mail et le mot de passe restent possibles.",

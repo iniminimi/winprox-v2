@@ -6,6 +6,7 @@ use App\Enums\BackofficeLoginThrottleStep;
 use App\Models\BackofficeLoginChallenge;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * Controleert het wachtwoord op de telefoon en meldt de computer nog niet aan.
@@ -17,7 +18,7 @@ class SubmitPhonePasswordAction
     /**
      * @return array{ok: bool, error?: string}
      */
-    public function handle(string $token, string $password, string $ip): array
+    public function handle(string $token, string $email, string $password, string $ip): array
     {
         $challenge = $this->openChallenge($token);
         if ($challenge === null) {
@@ -34,7 +35,8 @@ class SubmitPhonePasswordAction
             return ['ok' => false, 'error' => 'throttle'];
         }
 
-        if (! Hash::check($password, $user->password)) {
+        $emailMatches = Str::lower(trim($email)) === Str::lower($user->email);
+        if (! $emailMatches || ! Hash::check($password, $user->password)) {
             $this->throttle->handle($user->email, $ip, BackofficeLoginThrottleStep::Failure);
 
             return ['ok' => false, 'error' => 'failed'];

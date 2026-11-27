@@ -37,27 +37,13 @@
                 <button type="button" class="btn btn--primary btn--block" wire:click="confirm">{{ __('auth.phone.confirm') }}</button>
             </div>
         @else
-            <div
-                class="wp-stack"
-                x-data="wpBackofficePasskey({
-                    i18n: @js($passkeyI18n),
-                    urls: {
-                        assertOptions: @js(route('login.phone.assert-options', ['token' => $token])),
-                        assert: @js(route('login.phone.assert', ['token' => $token])),
-                    }
-                })"
-            >
-                @if ($hasPasskey)
-                    <button type="button" class="btn btn--primary btn--block" @click="assert()">{{ __('auth.phone.biometric') }}</button>
-                    <p class="wp-error" x-show="error" x-text="error"></p>
-                @endif
-
-                <form wire:submit="submitPassword" class="wp-stack">
-                    <input type="password" class="wp-input" wire:model="password" autocomplete="current-password" placeholder="{{ __('auth.password') }}" aria-label="{{ __('auth.password') }}">
-                    @error('password') <p class="wp-error">{{ $message }}</p> @enderror
-                    <button type="submit" class="btn btn--primary btn--block">{{ __('auth.phone.submit_password') }}</button>
-                </form>
-            </div>
+            <form wire:submit="submitPassword" class="wp-stack">
+                <input type="email" class="wp-input" wire:model="email" autocomplete="username" placeholder="{{ __('auth.email') }}" aria-label="{{ __('auth.email') }}">
+                @error('email') <p class="wp-error">{{ $message }}</p> @enderror
+                <input type="password" class="wp-input" wire:model="password" autocomplete="current-password" placeholder="{{ __('auth.password') }}" aria-label="{{ __('auth.password') }}">
+                @error('password') <p class="wp-error">{{ $message }}</p> @enderror
+                <button type="submit" class="btn btn--primary btn--block">{{ __('auth.phone.submit_password') }}</button>
+            </form>
         @endif
     @endunless
 </div>

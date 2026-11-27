@@ -7,6 +7,8 @@ use App\Actions\Auth\ReleaseUserPhoneAction;
 use App\Actions\Auth\StartBackofficeLoginChallengeAction;
 use App\Actions\Auth\SubmitPhonePasswordAction;
 use App\Http\Middleware\EnsureAbsoluteSessionLifetime;
+use App\Livewire\Auth\Login;
+use App\Livewire\Auth\PhoneLogin;
 use App\Livewire\Auth\Register;
 use App\Livewire\Dashboard;
 use App\Livewire\Pages\Settings;
@@ -76,6 +78,17 @@ it('meldt de computer aan via de telefoon zonder de telefoon een sessie te geven
     expect(app(StartBackofficeLoginChallengeAction::class)->handle('uit@example.com', 'desk-2', 'Chrome', null))->toBeNull();
 
     $started = app(StartBackofficeLoginChallengeAction::class)->handle('beheer@example.com', 'desk', 'Mozilla/5.0 (Windows NT 10.0) Chrome/120.0', null);
+
+    Livewire::test(Login::class)
+        ->set('email', 'beheer@example.com')
+        ->assertSeeHtml('wp-auth-login-qr')
+        ->assertSeeHtml('width="96"');
+
+    Livewire::test(PhoneLogin::class, ['token' => $started['token']])
+        ->assertSee(__('auth.email'))
+        ->assertSee(__('auth.password'))
+        ->assertDontSee('Bevestig met vingerafdruk');
+
     $wrong = app(SubmitPhonePasswordAction::class)->handle($started['token'], 'beheer@example.com', 'foutwachtwoord', '127.0.0.1');
     expect($wrong['ok'])->toBeFalse()->and(auth()->check())->toBeFalse();
 

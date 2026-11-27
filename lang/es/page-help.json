@@ -853,7 +853,7 @@
                 {
                     "label": "Acceso con el teléfono",
                     "nested": true,
-                    "text": "Solo un administrador puede activarlo o desactivarlo. El ajuste se aplica al momento y está desactivado por defecto.<br><br>• Desactivado: todos entran con correo y contraseña.<br>• Activado: la pantalla de acceso muestra también un código. El teléfono confirma el ordenador. La contraseña sigue funcionando."
+                    "text": "Solo un administrador puede activarlo o desactivarlo. El ajuste se aplica al momento y está desactivado por defecto.<br><br>• Desactivado: todos entran con correo y contraseña.<br>• Activado: la pantalla de acceso muestra también un código. En el teléfono introduce correo y contraseña. La contraseña en el ordenador sigue funcionando."
                 },
                 {
                     "label": "Datos de la organización",

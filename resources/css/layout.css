@@ -1279,6 +1279,26 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     gap: 0.75rem;
 }
 
+.wp-auth-login-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    text-align: center;
+}
+
+.wp-auth-login-qr svg {
+    display: block;
+    width: 6rem;
+    height: 6rem;
+}
+
+.wp-auth-login-qr .wp-muted,
+.wp-auth-login-qr .wp-text-body {
+    margin: 0;
+}
+
 .wp-auth-section-title {
     margin: 0.5rem 0 0;
     font-size: 0.875rem;
