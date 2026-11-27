@@ -394,7 +394,7 @@
         },
         "album": {
             "title": "Screensaver",
-            "hint": "During these times the screen shows this idle screen instead of the QR code — only on the checked days. Tap once for the QR code; tap again for manual clock-in. Empty = no idle screen.",
+            "hint": "During these times the screen shows this idle screen instead of the QR code — only on the checked days. Tap once for the QR code; tap again for manual clock-in. Swipe left on the QR code to see Sense for five seconds. Empty = no idle screen.",
             "block": "Time block",
             "from": "from",
             "until": "to",
@@ -421,6 +421,7 @@
             "mode_clock": "Analog clock",
             "mode_flipclock": "Flip clock",
             "mode_black": "Black screen",
+            "mode_sense": "Sense",
             "mode_none": "QR code"
         },
         "history": {

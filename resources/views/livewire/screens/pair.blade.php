@@ -90,6 +90,7 @@
                 <option value="photos">{{ __('time.clock_displays.album.mode_photos') }}</option>
                 <option value="clock">{{ __('time.clock_displays.album.mode_clock') }}</option>
                 <option value="flipclock">{{ __('time.clock_displays.album.mode_flipclock') }}</option>
+                <option value="sense">{{ __('time.clock_displays.album.mode_sense') }}</option>
                 <option value="black">{{ __('time.clock_displays.album.mode_black') }}</option>
             </select>
         </div>

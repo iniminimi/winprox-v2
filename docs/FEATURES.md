@@ -1458,14 +1458,15 @@ binnen ~30–90 s dood.
   (direction `in`/`out`/`break_start`/`break_end`).
 - **Rust-scherm / foto-album (slideshow):** per Clock Point max. 2 vensters
   (`album1/2_from|until`, zelfde conventie als aan-uren) plus één modus
-  (`album_mode`: `none` | `photos` | `clock` | `flipclock` | `black`; nieuw
+  (`album_mode`: `none` | `photos` | `clock` | `flipclock` | `sense` | `black`; nieuw
   clock point = `none`, in de keuzelijst **QR-code** en bovenaan). Tijdens een
   venster toont het scherm foto's (10 s per beeld), een donkere wijzerklok
   (lv_meter, rode secondewijzer), een digitale flipklok (twee flap-tegels,
-  knipperende dubbele punt), een zwart scherm (backlight uit; wifi en ping
-  blijven lopen) of gewoon de QR; eerste tik → QR, tweede tik →
-  PIN-login. Firmware die `black` niet kent, valt terug op de foto's (zonder
-  foto's: de QR).
+  knipperende dubbele punt), het Sense-scherm (temperatuur, vocht, CO₂, VOC),
+  een zwart scherm (backlight uit; wifi en ping blijven lopen) of gewoon de QR;
+  eerste tik → QR, tweede tik → PIN-login. Veeg op de QR naar links toont
+  Sense vijf seconden, daarna de QR. Firmware die `black` of `sense` niet
+  kent, valt terug op de foto's (zonder foto's: de QR).
   Upload op de Scherm-pagina met client-side vrije rechthoek
   (`wpCropImageFile`, `free: true`, langste zijde 480 px) + compressie — geen
   server-resize. `clock_display_images.clock_point_id NULL` = "toon op alle

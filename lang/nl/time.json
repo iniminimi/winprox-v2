@@ -394,7 +394,7 @@
         },
         "album": {
             "title": "Screensaver",
-            "hint": "Tijdens deze tijden toont het scherm dit rust-scherm i.p.v. de QR-code — alleen op de aangevinkte dagen. Een tik toont de QR-code; nog een tik opent manueel aanmelden. Leeg = geen rust-scherm.",
+            "hint": "Tijdens deze tijden toont het scherm dit rust-scherm i.p.v. de QR-code — alleen op de aangevinkte dagen. Een tik toont de QR-code; nog een tik opent manueel aanmelden. Veeg op de QR-code naar links om Sense vijf seconden te zien. Leeg = geen rust-scherm.",
             "block": "Tijdsblok",
             "from": "vanaf",
             "until": "tot",
@@ -421,6 +421,7 @@
             "mode_clock": "Wijzerklok",
             "mode_flipclock": "Flipklok",
             "mode_black": "Zwart scherm",
+            "mode_sense": "Sense",
             "mode_none": "QR-code"
         },
         "history": {

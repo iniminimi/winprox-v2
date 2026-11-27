@@ -394,7 +394,7 @@
         },
         "album": {
             "title": "Écran de veille",
-            "hint": "Pendant ces plages, l'écran affiche cet écran de veille au lieu du code QR — uniquement les jours cochés. Un toucher affiche le code QR ; un second toucher ouvre le pointage manuel. Vide = pas d'écran de veille.",
+            "hint": "Pendant ces plages, l'écran affiche cet écran de veille au lieu du code QR — uniquement les jours cochés. Un toucher affiche le code QR ; un second toucher ouvre le pointage manuel. Glissez vers la gauche sur le code QR pour voir Sense pendant cinq secondes. Vide = pas d'écran de veille.",
             "block": "Plage horaire",
             "from": "de",
             "until": "à",
@@ -421,6 +421,7 @@
             "mode_clock": "Horloge analogique",
             "mode_flipclock": "Horloge flip",
             "mode_black": "Écran noir",
+            "mode_sense": "Sense",
             "mode_none": "Code QR"
         },
         "history": {

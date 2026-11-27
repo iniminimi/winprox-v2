@@ -394,7 +394,7 @@
         },
         "album": {
             "title": "Salvaschermo",
-            "hint": "In questi orari lo schermo mostra questo salvaschermo al posto del codice QR — solo nei giorni selezionati. Un tocco mostra il codice QR; un altro tocco apre la timbratura manuale. Vuoto = nessun salvaschermo.",
+            "hint": "In questi orari lo schermo mostra questo salvaschermo al posto del codice QR — solo nei giorni selezionati. Un tocco mostra il codice QR; un altro tocco apre la timbratura manuale. Scorri verso sinistra sul codice QR per vedere Sense per cinque secondi. Vuoto = nessun salvaschermo.",
             "block": "Fascia oraria",
             "from": "da",
             "until": "a",
@@ -421,6 +421,7 @@
             "mode_clock": "Orologio analogico",
             "mode_flipclock": "Orologio flip",
             "mode_black": "Schermo nero",
+            "mode_sense": "Sense",
             "mode_none": "Codice QR"
         },
         "history": {

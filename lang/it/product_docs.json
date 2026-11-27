@@ -108,7 +108,7 @@
                     "Timbrare, vedere il proprio turno pubblicato, vedere le proprie ore, chiedere ferie, recupero, malattia o Altro.",
                     "Svolgere compiti, seguire un giro di ispezione e avviare una visita quando il GPS è attivo.",
                     "Uno schermo timbratrice facoltativo mostra un QR che cambia da solo. Si collega con un codice monouso e una conferma. Il numero di serie del display viene inviato e salvato con l’associazione. Se è in inventario vedi quello dell’adesivo; altrimenti il MAC tecnico.",
-                    "Si sceglie quando lo schermo è acceso, per esempio dalle 06:00 alle 19:00. Fuori orario può restare spento o mostrare una schermata di riposo: foto, un orologio a lancette, un orologio a palette o uno schermo nero. Il suono si attiva o disattiva per ogni schermo.",
+                    "Si sceglie quando lo schermo è acceso, per esempio dalle 06:00 alle 19:00. Fuori orario può restare spento o mostrare una schermata di riposo: foto, un orologio a lancette, un orologio a palette, Sense o uno schermo nero. Scorri verso sinistra sul codice QR per vedere Sense per cinque secondi. Il suono si attiva o disattiva per ogni schermo.",
                     "Senza smartphone: toccare lo schermo, cercare il nome per lettere; con turno aperto scegliere pausa o uscita, poi il PIN personale di quattro cifre. Chi non ha ancora un PIN lo sceglie sul posto, due volte. Sotto Uscita si cambia quel PIN: prima quello attuale, poi il nuovo due volte.",
                     "Dopo due tentativi errati, quell’esecutore resta bloccato un minuto."
                 ]

@@ -108,7 +108,7 @@
                     "Fichar, ver el cuadrante publicado, ver las propias horas, pedir vacaciones, recup, baja u Otro.",
                     "Hacer tareas, seguir una ronda de inspección y empezar una visita cuando el GPS está activo.",
                     "El número de serie de la pantalla se envía y guarda con el emparejamiento. Si está en el inventario, verá el de la pegatina; si no, la MAC técnica.",
-                    "Se elige cuándo está encendida la pantalla, por ejemplo de 06:00 a 19:00. Fuera de ese horario puede quedarse apagada o mostrar una pantalla de reposo: fotos, un reloj de agujas, un reloj de paletas o una pantalla negra. El sonido se activa o desactiva por pantalla.",
+                    "Se elige cuándo está encendida la pantalla, por ejemplo de 06:00 a 19:00. Fuera de ese horario puede quedarse apagada o mostrar una pantalla de reposo: fotos, un reloj de agujas, un reloj de paletas, Sense o una pantalla negra. Deslice el código QR hacia la izquierda para ver Sense durante cinco segundos. El sonido se activa o desactiva por pantalla.",
                     "Sin smartphone: tocar la pantalla, buscar el nombre por letras; con turno abierto elija pausa o salida y luego el PIN personal de cuatro cifras. Quien aún no tiene PIN lo elige allí, dos veces. Bajo Salida cambia ese PIN: primero el actual y luego el nuevo dos veces.",
                     "Tras dos intentos fallidos, ese ejecutor queda bloqueado un minuto."
                 ]

@@ -592,6 +592,14 @@ it('bewaart de album-modus en weigert een ongeldige', function () {
         ->assertJsonPath('album.mode', 'black')
         ->assertJsonPath('album.windows.0', ['12:00', '13:00']);
 
+    Tenancy::actAs($tenant->id);
+    $windows->handle($point->fresh(), $tenant->id, $admin->id, '12:00', '13:00', null, null, 'sense');
+    expect($point->refresh()->album_mode)->toBe('sense');
+    Tenancy::forget();
+    $this->getJson('/api/v1/time/clock-displays/ping', ['X-WinProx-Clock-Key' => $token])
+        ->assertOk()
+        ->assertJsonPath('album.mode', 'sense');
+
     expect(fn () => $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'banana'))
         ->toThrow(InvalidArgumentException::class, 'album_mode_invalid');
 });

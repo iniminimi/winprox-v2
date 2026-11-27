@@ -394,7 +394,7 @@
         },
         "album": {
             "title": "Bildschirmschoner",
-            "hint": "Während dieser Zeiten zeigt der Bildschirm diesen Ruhebildschirm statt des QR-Codes — nur an den angehakten Tagen. Einmal tippen zeigt den QR-Code; erneutes Tippen öffnet die manuelle Anmeldung. Leer = kein Ruhebildschirm.",
+            "hint": "Während dieser Zeiten zeigt der Bildschirm diesen Ruhebildschirm statt des QR-Codes — nur an den angehakten Tagen. Einmal tippen zeigt den QR-Code; erneutes Tippen öffnet die manuelle Anmeldung. Wischen Sie auf dem QR-Code nach links, um Sense fünf Sekunden zu sehen. Leer = kein Ruhebildschirm.",
             "block": "Zeitblock",
             "from": "von",
             "until": "bis",
@@ -421,6 +421,7 @@
             "mode_clock": "Analoge Uhr",
             "mode_flipclock": "Flip-Uhr",
             "mode_black": "Schwarzer Bildschirm",
+            "mode_sense": "Sense",
             "mode_none": "QR-Code"
         },
         "history": {

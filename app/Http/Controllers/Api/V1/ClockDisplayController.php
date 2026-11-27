@@ -437,7 +437,7 @@ class ClockDisplayController extends Controller
 
         return [
             'version' => $version,
-            // Rust-scherm tijdens de vensters: photos | clock | flipclock | black | none.
+            // Rust-scherm tijdens de vensters: photos | clock | flipclock | sense | black | none.
             'mode' => $clockPoint->album_mode ?? 'none',
             'windows' => $windows,
             // Bitmask weekdagen (bit 0 = ma … bit 6 = zo); geldt voor de
