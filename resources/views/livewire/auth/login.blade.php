@@ -102,10 +102,10 @@
             <a href="{{ route('password.request') }}">{{ __('auth.forgot_link') }}</a>
         </div>
 
-        <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled">
-            <x-wp-spinner wire:loading class="wp-mr-2" />
-            <span wire:loading.remove>{{ __('auth.submit') }}</span>
-            <span wire:loading>{{ __('auth.loading') }}</span>
+        <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" wire:target="login">
+            <x-wp-spinner wire:loading wire:target="login" class="wp-mr-2" />
+            <span wire:loading.remove wire:target="login">{{ __('auth.submit') }}</span>
+            <span wire:loading wire:target="login">{{ __('auth.loading') }}</span>
         </button>
     </form>
 

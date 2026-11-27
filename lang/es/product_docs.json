@@ -460,7 +460,7 @@
             {
                 "title": "Acceso",
                 "items": [
-                    "Gestión: correo y una contraseña larga que no aparece en filtraciones conocidas. Las contraseñas se guardan con hash. Los intentos fallidos repetidos se bloquean temporalmente. Un administrador activa o desactiva el acceso con el teléfono en los ajustes de la organización: el ordenador muestra un código y el teléfono pide el mismo correo y la misma contraseña. La biometría en ese teléfono puede venir después y no sustituye la contraseña. Solo un administrador libera un teléfono.",
+                    "Gestión: correo y una contraseña larga que no aparece en filtraciones conocidas. Las contraseñas se guardan con hash. Los intentos fallidos repetidos se bloquean temporalmente. Un administrador activa o desactiva el acceso con el teléfono en los ajustes de la organización: el ordenador muestra un código y el teléfono confirma con huella o rostro. El correo y la contraseña siguen funcionando. Esos datos biométricos no salen del teléfono. Solo un administrador libera un teléfono.",
                     "En un smartphone la gestión no se abre. Si la organización ha activado el acceso con el teléfono, el teléfono solo confirma el ordenador. La gestión sigue en un ordenador o una tablet.",
                     "El alta propia solo vale tras el enlace del correo de confirmación. Las altas no confirmadas se eliminan a los 7 días.",
                     "**Iniciar sesión con Microsoft** (escritorio): solo una cuenta existente cuyo correo coincida. Sin cuentas nuevas automáticas. El correo y la contraseña siguen funcionando.",

@@ -260,7 +260,7 @@
     },
     "security": {
         "prompt_title": "Connexion avec le téléphone",
-        "prompt_body": "Voulez-vous que les gestionnaires et les collaborateurs puissent aussi se connecter en scannant un code sur l'écran de connexion et en saisissant e-mail et mot de passe sur le téléphone ? Le mot de passe sur l'ordinateur reste possible.",
+        "prompt_body": "Voulez-vous que les gestionnaires et les collaborateurs puissent aussi se connecter en scannant un code sur l'écran de connexion et en confirmant avec l'empreinte ou le visage sur le téléphone ? L'e-mail et le mot de passe restent possibles.",
         "prompt_yes": "Oui, activer",
         "prompt_no": "Non, pas maintenant",
         "alerts_heading": "Attention aux connexions sur WinProx :tenant",

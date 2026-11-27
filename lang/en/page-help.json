@@ -853,7 +853,7 @@
                 {
                     "label": "Sign in with a phone",
                     "nested": true,
-                    "text": "Only an administrator can turn this on or off. The setting applies at once and is off by default.<br><br>• Off: everyone signs in with email and password.<br>• On: the login screen also shows a code. On the phone you enter email and password. The password on the computer still works."
+                    "text": "Only an administrator can turn this on or off. The setting applies at once and is off by default.<br><br>• Off: everyone signs in with email and password.<br>• On: the login screen also shows a code. On the phone you confirm with fingerprint or face. Email and password still work."
                 },
                 {
                     "label": "Organisation details",

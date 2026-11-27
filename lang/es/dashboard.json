@@ -260,7 +260,7 @@
     },
     "security": {
         "prompt_title": "Entrar con el teléfono",
-        "prompt_body": "¿Quiere que administradores y empleados también puedan entrar escaneando un código en la pantalla de acceso e introduciendo correo y contraseña en el teléfono? La contraseña en el ordenador sigue funcionando.",
+        "prompt_body": "¿Quiere que administradores y empleados también puedan entrar escaneando un código en la pantalla de acceso y confirmando con huella o rostro en el teléfono? El correo y la contraseña siguen funcionando.",
         "prompt_yes": "Sí, activar",
         "prompt_no": "No, ahora no",
         "alerts_heading": "Atención en los accesos de WinProx :tenant",

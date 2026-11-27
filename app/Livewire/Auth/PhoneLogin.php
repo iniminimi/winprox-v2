@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Actions\Auth\BindPhoneLoginChallengeUserAction;
 use App\Actions\Auth\ConfirmPhoneLoginAction;
 use App\Actions\Auth\ShowPhoneLoginChallengeAction;
 use App\Actions\Auth\SubmitPhonePasswordAction;
@@ -36,6 +37,12 @@ class PhoneLogin extends Component
     public function mount(string $token, ShowPhoneLoginChallengeAction $show): void
     {
         $this->token = $token;
+        $this->loadChallenge($show);
+    }
+
+    public function updatedEmail(BindPhoneLoginChallengeUserAction $bind, ShowPhoneLoginChallengeAction $show): void
+    {
+        $bind->handle($this->token, $this->email);
         $this->loadChallenge($show);
     }
 

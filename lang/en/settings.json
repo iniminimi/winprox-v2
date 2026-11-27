@@ -302,7 +302,7 @@
     "security": {
         "title": "Sign-in",
         "phone_login": "Sign in with a phone",
-        "phone_login_hint": "The login screen then also shows a code. On the phone you enter email and password. The password on the computer still works.",
+        "phone_login_hint": "The login screen then also shows a code. On the phone you confirm with fingerprint or face. Email and password still work.",
         "alert_hours": "Notice when someone signs in during a time window",
         "alert_hours_hint": "For example from 22:00 to 06:00. Sign-in is not blocked. Only administrators see the notice on the home screen.",
         "alert_start": "From",

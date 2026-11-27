@@ -460,7 +460,7 @@
             {
                 "title": "Aanmelden",
                 "items": [
-                    "Beheer: e-mail en een lang wachtwoord dat niet in bekende lekken staat. Wachtwoorden worden gehasht bewaard. Herhaalde mislukte pogingen worden tijdelijk geblokkeerd. Een beheerder zet aanmelden met de telefoon aan of uit bij de organisatie: de computer toont een code, de telefoon vraagt hetzelfde e-mailadres en wachtwoord. Biometrie op die telefoon kan daarna en vervangt het wachtwoord niet. Alleen een beheerder geeft een telefoon vrij.",
+                    "Beheer: e-mail en een lang wachtwoord dat niet in bekende lekken staat. Wachtwoorden worden gehasht bewaard. Herhaalde mislukte pogingen worden tijdelijk geblokkeerd. Een beheerder zet aanmelden met de telefoon aan of uit bij de organisatie: de computer toont een code, de telefoon bevestigt met vingerafdruk of gezicht. E-mail en wachtwoord blijven werken. Die biometrie verlaat de telefoon niet. Alleen een beheerder geeft een telefoon vrij.",
                     "Op een smartphone opent het beheer niet. Heeft de organisatie aanmelden met de telefoon aan, dan bevestigt de telefoon alleen de computer. Het beheer zelf blijft op een computer of tablet.",
                     "Zelfregistratie werkt pas na de link in de bevestigingsmail. Niet-bevestigde aanmeldingen worden na 7 dagen verwijderd.",
                     "**Inloggen met Microsoft** (desktop): alleen een bestaand account waarvan het e-mailadres overeenkomt. Geen automatische nieuwe accounts. E-mail en wachtwoord blijven werken.",

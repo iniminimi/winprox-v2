@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Auth\ConfirmPhoneLoginAction;
+use App\Actions\Auth\VerifyUserPasskeyAssertionAction;
 use App\Actions\Auth\ConsumeBackofficeLoginChallengeAction;
 use App\Actions\Auth\RecordBackofficeLoginAction;
 use App\Actions\Auth\ReleaseUserPhoneAction;
@@ -59,6 +60,33 @@ it('weigert een kort wachtwoord en een gelekt wachtwoord, en laat door als de le
         ['password' => [...BackofficePassword::constraints(), 'confirmed']],
     );
     expect($open->fails())->toBeFalse();
+});
+
+it('toont biometrie op de telefoon zodra het e-mailadres een gekoppelde gsm heeft', function () {
+    $tenant = Tenant::factory()->create(['backoffice_phone_login_enabled' => true]);
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'email' => 'bio@example.com',
+    ]);
+    UserPasskeyCredential::query()->create([
+        'tenant_id' => $tenant->id,
+        'user_id' => $user->id,
+        'credential_id' => 'cred-bio',
+        'credential_public_key' => base64_encode('key'),
+        'user_handle' => 'wp-user-'.$user->id,
+        'device_label' => 'Safari op iPhone',
+        'sign_count' => 0,
+    ]);
+    $started = app(StartBackofficeLoginChallengeAction::class)->handle('desk', 'Chrome', null);
+
+    Livewire::test(PhoneLogin::class, ['token' => $started['token']])
+        ->assertDontSee(__('auth.phone.biometric'))
+        ->set('email', 'bio@example.com')
+        ->assertSee(__('auth.phone.biometric'));
+
+    expect(BackofficeLoginChallenge::findByPlainToken($started['token'])?->user_id)->toBe($user->id);
+    expect(fn () => app(VerifyUserPasskeyAssertionAction::class)->handle('geen-ticket', '{}', 'localhost', ['http://localhost']))
+        ->toThrow(InvalidArgumentException::class, 'expired');
 });
 
 it('slaat het ticket over zolang de gebruiker in de tabel nog verplicht is', function () {

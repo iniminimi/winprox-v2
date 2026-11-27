@@ -460,7 +460,7 @@
             {
                 "title": "Anmeldung",
                 "items": [
-                    "Verwaltung: E-Mail und ein langes Passwort, das nicht in bekannten Leaks steht. Passwörter werden gehasht gespeichert. Wiederholte Fehlversuche werden vorübergehend gesperrt. Ein Administrator schaltet die Anmeldung mit dem Telefon in den Organisationseinstellungen ein oder aus: der Computer zeigt einen Code, das Telefon fragt dieselbe E-Mail und dasselbe Passwort. Biometrie auf diesem Telefon kann danach folgen und ersetzt das Passwort nicht. Nur ein Administrator gibt ein Telefon frei.",
+                    "Verwaltung: E-Mail und ein langes Passwort, das nicht in bekannten Leaks steht. Passwörter werden gehasht gespeichert. Wiederholte Fehlversuche werden vorübergehend gesperrt. Ein Administrator schaltet die Anmeldung mit dem Telefon in den Organisationseinstellungen ein oder aus: der Computer zeigt einen Code, das Telefon bestätigt mit Fingerabdruck oder Gesicht. E-Mail und Passwort bleiben möglich. Diese biometrischen Daten verlassen das Telefon nicht. Nur ein Administrator gibt ein Telefon frei.",
                     "Auf einem Smartphone öffnet sich die Verwaltung nicht. Hat die Organisation die Anmeldung mit dem Telefon an, bestätigt das Telefon nur den Computer. Die Verwaltung selbst bleibt auf einem Computer oder Tablet.",
                     "Selbstregistrierung gilt erst nach dem Link in der Bestätigungsmail. Unbestätigte Anmeldungen werden nach 7 Tagen gelöscht.",
                     "**Mit Microsoft anmelden** (Desktop): nur ein bestehendes Konto, dessen E-Mail übereinstimmt. Keine automatischen neuen Konten. E-Mail und Passwort bleiben möglich.",
