@@ -101,6 +101,26 @@ it('opent de computer met vingerafdruk zonder het wachtwoord opnieuw te vragen',
         ->and($challenge?->user_id)->toBeNull();
 });
 
+it('geeft na een juist wachtwoord de vingerafdrukopties terug', function () {
+    $tenant = Tenant::factory()->create(['backoffice_phone_login_enabled' => true]);
+    User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'email' => 'vinger@example.com',
+        'password' => Hash::make('wachtwoord123'),
+    ]);
+    $started = app(StartBackofficeLoginChallengeAction::class)->handle('desk', 'Chrome', null);
+
+    $this->postJson(route('login.phone.password', ['token' => $started['token']]), [
+        'email' => 'vinger@example.com',
+        'password' => 'wachtwoord123',
+    ])->assertOk()
+        ->assertJsonPath('mode', 'register')
+        ->assertJsonStructure(['options' => ['challenge', 'user', 'authenticatorSelection']]);
+
+    expect(BackofficeLoginChallenge::findByPlainToken($started['token'])?->status)
+        ->toBe(BackofficeLoginChallenge::STATUS_AUTHENTICATED);
+});
+
 it('slaat het ticket over zolang de gebruiker in de tabel nog verplicht is', function () {
     Schema::drop('backoffice_login_challenges');
     Schema::create('backoffice_login_challenges', function (Blueprint $table) {

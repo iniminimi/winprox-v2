@@ -13,7 +13,22 @@ use InvalidArgumentException;
 class IssueUserPasskeyOptionsAction
 {
     /**
-     * @param  list<string>  $origins
+     * @return array{mode: string, options: array<string, mixed>}
+     */
+    public function afterPassword(string $token, string $rpId): array
+    {
+        $challenge = $this->openChallenge($token);
+        $challenge->loadMissing('user.passkeyCredential');
+        $credential = $challenge->user?->passkeyCredential;
+        $register = $credential === null || (bool) $challenge->user?->phone_reregistration_open;
+
+        return [
+            'mode' => $register ? 'register' : 'assert',
+            'options' => $this->handle($token, $rpId, $register),
+        ];
+    }
+
+    /**
      * @return array<string, mixed>
      */
     public function handle(string $token, string $rpId, bool $registration): array
@@ -34,7 +49,10 @@ class IssueUserPasskeyOptionsAction
             return $options;
         }
 
-        if ($challenge->status !== BackofficeLoginChallenge::STATUS_PENDING) {
+        if (! in_array($challenge->status, [
+            BackofficeLoginChallenge::STATUS_PENDING,
+            BackofficeLoginChallenge::STATUS_AUTHENTICATED,
+        ], true)) {
             throw new InvalidArgumentException('failed');
         }
 

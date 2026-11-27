@@ -17,8 +17,12 @@ use InvalidArgumentException;
  */
 class PhonePasskeyController
 {
-    public function password(Request $request, string $token, SubmitPhonePasswordAction $submit): JsonResponse
-    {
+    public function password(
+        Request $request,
+        string $token,
+        SubmitPhonePasswordAction $submit,
+        IssueUserPasskeyOptionsAction $issue,
+    ): JsonResponse {
         $result = $submit->handle(
             $token,
             (string) $request->input('email', ''),
@@ -30,7 +34,17 @@ class PhonePasskeyController
             return response()->json(['ok' => false, 'error' => $result['error'] ?? 'failed'], 422);
         }
 
-        return response()->json(['ok' => true]);
+        try {
+            $issued = $issue->afterPassword($token, $this->context($request)['rpId']);
+        } catch (InvalidArgumentException $e) {
+            return response()->json(['ok' => false, 'error' => $e->getMessage()], 422);
+        }
+
+        return response()->json([
+            'ok' => true,
+            'mode' => $issued['mode'],
+            'options' => $issued['options'],
+        ]);
     }
 
     public function assertOptions(Request $request, string $token, IssueUserPasskeyOptionsAction $issue): JsonResponse

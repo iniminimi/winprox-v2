@@ -46,6 +46,15 @@ function credentialToJson(cred, withAttestation) {
 
 function preparePublicKey(options) {
     const publicKey = { ...options };
+    if (publicKey.authenticatorSelection && typeof publicKey.authenticatorSelection === 'object') {
+        const selection = { ...publicKey.authenticatorSelection };
+        for (const key of Object.keys(selection)) {
+            if (selection[key] == null || selection[key] === '') {
+                delete selection[key];
+            }
+        }
+        publicKey.authenticatorSelection = selection;
+    }
     publicKey.challenge = b64ToBuf(publicKey.challenge);
     if (publicKey.user?.id) {
         publicKey.user = { ...publicKey.user, id: b64ToBuf(publicKey.user.id) };
@@ -140,11 +149,42 @@ function registerAlpineComponent() {
             }
             this.error = '';
             const proved = await this.post(this.urls.password, { email, password });
-            if (!proved.ok || !proved.data?.ok) {
+            if (!proved.ok || !proved.data?.ok || !proved.data.options?.challenge) {
                 this.error = this.i18n[proved.data?.error] ?? this.i18n.failed ?? '';
                 return;
             }
-            await this.register();
+            await this.useOptions(proved.data.mode === 'assert', proved.data.options);
+        },
+
+        async useOptions(asserting, options) {
+            if (this.busy) {
+                return;
+            }
+            if (typeof navigator.credentials === 'undefined') {
+                this.error = this.i18n.failed ?? '';
+                return;
+            }
+            this.busy = true;
+            this.error = '';
+            try {
+                const publicKey = preparePublicKey(options);
+                const cred = asserting
+                    ? await navigator.credentials.get({ publicKey })
+                    : await navigator.credentials.create({ publicKey });
+                const done = await this.post(asserting ? this.urls.assert : this.urls.register, {
+                    credential: JSON.stringify(credentialToJson(cred, !asserting)),
+                });
+                if (!done.ok || !done.data?.ok) {
+                    this.error = this.i18n[done.data?.error] ?? this.i18n.failed ?? '';
+                    return;
+                }
+                rememberPhoneCredential(cred.id);
+                window.location.reload();
+            } catch (e) {
+                this.error = e?.name === 'NotAllowedError' ? (this.i18n.cancelled ?? '') : (this.i18n.failed ?? '');
+            } finally {
+                this.busy = false;
+            }
         },
 
         async assert() {
