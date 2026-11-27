@@ -352,7 +352,7 @@
                     "Collaboratore: il seguito quotidiano, senza la fatturazione.",
                     "Esecutore: il lavoro tramite Clock Point e i QR, senza un accesso di gestione ordinario.",
                     "Caposquadra: gestire gli esecutori, liberare la loro icona e fare foto tramite Clock Point.",
-                    "Amministratori e collaboratori accedono con e-mail e una password lunga che non compare in fughe note, o con Microsoft. L’organizzazione può aggiungere l’accesso con il telefono. L’indirizzo e-mail deve appartenere a un account WinProx esistente.",
+                    "Amministratori e collaboratori accedono con e-mail e una password lunga che non compare in fughe note, o con Microsoft. Un amministratore attiva o disattiva l’accesso con il telefono nelle impostazioni dell’organizzazione. L’indirizzo e-mail deve appartenere a un account WinProx esistente.",
                     "Gli esecutori usano Clock Point con nome e icona. Altro software si collega con chiavi API, non con l’accesso ordinario."
                 ]
             },
@@ -460,7 +460,7 @@
             {
                 "title": "Accesso",
                 "items": [
-                    "Gestione: e-mail e una password lunga che non compare in fughe note. Le password sono salvate con hash. I tentativi falliti ripetuti vengono bloccati temporaneamente. L’organizzazione può attivare anche l’accesso con il telefono: il computer mostra un codice, il telefono conferma con impronta o volto. Quei dati biometrici non lasciano il telefono. Solo un amministratore libera un telefono.",
+                    "Gestione: e-mail e una password lunga che non compare in fughe note. Le password sono salvate con hash. I tentativi falliti ripetuti vengono bloccati temporaneamente. Un amministratore attiva o disattiva l’accesso con il telefono nelle impostazioni dell’organizzazione: il computer mostra un codice, il telefono conferma con impronta o volto. Quei dati biometrici non lasciano il telefono. Solo un amministratore libera un telefono.",
                     "Su uno smartphone la gestione non si apre. Se l’organizzazione ha attivato l’accesso con il telefono, il telefono conferma solo il computer. La gestione resta su un computer o un tablet.",
                     "L’auto-registrazione vale solo dopo il link nell’e-mail di conferma. Le registrazioni non confermate sono eliminate dopo 7 giorni.",
                     "**Accedi con Microsoft** (desktop): solo un account esistente il cui indirizzo e-mail coincide. Nessun account nuovo automatico. E-mail e password restano possibili.",

@@ -145,6 +145,20 @@
 
                 @if ($canManageOrganisation)
                     <div class="wp-settings-subblock">
+                        <h3 class="wp-settings-subblock-title">{{ __('settings.security.phone_login') }}</h3>
+                        <label class="wp-switch wp-check--boxed">
+                            <input type="checkbox" wire:model.live="backofficePhoneLogin">
+                            <span class="wp-switch__track" aria-hidden="true"></span>
+                            <span>
+                                {{ __('settings.security.phone_login') }}
+                                <br><span class="wp-hint">{{ __('settings.security.phone_login_hint') }}</span>
+                            </span>
+                        </label>
+                    </div>
+                @endif
+
+                @if ($canManageOrganisation)
+                    <div class="wp-settings-subblock">
                         <h3 class="wp-settings-subblock-title">{{ __('settings.org.translations_label') }}</h3>
                         <label class="wp-switch wp-check--boxed">
                             <input type="checkbox" wire:model.live="translationsEnabled">
@@ -192,13 +206,6 @@
     @if ($canManageOrganisation)
         <x-wp-settings-section :title="__('settings.security.title')">
             <div class="wp-stack">
-                <label class="wp-check wp-check--boxed">
-                    <input type="checkbox" wire:model="backofficePhoneLogin">
-                    <span>
-                        {{ __('settings.security.phone_login') }}
-                        <br><span class="wp-hint">{{ __('settings.security.phone_login_hint') }}</span>
-                    </span>
-                </label>
                 <label class="wp-check wp-check--boxed">
                     <input type="checkbox" wire:model="loginAlertEnabled">
                     <span>

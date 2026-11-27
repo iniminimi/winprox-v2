@@ -510,10 +510,8 @@ class Settings extends Component
         $this->resetErrorBag();
     }
 
-    public function saveLoginSecurity(
-        DecideTenantPhoneLoginAction $decidePhone,
-        UpdateTenantLoginAlertAction $updateAlert,
-    ): void {
+    public function saveLoginSecurity(UpdateTenantLoginAlertAction $updateAlert): void
+    {
         $tenant = $this->resolveTenant();
         $user = auth()->user();
         if (! $tenant instanceof Tenant || ! $user instanceof User) {
@@ -530,7 +528,6 @@ class Settings extends Component
             ],
         );
 
-        $decidePhone->handle($tenant, (bool) $this->backofficePhoneLogin, (int) $user->id);
         $updateAlert->handle(
             $tenant->fresh(),
             (bool) ($validated['loginAlertEnabled'] ?? false),
@@ -1136,6 +1133,20 @@ class Settings extends Component
         }
 
         $this->photoAlbumEnabled = (bool) $updated->photo_album_enabled;
+    }
+
+    public function updatedBackofficePhoneLogin(bool $value, DecideTenantPhoneLoginAction $decide): void
+    {
+        $tenant = $this->resolveTenant();
+        $user = auth()->user();
+        if (! $tenant instanceof Tenant || ! $user instanceof User) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $decide->handle($tenant, $value, (int) $user->id);
+        $this->backofficePhoneLogin = (bool) $tenant->fresh()->backoffice_phone_login_enabled;
     }
 
     public function updatedTranslationsEnabled(bool $value, UpdateTenantTranslationsAction $update): void

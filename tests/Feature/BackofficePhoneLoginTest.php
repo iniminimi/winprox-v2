@@ -9,6 +9,7 @@ use App\Actions\Auth\SubmitPhonePasswordAction;
 use App\Http\Middleware\EnsureAbsoluteSessionLifetime;
 use App\Livewire\Auth\Register;
 use App\Livewire\Dashboard;
+use App\Livewire\Pages\Settings;
 use App\Models\BackofficeLoginChallenge;
 use App\Models\Tenant;
 use App\Models\User;
@@ -176,6 +177,31 @@ it('stopt een sessie na twaalf uur en toont de kaart alleen aan een beheerder', 
 
     expect($tenant->fresh()->backoffice_phone_login_enabled)->toBeFalse()
         ->and($tenant->fresh()->backoffice_phone_login_decided_at)->not->toBeNull();
+});
+
+it('zet aanmelden met de telefoon aan en uit bij de organisatie', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('backofficePhoneLogin', true)
+        ->assertForbidden();
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->assertSee(__('settings.security.phone_login'))
+        ->set('backofficePhoneLogin', true);
+
+    expect($tenant->fresh()->backoffice_phone_login_enabled)->toBeTrue()
+        ->and($tenant->fresh()->backoffice_phone_login_decided_at)->not->toBeNull();
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->set('backofficePhoneLogin', false);
+
+    expect($tenant->fresh()->backoffice_phone_login_enabled)->toBeFalse();
 });
 
 it('houdt een registratie tegen op een te kort wachtwoord', function () {

@@ -855,6 +855,11 @@
                     "text": "Seul un administrateur peut l’activer. Le réglage s’applique tout de suite et est désactivé par défaut.<br><br>• Désactivé : les noms et les textes restent dans la langue où vous les écrivez. Rien n’est mis en file pour traduction.<br>• Activé : WinProx traduit les noms et les textes dans les autres langues. Les textes existants sont aussi mis en file."
                 },
                 {
+                    "label": "Connexion avec le téléphone",
+                    "nested": true,
+                    "text": "Seul un administrateur peut l’activer ou le désactiver. Le réglage s’applique tout de suite et est désactivé par défaut.<br><br>• Désactivé : chacun se connecte avec e-mail et mot de passe.<br>• Activé : l’écran de connexion montre aussi un code. Le téléphone confirme l’ordinateur. Le mot de passe reste utilisable."
+                },
+                {
                     "label": "Données de l’organisation",
                     "nested": true,
                     "text": "Vous voyez le nom, l’adresse e-mail, le numéro de téléphone et l’adresse de votre organisation.<br><br>En tant qu’administrateur, vous modifiez ces données avec Modifier les données de l’organisation.<br><br>Ces données sont utilisées notamment sur les codes QR imprimés."

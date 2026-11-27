@@ -851,6 +851,11 @@
                     "text": "Only an administrator can turn this on. The setting applies at once and is off by default.<br><br>• Off: names and texts stay in the language you write them in. Nothing is queued for translation.<br>• On: WinProx translates names and texts into the other languages. Existing texts are queued too."
                 },
                 {
+                    "label": "Sign in with a phone",
+                    "nested": true,
+                    "text": "Only an administrator can turn this on or off. The setting applies at once and is off by default.<br><br>• Off: everyone signs in with email and password.<br>• On: the login screen also shows a code. The phone confirms the computer. The password still works."
+                },
+                {
                     "label": "Organisation details",
                     "nested": true,
                     "text": "You see the name, email address, phone number and address of your organisation.<br><br>As an administrator you change these details with Edit organisation details.<br><br>The details are used on printed QR codes, among other places."

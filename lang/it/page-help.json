@@ -851,6 +851,11 @@
                     "text": "Solo un amministratore può attivarlo. L’impostazione vale subito ed è disattivata per impostazione predefinita.<br><br>• Disattivato: nomi e testi restano nella lingua in cui li scrivete. Non viene preparata alcuna traduzione.<br>• Attivo: WinProx traduce nomi e testi nelle altre lingue. Anche i testi esistenti entrano in coda."
                 },
                 {
+                    "label": "Accesso con il telefono",
+                    "nested": true,
+                    "text": "Solo un amministratore può attivarlo o disattivarlo. L’impostazione vale subito ed è disattivata per impostazione predefinita.<br><br>• Disattivato: tutti accedono con e-mail e password.<br>• Attivo: la schermata di accesso mostra anche un codice. Il telefono conferma il computer. La password continua a funzionare."
+                },
+                {
                     "label": "Dati organizzazione",
                     "nested": true,
                     "text": "Vede il nome, l’indirizzo e-mail, il numero di telefono e l’indirizzo della sua organizzazione.<br><br>Come amministratore modifica questi dati con Modifica dati organizzazione.<br><br>I dati sono usati, tra l’altro, sui codici QR stampati."

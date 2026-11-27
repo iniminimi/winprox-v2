@@ -851,6 +851,11 @@
                     "text": "Alleen een beheerder kan dit aanzetten. De instelling wordt meteen toegepast en staat standaard uit.<br><br>• Uit: namen en teksten blijven in de taal waarin u ze schrijft. Er wordt niets klaargezet voor vertaling.<br>• Aan: WinProx vertaalt namen en teksten naar de andere talen. Bestaande teksten komen dan ook in de wachtrij."
                 },
                 {
+                    "label": "Aanmelden met de telefoon",
+                    "nested": true,
+                    "text": "Alleen een beheerder kan dit aan- of uitzetten. De instelling wordt meteen toegepast en staat standaard uit.<br><br>• Uit: iedereen meldt aan met e-mail en wachtwoord.<br>• Aan: op het loginscherm staat ook een code. De telefoon bevestigt de computer. Het wachtwoord blijft werken."
+                },
+                {
                     "label": "Organisatiegegevens",
                     "nested": true,
                     "text": "U ziet hier de naam, het e-mailadres, het telefoonnummer en het adres van uw organisatie.<br><br>Als beheerder kunt u deze gegevens aanpassen via Organisatiegegevens bewerken.<br><br>De gegevens worden onder andere gebruikt op de afgedrukte QR-codes."

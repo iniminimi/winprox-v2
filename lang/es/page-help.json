@@ -851,6 +851,11 @@
                     "text": "Solo un administrador puede activarlo. El ajuste se aplica al momento y está desactivado por defecto.<br><br>• Desactivado: los nombres y los textos permanecen en el idioma en que los escribe. No se prepara ninguna traducción.<br>• Activado: WinProx traduce nombres y textos a los otros idiomas. Los textos existentes también entran en la cola."
                 },
                 {
+                    "label": "Acceso con el teléfono",
+                    "nested": true,
+                    "text": "Solo un administrador puede activarlo o desactivarlo. El ajuste se aplica al momento y está desactivado por defecto.<br><br>• Desactivado: todos entran con correo y contraseña.<br>• Activado: la pantalla de acceso muestra también un código. El teléfono confirma el ordenador. La contraseña sigue funcionando."
+                },
+                {
                     "label": "Datos de la organización",
                     "nested": true,
                     "text": "Ve el nombre, el correo, el teléfono y la dirección de su organización.<br><br>Como administrador modifica estos datos con Editar datos de la organización.<br><br>Los datos se usan, entre otros sitios, en los códigos QR impresos."
