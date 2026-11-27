@@ -69,6 +69,11 @@ class Tenant extends Model
         'work_menu_unit_measurements_enabled',
         'photo_album_enabled',
         'translations_enabled',
+        'backoffice_phone_login_enabled',
+        'backoffice_phone_login_decided_at',
+        'login_alert_enabled',
+        'login_alert_start',
+        'login_alert_end',
         'employees_may_manage_locations',
         'employees_may_view_other_presence',
         'starter_pack_key',
@@ -114,6 +119,9 @@ class Tenant extends Model
             'work_menu_unit_measurements_enabled' => 'boolean',
             'photo_album_enabled' => 'boolean',
             'translations_enabled' => 'boolean',
+            'backoffice_phone_login_enabled' => 'boolean',
+            'backoffice_phone_login_decided_at' => 'datetime',
+            'login_alert_enabled' => 'boolean',
             'employees_may_manage_locations' => 'boolean',
             'employees_may_view_other_presence' => 'boolean',
             'starter_pack_applied_at' => 'datetime',
@@ -440,6 +448,11 @@ class Tenant extends Model
     public function translationsEnabled(): bool
     {
         return (bool) $this->translations_enabled;
+    }
+
+    public function allowsBackofficePhoneLogin(): bool
+    {
+        return (bool) $this->backoffice_phone_login_enabled;
     }
 
     public static function translationsEnabledFor(int $tenantId): bool

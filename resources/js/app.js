@@ -18,6 +18,7 @@ import './wp-roster-sheet';
 import './wp-portal-qr-scanner';
 import './wp-ops-barcode-scanner';
 import './wp-portal-passkey';
+import './wp-backoffice-passkey';
 import './sense-scale';
 import './wp-flip-clock';
 import './wp-intent-tiles';

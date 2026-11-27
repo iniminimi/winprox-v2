@@ -16,6 +16,7 @@ class AuditLog extends Model
         'model_type',
         'model_id',
         'payload',
+        'created_at',
     ];
 
     protected $casts = [

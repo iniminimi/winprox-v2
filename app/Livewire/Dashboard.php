@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Actions\Auth\DecideTenantPhoneLoginAction;
+use App\Actions\Auth\ListSecurityAlertsAction;
 use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
@@ -357,6 +359,18 @@ class Dashboard extends Component
         $this->closeRemoveStarterPackModal();
     }
 
+    public function decidePhoneLogin(bool $enabled, DecideTenantPhoneLoginAction $decide): void
+    {
+        $tenant = $this->resolveTenant();
+        $user = auth()->user();
+        if (! $tenant instanceof Tenant || ! $user instanceof User) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+        $decide->handle($tenant, $enabled, (int) $user->id);
+    }
+
     public function dismissStarterPackResult(DismissTenantStarterPackResultAction $dismiss): void
     {
         $user = $this->starterPackActor();
@@ -379,6 +393,7 @@ class Dashboard extends Component
         CountExpiringAbsencePhotosAction $countExpiringAbsencePhotos,
         ListTimeArchiveNoticesAction $listTimeArchiveNotices,
         ListSenseAttentionAction $listSenseAttention,
+        ListSecurityAlertsAction $listSecurityAlerts,
     ) {
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
@@ -470,6 +485,13 @@ class Dashboard extends Component
             ? asset($checkmatePwaVideoRel)
             : null;
 
+        $securityAlerts = [];
+        $showPhoneLoginPrompt = false;
+        if ($user instanceof User && $tenant !== null && $user->can('manageOrganisation', $tenant)) {
+            $securityAlerts = $listSecurityAlerts->handle((int) $tenant->id);
+            $showPhoneLoginPrompt = $tenant->backoffice_phone_login_decided_at === null;
+        }
+
         return view('livewire.dashboard', [
             'checkmate' => $checkmateData,
             'checkmateQuickTiles' => $checkmateTiles['quickTiles'],
@@ -487,6 +509,8 @@ class Dashboard extends Component
             'manualClockInWorkers' => $manualClockInOptions['workers'],
             'manualClockInClockPoints' => $manualClockInOptions['clockPoints'],
             'showWhatsNew' => $user instanceof User && $shouldShowWhatsNew->handle($user),
+            'securityAlerts' => $securityAlerts,
+            'showPhoneLoginPrompt' => $showPhoneLoginPrompt,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'onboarding' => $onboarding,
             'hasTimeModule' => $hasTimeModule,

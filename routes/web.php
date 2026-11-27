@@ -2,6 +2,7 @@
 
 use App\Enums\PromoLanding;
 use App\Http\Controllers\Auth\ConfirmUserEmailController;
+use App\Http\Controllers\Auth\PhonePasskeyController;
 use App\Http\Controllers\Auth\MicrosoftAuthController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Backoffice\BackofficeHomescreenManifestController;
@@ -68,6 +69,7 @@ use App\Http\Controllers\UserDataExportController;
 use App\Http\Controllers\WelcomeController;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
+use App\Livewire\Auth\PhoneLogin;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Auth\VerifyEmailNotice;
@@ -428,6 +430,14 @@ Route::post('/promo/track/video', PromoVideoTrackController::class)
 Route::post('/promo/track/engage', PromoEngageTrackController::class)
     ->middleware('throttle:60,1')
     ->name('promo.track.engage');
+
+Route::middleware('backoffice.desktop')->group(function () {
+    Route::get('/login/phone/{token}', PhoneLogin::class)->name('login.phone');
+    Route::post('/login/phone/{token}/assert-options', [PhonePasskeyController::class, 'assertOptions'])->name('login.phone.assert-options');
+    Route::post('/login/phone/{token}/assert', [PhonePasskeyController::class, 'assert'])->name('login.phone.assert');
+    Route::post('/login/phone/{token}/register-options', [PhonePasskeyController::class, 'registerOptions'])->name('login.phone.register-options');
+    Route::post('/login/phone/{token}/register', [PhonePasskeyController::class, 'register'])->name('login.phone.register');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->middleware('backoffice.desktop')->name('login');

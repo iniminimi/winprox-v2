@@ -257,5 +257,17 @@
         "pending_device": "Appareil : :device",
         "confirm": "Relier",
         "deny": "Refuser"
+    },
+    "security": {
+        "prompt_title": "Connexion avec le téléphone",
+        "prompt_body": "Voulez-vous que les gestionnaires et les collaborateurs puissent aussi se connecter en scannant un code sur l'écran de connexion et en confirmant avec l'empreinte ou le visage ? Le mot de passe habituel reste possible.",
+        "prompt_yes": "Oui, activer",
+        "prompt_no": "Non, pas maintenant",
+        "alerts_title": "Connexion",
+        "outside_hours": ":name s'est connecté à :time, en dehors des heures choisies.",
+        "throttled": "Trop de tentatives échouées pour :name à :time.",
+        "phone_registered": ":name a lié un téléphone (:device) à :time.",
+        "phone_registered_revoked": ":name a lié un téléphone (:device) à :time. :revoked a été retiré.",
+        "session_burst": ":name a eu :count nouvelles connexions rapprochées, la dernière à :time."
     }
 }

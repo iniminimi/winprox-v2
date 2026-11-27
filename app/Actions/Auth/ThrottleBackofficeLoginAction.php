@@ -113,6 +113,7 @@ class ThrottleBackofficeLoginAction
             modelType: User::class,
             modelId: $user->id,
             payload: [
+                'user_name' => $user->name,
                 'ip' => $ip,
                 'retry_after_seconds' => $retryAfter,
             ],

@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
+use App\Support\Auth\BackofficePassword;
 
 class ResetPasswordRequest extends FormRequest
 {
@@ -20,7 +20,7 @@ class ResetPasswordRequest extends FormRequest
         return [
             'token' => ['required', 'string'],
             'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string', 'confirmed', Password::min(8)],
+            'password' => [...BackofficePassword::constraints(), 'confirmed'],
         ];
     }
 
@@ -35,6 +35,7 @@ class ResetPasswordRequest extends FormRequest
             'password.required' => __('auth.errors.password_required'),
             'password.confirmed' => __('auth.errors.password_confirmed'),
             'password.min' => __('auth.errors.password_min'),
+            'password.uncompromised' => __('auth.errors.password_leaked'),
         ];
     }
 }

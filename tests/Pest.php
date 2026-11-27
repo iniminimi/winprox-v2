@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Http;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -14,6 +15,11 @@ ini_set('max_execution_time', '0');
 
 pest()->extend(TestCase::class)
     ->use(RefreshDatabase::class)
+    ->beforeEach(function () {
+        Http::fake([
+            'api.pwnedpasswords.com/*' => Http::response('', 200),
+        ]);
+    })
     ->in('Feature', 'Unit');
 
 /**

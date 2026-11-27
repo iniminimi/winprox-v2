@@ -50,7 +50,10 @@
             "locations_empty": "Pas encore de sites. Ajoutez d'abord un site.",
             "punch_clock_team": "Équipe pointeuse",
             "punch_clock_team_none": "Pas de profil pointeuse",
-            "punch_clock_team_hint": "Liez un profil exécutant pour que ce collègue puisse pointer via QR."
+            "punch_clock_team_hint": "Liez un profil exécutant pour que ce collègue puisse pointer via QR.",
+            "release_phone": "Libérer le gsm",
+            "release_phone_confirm": "Le gsm lié ne fonctionne plus. Cette personne peut ensuite enregistrer un nouveau gsm.",
+            "phone_label": "Gsm lié : :device"
         }
     },
     "teams": {
@@ -231,7 +234,7 @@
         "role_required": "Choisissez un rôle.",
         "locale_required": "Choisissez une langue.",
         "password_required": "Saisissez un mot de passe.",
-        "password_min": "Le mot de passe doit comporter au moins 8 caractères.",
+        "password_min": "Le mot de passe doit comporter au moins 12 caractères.",
         "password_confirm_required": "Confirmez le mot de passe.",
         "team_name_required": "Indiquez un nom d'équipe.",
         "worker_name_required": "Indiquez un prénom et un nom.",
@@ -254,7 +257,8 @@
         "worker_default_unit_location": "Le groupe d’appartenance doit être sur un lieu assigné.",
         "long_shift_before_stale": "L’alerte longue vacation doit être inférieure à la fermeture automatique.",
         "stale_shift_hours_max": "La fermeture automatique est au maximum de 24 heures.",
-        "long_shift_hours_max": "L’alerte longue vacation est au maximum de 24 heures."
+        "long_shift_hours_max": "L’alerte longue vacation est au maximum de 24 heures.",
+        "password_leaked": "Ce mot de passe figure dans une fuite connue. Choisissez-en un autre."
     },
     "show": {
         "subtitle": "Documents, annonces et exécutants de cette équipe.",

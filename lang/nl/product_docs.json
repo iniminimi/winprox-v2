@@ -352,7 +352,7 @@
                     "Medewerker: de dagelijkse opvolging, zonder de facturatie.",
                     "Uitvoerder: het werk via Clock Point en de QR-codes, zonder gewone beheerlogin.",
                     "Teamleader: uitvoerders beheren, hun icoon vrijgeven, en via Clock Point foto’s nemen.",
-                    "Beheerders en medewerkers melden zich aan met e-mail en wachtwoord, of via Microsoft. Het e-mailadres moet bij een bestaand WinProx-account horen.",
+                    "Beheerders en medewerkers melden zich aan met e-mail en een lang wachtwoord dat niet in bekende lekken staat, of via Microsoft. De organisatie kan daar aanmelden met de telefoon aan toevoegen. Het e-mailadres moet bij een bestaand WinProx-account horen.",
                     "Uitvoerders gebruiken Clock Point met hun naam en icoon. Andere software koppelt met API-sleutels, niet met de gewone login."
                 ]
             },
@@ -460,8 +460,8 @@
             {
                 "title": "Aanmelden",
                 "items": [
-                    "Beheer: e-mail en wachtwoord. Wachtwoorden worden gehasht bewaard. Herhaalde mislukte pogingen worden tijdelijk geblokkeerd.",
-                    "Op een smartphone opent het beheer niet. Een beheerder of medewerker logt in op een computer of tablet.",
+                    "Beheer: e-mail en een lang wachtwoord dat niet in bekende lekken staat. Wachtwoorden worden gehasht bewaard. Herhaalde mislukte pogingen worden tijdelijk geblokkeerd. De organisatie kan daarnaast aanmelden met de telefoon aanzetten: de computer toont een code, de telefoon bevestigt met vingerafdruk of gezicht. Die biometrie verlaat de telefoon niet. Alleen een beheerder geeft een telefoon vrij.",
+                    "Op een smartphone opent het beheer niet. Heeft de organisatie aanmelden met de telefoon aan, dan bevestigt de telefoon alleen de computer. Het beheer zelf blijft op een computer of tablet.",
                     "Zelfregistratie werkt pas na de link in de bevestigingsmail. Niet-bevestigde aanmeldingen worden na 7 dagen verwijderd.",
                     "**Inloggen met Microsoft** (desktop): alleen een bestaand account waarvan het e-mailadres overeenkomt. Geen automatische nieuwe accounts. E-mail en wachtwoord blijven werken.",
                     "Andere software gebruikt een intrekbaar toegangstoken met gekozen rechten, niet de gewone login.",

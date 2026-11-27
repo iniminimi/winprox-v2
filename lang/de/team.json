@@ -50,7 +50,10 @@
             "locations_empty": "Noch keine Standorte. Fügen Sie zuerst einen Standort hinzu.",
             "punch_clock_team": "Stempeluhr-Team",
             "punch_clock_team_none": "Kein Stempelprofil",
-            "punch_clock_team_hint": "Verknüpfen Sie ein Mitarbeiterprofil, damit dieser Kollege per QR stempeln kann."
+            "punch_clock_team_hint": "Verknüpfen Sie ein Mitarbeiterprofil, damit dieser Kollege per QR stempeln kann.",
+            "release_phone": "Telefon freigeben",
+            "release_phone_confirm": "Das verbundene Telefon verfällt. Danach kann diese Person ein neues Telefon registrieren.",
+            "phone_label": "Verbundenes Telefon: :device"
         }
     },
     "teams": {
@@ -231,7 +234,7 @@
         "role_required": "Wählen Sie eine Rolle.",
         "locale_required": "Wählen Sie eine Sprache.",
         "password_required": "Geben Sie ein Passwort ein.",
-        "password_min": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+        "password_min": "Das Passwort muss mindestens 12 Zeichen lang sein.",
         "password_confirm_required": "Bestätigen Sie das Passwort.",
         "team_name_required": "Geben Sie einen Teamnamen an.",
         "worker_name_required": "Geben Sie Vor- und Nachnamen an.",
@@ -254,7 +257,8 @@
         "worker_default_unit_location": "Die Stammgruppe muss an einem zugewiesenen Standort liegen.",
         "long_shift_before_stale": "Der Alarm Lange Schicht muss unter dem Auto-Schließen liegen.",
         "stale_shift_hours_max": "Automatisch schließen beträgt höchstens 24 Stunden.",
-        "long_shift_hours_max": "Der Alarm Lange Schicht beträgt höchstens 24 Stunden."
+        "long_shift_hours_max": "Der Alarm Lange Schicht beträgt höchstens 24 Stunden.",
+        "password_leaked": "Dieses Passwort steht in einem bekannten Leak. Wählen Sie ein anderes."
     },
     "show": {
         "subtitle": "Dokumente, Mitteilungen und Ausführende dieses Teams.",

@@ -72,6 +72,13 @@ class UserPolicy
         return $user->is_superuser || $user->tenant_id !== null;
     }
 
+    public function releasePhone(User $actor, User $target): bool
+    {
+        return $this->isTenantAdmin($actor)
+            && (int) $actor->tenant_id === (int) $target->tenant_id
+            && ! $target->is_superuser;
+    }
+
     public function setPassword(User $actor, User $target): bool
     {
         return $actor->is_superuser;

@@ -298,5 +298,16 @@
         "checkmate_locked": "Con Checkmate non puoi disattivare clienti sul posto.",
         "save": "Salva",
         "saved": "Impostazione clienti sul posto salvata."
+    },
+    "security": {
+        "title": "Accesso",
+        "phone_login": "Accesso con il telefono",
+        "phone_login_hint": "La schermata di accesso mostra allora anche un codice. Il telefono conferma il computer. La password resta possibile.",
+        "alert_hours": "Avviso se qualcuno entra in una fascia oraria",
+        "alert_hours_hint": "Per esempio dalle 22:00 alle 06:00. L'accesso non viene bloccato. Solo gli amministratori vedono l'avviso nella schermata iniziale.",
+        "alert_start": "Dalle",
+        "alert_end": "Alle",
+        "save": "Salva",
+        "time_invalid": "Usa un orario come 22:00."
     }
 }

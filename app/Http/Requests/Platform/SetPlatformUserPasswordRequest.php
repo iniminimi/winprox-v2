@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Platform;
 
+use App\Support\Auth\BackofficePassword;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SetPlatformUserPasswordRequest extends FormRequest
@@ -14,7 +15,7 @@ class SetPlatformUserPasswordRequest extends FormRequest
     }
 
     /**
-     * @return array<string, array<int, string>>
+     * @return array<string, array<int, mixed>>
      */
     public function rules(): array
     {
@@ -22,12 +23,12 @@ class SetPlatformUserPasswordRequest extends FormRequest
     }
 
     /**
-     * @return array<string, array<int, string>>
+     * @return array<string, array<int, mixed>>
      */
     public static function rulesFor(): array
     {
         return [
-            'password' => ['required', 'string', 'min:8'],
+            'password' => BackofficePassword::constraints(),
             'password_confirmation' => ['required', 'same:password'],
         ];
     }
@@ -40,6 +41,7 @@ class SetPlatformUserPasswordRequest extends FormRequest
         return [
             'password.required' => __('team.errors.password_required'),
             'password.min' => __('team.errors.password_min'),
+            'password.uncompromised' => __('team.errors.password_leaked'),
             'password_confirmation.required' => __('team.errors.password_confirm_required'),
             'password_confirmation.same' => __('auth.errors.password_confirmed'),
         ];

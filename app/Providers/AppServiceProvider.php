@@ -6,6 +6,7 @@ use App\Contracts\TranslationSyncRemoteClient;
 use App\Contracts\WebhookEvent;
 use App\Contracts\WebPushClient;
 use App\Listeners\AppendEmailUnsubscribeFooterToMessage;
+use App\Listeners\RecordBackofficeLogin;
 use App\Listeners\BlockUnsubscribedEmailRecipients;
 use App\Listeners\DispatchWebhooksForDomainEvent;
 use App\Listeners\RecordAuditLogForDomainEvent;
@@ -20,6 +21,7 @@ use App\Services\Translation\TranslationProviderInterface;
 use App\Support\JsonTranslationLoader;
 use App\Support\Push\MinishlinkWebPushClient;
 use App\Support\Translation\TranslationSyncRemoteGateway;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Event;
@@ -68,6 +70,7 @@ class AppServiceProvider extends ServiceProvider
         Event::listen(MessageSending::class, AppendEmailUnsubscribeFooterToMessage::class);
 
         Event::listen(SocialiteWasCalled::class, [AzureExtendSocialite::class, 'handle']);
+        Event::listen(Login::class, RecordBackofficeLogin::class);
 
         View::prependNamespace('livewire', resource_path('views/vendor/livewire'));
 

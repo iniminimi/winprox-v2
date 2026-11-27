@@ -50,7 +50,10 @@
             "locations_empty": "Aún no hay ubicaciones. Añada primero una ubicación.",
             "punch_clock_team": "Equipo de fichaje",
             "punch_clock_team_none": "Sin perfil de fichaje",
-            "punch_clock_team_hint": "Vincule un perfil de ejecutor para que este colega pueda fichar vía QR."
+            "punch_clock_team_hint": "Vincule un perfil de ejecutor para que este colega pueda fichar vía QR.",
+            "release_phone": "Liberar el teléfono",
+            "release_phone_confirm": "El teléfono vinculado deja de valer. Después esta persona puede registrar uno nuevo.",
+            "phone_label": "Teléfono vinculado: :device"
         }
     },
     "teams": {
@@ -231,7 +234,7 @@
         "role_required": "Elija un rol.",
         "locale_required": "Elija un idioma.",
         "password_required": "Introduzca una contraseña.",
-        "password_min": "La contraseña debe tener al menos 8 caracteres.",
+        "password_min": "La contraseña debe tener al menos 12 caracteres.",
         "password_confirm_required": "Confirme la contraseña.",
         "team_name_required": "Introduzca un nombre de equipo.",
         "worker_name_required": "Introduzca nombre y apellidos.",
@@ -254,7 +257,8 @@
         "worker_default_unit_location": "El grupo base debe estar en una ubicación asignada.",
         "long_shift_before_stale": "La alarma de turno largo debe ser menor que el cierre automático.",
         "stale_shift_hours_max": "El cierre automático es como máximo 24 horas.",
-        "long_shift_hours_max": "La alarma de turno largo es como máximo 24 horas."
+        "long_shift_hours_max": "La alarma de turno largo es como máximo 24 horas.",
+        "password_leaked": "Esta contraseña aparece en una filtración conocida. Elija otra."
     },
     "show": {
         "subtitle": "Documentos, avisos y ejecutores de este equipo.",

@@ -46,6 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_superuser',
         'is_active',
         'role',
+        'phone_reregistration_open',
+        'phone_revoked_label',
     ];
 
     public function tenant(): BelongsTo
@@ -169,6 +171,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'is_active' => 'boolean',
             'notify_on_new_issue_email' => 'boolean',
             'role' => 'string',
+            'phone_reregistration_open' => 'boolean',
             'ui_theme' => 'string',
             'dashboard_intent_order' => 'array',
             'dashboard_hidden_tiles' => 'array',
@@ -176,6 +179,11 @@ class User extends Authenticatable implements MustVerifyEmail
             'dashboard_hidden_checkmate_tiles' => 'array',
             'whats_new_dismissed_on' => 'date',
         ];
+    }
+
+    public function passkeyCredential(): HasOne
+    {
+        return $this->hasOne(UserPasskeyCredential::class);
     }
 
     public function uiThemeEnum(): UiTheme

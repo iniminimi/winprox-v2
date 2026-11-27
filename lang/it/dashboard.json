@@ -257,5 +257,17 @@
         "pending_device": "Dispositivo: :device",
         "confirm": "Collega",
         "deny": "Rifiuta"
+    },
+    "security": {
+        "prompt_title": "Accesso con il telefono",
+        "prompt_body": "Vuoi che amministratori e collaboratori possano entrare anche scansionando un codice nella schermata di accesso e confermando con impronta o volto? La password abituale resta possibile.",
+        "prompt_yes": "Sì, attivalo",
+        "prompt_no": "No, non ora",
+        "alerts_title": "Accesso",
+        "outside_hours": ":name è entrato alle :time, fuori dall'orario impostato.",
+        "throttled": "Troppi tentativi falliti per :name alle :time.",
+        "phone_registered": ":name ha collegato un telefono (:device) alle :time.",
+        "phone_registered_revoked": ":name ha collegato un telefono (:device) alle :time. È stato ritirato :revoked.",
+        "session_burst": ":name ha avuto :count nuovi accessi ravvicinati, l'ultimo alle :time."
     }
 }

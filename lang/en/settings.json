@@ -298,5 +298,16 @@
         "checkmate_locked": "On Checkmate you cannot turn off customers on location.",
         "save": "Save",
         "saved": "Customers on location setting saved."
+    },
+    "security": {
+        "title": "Sign-in",
+        "phone_login": "Sign in with a phone",
+        "phone_login_hint": "The login screen then also shows a code. The phone confirms the computer. The password still works.",
+        "alert_hours": "Notice when someone signs in during a time window",
+        "alert_hours_hint": "For example from 22:00 to 06:00. Sign-in is not blocked. Only administrators see the notice on the home screen.",
+        "alert_start": "From",
+        "alert_end": "Until",
+        "save": "Save",
+        "time_invalid": "Use a time such as 22:00."
     }
 }

@@ -257,5 +257,17 @@
         "pending_device": "Dispositivo: :device",
         "confirm": "Vincular",
         "deny": "Rechazar"
+    },
+    "security": {
+        "prompt_title": "Entrar con el teléfono",
+        "prompt_body": "¿Quiere que administradores y empleados también puedan entrar escaneando un código en la pantalla de acceso y confirmando con huella o rostro? La contraseña habitual sigue funcionando.",
+        "prompt_yes": "Sí, activar",
+        "prompt_no": "No, ahora no",
+        "alerts_title": "Acceso",
+        "outside_hours": ":name entró a las :time, fuera del horario configurado.",
+        "throttled": "Demasiados intentos fallidos para :name a las :time.",
+        "phone_registered": ":name vinculó un teléfono (:device) a las :time.",
+        "phone_registered_revoked": ":name vinculó un teléfono (:device) a las :time. Se retiró :revoked.",
+        "session_burst": ":name tuvo :count accesos nuevos seguidos, el último a las :time."
     }
 }

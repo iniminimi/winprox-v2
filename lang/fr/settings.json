@@ -298,5 +298,16 @@
         "checkmate_locked": "Avec Checkmate, vous ne pouvez pas désactiver clients sur site.",
         "save": "Enregistrer",
         "saved": "Paramètre clients sur site enregistré."
+    },
+    "security": {
+        "title": "Connexion",
+        "phone_login": "Connexion avec le téléphone",
+        "phone_login_hint": "L'écran de connexion montre alors aussi un code. Le téléphone confirme l'ordinateur. Le mot de passe reste possible.",
+        "alert_hours": "Signaler une connexion dans une plage horaire",
+        "alert_hours_hint": "Par exemple de 22:00 à 06:00. La connexion n'est pas bloquée. Seuls les gestionnaires voient le signal sur l'écran d'accueil.",
+        "alert_start": "De",
+        "alert_end": "À",
+        "save": "Enregistrer",
+        "time_invalid": "Utilisez une heure comme 22:00."
     }
 }

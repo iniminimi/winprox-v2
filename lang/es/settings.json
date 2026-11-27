@@ -298,5 +298,16 @@
         "checkmate_locked": "En Checkmate no puede desactivar clientes en ubicación.",
         "save": "Guardar",
         "saved": "Ajuste de clientes en ubicación guardado."
+    },
+    "security": {
+        "title": "Acceso",
+        "phone_login": "Entrar con el teléfono",
+        "phone_login_hint": "La pantalla de acceso muestra entonces también un código. El teléfono confirma el ordenador. La contraseña sigue funcionando.",
+        "alert_hours": "Aviso si alguien entra en una franja horaria",
+        "alert_hours_hint": "Por ejemplo de 22:00 a 06:00. El acceso no se bloquea. Solo los administradores ven el aviso en la pantalla de inicio.",
+        "alert_start": "Desde",
+        "alert_end": "Hasta",
+        "save": "Guardar",
+        "time_invalid": "Use una hora como 22:00."
     }
 }

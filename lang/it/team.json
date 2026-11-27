@@ -50,7 +50,10 @@
             "locations_empty": "Nessuna sede ancora. Aggiungi prima una sede.",
             "punch_clock_team": "Team timbratura",
             "punch_clock_team_none": "Nessun profilo timbratura",
-            "punch_clock_team_hint": "Collega un profilo esecutore così il collega può timbrare via QR."
+            "punch_clock_team_hint": "Collega un profilo esecutore così il collega può timbrare via QR.",
+            "release_phone": "Libera il telefono",
+            "release_phone_confirm": "Il telefono collegato non vale più. Poi questa persona può registrarne uno nuovo.",
+            "phone_label": "Telefono collegato: :device"
         }
     },
     "teams": {
@@ -231,7 +234,7 @@
         "role_required": "Scelga un ruolo.",
         "locale_required": "Scelga una lingua.",
         "password_required": "Inserisca una password.",
-        "password_min": "La password deve contenere almeno 8 caratteri.",
+        "password_min": "La password deve contenere almeno 12 caratteri.",
         "password_confirm_required": "Confermi la password.",
         "team_name_required": "Inserisca un nome team.",
         "worker_name_required": "Inserisca nome e cognome.",
@@ -254,7 +257,8 @@
         "worker_default_unit_location": "Il gruppo di appartenenza deve essere su una sede assegnata.",
         "long_shift_before_stale": "L’allarme turno lungo deve essere inferiore alla chiusura automatica.",
         "stale_shift_hours_max": "La chiusura automatica è al massimo 24 ore.",
-        "long_shift_hours_max": "L’allarme turno lungo è al massimo 24 ore."
+        "long_shift_hours_max": "L’allarme turno lungo è al massimo 24 ore.",
+        "password_leaked": "Questa password compare in una fuga nota. Sceglierne un'altra."
     },
     "show": {
         "subtitle": "Documenti, comunicazioni ed esecutori di questo team.",

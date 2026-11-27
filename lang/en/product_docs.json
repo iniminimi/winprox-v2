@@ -352,7 +352,7 @@
                     "Staff member: day-to-day follow-up, without billing.",
                     "Worker: the work via Clock Point and the QR codes, without an ordinary back-office login.",
                     "Team leader: manage workers, release their icon, and take photos via Clock Point.",
-                    "Administrators and staff sign in with email and password, or with Microsoft. The email address must belong to an existing WinProx account.",
+                    "Administrators and staff sign in with email and a long password that does not appear in known leaks, or with Microsoft. The organisation can add sign-in with a phone. The email address must belong to an existing WinProx account.",
                     "Workers use Clock Point with their name and icon. Other software connects with API keys, not with the ordinary login."
                 ]
             },
@@ -460,8 +460,8 @@
             {
                 "title": "Sign-in",
                 "items": [
-                    "Back office: email and password. Passwords are stored hashed. Repeated failed attempts are temporarily blocked.",
-                    "The back office does not open on a smartphone. An administrator or staff member signs in on a computer or tablet.",
+                    "Back office: email and a long password that does not appear in known leaks. Passwords are stored hashed. Repeated failed attempts are temporarily blocked. The organisation can also turn on sign-in with a phone: the computer shows a code, the phone confirms with a fingerprint or face. That biometric data never leaves the phone. Only an administrator can release a phone.",
+                    "The back office does not open on a smartphone. If the organisation has turned on phone sign-in, the phone only confirms the computer. The back office itself stays on a computer or tablet.",
                     "Self-registration works only after the link in the confirmation email. Unconfirmed sign-ups are deleted after 7 days.",
                     "**Sign in with Microsoft** (desktop): only an existing account whose email matches. No automatic new accounts. Email and password still work.",
                     "Other software uses a revocable access token with chosen permissions, not the ordinary login.",

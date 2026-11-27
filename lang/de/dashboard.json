@@ -257,5 +257,17 @@
         "pending_device": "Gerät: :device",
         "confirm": "Verbinden",
         "deny": "Ablehnen"
+    },
+    "security": {
+        "prompt_title": "Mit dem Telefon anmelden",
+        "prompt_body": "Sollen Administratoren und Mitarbeitende sich auch anmelden können, indem sie einen Code auf dem Anmeldebildschirm scannen und mit Fingerabdruck oder Gesicht bestätigen? Das normale Passwort bleibt möglich.",
+        "prompt_yes": "Ja, einschalten",
+        "prompt_no": "Nein, nicht jetzt",
+        "alerts_title": "Anmeldung",
+        "outside_hours": ":name hat sich um :time angemeldet, außerhalb der eingestellten Stunden.",
+        "throttled": "Zu viele Fehlversuche für :name um :time.",
+        "phone_registered": ":name hat um :time ein Telefon verbunden (:device).",
+        "phone_registered_revoked": ":name hat um :time ein Telefon verbunden (:device). Dabei entfiel :revoked.",
+        "session_burst": ":name hatte :count neue Anmeldungen kurz nacheinander, zuletzt um :time."
     }
 }

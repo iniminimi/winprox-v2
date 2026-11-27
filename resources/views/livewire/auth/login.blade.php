@@ -55,7 +55,7 @@
             type="email"
             id="email"
             class="wp-input"
-            wire:model="email"
+            wire:model.blur="email"
             placeholder="{{ __('auth.email') }}"
             aria-label="{{ __('auth.email') }}"
             autocomplete="email"
@@ -119,4 +119,12 @@
     <div class="wp-auth-secondary">
         <a href="{{ route('register') }}" class="btn btn--ghost btn--block">{{ __('auth.register_cta') }}</a>
     </div>
+
+    @if ($phoneLoginSvg)
+        <div class="wp-stack" wire:poll.3s="pollPhoneLogin">
+            <p class="wp-muted">{{ __('auth.phone.qr_hint') }}</p>
+            <div>{!! $phoneLoginSvg !!}</div>
+            <p class="wp-text-body">{{ __('auth.phone.code') }} <strong>{{ $phoneLoginCode }}</strong></p>
+        </div>
+    @endif
 </div>

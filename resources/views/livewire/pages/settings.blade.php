@@ -189,6 +189,40 @@
         </x-wp-settings-section>
     @endif
 
+    @if ($canManageOrganisation)
+        <x-wp-settings-section :title="__('settings.security.title')">
+            <div class="wp-stack">
+                <label class="wp-check wp-check--boxed">
+                    <input type="checkbox" wire:model="backofficePhoneLogin">
+                    <span>
+                        {{ __('settings.security.phone_login') }}
+                        <br><span class="wp-hint">{{ __('settings.security.phone_login_hint') }}</span>
+                    </span>
+                </label>
+                <label class="wp-check wp-check--boxed">
+                    <input type="checkbox" wire:model="loginAlertEnabled">
+                    <span>
+                        {{ __('settings.security.alert_hours') }}
+                        <br><span class="wp-hint">{{ __('settings.security.alert_hours_hint') }}</span>
+                    </span>
+                </label>
+                <div class="wp-cluster">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('settings.security.alert_start') }}</span>
+                        <input type="time" class="wp-input" wire:model="loginAlertStart">
+                    </label>
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('settings.security.alert_end') }}</span>
+                        <input type="time" class="wp-input" wire:model="loginAlertEnd">
+                    </label>
+                </div>
+                @error('loginAlertStart') <p class="wp-error">{{ $message }}</p> @enderror
+                @error('loginAlertEnd') <p class="wp-error">{{ $message }}</p> @enderror
+                <button type="button" class="btn btn--primary btn--sm" wire:click="saveLoginSecurity">{{ __('settings.security.save') }}</button>
+            </div>
+        </x-wp-settings-section>
+    @endif
+
     @if ($canManageOrganisation && ! ($checkmateMode ?? false))
         <x-wp-settings-section :title="__('settings.work_menu.title')" titleId="settings-work-menu">
             <form wire:submit="saveWorkMenuSettings" class="wp-stack">

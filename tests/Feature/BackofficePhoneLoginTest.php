@@ -1,0 +1,187 @@
+<?php
+
+use App\Actions\Auth\ConfirmPhoneLoginAction;
+use App\Actions\Auth\ConsumeBackofficeLoginChallengeAction;
+use App\Actions\Auth\RecordBackofficeLoginAction;
+use App\Actions\Auth\ReleaseUserPhoneAction;
+use App\Actions\Auth\StartBackofficeLoginChallengeAction;
+use App\Actions\Auth\SubmitPhonePasswordAction;
+use App\Http\Middleware\EnsureAbsoluteSessionLifetime;
+use App\Livewire\Auth\Register;
+use App\Livewire\Dashboard;
+use App\Models\BackofficeLoginChallenge;
+use App\Models\Tenant;
+use App\Models\User;
+use App\Models\UserPasskeyCredential;
+use App\Support\Auth\BackofficePassword;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Livewire\Livewire;
+
+function replaceHttpFakes(mixed $callback): void
+{
+    $factory = app(Illuminate\Http\Client\Factory::class);
+    (new ReflectionProperty($factory, 'stubCallbacks'))
+        ->setValue($factory, new Illuminate\Support\Collection);
+
+    Http::fake($callback);
+}
+
+it('weigert een kort wachtwoord en een gelekt wachtwoord, en laat door als de lekservice uit ligt', function () {
+    $short = validator(
+        ['password' => 'kortwoord', 'password_confirmation' => 'kortwoord'],
+        ['password' => [...BackofficePassword::constraints(), 'confirmed']],
+    );
+    expect($short->fails())->toBeTrue();
+
+    $hash = strtoupper(sha1('wachtwoord123'));
+    replaceHttpFakes([
+        'api.pwnedpasswords.com/*' => Http::response(substr($hash, 5).":5\n", 200),
+    ]);
+    $leaked = validator(
+        ['password' => 'wachtwoord123', 'password_confirmation' => 'wachtwoord123'],
+        ['password' => [...BackofficePassword::constraints(), 'confirmed']],
+    );
+    expect($leaked->fails())->toBeTrue();
+
+    replaceHttpFakes(function () {
+        throw new ConnectionException('down');
+    });
+    $open = validator(
+        ['password' => 'wachtwoord123', 'password_confirmation' => 'wachtwoord123'],
+        ['password' => [...BackofficePassword::constraints(), 'confirmed']],
+    );
+    expect($open->fails())->toBeFalse();
+});
+
+it('meldt de computer aan via de telefoon zonder de telefoon een sessie te geven', function () {
+    $tenant = Tenant::factory()->create([
+        'name' => 'Schoonmaak Noord',
+        'backoffice_phone_login_enabled' => true,
+        'backoffice_phone_login_decided_at' => now(),
+    ]);
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'email' => 'beheer@example.com',
+        'password' => Hash::make('wachtwoord123'),
+    ]);
+
+    expect(app(StartBackofficeLoginChallengeAction::class)->handle('beheer@example.com', 'desk', 'Mozilla/5.0 (Windows NT 10.0) Chrome/120.0', null))->not->toBeNull();
+
+    $off = Tenant::factory()->create(['backoffice_phone_login_enabled' => false]);
+    User::factory()->create(['tenant_id' => $off->id, 'email' => 'uit@example.com']);
+    expect(app(StartBackofficeLoginChallengeAction::class)->handle('uit@example.com', 'desk-2', 'Chrome', null))->toBeNull();
+
+    $started = app(StartBackofficeLoginChallengeAction::class)->handle('beheer@example.com', 'desk', 'Mozilla/5.0 (Windows NT 10.0) Chrome/120.0', null);
+    $wrong = app(SubmitPhonePasswordAction::class)->handle($started['token'], 'foutwachtwoord', '127.0.0.1');
+    expect($wrong['ok'])->toBeFalse()->and(auth()->check())->toBeFalse();
+
+    $right = app(SubmitPhonePasswordAction::class)->handle($started['token'], 'wachtwoord123', '127.0.0.1');
+    expect($right['ok'])->toBeTrue()->and(auth()->check())->toBeFalse();
+
+    expect(app(ConsumeBackofficeLoginChallengeAction::class)->handle('desk'))->toBeNull();
+    expect(app(ConfirmPhoneLoginAction::class)->handle($started['token'])['ok'])->toBeTrue();
+    expect(app(ConsumeBackofficeLoginChallengeAction::class)->handle('andere-computer'))->toBeNull();
+
+    $loggedIn = app(ConsumeBackofficeLoginChallengeAction::class)->handle('desk');
+    expect($loggedIn?->id)->toBe($user->id);
+    expect(app(ConsumeBackofficeLoginChallengeAction::class)->handle('desk'))->toBeNull();
+});
+
+it('laat een verlopen code niet meer binnen', function () {
+    $tenant = Tenant::factory()->create(['backoffice_phone_login_enabled' => true]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $challenge = BackofficeLoginChallenge::query()->create([
+        'token_hash' => hash('sha256', 'ticket'),
+        'confirmation_code' => '042',
+        'session_id' => 'desk',
+        'user_id' => $user->id,
+        'tenant_id' => $tenant->id,
+        'computer_label' => 'Chrome op Windows',
+        'status' => BackofficeLoginChallenge::STATUS_APPROVED,
+        'expires_at' => now()->subMinute(),
+    ]);
+
+    expect($challenge->isOpen())->toBeFalse();
+    expect(app(ConsumeBackofficeLoginChallengeAction::class)->handle('desk'))->toBeNull();
+});
+
+it('laat alleen een beheerder een gsm vrijgeven en schrijft dat in het auditlog', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id, 'name' => 'Ada Beheer']);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id, 'name' => 'Mo Medewerker']);
+    UserPasskeyCredential::query()->create([
+        'tenant_id' => $tenant->id,
+        'user_id' => $employee->id,
+        'credential_id' => 'cred-1',
+        'credential_public_key' => base64_encode('key'),
+        'user_handle' => 'wp-user-'.$employee->id,
+        'device_label' => 'Safari op iPhone',
+        'sign_count' => 0,
+    ]);
+
+    expect($employee->can('releasePhone', $employee))->toBeFalse();
+    expect($admin->can('releasePhone', $employee))->toBeTrue();
+
+    app(ReleaseUserPhoneAction::class)->handle($employee, (int) $tenant->id, (int) $admin->id);
+
+    $row = DB::table('audit_logs')->where('action', 'auth.phone_released')->first();
+    expect($row)->not->toBeNull()
+        ->and((int) $row->user_id)->toBe($admin->id)
+        ->and($employee->fresh()->phone_reregistration_open)->toBeTrue()
+        ->and($employee->fresh()->phone_revoked_label)->toBe('Safari op iPhone')
+        ->and(UserPasskeyCredential::query()->where('user_id', $employee->id)->exists())->toBeFalse();
+
+    $payload = json_decode($row->payload, true);
+    expect($payload['user_name'])->toBe('Mo Medewerker')
+        ->and($payload['device_label'])->toBe('Safari op iPhone')
+        ->and($row->created_at)->not->toBeNull();
+});
+
+it('noteert een aanmelding buiten de uren en een reeks nieuwe aanmeldingen', function () {
+    $tenant = Tenant::factory()->create([
+        'login_alert_enabled' => true,
+        'login_alert_start' => '00:00',
+        'login_alert_end' => '23:59',
+    ]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Piet']);
+
+    app(RecordBackofficeLoginAction::class)->handle($user);
+    app(RecordBackofficeLoginAction::class)->handle($user);
+    app(RecordBackofficeLoginAction::class)->handle($user);
+
+    expect(DB::table('audit_logs')->where('action', 'auth.login_outside_hours')->count())->toBe(3)
+        ->and(DB::table('audit_logs')->where('action', 'auth.session_burst')->count())->toBe(1);
+});
+
+it('stopt een sessie na twaalf uur en toont de kaart alleen aan een beheerder', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($admin)
+        ->withSession(['auth_logged_in_at' => now()->subHours(EnsureAbsoluteSessionLifetime::HOURS + 1)->timestamp])
+        ->get(route('dashboard'))
+        ->assertRedirect(route('login'));
+
+    Livewire::actingAs($employee)->test(Dashboard::class)
+        ->assertDontSee(__('dashboard.security.prompt_title'));
+
+    Livewire::actingAs($admin)->test(Dashboard::class)
+        ->assertSee(__('dashboard.security.prompt_title'))
+        ->call('decidePhoneLogin', false)
+        ->assertDontSee(__('dashboard.security.prompt_title'));
+
+    expect($tenant->fresh()->backoffice_phone_login_enabled)->toBeFalse()
+        ->and($tenant->fresh()->backoffice_phone_login_decided_at)->not->toBeNull();
+});
+
+it('houdt een registratie tegen op een te kort wachtwoord', function () {
+    Livewire::test(Register::class)
+        ->set('password', 'kortwoord')
+        ->set('password_confirmation', 'kortwoord')
+        ->call('register')
+        ->assertHasErrors(['password']);
+});

@@ -5,7 +5,7 @@ namespace App\Http\Requests\Auth;
 use App\Support\CountryOptions;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Password;
+use App\Support\Auth\BackofficePassword;
 
 class RegisterRequest extends FormRequest
 {
@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
             'country_code' => ['nullable', 'string', 'regex:/^$|^[A-Z]{2}$/', Rule::in(array_merge([''], CountryOptions::codes()))],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email:filter', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'string', 'confirmed', Password::min(8)],
+            'password' => [...BackofficePassword::constraints(), 'confirmed'],
             'accept_terms' => ['required', 'accepted'],
         ];
     }
@@ -50,6 +50,8 @@ class RegisterRequest extends FormRequest
             'email.unique' => __('auth.errors.email_taken'),
             'password.required' => __('auth.errors.password_required'),
             'password.confirmed' => __('auth.errors.password_confirmed'),
+            'password.min' => __('auth.errors.password_min'),
+            'password.uncompromised' => __('auth.errors.password_leaked'),
             'password.min' => __('auth.errors.password_min'),
             'accept_terms.accepted' => __('auth.errors.accept_terms_required'),
         ];

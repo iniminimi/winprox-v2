@@ -6,7 +6,8 @@
     <title>{{ $title ?? 'WinProx' }}</title>
     @include('partials.social-meta')
     @include('partials.favicon')
-    @vite(['resources/css/app.css'])
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 <body class="wp-shell wp-auth-body">

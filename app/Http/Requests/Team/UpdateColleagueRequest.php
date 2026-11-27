@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Team;
 
 use App\Models\User;
+use App\Support\Auth\BackofficePassword;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -33,7 +34,7 @@ class UpdateColleagueRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($userId)],
             'locale' => ['required', Rule::in(config('locales.supported', []))],
             'role' => ['required', Rule::in(User::ROLES)],
-            'password' => ['nullable', 'string', 'min:8'],
+            'password' => BackofficePassword::constraints(required: false),
             'password_confirmation' => ['nullable', 'same:password'],
             'notify_on_new_issue_email' => ['boolean'],
         ];
@@ -44,8 +45,6 @@ class UpdateColleagueRequest extends FormRequest
      */
     public function messages(): array
     {
-        return array_merge(StoreColleagueRequest::messageMap(), [
-            'password.min' => __('team.errors.password_min'),
-        ]);
+        return StoreColleagueRequest::messageMap();
     }
 }

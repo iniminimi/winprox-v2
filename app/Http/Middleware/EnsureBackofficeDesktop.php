@@ -20,6 +20,11 @@ class EnsureBackofficeDesktop
         'verification.verify',
         'logout',
         'subscription.purge.confirm',
+        'login.phone',
+        'login.phone.assert-options',
+        'login.phone.assert',
+        'login.phone.register-options',
+        'login.phone.register',
     ];
 
     public function handle(Request $request, Closure $next): Response

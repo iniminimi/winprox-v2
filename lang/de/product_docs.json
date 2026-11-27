@@ -352,7 +352,7 @@
                     "Mitarbeiter: die tägliche Nachverfolgung, ohne die Abrechnung.",
                     "Ausführender: die Arbeit über Clock Point und die QR-Codes, ohne gewöhnliche Verwaltungsanmeldung.",
                     "Teamleiter: Ausführende verwalten, ihr Symbol freigeben und über Clock Point Fotos aufnehmen.",
-                    "Verwaltung und Mitarbeitende melden sich mit E-Mail und Passwort an, oder über Microsoft. Die E-Mail-Adresse muss zu einem bestehenden WinProx-Konto gehören.",
+                    "Verwaltung und Mitarbeitende melden sich mit E-Mail und einem langen Passwort an, das nicht in bekannten Leaks steht, oder über Microsoft. Die Organisation kann die Anmeldung mit dem Telefon dazunehmen. Die E-Mail-Adresse muss zu einem bestehenden WinProx-Konto gehören.",
                     "Ausführende nutzen Clock Point mit Namen und Symbol. Andere Software verbindet sich mit API-Schlüsseln, nicht mit der gewöhnlichen Anmeldung."
                 ]
             },
@@ -460,8 +460,8 @@
             {
                 "title": "Anmeldung",
                 "items": [
-                    "Verwaltung: E-Mail und Passwort. Passwörter werden gehasht gespeichert. Wiederholte Fehlversuche werden vorübergehend gesperrt.",
-                    "Auf einem Smartphone öffnet sich die Verwaltung nicht. Ein Administrator oder Mitarbeiter mit Login meldet sich am Computer oder Tablet an.",
+                    "Verwaltung: E-Mail und ein langes Passwort, das nicht in bekannten Leaks steht. Passwörter werden gehasht gespeichert. Wiederholte Fehlversuche werden vorübergehend gesperrt. Die Organisation kann zusätzlich die Anmeldung mit dem Telefon einschalten: der Computer zeigt einen Code, das Telefon bestätigt mit Fingerabdruck oder Gesicht. Diese biometrischen Daten verlassen das Telefon nicht. Nur ein Administrator gibt ein Telefon frei.",
+                    "Auf einem Smartphone öffnet sich die Verwaltung nicht. Hat die Organisation die Anmeldung mit dem Telefon an, bestätigt das Telefon nur den Computer. Die Verwaltung selbst bleibt auf einem Computer oder Tablet.",
                     "Selbstregistrierung gilt erst nach dem Link in der Bestätigungsmail. Unbestätigte Anmeldungen werden nach 7 Tagen gelöscht.",
                     "**Mit Microsoft anmelden** (Desktop): nur ein bestehendes Konto, dessen E-Mail übereinstimmt. Keine automatischen neuen Konten. E-Mail und Passwort bleiben möglich.",
                     "Andere Software nutzt ein widerrufbares Zugriffstoken mit gewählten Rechten, nicht die gewöhnliche Anmeldung.",

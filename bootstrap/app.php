@@ -10,6 +10,7 @@ use App\Http\Middleware\AuthenticateIotGateway;
 use App\Http\Middleware\AuthenticateSensePoint;
 use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\ConfineMarketHost;
+use App\Http\Middleware\EnsureAbsoluteSessionLifetime;
 use App\Http\Middleware\EnsureBackofficeDesktop;
 use App\Http\Middleware\EnsureWorkerPhone;
 use App\Http\Middleware\EnsureCheckmateRouteAllowed;
@@ -69,6 +70,7 @@ return Application::configure(basePath: dirname(__DIR__))
             ApplySupportTenantContext::class,
             EnsureUserEmailIsVerified::class,
             EnsureTenantHasAppAccess::class,
+            EnsureAbsoluteSessionLifetime::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

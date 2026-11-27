@@ -298,5 +298,16 @@
         "checkmate_locked": "Op Checkmate kun je klanten op locatie niet uitzetten.",
         "save": "Opslaan",
         "saved": "Instelling klanten op locatie opgeslagen."
+    },
+    "security": {
+        "title": "Aanmelden",
+        "phone_login": "Aanmelden met de telefoon",
+        "phone_login_hint": "Op het loginscherm staat dan ook een code. De telefoon bevestigt de computer. Het wachtwoord blijft werken.",
+        "alert_hours": "Melding bij aanmelden binnen een uurvenster",
+        "alert_hours_hint": "Bijvoorbeeld van 22:00 tot 06:00. De aanmelding wordt niet geblokkeerd. Alleen beheerders zien de melding op het beginscherm.",
+        "alert_start": "Vanaf",
+        "alert_end": "Tot",
+        "save": "Bewaren",
+        "time_invalid": "Gebruik een uur zoals 22:00."
     }
 }

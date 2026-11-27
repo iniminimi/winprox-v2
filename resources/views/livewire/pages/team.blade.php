@@ -378,6 +378,10 @@
                         </label>
                     @else
                         <p class="wp-hint">{{ __('team.colleagues.modal.edit_password_hint') }}</p>
+                        @if ($colleaguePhoneLabel)
+                            <p class="wp-hint">{{ __('team.colleagues.modal.phone_label', ['device' => $colleaguePhoneLabel]) }}</p>
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="releaseColleaguePhone" wire:confirm="{{ __('team.colleagues.modal.release_phone_confirm') }}">{{ __('team.colleagues.modal.release_phone') }}</button>
+                        @endif
                     @endif
 
                     @if ($workMenuIssuesTasksEnabled ?? true)

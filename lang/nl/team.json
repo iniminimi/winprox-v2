@@ -50,7 +50,10 @@
             "locations_empty": "Nog geen locaties. Voeg eerst een locatie toe.",
             "punch_clock_team": "Prikklok-team",
             "punch_clock_team_none": "Geen prikklok-profiel",
-            "punch_clock_team_hint": "Koppel een uitvoerdersprofiel zodat deze collega kan inklokken via de QR."
+            "punch_clock_team_hint": "Koppel een uitvoerdersprofiel zodat deze collega kan inklokken via de QR.",
+            "release_phone": "Gsm vrijgeven",
+            "release_phone_confirm": "De gekoppelde gsm vervalt. Daarna kan deze persoon een nieuwe gsm registreren.",
+            "phone_label": "Gekoppelde gsm: :device"
         }
     },
     "teams": {
@@ -231,7 +234,7 @@
         "role_required": "Kies een rol.",
         "locale_required": "Kies een taal.",
         "password_required": "Geef een wachtwoord op.",
-        "password_min": "Het wachtwoord moet minstens 8 tekens zijn.",
+        "password_min": "Het wachtwoord moet minstens 12 tekens zijn.",
         "password_confirm_required": "Bevestig het wachtwoord.",
         "team_name_required": "Geef een teamnaam op.",
         "worker_name_required": "Geef voor- en achternaam op.",
@@ -254,7 +257,8 @@
         "worker_default_unit_location": "De thuisgroep moet op een toegewezen locatie liggen.",
         "long_shift_before_stale": "Het lange-shift-alarm moet lager zijn dan automatisch sluiten.",
         "stale_shift_hours_max": "Automatisch sluiten is maximaal 24 uur.",
-        "long_shift_hours_max": "Het lange-shift-alarm is maximaal 24 uur."
+        "long_shift_hours_max": "Het lange-shift-alarm is maximaal 24 uur.",
+        "password_leaked": "Dit wachtwoord komt voor in een bekend lek. Kies een ander."
     },
     "show": {
         "subtitle": "Documenten, mededelingen en uitvoerders van dit team.",

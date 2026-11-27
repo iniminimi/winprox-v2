@@ -352,7 +352,7 @@
                     "Collaborateur : le suivi quotidien, sans la facturation.",
                     "Exécutant : le travail via Clock Point et les QR, sans connexion de gestion ordinaire.",
                     "Chef d’équipe : gérer les exécutants, libérer leur icône et prendre des photos via Clock Point.",
-                    "Gestionnaires et collaborateurs se connectent avec e-mail et mot de passe, ou via Microsoft. L’adresse e-mail doit correspondre à un compte WinProx existant.",
+                    "Gestionnaires et collaborateurs se connectent avec e-mail et un mot de passe long qui ne figure pas dans des fuites connues, ou via Microsoft. L’organisation peut y ajouter la connexion avec le téléphone. L’adresse e-mail doit correspondre à un compte WinProx existant.",
                     "Les exécutants utilisent Clock Point avec leur nom et leur icône. Un autre logiciel se relie avec des clés API, pas avec la connexion ordinaire."
                 ]
             },
@@ -460,8 +460,8 @@
             {
                 "title": "Connexion",
                 "items": [
-                    "Back-office : e-mail et mot de passe. Les mots de passe sont stockés hachés. Les tentatives échouées répétées sont bloquées temporairement.",
-                    "Sur un smartphone, la gestion ne s’ouvre pas. Un gestionnaire ou un collaborateur se connecte sur un ordinateur ou une tablette.",
+                    "Back-office : e-mail et un mot de passe long qui ne figure pas dans des fuites connues. Les mots de passe sont stockés hachés. Les tentatives échouées répétées sont bloquées temporairement. L’organisation peut aussi activer la connexion avec le téléphone : l’ordinateur montre un code, le téléphone confirme avec l’empreinte ou le visage. Ces données biométriques ne quittent pas le téléphone. Seul un gestionnaire libère un téléphone.",
+                    "Sur un smartphone, la gestion ne s’ouvre pas. Si l’organisation a activé la connexion par téléphone, le téléphone ne fait que confirmer l’ordinateur. La gestion elle-même reste sur un ordinateur ou une tablette.",
                     "L’auto-inscription ne fonctionne qu’après le lien dans l’e-mail de confirmation. Les inscriptions non confirmées sont supprimées après 7 jours.",
                     "**Se connecter avec Microsoft** (ordinateur) : uniquement un compte existant dont l’e-mail correspond. Pas de nouveaux comptes automatiques. L’e-mail et le mot de passe restent possibles.",
                     "Les autres logiciels utilisent un jeton d’accès révocable avec des droits choisis, pas la connexion ordinaire.",

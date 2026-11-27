@@ -50,7 +50,10 @@
             "locations_empty": "No locations yet. Add a location first.",
             "punch_clock_team": "Punch clock team",
             "punch_clock_team_none": "No punch clock profile",
-            "punch_clock_team_hint": "Link a worker profile so this colleague can clock in via QR."
+            "punch_clock_team_hint": "Link a worker profile so this colleague can clock in via QR.",
+            "release_phone": "Release phone",
+            "release_phone_confirm": "The linked phone stops working. This person can then register a new phone.",
+            "phone_label": "Linked phone: :device"
         }
     },
     "teams": {
@@ -231,7 +234,7 @@
         "role_required": "Choose a role.",
         "locale_required": "Choose a language.",
         "password_required": "Enter a password.",
-        "password_min": "The password must be at least 8 characters.",
+        "password_min": "The password must be at least 12 characters.",
         "password_confirm_required": "Confirm the password.",
         "team_name_required": "Enter a team name.",
         "worker_name_required": "Enter a first and last name.",
@@ -254,7 +257,8 @@
         "worker_default_unit_location": "The home group must be on an assigned location.",
         "long_shift_before_stale": "The long shift alert must be lower than auto-close.",
         "stale_shift_hours_max": "Auto-close is at most 24 hours.",
-        "long_shift_hours_max": "The long shift alert is at most 24 hours."
+        "long_shift_hours_max": "The long shift alert is at most 24 hours.",
+        "password_leaked": "This password appears in a known leak. Choose another."
     },
     "show": {
         "subtitle": "Documents, announcements and workers for this team.",

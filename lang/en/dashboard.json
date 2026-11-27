@@ -257,5 +257,17 @@
         "pending_device": "Device: :device",
         "confirm": "Link",
         "deny": "Refuse"
+    },
+    "security": {
+        "prompt_title": "Sign in with your phone",
+        "prompt_body": "Do you want administrators and staff to also sign in by scanning a code on the login screen and confirming with a fingerprint or face? The normal password still works.",
+        "prompt_yes": "Yes, turn it on",
+        "prompt_no": "No, not now",
+        "alerts_title": "Sign-in",
+        "outside_hours": ":name signed in at :time, outside the hours you set.",
+        "throttled": "Too many failed attempts for :name at :time.",
+        "phone_registered": ":name linked a phone (:device) at :time.",
+        "phone_registered_revoked": ":name linked a phone (:device) at :time. :revoked was removed.",
+        "session_burst": ":name had :count new sign-ins close together, the last at :time."
     }
 }

@@ -7,6 +7,7 @@
      @click.capture="onClick($event)"
      @contextmenu="onContextMenu($event)"
      @dragstart="onDragStart($event)">
+    @include('livewire.dashboard.security-notices')
     @if ($checkmate !== null)
         {{-- Checkmate-dashboard (docs/CHECKMATE.md): wie is waar — geen
              facility-tegels, meldingen of starter packs. --}}

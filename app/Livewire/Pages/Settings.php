@@ -2,7 +2,10 @@
 
 namespace App\Livewire\Pages;
 
+use App\Actions\Auth\DecideTenantPhoneLoginAction;
+use App\Actions\Auth\UpdateTenantLoginAlertAction;
 use App\Actions\Qr\RenderBrandedQrStickerPreviewAction;
+use App\Http\Requests\Auth\UpdateTenantLoginAlertRequest;
 use App\Actions\Settings\UpdateTenantEmployeesMayManageLocationsAction;
 use App\Actions\Settings\UpdateTenantEmployeesMayViewOtherPresenceAction;
 use App\Actions\Settings\UpdateTenantPhotoAlbumAction;
@@ -52,6 +55,7 @@ use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Http\Requests\Team\UpdateTenantWorkMenuRequest;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Support\Admin\AdminHealthService;
 use App\Support\Platform\SupportTenantContext;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -149,6 +153,14 @@ class Settings extends Component
     public bool $timeRequireWorkerPin = false;
 
     public bool $timeWorkerPasskeys = true;
+
+    public bool $backofficePhoneLogin = false;
+
+    public bool $loginAlertEnabled = false;
+
+    public string $loginAlertStart = '22:00';
+
+    public string $loginAlertEnd = '06:00';
 
     public bool $timeGpsOnClock = false;
 
@@ -496,6 +508,38 @@ class Settings extends Component
         $this->reset('orgLogo');
         $this->reset('portalBackground');
         $this->resetErrorBag();
+    }
+
+    public function saveLoginSecurity(
+        DecideTenantPhoneLoginAction $decidePhone,
+        UpdateTenantLoginAlertAction $updateAlert,
+    ): void {
+        $tenant = $this->resolveTenant();
+        $user = auth()->user();
+        if (! $tenant instanceof Tenant || ! $user instanceof User) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $validated = $this->validate(
+            UpdateTenantLoginAlertRequest::ruleSet(),
+            [
+                'loginAlertStart.regex' => __('settings.security.time_invalid'),
+                'loginAlertEnd.regex' => __('settings.security.time_invalid'),
+            ],
+        );
+
+        $decidePhone->handle($tenant, (bool) $this->backofficePhoneLogin, (int) $user->id);
+        $updateAlert->handle(
+            $tenant->fresh(),
+            (bool) ($validated['loginAlertEnabled'] ?? false),
+            substr($validated['loginAlertStart'], 0, 5),
+            substr($validated['loginAlertEnd'], 0, 5),
+            (int) $user->id,
+        );
+
+        $this->fillOrganisationFromTenant($tenant->fresh());
     }
 
     public function saveOrganisationInline(UpdateOrganisationAction $updateOrganisation): void
@@ -1198,6 +1242,10 @@ class Settings extends Component
         $this->presenceComplianceEnabled = (bool) $tenant->presence_compliance_enabled;
         $this->timeRequireWorkerPin = (bool) $tenant->time_require_worker_pin;
         $this->timeWorkerPasskeys = (bool) ($tenant->time_worker_passkeys ?? true);
+        $this->backofficePhoneLogin = (bool) $tenant->backoffice_phone_login_enabled;
+        $this->loginAlertEnabled = (bool) $tenant->login_alert_enabled;
+        $this->loginAlertStart = (string) ($tenant->login_alert_start ?: '22:00');
+        $this->loginAlertEnd = (string) ($tenant->login_alert_end ?: '06:00');
         $this->timeGpsOnClock = (bool) $tenant->time_gps_on_clock;
         $this->timeGpsVisits = (bool) $tenant->time_gps_visits;
         $this->timeEvacuationList = (bool) $tenant->time_evacuation_list;

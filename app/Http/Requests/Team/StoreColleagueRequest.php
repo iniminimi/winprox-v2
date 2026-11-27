@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Team;
 
 use App\Models\User;
+use App\Support\Auth\BackofficePassword;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -31,7 +32,7 @@ class StoreColleagueRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'locale' => ['required', Rule::in(config('locales.supported', []))],
             'role' => ['required', Rule::in(User::ROLES)],
-            'password' => ['required', 'string', 'min:8'],
+            'password' => BackofficePassword::constraints(),
             'password_confirmation' => ['required', 'same:password'],
             'send_account_email' => ['boolean'],
             'notify_on_new_issue_email' => ['boolean'],
@@ -62,6 +63,7 @@ class StoreColleagueRequest extends FormRequest
             'role.in' => __('team.errors.role_required'),
             'password.required' => __('team.errors.password_required'),
             'password.min' => __('team.errors.password_min'),
+            'password.uncompromised' => __('team.errors.password_leaked'),
             'password_confirmation.required' => __('team.errors.password_confirm_required'),
             'password_confirmation.same' => __('auth.errors.password_confirmed'),
         ];

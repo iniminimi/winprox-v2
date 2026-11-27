@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Actions\Communication\ImportInternalTeamTranslationsAction;
+use App\Actions\Auth\ReleaseUserPhoneAction;
 use App\Actions\Portal\RevokeWorkerPasskeysAction;
 use App\Actions\Team\ClearWorkerWeekdayMinutesAction;
 use App\Actions\Team\CreateColleagueAction;
@@ -97,6 +98,8 @@ class Team extends Component
     public bool $colleagueSendAccountEmail = true;
 
     public bool $colleagueNotifyOnNewIssueEmail = true;
+
+    public ?string $colleaguePhoneLabel = null;
 
     /** @var list<int> */
     public array $colleagueLocationIds = [];
@@ -363,12 +366,25 @@ class Team extends Component
         $this->colleaguePasswordConfirmation = '';
         $this->colleagueSendAccountEmail = false;
         $this->colleagueNotifyOnNewIssueEmail = (bool) $user->notify_on_new_issue_email;
+        $this->colleaguePhoneLabel = $user->passkeyCredential?->device_label;
         $this->colleagueLocationIds = $user->role === User::ROLE_EMPLOYEE
             ? $user->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all()
             : [];
         $this->colleaguePunchClockTeamId = $user->linkedWorker?->internal_team_id;
         $this->resetErrorBag();
         $this->showColleagueModal = true;
+    }
+
+    public function releaseColleaguePhone(ReleaseUserPhoneAction $release): void
+    {
+        if ($this->editingColleagueId === null) {
+            return;
+        }
+
+        $user = User::where('tenant_id', Tenancy::id())->findOrFail($this->editingColleagueId);
+        $this->authorize('releasePhone', $user);
+        $release->handle($user, (int) Tenancy::id(), (int) auth()->id());
+        $this->colleaguePhoneLabel = null;
     }
 
     public function saveColleague(CreateColleagueAction $createColleague, UpdateColleagueAction $updateColleague): void
@@ -537,6 +553,7 @@ class Team extends Component
             'colleagueLocationIds',
             'colleaguePunchClockTeamId',
             'editingColleagueId',
+            'colleaguePhoneLabel',
         ]);
         $this->colleagueLocale = (string) (auth()->user()?->locale ?: config('locales.default', 'nl'));
         $this->colleagueRole = User::ROLE_EMPLOYEE;
