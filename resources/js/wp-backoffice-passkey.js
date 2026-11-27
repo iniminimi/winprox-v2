@@ -65,6 +65,22 @@ function preparePublicKey(options) {
     return publicKey;
 }
 
+function phoneHasPasskey() {
+    try {
+        return localStorage.getItem('wpPhonePasskey') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
+function rememberPhonePasskey() {
+    try {
+        localStorage.setItem('wpPhonePasskey', '1');
+    } catch (e) {
+        // De vingerafdruk blijft op het toestel. Zonder lokale notitie toont de pagina het wachtwoord.
+    }
+}
+
 function registerAlpineComponent() {
     if (!window.Alpine || window.Alpine.__wpBackofficePasskey) {
         return;
@@ -76,6 +92,7 @@ function registerAlpineComponent() {
         i18n: config.i18n ?? {},
         busy: false,
         error: '',
+        hasKey: phoneHasPasskey(),
 
         csrfToken() {
             return document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ?? '';
@@ -116,6 +133,7 @@ function registerAlpineComponent() {
                     this.error = this.i18n[done.data?.error] ?? this.i18n.failed ?? '';
                     return;
                 }
+                rememberPhonePasskey();
                 window.location.reload();
             } catch (e) {
                 this.error = e?.name === 'NotAllowedError' ? (this.i18n.cancelled ?? '') : (this.i18n.failed ?? '');
@@ -144,6 +162,7 @@ function registerAlpineComponent() {
                     this.error = this.i18n[done.data?.error] ?? this.i18n.failed ?? '';
                     return;
                 }
+                rememberPhonePasskey();
                 window.location.reload();
             } catch (e) {
                 this.error = e?.name === 'NotAllowedError' ? (this.i18n.cancelled ?? '') : (this.i18n.failed ?? '');

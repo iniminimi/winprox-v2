@@ -82,7 +82,8 @@ it('opent de computer met vingerafdruk zonder het wachtwoord opnieuw te vragen',
 
     Livewire::test(PhoneLogin::class, ['token' => $started['token']])
         ->assertSee(__('auth.phone.biometric'))
-        ->assertSee(__('auth.phone.first_time'));
+        ->assertSee(__('auth.phone.first_time'))
+        ->assertSeeHtml('x-show="hasKey"');
 
     $options = app(IssueUserPasskeyOptionsAction::class)->handle($started['token'], 'winprox.app', false);
     expect($options)->toHaveKey('challenge')

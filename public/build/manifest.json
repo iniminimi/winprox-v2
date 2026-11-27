@@ -1,14 +1,14 @@
 {
-  "_index-CgGAvuoR.js": {
-    "file": "assets/index-CgGAvuoR.js",
+  "_index-DZrj5FXZ.js": {
+    "file": "assets/index-DZrj5FXZ.js",
     "name": "index",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_jsQR-CKHchpcW.js": {
-    "file": "assets/jsQR-CKHchpcW.js",
+  "_jsQR-B4IHvnBv.js": {
+    "file": "assets/jsQR-B4IHvnBv.js",
     "name": "jsQR",
     "isDynamicEntry": true,
     "imports": [
@@ -53,13 +53,13 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-BArNUC5x.js",
+    "file": "assets/app-7aOuUOZE.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
-      "_jsQR-CKHchpcW.js",
-      "_index-CgGAvuoR.js"
+      "_jsQR-B4IHvnBv.js",
+      "_index-DZrj5FXZ.js"
     ],
     "css": [
       "assets/app-C2Xlxaxh.css"

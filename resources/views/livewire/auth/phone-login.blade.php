@@ -48,15 +48,15 @@
                     }
                 })"
             >
-                <button type="button" class="btn btn--primary btn--block" @click="assert()">{{ __('auth.phone.biometric') }}</button>
+                <button type="button" class="btn btn--primary btn--block" style="display: none" x-show="hasKey" @click="assert()">{{ __('auth.phone.biometric') }}</button>
                 <p class="wp-error" x-show="error" x-text="error"></p>
-                <p class="wp-muted">{{ __('auth.phone.first_time') }}</p>
+                <p class="wp-muted" x-show="!hasKey">{{ __('auth.phone.first_time') }}</p>
                 <form wire:submit="submitPassword" class="wp-stack">
                     <input type="email" class="wp-input" wire:model.blur="email" autocomplete="username" placeholder="{{ __('auth.email') }}" aria-label="{{ __('auth.email') }}">
                     @error('email') <p class="wp-error">{{ $message }}</p> @enderror
                     <input type="password" class="wp-input" wire:model="password" autocomplete="current-password" placeholder="{{ __('auth.password') }}" aria-label="{{ __('auth.password') }}">
                     @error('password') <p class="wp-error">{{ $message }}</p> @enderror
-                    <button type="submit" class="btn btn--ghost btn--block">{{ __('auth.phone.submit_password') }}</button>
+                    <button type="submit" class="btn btn--block" :class="hasKey ? 'btn--ghost' : 'btn--primary'">{{ __('auth.phone.submit_password') }}</button>
                 </form>
             </div>
         @endif

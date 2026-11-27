@@ -74,6 +74,8 @@ class StoreUserPasskeyCredentialAction
             'phone_revoked_label' => null,
         ]);
 
+        $challenge->update(['status' => BackofficeLoginChallenge::STATUS_APPROVED]);
+
         $this->audit->record(
             userId: (int) $user->id,
             tenantId: (int) $user->tenant_id,
