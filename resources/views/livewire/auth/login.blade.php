@@ -50,42 +50,7 @@
         </div>
     @endif
 
-    <form wire:submit="login" class="wp-auth-form wp-stack"
-          x-data="{
-              show: false,
-              syncEmail(immediate = false) {
-                  const run = () => {
-                      const input = this.$root.querySelector('#email');
-                      if (! input || input.value === '' || input.value === this.$wire.get('email')) {
-                          return;
-                      }
-                      this.$wire.set('email', input.value);
-                  };
-                  clearTimeout(this._emailTimer);
-                  if (immediate) {
-                      run();
-                      return;
-                  }
-                  this._emailTimer = setTimeout(run, 400);
-              },
-          }"
-          x-init="syncEmail(true); setTimeout(() => syncEmail(true), 400); setTimeout(() => syncEmail(true), 1200); $root.addEventListener('animationstart', (event) => { if (event.animationName === 'wp-on-autofill') syncEmail(true) })">
-        <input
-            type="email"
-            id="email"
-            class="wp-input"
-            wire:model.blur="email"
-            placeholder="{{ __('auth.email') }}"
-            aria-label="{{ __('auth.email') }}"
-            autocomplete="email"
-            autofocus
-            @input="syncEmail()"
-            @change="syncEmail(true)"
-        >
-        @error('email')
-            <p class="wp-error">{{ $message }}</p>
-        @enderror
-
+    <form wire:submit="login" class="wp-auth-form wp-stack" x-data="{ show: false }">
         @if ($phoneLoginSvg)
             <div class="wp-auth-login-qr" wire:poll.3s="pollPhoneLogin">
                 <div>{!! $phoneLoginSvg !!}</div>
@@ -93,6 +58,20 @@
                 <p class="wp-text-body">{{ __('auth.phone.code') }} <strong>{{ $phoneLoginCode }}</strong></p>
             </div>
         @endif
+
+        <input
+            type="email"
+            id="email"
+            class="wp-input"
+            wire:model="email"
+            placeholder="{{ __('auth.email') }}"
+            aria-label="{{ __('auth.email') }}"
+            autocomplete="email"
+            autofocus
+        >
+        @error('email')
+            <p class="wp-error">{{ $message }}</p>
+        @enderror
 
         <div class="wp-input-group">
             <input
@@ -104,7 +83,6 @@
                 placeholder="{{ __('auth.password') }}"
                 aria-label="{{ __('auth.password') }}"
                 autocomplete="current-password"
-                @focus="syncEmail(true)"
             >
             <button
                 type="button"

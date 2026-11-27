@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * Controleert het wachtwoord op de telefoon en meldt de computer nog niet aan.
+ * Controleert e-mail en wachtwoord op de telefoon en meldt de computer nog niet aan.
  */
 class SubmitPhonePasswordAction
 {
@@ -25,8 +25,25 @@ class SubmitPhonePasswordAction
             return ['ok' => false, 'error' => 'expired'];
         }
 
+        $typed = Str::lower(trim($email));
         $user = $challenge->user;
-        if (! $user instanceof User || ! $challenge->tenant?->allowsBackofficePhoneLogin()) {
+        if (! $user instanceof User && $typed !== '') {
+            $user = User::query()
+                ->whereRaw('LOWER(email) = ?', [$typed])
+                ->where('is_active', true)
+                ->whereNotNull('tenant_id')
+                ->first();
+        }
+
+        if (! $user instanceof User) {
+            if ($typed !== '') {
+                $this->throttle->handle($typed, $ip, BackofficeLoginThrottleStep::Failure);
+            }
+
+            return ['ok' => false, 'error' => 'failed'];
+        }
+
+        if (! $user->tenant?->allowsBackofficePhoneLogin()) {
             return ['ok' => false, 'error' => 'disabled'];
         }
 
@@ -35,7 +52,7 @@ class SubmitPhonePasswordAction
             return ['ok' => false, 'error' => 'throttle'];
         }
 
-        $emailMatches = Str::lower(trim($email)) === Str::lower($user->email);
+        $emailMatches = $typed === Str::lower($user->email);
         if (! $emailMatches || ! Hash::check($password, $user->password)) {
             $this->throttle->handle($user->email, $ip, BackofficeLoginThrottleStep::Failure);
 
@@ -43,7 +60,11 @@ class SubmitPhonePasswordAction
         }
 
         $this->throttle->handle($user->email, $ip, BackofficeLoginThrottleStep::Success);
-        $challenge->update(['status' => BackofficeLoginChallenge::STATUS_AUTHENTICATED]);
+        $challenge->update([
+            'user_id' => $user->id,
+            'tenant_id' => $user->tenant_id,
+            'status' => BackofficeLoginChallenge::STATUS_AUTHENTICATED,
+        ]);
 
         return ['ok' => true];
     }

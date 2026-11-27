@@ -32,7 +32,7 @@ class Login extends Component
 
     public ?string $phoneLoginExpiresAt = null;
 
-    public function updatedEmail(StartBackofficeLoginChallengeAction $start): void
+    public function mount(StartBackofficeLoginChallengeAction $start): void
     {
         $this->refreshPhoneChallenge($start, false);
     }
@@ -104,7 +104,6 @@ class Login extends Component
     private function refreshPhoneChallenge(StartBackofficeLoginChallengeAction $start, bool $forceNew): void
     {
         $result = $start->handle(
-            $this->email,
             session()->getId(),
             (string) request()->userAgent(),
             $forceNew ? null : $this->phoneLoginToken,

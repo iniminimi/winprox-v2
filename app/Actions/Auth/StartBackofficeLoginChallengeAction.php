@@ -3,13 +3,11 @@
 namespace App\Actions\Auth;
 
 use App\Models\BackofficeLoginChallenge;
-use App\Models\User;
 use App\Support\Auth\ComputerLabel;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
 
 /**
- * Maakt of hergebruikt het QR-ticket voor een organisatie die telefoonaanmelding aan heeft.
+ * Maakt of hergebruikt het QR-ticket van deze computer. Het adres volgt op de telefoon.
  */
 class StartBackofficeLoginChallengeAction
 {
@@ -18,20 +16,9 @@ class StartBackofficeLoginChallengeAction
     /**
      * @return array{token: string, code: string, expires_at: string}|null
      */
-    public function handle(string $email, string $sessionId, string $userAgent, ?string $currentToken = null): ?array
+    public function handle(string $sessionId, string $userAgent, ?string $currentToken = null): ?array
     {
-        $email = Str::lower(trim($email));
-        $user = $email === '' ? null : User::query()
-            ->whereRaw('LOWER(email) = ?', [$email])
-            ->where('is_active', true)
-            ->whereNotNull('tenant_id')
-            ->first();
-
-        if ($user === null || ! $user->tenant?->allowsBackofficePhoneLogin()) {
-            if ($currentToken !== null && $currentToken !== '') {
-                $this->dropPending($sessionId);
-            }
-
+        if (! Schema::hasTable('backoffice_login_challenges')) {
             return null;
         }
 
@@ -39,9 +26,7 @@ class StartBackofficeLoginChallengeAction
             $existing = BackofficeLoginChallenge::findByPlainToken($currentToken);
             if ($existing !== null
                 && $existing->isOpen()
-                && $existing->status === BackofficeLoginChallenge::STATUS_PENDING
                 && $existing->session_id === $sessionId
-                && (int) $existing->user_id === (int) $user->id
             ) {
                 return [
                     'token' => $currentToken,
@@ -58,8 +43,8 @@ class StartBackofficeLoginChallengeAction
             'token_hash' => hash('sha256', $token),
             'confirmation_code' => str_pad((string) random_int(0, 999), 3, '0', STR_PAD_LEFT),
             'session_id' => $sessionId,
-            'user_id' => $user->id,
-            'tenant_id' => $user->tenant_id,
+            'user_id' => null,
+            'tenant_id' => null,
             'computer_label' => ComputerLabel::fromUserAgent($userAgent),
             'status' => BackofficeLoginChallenge::STATUS_PENDING,
             'expires_at' => now()->addSeconds(self::TTL_SECONDS),

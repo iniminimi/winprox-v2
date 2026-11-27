@@ -92,8 +92,8 @@ return new class extends Migration
             $table->string('token_hash', 64)->unique();
             $table->char('confirmation_code', 3);
             $table->string('session_id');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('tenant_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('tenant_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('computer_label');
             $table->string('status', 32);
             $table->timestamp('expires_at');

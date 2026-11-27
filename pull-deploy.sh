@@ -48,6 +48,7 @@ echo "==> Laravel"
 # Geen volle migrate: die maakt users opnieuw aan zolang de migrations-tabel leeg is.
 php artisan migrate --force --path=database/migrations/2026_11_26_220000_add_translations_enabled_to_tenants_table.php
 php artisan migrate --force --path=database/migrations/2026_11_27_120000_add_backoffice_phone_login.php
+php artisan migrate --force --path=database/migrations/2026_11_27_143000_make_login_challenge_user_nullable.php
 php artisan migrate --force --path=database/migrations/2026_11_26_223500_comment_database_tables.php
 php artisan schedule:clear-cache
 php artisan optimize:clear

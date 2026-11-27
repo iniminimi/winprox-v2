@@ -12,7 +12,9 @@
     @unless ($ready)
         <p class="wp-text-body">{{ __('auth.phone.errors.expired') }}</p>
     @else
-        <p class="wp-text-body"><strong>{{ $organization }}</strong></p>
+        @if ($organization !== '')
+            <p class="wp-text-body"><strong>{{ $organization }}</strong></p>
+        @endif
         <p class="wp-text-body">{{ $computer }}</p>
         <p class="wp-text-body">{{ __('auth.phone.code') }} <strong>{{ $code }}</strong></p>
 

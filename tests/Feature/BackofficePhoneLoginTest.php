@@ -71,16 +71,17 @@ it('meldt de computer aan via de telefoon zonder de telefoon een sessie te geven
         'password' => Hash::make('wachtwoord123'),
     ]);
 
-    expect(app(StartBackofficeLoginChallengeAction::class)->handle('beheer@example.com', 'desk', 'Mozilla/5.0 (Windows NT 10.0) Chrome/120.0', null))->not->toBeNull();
+    expect(app(StartBackofficeLoginChallengeAction::class)->handle('desk', 'Mozilla/5.0 (Windows NT 10.0) Chrome/120.0', null))->not->toBeNull();
 
     $off = Tenant::factory()->create(['backoffice_phone_login_enabled' => false]);
     User::factory()->create(['tenant_id' => $off->id, 'email' => 'uit@example.com']);
-    expect(app(StartBackofficeLoginChallengeAction::class)->handle('uit@example.com', 'desk-2', 'Chrome', null))->toBeNull();
+    $offTicket = app(StartBackofficeLoginChallengeAction::class)->handle('desk-2', 'Chrome', null);
+    expect($offTicket)->not->toBeNull()
+        ->and(app(SubmitPhonePasswordAction::class)->handle($offTicket['token'], 'uit@example.com', 'wachtwoord123', '127.0.0.1')['ok'])->toBeFalse();
 
-    $started = app(StartBackofficeLoginChallengeAction::class)->handle('beheer@example.com', 'desk', 'Mozilla/5.0 (Windows NT 10.0) Chrome/120.0', null);
+    $started = app(StartBackofficeLoginChallengeAction::class)->handle('desk', 'Mozilla/5.0 (Windows NT 10.0) Chrome/120.0', null);
 
     Livewire::test(Login::class)
-        ->set('email', 'beheer@example.com')
         ->assertSeeHtml('wp-auth-login-qr')
         ->assertSeeHtml('width="96"');
 
