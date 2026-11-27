@@ -18,7 +18,7 @@ class StartBackofficeLoginChallengeAction
      */
     public function handle(string $sessionId, string $userAgent, ?string $currentToken = null): ?array
     {
-        if (! Schema::hasTable('backoffice_login_challenges')) {
+        if (! $this->acceptsOpenTicket()) {
             return null;
         }
 
@@ -55,6 +55,18 @@ class StartBackofficeLoginChallengeAction
             'code' => $challenge->confirmation_code,
             'expires_at' => $challenge->expires_at->toIso8601String(),
         ];
+    }
+
+    private function acceptsOpenTicket(): bool
+    {
+        if (! Schema::hasTable('backoffice_login_challenges')) {
+            return false;
+        }
+
+        $columns = collect(Schema::getColumns('backoffice_login_challenges'))->keyBy('name');
+
+        return (bool) ($columns->get('user_id')['nullable'] ?? false)
+            && (bool) ($columns->get('tenant_id')['nullable'] ?? false);
     }
 
     private function dropPending(string $sessionId): void

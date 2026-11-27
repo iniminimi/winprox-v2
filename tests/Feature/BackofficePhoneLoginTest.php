@@ -17,7 +17,9 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\UserPasskeyCredential;
 use App\Support\Auth\BackofficePassword;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -57,6 +59,24 @@ it('weigert een kort wachtwoord en een gelekt wachtwoord, en laat door als de le
         ['password' => [...BackofficePassword::constraints(), 'confirmed']],
     );
     expect($open->fails())->toBeFalse();
+});
+
+it('slaat het ticket over zolang de gebruiker in de tabel nog verplicht is', function () {
+    Schema::drop('backoffice_login_challenges');
+    Schema::create('backoffice_login_challenges', function (Blueprint $table) {
+        $table->id();
+        $table->string('token_hash', 64)->unique();
+        $table->char('confirmation_code', 3);
+        $table->string('session_id');
+        $table->unsignedBigInteger('user_id');
+        $table->unsignedBigInteger('tenant_id');
+        $table->string('computer_label');
+        $table->string('status', 32);
+        $table->timestamp('expires_at');
+        $table->timestamps();
+    });
+
+    expect(app(StartBackofficeLoginChallengeAction::class)->handle('desk', 'Chrome', null))->toBeNull();
 });
 
 it('meldt de computer aan via de telefoon zonder de telefoon een sessie te geven', function () {
