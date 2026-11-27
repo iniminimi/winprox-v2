@@ -853,7 +853,7 @@
                 {
                     "label": "Accesso con il telefono",
                     "nested": true,
-                    "text": "Solo un amministratore può attivarlo o disattivarlo. L’impostazione vale subito ed è disattivata per impostazione predefinita.<br><br>• Disattivato: tutti accedono con e-mail e password.<br>• Attivo: la schermata di accesso mostra anche un codice. Sul telefono conferma con impronta o volto. E-mail e password continuano a funzionare."
+                    "text": "Solo un amministratore può attivarlo o disattivarlo. L’impostazione vale subito ed è disattivata per impostazione predefinita.<br><br>• Disattivato: tutti accedono con e-mail e password.<br>• Attivo: la schermata di accesso mostra anche un codice. Sul telefono il computer si apre con impronta o volto. E-mail e password solo la prima volta."
                 },
                 {
                     "label": "Dati organizzazione",

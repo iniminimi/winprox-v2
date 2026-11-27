@@ -302,7 +302,7 @@
     "security": {
         "title": "Aanmelden",
         "phone_login": "Aanmelden met de telefoon",
-        "phone_login_hint": "Op het loginscherm staat dan ook een code. Op de telefoon bevestigt u met vingerafdruk of gezicht. E-mail en wachtwoord blijven werken.",
+        "phone_login_hint": "Op het loginscherm staat dan ook een code. Op de telefoon opent de computer met vingerafdruk of gezicht. E-mail en wachtwoord op de gsm zijn alleen de eerste keer.",
         "alert_hours": "Melding bij aanmelden binnen een uurvenster",
         "alert_hours_hint": "Bijvoorbeeld van 22:00 tot 06:00. De aanmelding wordt niet geblokkeerd. Alleen beheerders zien de melding op het beginscherm.",
         "alert_start": "Vanaf",

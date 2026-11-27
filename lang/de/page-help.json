@@ -853,7 +853,7 @@
                 {
                     "label": "Anmeldung mit dem Telefon",
                     "nested": true,
-                    "text": "Nur ein Administrator kann das ein- oder ausschalten. Die Einstellung gilt sofort und ist standardmäßig aus.<br><br>• Aus: alle melden sich mit E-Mail und Passwort an.<br>• An: der Anmeldebildschirm zeigt auch einen Code. Auf dem Telefon bestätigen Sie mit Fingerabdruck oder Gesicht. E-Mail und Passwort bleiben nutzbar."
+                    "text": "Nur ein Administrator kann das ein- oder ausschalten. Die Einstellung gilt sofort und ist standardmäßig aus.<br><br>• Aus: alle melden sich mit E-Mail und Passwort an.<br>• An: der Anmeldebildschirm zeigt auch einen Code. Auf dem Telefon öffnet sich der Computer mit Fingerabdruck oder Gesicht. E-Mail und Passwort nur beim ersten Mal."
                 },
                 {
                     "label": "Organisationsdaten",

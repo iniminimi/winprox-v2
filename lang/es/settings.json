@@ -302,7 +302,7 @@
     "security": {
         "title": "Acceso",
         "phone_login": "Entrar con el teléfono",
-        "phone_login_hint": "La pantalla de acceso muestra entonces también un código. En el teléfono confirma con huella o rostro. El correo y la contraseña siguen funcionando.",
+        "phone_login_hint": "La pantalla de acceso muestra entonces también un código. En el teléfono el ordenador se abre con huella o rostro. Correo y contraseña solo la primera vez.",
         "alert_hours": "Aviso si alguien entra en una franja horaria",
         "alert_hours_hint": "Por ejemplo de 22:00 a 06:00. El acceso no se bloquea. Solo los administradores ven el aviso en la pantalla de inicio.",
         "alert_start": "Desde",

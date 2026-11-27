@@ -55,6 +55,22 @@ final class UserPasskeyCeremony
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    public static function discoverableAssertionOptions(string $rpId): array
+    {
+        $options = PublicKeyCredentialRequestOptions::create(
+            challenge: random_bytes(32),
+            rpId: $rpId,
+            allowCredentials: [],
+            userVerification: PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_REQUIRED,
+            timeout: self::TIMEOUT_MS,
+        );
+
+        return json_decode(self::serializer()->serialize($options, 'json'), true);
+    }
+
+    /**
      * @param  list<string>  $origins
      * @return array{0: UserPasskeyCredential, 1: CredentialRecord}
      */
@@ -108,6 +124,7 @@ final class UserPasskeyCeremony
             authenticatorSelection: new AuthenticatorSelectionCriteria(
                 authenticatorAttachment: AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_PLATFORM,
                 userVerification: AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_REQUIRED,
+                residentKey: AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_REQUIRED,
             ),
             attestation: PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE,
             excludeCredentials: $exclude,

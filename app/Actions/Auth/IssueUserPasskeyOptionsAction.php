@@ -18,15 +18,10 @@ class IssueUserPasskeyOptionsAction
      */
     public function handle(string $token, string $rpId, bool $registration): array
     {
-        $challenge = $this->challenge($token);
-        $user = $challenge->user;
-        if (! $user instanceof User) {
-            throw new InvalidArgumentException('expired');
-        }
-
-        $user->loadMissing('passkeyCredential');
+        $challenge = $this->openChallenge($token);
 
         if ($registration) {
+            $user = $this->boundUser($challenge);
             if ($challenge->status !== BackofficeLoginChallenge::STATUS_AUTHENTICATED) {
                 throw new InvalidArgumentException('failed');
             }
@@ -39,26 +34,36 @@ class IssueUserPasskeyOptionsAction
             return $options;
         }
 
-        if ($challenge->status !== BackofficeLoginChallenge::STATUS_PENDING || $user->passkeyCredential === null) {
+        if ($challenge->status !== BackofficeLoginChallenge::STATUS_PENDING) {
             throw new InvalidArgumentException('failed');
         }
 
-        $options = UserPasskeyCeremony::assertionOptions($user, $rpId);
+        $user = $challenge->user;
+        $user?->loadMissing('passkeyCredential');
+        $options = $user instanceof User && $user->passkeyCredential !== null
+            ? UserPasskeyCeremony::assertionOptions($user, $rpId)
+            : UserPasskeyCeremony::discoverableAssertionOptions($rpId);
         $challenge->update(['assertion_options' => json_encode($options)]);
 
         return $options;
     }
 
-    private function challenge(string $token): BackofficeLoginChallenge
+    private function boundUser(BackofficeLoginChallenge $challenge): User
+    {
+        $challenge->loadMissing(['user.passkeyCredential', 'tenant']);
+        $user = $challenge->user;
+        if (! $user instanceof User || ! $challenge->tenant?->allowsBackofficePhoneLogin()) {
+            throw new InvalidArgumentException($user instanceof User ? 'disabled' : 'expired');
+        }
+
+        return $user;
+    }
+
+    private function openChallenge(string $token): BackofficeLoginChallenge
     {
         $challenge = BackofficeLoginChallenge::findByPlainToken($token);
         if ($challenge === null || ! $challenge->isOpen()) {
             throw new InvalidArgumentException('expired');
-        }
-
-        $challenge->loadMissing(['user', 'tenant']);
-        if (! $challenge->tenant?->allowsBackofficePhoneLogin()) {
-            throw new InvalidArgumentException('disabled');
         }
 
         return $challenge;

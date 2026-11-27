@@ -3,11 +3,13 @@
 namespace App\Actions\Auth;
 
 use App\Models\BackofficeLoginChallenge;
+use App\Models\User;
+use App\Models\UserPasskeyCredential;
 use App\Support\Auth\UserPasskeyCeremony;
 use InvalidArgumentException;
 
 /**
- * Controleert de handtekening van de telefoon. De computer wacht nog op bevestigen.
+ * De vingerafdruk op de telefoon meldt de computer aan. Geen wachtwoord op de gsm.
  */
 class VerifyUserPasskeyAssertionAction
 {
@@ -23,11 +25,10 @@ class VerifyUserPasskeyAssertionAction
 
         $options = $challenge->assertion_options;
         $challenge->update(['assertion_options' => null]);
-        $challenge->loadMissing('user.passkeyCredential');
 
-        $user = $challenge->user;
-        if ($user === null) {
-            throw new InvalidArgumentException('expired');
+        $user = $this->userFromCredential($credentialJson);
+        if (! $user->tenant?->allowsBackofficePhoneLogin()) {
+            throw new InvalidArgumentException('disabled');
         }
 
         [, $updated] = UserPasskeyCeremony::verifyAssertion($user, $credentialJson, $options, $rpId, $origins);
@@ -37,6 +38,29 @@ class VerifyUserPasskeyAssertionAction
             'last_used_at' => now(),
         ]);
 
-        $challenge->update(['status' => BackofficeLoginChallenge::STATUS_AUTHENTICATED]);
+        $challenge->update([
+            'user_id' => $user->id,
+            'tenant_id' => $user->tenant_id,
+            'status' => BackofficeLoginChallenge::STATUS_APPROVED,
+        ]);
+    }
+
+    private function userFromCredential(string $credentialJson): User
+    {
+        $payload = json_decode($credentialJson, true);
+        $credentialId = is_array($payload) ? (string) ($payload['id'] ?? $payload['rawId'] ?? '') : '';
+        if ($credentialId === '') {
+            throw new InvalidArgumentException('unknown_credential');
+        }
+
+        $stored = UserPasskeyCredential::query()->where('credential_id', $credentialId)->first();
+        $user = $stored?->user;
+        if (! $stored instanceof UserPasskeyCredential || ! $user instanceof User || ! $user->is_active) {
+            throw new InvalidArgumentException('unknown_credential');
+        }
+
+        $user->setRelation('passkeyCredential', $stored);
+
+        return $user;
     }
 }

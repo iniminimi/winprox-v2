@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Auth\ConfirmPhoneLoginAction;
+use App\Actions\Auth\IssueUserPasskeyOptionsAction;
 use App\Actions\Auth\VerifyUserPasskeyAssertionAction;
 use App\Actions\Auth\ConsumeBackofficeLoginChallengeAction;
 use App\Actions\Auth\RecordBackofficeLoginAction;
@@ -62,7 +63,7 @@ it('weigert een kort wachtwoord en een gelekt wachtwoord, en laat door als de le
     expect($open->fails())->toBeFalse();
 });
 
-it('toont biometrie op de telefoon zodra het e-mailadres een gekoppelde gsm heeft', function () {
+it('opent de computer met vingerafdruk zonder het wachtwoord opnieuw te vragen', function () {
     $tenant = Tenant::factory()->create(['backoffice_phone_login_enabled' => true]);
     $user = User::factory()->create([
         'tenant_id' => $tenant->id,
@@ -80,13 +81,23 @@ it('toont biometrie op de telefoon zodra het e-mailadres een gekoppelde gsm heef
     $started = app(StartBackofficeLoginChallengeAction::class)->handle('desk', 'Chrome', null);
 
     Livewire::test(PhoneLogin::class, ['token' => $started['token']])
-        ->assertDontSee(__('auth.phone.biometric'))
-        ->set('email', 'bio@example.com')
-        ->assertSee(__('auth.phone.biometric'));
+        ->assertSee(__('auth.phone.biometric'))
+        ->assertSee(__('auth.phone.first_time'));
 
-    expect(BackofficeLoginChallenge::findByPlainToken($started['token'])?->user_id)->toBe($user->id);
-    expect(fn () => app(VerifyUserPasskeyAssertionAction::class)->handle('geen-ticket', '{}', 'localhost', ['http://localhost']))
-        ->toThrow(InvalidArgumentException::class, 'expired');
+    $options = app(IssueUserPasskeyOptionsAction::class)->handle($started['token'], 'winprox.app', false);
+    expect($options)->toHaveKey('challenge')
+        ->and($options['allowCredentials'] ?? [])->toBe([]);
+
+    expect(fn () => app(VerifyUserPasskeyAssertionAction::class)->handle(
+        $started['token'],
+        json_encode(['id' => 'andere-gsm']),
+        'winprox.app',
+        ['https://winprox.app'],
+    ))->toThrow(InvalidArgumentException::class, 'unknown_credential');
+
+    $challenge = BackofficeLoginChallenge::findByPlainToken($started['token']);
+    expect($challenge?->status)->toBe(BackofficeLoginChallenge::STATUS_PENDING)
+        ->and($challenge?->user_id)->toBeNull();
 });
 
 it('slaat het ticket over zolang de gebruiker in de tabel nog verplicht is', function () {

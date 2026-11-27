@@ -302,7 +302,7 @@
     "security": {
         "title": "Anmeldung",
         "phone_login": "Anmeldung mit dem Telefon",
-        "phone_login_hint": "Auf dem Anmeldebildschirm steht dann auch ein Code. Auf dem Telefon bestätigen Sie mit Fingerabdruck oder Gesicht. E-Mail und Passwort bleiben möglich.",
+        "phone_login_hint": "Auf dem Anmeldebildschirm steht dann auch ein Code. Auf dem Telefon öffnet sich der Computer mit Fingerabdruck oder Gesicht. E-Mail und Passwort nur beim ersten Mal.",
         "alert_hours": "Hinweis bei Anmeldung in einem Zeitfenster",
         "alert_hours_hint": "Zum Beispiel von 22:00 bis 06:00. Die Anmeldung wird nicht blockiert. Nur Administratoren sehen den Hinweis auf der Startseite.",
         "alert_start": "Von",
