@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Actions\Auth\IssueUserPasskeyOptionsAction;
 use App\Actions\Auth\StoreUserPasskeyCredentialAction;
+use App\Actions\Auth\SubmitPhonePasswordAction;
 use App\Actions\Auth\VerifyUserPasskeyAssertionAction;
 use App\Support\Auth\ComputerLabel;
 use App\Support\Auth\UserPasskeyCeremony;
@@ -16,6 +17,22 @@ use InvalidArgumentException;
  */
 class PhonePasskeyController
 {
+    public function password(Request $request, string $token, SubmitPhonePasswordAction $submit): JsonResponse
+    {
+        $result = $submit->handle(
+            $token,
+            (string) $request->input('email', ''),
+            (string) $request->input('password', ''),
+            (string) $request->ip(),
+        );
+
+        if (! ($result['ok'] ?? false)) {
+            return response()->json(['ok' => false, 'error' => $result['error'] ?? 'failed'], 422);
+        }
+
+        return response()->json(['ok' => true]);
+    }
+
     public function assertOptions(Request $request, string $token, IssueUserPasskeyOptionsAction $issue): JsonResponse
     {
         return $this->options($request, $token, $issue, false);

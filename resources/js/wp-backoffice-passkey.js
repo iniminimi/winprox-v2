@@ -124,8 +124,35 @@ function registerAlpineComponent() {
             return { ok: res.ok, data };
         },
 
+        async begin() {
+            if (this.busy) {
+                return;
+            }
+            if (this.hasKey) {
+                await this.assert();
+                return;
+            }
+            const email = this.$root.querySelector('input[type="email"]')?.value?.trim() ?? '';
+            const password = this.$root.querySelector('input[type="password"]')?.value ?? '';
+            if (email === '' || password === '') {
+                this.error = this.i18n.need_password ?? this.i18n.failed ?? '';
+                return;
+            }
+            this.error = '';
+            const proved = await this.post(this.urls.password, { email, password });
+            if (!proved.ok || !proved.data?.ok) {
+                this.error = this.i18n[proved.data?.error] ?? this.i18n.failed ?? '';
+                return;
+            }
+            await this.register();
+        },
+
         async assert() {
-            if (this.busy || typeof navigator.credentials === 'undefined') {
+            if (this.busy) {
+                return;
+            }
+            if (typeof navigator.credentials === 'undefined') {
+                this.error = this.i18n.failed ?? '';
                 return;
             }
             this.busy = true;
@@ -168,7 +195,11 @@ function registerAlpineComponent() {
         },
 
         async register() {
-            if (this.busy || typeof navigator.credentials === 'undefined') {
+            if (this.busy) {
+                return;
+            }
+            if (typeof navigator.credentials === 'undefined') {
+                this.error = this.i18n.failed ?? '';
                 return;
             }
             this.busy = true;

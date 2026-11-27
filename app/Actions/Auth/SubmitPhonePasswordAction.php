@@ -60,11 +60,13 @@ class SubmitPhonePasswordAction
         }
 
         $this->throttle->handle($user->email, $ip, BackofficeLoginThrottleStep::Success);
-        $challenge->update([
-            'user_id' => $user->id,
-            'tenant_id' => $user->tenant_id,
-            'status' => BackofficeLoginChallenge::STATUS_AUTHENTICATED,
-        ]);
+        if ($challenge->status === BackofficeLoginChallenge::STATUS_PENDING) {
+            $challenge->update([
+                'user_id' => $user->id,
+                'tenant_id' => $user->tenant_id,
+                'status' => BackofficeLoginChallenge::STATUS_AUTHENTICATED,
+            ]);
+        }
 
         return ['ok' => true];
     }
@@ -76,7 +78,10 @@ class SubmitPhonePasswordAction
             return null;
         }
 
-        if ($challenge->status !== BackofficeLoginChallenge::STATUS_PENDING) {
+        if (! in_array($challenge->status, [
+            BackofficeLoginChallenge::STATUS_PENDING,
+            BackofficeLoginChallenge::STATUS_AUTHENTICATED,
+        ], true)) {
             return null;
         }
 

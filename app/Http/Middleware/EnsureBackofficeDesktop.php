@@ -21,6 +21,7 @@ class EnsureBackofficeDesktop
         'logout',
         'subscription.purge.confirm',
         'login.phone',
+        'login.phone.password',
         'login.phone.assert-options',
         'login.phone.assert',
         'login.phone.register-options',

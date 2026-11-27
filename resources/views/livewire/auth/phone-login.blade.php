@@ -4,6 +4,8 @@
         'expired' => __('auth.phone.errors.expired'),
         'disabled' => __('auth.phone.errors.disabled'),
         'cancelled' => __('auth.phone.errors.cancelled'),
+        'throttle' => __('auth.phone.errors.throttle'),
+        'need_password' => __('auth.phone.need_password'),
     ];
 @endphp
 <div class="wp-stack">
@@ -30,11 +32,16 @@
                         register: @js(route('login.phone.register', ['token' => $token])),
                     }
                 })"
-                x-init="if (auto) register()"
             >
                 <p class="wp-muted">{{ __('auth.phone.confirm_hint') }}</p>
                 @if ($canRegister && ! $hasPasskey)
-                    <button type="button" class="btn btn--primary btn--block" @click="register()">{{ __('auth.phone.register') }}</button>
+                    <div class="wp-passkey-badge" :class="{ 'is-busy': busy }" aria-hidden="true">
+                        <x-wp-icon name="fingerprint" />
+                    </div>
+                    <button type="button" class="btn btn--primary btn--block wp-passkey-btn" @click="register()" :disabled="busy">
+                        <x-wp-icon name="fingerprint" />
+                        <span>{{ __('auth.phone.biometric') }}</span>
+                    </button>
                     <p class="wp-error" x-show="error" x-text="error"></p>
                 @endif
                 <button type="button" class="btn btn--ghost btn--block" wire:click="confirm">{{ __('auth.phone.confirm') }}</button>
@@ -45,22 +52,27 @@
                 x-data="wpBackofficePasskey({
                     i18n: @js($passkeyI18n),
                     urls: {
+                        password: @js(route('login.phone.password', ['token' => $token])),
                         assertOptions: @js(route('login.phone.assert-options', ['token' => $token])),
                         assert: @js(route('login.phone.assert', ['token' => $token])),
+                        registerOptions: @js(route('login.phone.register-options', ['token' => $token])),
+                        register: @js(route('login.phone.register', ['token' => $token])),
                     }
                 })"
-                x-init="if (hasKey) assert()"
             >
-                <button type="button" class="btn btn--primary btn--block" style="display: none" x-show="hasKey" @click="assert()">{{ __('auth.phone.biometric') }}</button>
-                <p class="wp-error" x-show="error" x-text="error"></p>
+                <div class="wp-passkey-badge" :class="{ 'is-busy': busy }" aria-hidden="true">
+                    <x-wp-icon name="fingerprint" />
+                </div>
                 <p class="wp-muted" x-show="!hasKey">{{ __('auth.phone.first_time') }}</p>
-                <form wire:submit="submitPassword" class="wp-stack" x-show="!hasKey">
-                    <input type="email" class="wp-input" wire:model.blur="email" autocomplete="username" placeholder="{{ __('auth.email') }}" aria-label="{{ __('auth.email') }}">
-                    @error('email') <p class="wp-error">{{ $message }}</p> @enderror
-                    <input type="password" class="wp-input" wire:model="password" autocomplete="current-password" placeholder="{{ __('auth.password') }}" aria-label="{{ __('auth.password') }}">
-                    @error('password') <p class="wp-error">{{ $message }}</p> @enderror
-                    <button type="submit" class="btn btn--primary btn--block">{{ __('auth.phone.submit_password') }}</button>
+                <form class="wp-stack" x-show="!hasKey" @submit.prevent="begin()">
+                    <input type="email" class="wp-input" autocomplete="username" placeholder="{{ __('auth.email') }}" aria-label="{{ __('auth.email') }}">
+                    <input type="password" class="wp-input" autocomplete="current-password" placeholder="{{ __('auth.password') }}" aria-label="{{ __('auth.password') }}">
                 </form>
+                <button type="button" class="btn btn--primary btn--block wp-passkey-btn" @click="begin()" :disabled="busy">
+                    <x-wp-icon name="fingerprint" />
+                    <span>{{ __('auth.phone.biometric') }}</span>
+                </button>
+                <p class="wp-error" x-show="error" x-text="error"></p>
             </div>
         @endif
     @endunless

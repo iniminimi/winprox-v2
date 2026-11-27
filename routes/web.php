@@ -433,6 +433,7 @@ Route::post('/promo/track/engage', PromoEngageTrackController::class)
 
 Route::middleware('backoffice.desktop')->group(function () {
     Route::get('/login/phone/{token}', PhoneLogin::class)->name('login.phone');
+    Route::post('/login/phone/{token}/password', [PhonePasskeyController::class, 'password'])->name('login.phone.password');
     Route::post('/login/phone/{token}/assert-options', [PhonePasskeyController::class, 'assertOptions'])->name('login.phone.assert-options');
     Route::post('/login/phone/{token}/assert', [PhonePasskeyController::class, 'assert'])->name('login.phone.assert');
     Route::post('/login/phone/{token}/register-options', [PhonePasskeyController::class, 'registerOptions'])->name('login.phone.register-options');

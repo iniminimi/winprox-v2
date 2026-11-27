@@ -83,7 +83,7 @@ it('opent de computer met vingerafdruk zonder het wachtwoord opnieuw te vragen',
     Livewire::test(PhoneLogin::class, ['token' => $started['token']])
         ->assertSee(__('auth.phone.biometric'))
         ->assertSee(__('auth.phone.first_time'))
-        ->assertSeeHtml('x-show="hasKey"');
+        ->assertSeeHtml('wp-passkey-btn');
 
     $options = app(IssueUserPasskeyOptionsAction::class)->handle($started['token'], 'winprox.app', false);
     expect($options)->toHaveKey('challenge')
@@ -148,7 +148,8 @@ it('meldt de computer aan via de telefoon zonder de telefoon een sessie te geven
     Livewire::test(PhoneLogin::class, ['token' => $started['token']])
         ->assertSee(__('auth.email'))
         ->assertSee(__('auth.password'))
-        ->assertDontSee('Bevestig met vingerafdruk');
+        ->assertSee(__('auth.phone.biometric'))
+        ->assertSeeHtml('wp-passkey-btn');
 
     $wrong = app(SubmitPhonePasswordAction::class)->handle($started['token'], 'beheer@example.com', 'foutwachtwoord', '127.0.0.1');
     expect($wrong['ok'])->toBeFalse()->and(auth()->check())->toBeFalse();
