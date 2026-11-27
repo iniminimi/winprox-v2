@@ -65,19 +65,29 @@ function preparePublicKey(options) {
     return publicKey;
 }
 
-function phoneHasPasskey() {
+function phoneCredentialId() {
     try {
-        return localStorage.getItem('wpPhonePasskey') === '1';
+        return localStorage.getItem('wpPhoneCredentialId') || '';
     } catch (e) {
-        return false;
+        return '';
     }
 }
 
-function rememberPhonePasskey() {
+function rememberPhoneCredential(id) {
     try {
-        localStorage.setItem('wpPhonePasskey', '1');
+        if (id) {
+            localStorage.setItem('wpPhoneCredentialId', id);
+        }
     } catch (e) {
-        // De vingerafdruk blijft op het toestel. Zonder lokale notitie toont de pagina het wachtwoord.
+        // Zonder deze notitie vraagt de gsm de volgende keer opnieuw het wachtwoord.
+    }
+}
+
+function forgetPhoneCredential() {
+    try {
+        localStorage.removeItem('wpPhoneCredentialId');
+    } catch (e) {
+        // De pagina valt dan terug op e-mail en wachtwoord.
     }
 }
 
@@ -92,7 +102,8 @@ function registerAlpineComponent() {
         i18n: config.i18n ?? {},
         busy: false,
         error: '',
-        hasKey: phoneHasPasskey(),
+        hasKey: phoneCredentialId() !== '',
+        auto: config.auto === true,
 
         csrfToken() {
             return document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ?? '';
@@ -125,15 +136,29 @@ function registerAlpineComponent() {
                     this.error = this.i18n[options.data?.error] ?? this.i18n.failed ?? '';
                     return;
                 }
+                const storedId = phoneCredentialId();
+                if (storedId && (!Array.isArray(options.data.allowCredentials) || options.data.allowCredentials.length === 0)) {
+                    options.data.allowCredentials = [{ type: 'public-key', id: storedId }];
+                }
+                if (!Array.isArray(options.data.allowCredentials) || options.data.allowCredentials.length === 0) {
+                    forgetPhoneCredential();
+                    this.hasKey = false;
+                    this.error = this.i18n.failed ?? '';
+                    return;
+                }
                 const cred = await navigator.credentials.get({ publicKey: preparePublicKey(options.data) });
                 const done = await this.post(this.urls.assert, {
                     credential: JSON.stringify(credentialToJson(cred, false)),
                 });
                 if (!done.ok || !done.data?.ok) {
+                    if (done.data?.error === 'unknown_credential') {
+                        forgetPhoneCredential();
+                        this.hasKey = false;
+                    }
                     this.error = this.i18n[done.data?.error] ?? this.i18n.failed ?? '';
                     return;
                 }
-                rememberPhonePasskey();
+                rememberPhoneCredential(cred.id);
                 window.location.reload();
             } catch (e) {
                 this.error = e?.name === 'NotAllowedError' ? (this.i18n.cancelled ?? '') : (this.i18n.failed ?? '');
@@ -162,7 +187,7 @@ function registerAlpineComponent() {
                     this.error = this.i18n[done.data?.error] ?? this.i18n.failed ?? '';
                     return;
                 }
-                rememberPhonePasskey();
+                rememberPhoneCredential(cred.id);
                 window.location.reload();
             } catch (e) {
                 this.error = e?.name === 'NotAllowedError' ? (this.i18n.cancelled ?? '') : (this.i18n.failed ?? '');
