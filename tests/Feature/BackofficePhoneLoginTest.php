@@ -76,10 +76,13 @@ it('meldt de computer aan via de telefoon zonder de telefoon een sessie te geven
     expect(app(StartBackofficeLoginChallengeAction::class)->handle('uit@example.com', 'desk-2', 'Chrome', null))->toBeNull();
 
     $started = app(StartBackofficeLoginChallengeAction::class)->handle('beheer@example.com', 'desk', 'Mozilla/5.0 (Windows NT 10.0) Chrome/120.0', null);
-    $wrong = app(SubmitPhonePasswordAction::class)->handle($started['token'], 'foutwachtwoord', '127.0.0.1');
+    $wrong = app(SubmitPhonePasswordAction::class)->handle($started['token'], 'beheer@example.com', 'foutwachtwoord', '127.0.0.1');
     expect($wrong['ok'])->toBeFalse()->and(auth()->check())->toBeFalse();
 
-    $right = app(SubmitPhonePasswordAction::class)->handle($started['token'], 'wachtwoord123', '127.0.0.1');
+    $otherEmail = app(SubmitPhonePasswordAction::class)->handle($started['token'], 'ander@example.com', 'wachtwoord123', '127.0.0.1');
+    expect($otherEmail['ok'])->toBeFalse();
+
+    $right = app(SubmitPhonePasswordAction::class)->handle($started['token'], 'beheer@example.com', 'wachtwoord123', '127.0.0.1');
     expect($right['ok'])->toBeTrue()->and(auth()->check())->toBeFalse();
 
     expect(app(ConsumeBackofficeLoginChallengeAction::class)->handle('desk'))->toBeNull();
@@ -158,13 +161,19 @@ it('noteert een aanmelding buiten de uren en een reeks nieuwe aanmeldingen', fun
 
     seedTenantPastOnboarding($tenant);
 
+    $marker = strstr(__('dashboard.security.session_burst', [
+        'name' => 'Piet',
+        'count' => 3,
+        'time' => "\0",
+    ]), "\0", true);
     $html = Livewire::actingAs($user)->test(Dashboard::class)
         ->assertSee('Piet')
-        ->assertSeeHtml('wp-pill--progress')
+        ->assertSeeHtml('wp-card wp-card-pad wp-stack-tight')
+        ->assertSee($marker, false)
         ->html();
     $intent = strpos($html, __('dashboard.intent.title'));
     $dashboard = strpos($html, __('dashboard.title'));
-    $alert = strpos($html, 'wp-pill--progress');
+    $alert = strpos($html, $marker);
     expect($intent)->not->toBeFalse()
         ->and($dashboard)->toBeGreaterThan($intent)
         ->and($alert)->toBeGreaterThan($dashboard);
