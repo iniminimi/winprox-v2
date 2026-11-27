@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Api\V1;
 use App\Actions\Time\ListClockDisplayWorkersAction;
 use App\Actions\Time\PinClockFromClockDisplayAction;
 use App\Actions\Time\RecordClockDisplayPingAction;
+use App\Actions\Time\RecordClockSenseReadingAction;
+use App\Data\Sense\RecordSenseReadingData;
+use App\Http\Requests\Sense\RecordSenseReadingRequest;
+use App\Models\SensePoint;
 use App\Actions\Time\SetupClockDisplayPinAction;
 use App\Actions\Time\SubmitClockDisplayClaimAction;
 use App\Enums\ClockDisplayClaimStatus;
@@ -118,6 +122,30 @@ class ClockDisplayController extends Controller
             'location_name' => $clockPoint->location?->localizedName(),
             ...$this->displayConfig($clockPoint),
         ]);
+    }
+
+    public function sense(
+        RecordSenseReadingRequest $request,
+        RecordClockSenseReadingAction $record,
+    ): JsonResponse {
+        $clockPoint = $this->linkedPoint($request);
+        if (! $clockPoint instanceof ClockPoint) {
+            return $clockPoint;
+        }
+
+        try {
+            $result = $record->handle(
+                $clockPoint,
+                RecordSenseReadingData::fromValidated($request->validated()),
+            );
+        } catch (InvalidArgumentException $e) {
+            return response()->json(['error' => $e->getMessage()], 404);
+        }
+
+        return response()->json([
+            'id' => $result['reading']->id,
+            'created' => $result['created'],
+        ], $result['created'] ? 201 : 200);
     }
 
     /**
@@ -324,6 +352,42 @@ class ClockDisplayController extends Controller
             // Scherm vult hier {display_id}{dyn} in; display_id volgt mee in
             // de claim-status-response (of staat in NVS na provisioning).
             'portal_url_template' => route('public.time-portal', '__TOKEN__'),
+            'sense' => $this->senseManifest($clockPoint),
+        ];
+    }
+
+    /**
+     * Grenzen voor de pills op het D1S-scherm. De sleutel zelf gaat niet mee:
+     * het klokscherm post met zijn eigen token.
+     *
+     * @return array<string, mixed>
+     */
+    private function senseManifest(?ClockPoint $clockPoint): array
+    {
+        if ($clockPoint === null) {
+            return ['enabled' => false];
+        }
+
+        $screen = Screen::query()
+            ->where('clock_point_id', $clockPoint->id)
+            ->where('has_sense', true)
+            ->first();
+        $point = $screen instanceof Screen
+            ? SensePoint::query()->where('screen_id', $screen->id)->first()
+            : null;
+
+        if (! $point instanceof SensePoint) {
+            return ['enabled' => false];
+        }
+
+        return [
+            'enabled' => true,
+            'temperature_low' => $point->temperature_low,
+            'temperature_high' => $point->temperature_high,
+            'humidity_low' => $point->humidity_low,
+            'humidity_high' => $point->humidity_high,
+            'co2_high' => $point->co2_high,
+            'voc_high' => $point->voc_high,
         ];
     }
 

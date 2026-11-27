@@ -720,3 +720,45 @@ it('stuurt het album-manifest mee in de ping en past de versie aan', function ()
     expect($album2['version'])->not->toBe($album['version']);
     expect(collect($album2['images'])->pluck('id'))->not->toContain($local->id);
 });
+
+it('bewaart een Sense-meting van het klokscherm wanneer Sense aan staat', function () {
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $token = linkDisplay($point);
+
+    $this->postJson('/api/v1/time/clock-displays/sense', [
+        'temperature' => 21.8,
+        'humidity' => 48,
+        'co2' => 642,
+        'voc' => 95,
+        'recorded_at' => '2026-11-27T16:00:00Z',
+    ], ['X-WinProx-Clock-Key' => $token])->assertNotFound();
+
+    $this->getJson('/api/v1/time/clock-displays/ping', [
+        'X-WinProx-Clock-Key' => $token,
+    ])->assertOk()->assertJsonPath('sense.enabled', false);
+
+    $screen = app(\App\Actions\Screens\EnsureClockScreenAction::class)->handle($point->fresh());
+    app(\App\Actions\Screens\EnableSenseOnScreenAction::class)->handle($screen, $tenant->id, null);
+
+    $this->getJson('/api/v1/time/clock-displays/ping', [
+        'X-WinProx-Clock-Key' => $token,
+    ])->assertOk()->assertJsonPath('sense.enabled', true);
+
+    $this->postJson('/api/v1/time/clock-displays/sense', [
+        'temperature' => 21.8,
+        'humidity' => 48,
+        'co2' => 642,
+        'voc' => 95,
+        'recorded_at' => '2026-11-27T16:00:00Z',
+    ], ['X-WinProx-Clock-Key' => $token])
+        ->assertCreated()
+        ->assertJsonPath('created', true);
+
+    $point = $screen->fresh()->sensePoint;
+    expect($point)->not->toBeNull()
+        ->and((float) $point->last_temperature)->toBe(21.8)
+        ->and((int) $point->last_co2)->toBe(642)
+        ->and((int) $point->last_voc)->toBe(95);
+});

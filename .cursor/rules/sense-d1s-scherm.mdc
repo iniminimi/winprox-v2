@@ -5,9 +5,10 @@ alwaysApply: false
 
 # Sense-scherm D1S — eindbeeld
 
-Goedgekeurd op 24 november 2026. De gebruiker wil het scherm uiteindelijk zo.
-Het doelbeeld staat in `C:\werkmap\winprox-clock\docs\sense-d1s-doel.jpg`.
-Niet bouwen tot de gebruiker dat vraagt.
+Goedgekeurd op 24 november 2026. Het doelbeeld staat in
+`C:\werkmap\winprox-clock\docs\sense-d1s-doel.jpg`. De firmware toont dat
+beeld als rustscherm van de prikklok. Een tik opent de QR. Niet opnieuw
+ontwerpen.
 
 Vier kaders op 480×480, donkere randen, Sense-merk in het midden: TEMP (koraal,
 thermometer), VOCHTIGHEID (blauw, lachende druppel), CO₂ (groen, wolk), VOC

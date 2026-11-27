@@ -72,6 +72,9 @@ Route::prefix('v1')->group(function () {
     Route::get('time/clock-displays/ping', [ClockDisplayController::class, 'ping'])
         ->middleware(['clock.display', 'throttle:60,1'])
         ->name('api.v1.time.clock-displays.ping');
+    Route::post('time/clock-displays/sense', [ClockDisplayController::class, 'sense'])
+        ->middleware(['clock.display', 'throttle:30,1'])
+        ->name('api.v1.time.clock-displays.sense');
 
     // No-phone fallback: lettertrie-lijst + PIN-klok achter dezelfde
     // wpclk_-token; PIN-verify + worker-lockout leven in de Action.

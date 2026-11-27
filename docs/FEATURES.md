@@ -1428,6 +1428,10 @@ binnen ~30–90 s dood.
 - **Ontkoppelen/roteren:** `Unlink` wist secret/token (display_id blijft voor het
   audit-spoor); `RotateSecret` roteert beide (scherm moet her-pairen). Ping met oude
   token → 401 → scherm wist credentials → pairing-modus.
+- **Sense op de prikklok:** het D1S-scherm toont de vier kaders en post
+  `POST /api/v1/time/clock-displays/sense` met dezelfde kloksleutel, alleen
+  als Sense op dat Clock Point aan staat. Ping geeft `sense.enabled` en de
+  grenzen mee. De Sense-sleutel zelf blijft weg.
 - **Heartbeat:** `GET /api/v1/time/clock-displays/ping` (`X-WinProx-Clock-Key`)
   → `server_time`, `state`, naam/locatie, rotatie- en offline-drempels
   (`time.display_*` in `config/time.php`). Firmware: sync bij confirm én elke ping;
