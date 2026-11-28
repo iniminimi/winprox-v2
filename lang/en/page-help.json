@@ -1914,7 +1914,7 @@
             "actions": [
                 {
                     "label": "What is this screen?",
-                    "text": "These are the climate values this screen already sent to WinProx: temperature, humidity, CO₂ and VOC. You choose a period of at most 31 days. A reading outside the limits is bold and red. Alarms shows only those rows."
+                    "text": "These are the climate values this screen already sent to WinProx: temperature, humidity, CO₂ and VOC. You choose a period of at most 31 days. A number outside the limits is bold and red. Alarms shows only those rows."
                 },
                 {
                     "label": "Download",

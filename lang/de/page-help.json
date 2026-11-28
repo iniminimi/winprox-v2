@@ -1914,7 +1914,7 @@
             "actions": [
                 {
                     "label": "Was ist dieser Bildschirm?",
-                    "text": "Hier stehen die Klimawerte, die dieses Display schon an WinProx gesendet hat: Temperatur, Feuchte, CO₂ und VOC. Sie wählen einen Zeitraum von höchstens 31 Tagen. Ein Messwert außerhalb der Grenzen ist fett und rot. Alarme zeigt nur diese Zeilen."
+                    "text": "Hier stehen die Klimawerte, die dieses Display schon an WinProx gesendet hat: Temperatur, Feuchte, CO₂ und VOC. Sie wählen einen Zeitraum von höchstens 31 Tagen. Eine Zahl außerhalb der Grenzen ist fett und rot. Alarme zeigt nur diese Zeilen."
                 },
                 {
                     "label": "Download",

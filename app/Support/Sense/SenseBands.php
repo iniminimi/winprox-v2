@@ -39,21 +39,37 @@ final class SenseBands
 
     public static function outsideLimits(SenseReading $reading, SensePoint $point): bool
     {
-        $temperature = round((float) $reading->temperature, 1);
-        if ($temperature < round((float) $point->temperature_low, 1) || $temperature > round((float) $point->temperature_high, 1)) {
-            return true;
-        }
-
-        $humidity = round((float) $reading->humidity, 1);
-        if ($humidity < round((float) $point->humidity_low, 1) || $humidity > round((float) $point->humidity_high, 1)) {
-            return true;
-        }
-
-        if ((int) $reading->co2 > (int) $point->co2_high || (int) $reading->voc > (int) $point->voc_high) {
-            return true;
+        foreach ([SenseMetric::Temperature, SenseMetric::Humidity, SenseMetric::Co2, SenseMetric::Voc] as $metric) {
+            if (self::metricOutside($reading, $point, $metric)) {
+                return true;
+            }
         }
 
         return false;
+    }
+
+    public static function metricOutside(SenseReading $reading, SensePoint $point, SenseMetric $metric): bool
+    {
+        return match ($metric) {
+            SenseMetric::Temperature => self::outsideBand(
+                round((float) $reading->temperature, 1),
+                round((float) $point->temperature_low, 1),
+                round((float) $point->temperature_high, 1),
+            ),
+            SenseMetric::Humidity => self::outsideBand(
+                round((float) $reading->humidity, 1),
+                round((float) $point->humidity_low, 1),
+                round((float) $point->humidity_high, 1),
+            ),
+            SenseMetric::Co2 => (int) $reading->co2 > (int) $point->co2_high,
+            SenseMetric::Voc => (int) $reading->voc > (int) $point->voc_high,
+            SenseMetric::Stale => false,
+        };
+    }
+
+    private static function outsideBand(float $value, float $low, float $high): bool
+    {
+        return $value < $low || $value > $high;
     }
 
     /**

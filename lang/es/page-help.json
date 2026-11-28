@@ -1914,7 +1914,7 @@
             "actions": [
                 {
                     "label": "¿Qué es esta pantalla?",
-                    "text": "Aquí están los valores de clima que esta pantalla ya envió a WinProx: temperatura, humedad, CO₂ y VOC. Elija un periodo de como máximo 31 días. Una medición fuera de los límites va en negrita y en rojo. Alarmas muestra solo esas filas."
+                    "text": "Aquí están los valores de clima que esta pantalla ya envió a WinProx: temperatura, humedad, CO₂ y VOC. Elija un periodo de como máximo 31 días. Una cifra fuera de los límites va en negrita y en rojo. Alarmas muestra solo esas filas."
                 },
                 {
                     "label": "Descargar",

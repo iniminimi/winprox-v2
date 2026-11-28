@@ -1914,7 +1914,7 @@
             "actions": [
                 {
                     "label": "Che cos’è questa schermata?",
-                    "text": "Qui ci sono i valori di clima che questo schermo ha già inviato a WinProx: temperatura, umidità, CO₂ e VOC. Scelga un periodo di al massimo 31 giorni. Una misura fuori dai limiti è in grassetto e in rosso. Allarmi mostra solo quelle righe."
+                    "text": "Qui ci sono i valori di clima che questo schermo ha già inviato a WinProx: temperatura, umidità, CO₂ e VOC. Scelga un periodo di al massimo 31 giorni. Una cifra fuori dai limiti è in grassetto e in rosso. Allarmi mostra solo quelle righe."
                 },
                 {
                     "label": "Scarica",

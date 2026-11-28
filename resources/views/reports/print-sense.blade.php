@@ -11,7 +11,7 @@
             <p class="wp-muted">{{ __('reports.empty') }}</p>
         @else
             @foreach ($readings as $reading)
-                <p @class(['wp-text-body', 'wp-sense-reading--alarm' => $reading->point && \App\Support\Sense\SenseBands::outsideLimits($reading, $reading->point)])>{{ \App\Support\Sense\SenseReadingLine::text($reading) }}</p>
+                <p class="wp-text-body">{{ \App\Support\Sense\SenseReadingLine::html($reading) }}</p>
             @endforeach
         @endif
     </div>

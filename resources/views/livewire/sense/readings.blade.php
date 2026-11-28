@@ -50,7 +50,7 @@
             <p class="wp-muted">{{ $alarmsOnly && $readings !== null ? __('sense.readings.empty_alarms') : __('sense.readings.empty') }}</p>
         @else
             @foreach ($readings as $reading)
-                <p @class(['wp-text-body', 'wp-sense-reading--alarm' => $reading->point && \App\Support\Sense\SenseBands::outsideLimits($reading, $reading->point)]) wire:key="sense-reading-{{ $reading->id }}">{{ \App\Support\Sense\SenseReadingLine::text($reading) }}</p>
+                <p class="wp-text-body" wire:key="sense-reading-{{ $reading->id }}">{{ \App\Support\Sense\SenseReadingLine::html($reading) }}</p>
             @endforeach
             @if ($readings->hasPages())
                 <nav class="wp-pagination" aria-label="{{ __('common.pagination.nav_label') }}">

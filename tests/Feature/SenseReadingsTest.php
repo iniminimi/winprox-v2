@@ -63,8 +63,12 @@ it('toont de metingen van een scherm en downloadt ze', function () {
         ->assertSee('Metingen — Babylokaal')
         ->assertSee('Locatie')
         ->assertSee('Alarmen')
-        ->assertSee('wp-sense-reading--alarm', false)
-        ->assertSee('28-11-2026 12:09 : Temperatuur 21,5 °C · Luchtvochtigheid 40 % · CO₂ 980 ppm · VOC-index 80', false);
+        ->assertSee('28-11-2026 12:09 : Temperatuur 21,5 °C · Luchtvochtigheid 40 % · CO₂ ', false)
+        ->assertSee('<strong class="wp-sense-reading--alarm">980</strong>', false)
+        ->assertSee(' ppm · VOC-index 80', false)
+        ->assertDontSee('<strong class="wp-sense-reading--alarm">21,5</strong>', false)
+        ->assertDontSee('<strong class="wp-sense-reading--alarm">40</strong>', false)
+        ->assertDontSee('<strong class="wp-sense-reading--alarm">80</strong>', false);
 
     $this->actingAs($admin)
         ->get(route('screens.sense', [
@@ -74,8 +78,8 @@ it('toont de metingen van een scherm en downloadt ze', function () {
             'until' => '2026-11-28',
         ]))
         ->assertOk()
-        ->assertSee('980 ppm')
-        ->assertDontSee('700 ppm');
+        ->assertSee('>980<', false)
+        ->assertDontSee('700');
 
     $export = $this->actingAs($admin)->get(route('screens.sense.export', [
         'unit' => $unit,
@@ -102,7 +106,8 @@ it('toont de metingen van een scherm en downloadt ze', function () {
             'until' => '2026-11-28',
         ]))
         ->assertOk()
-        ->assertSee('28-11-2026 12:09 : Temperatuur 21,5 °C · Luchtvochtigheid 40 % · CO₂ 980 ppm · VOC-index 80', false);
+        ->assertSee('<strong class="wp-sense-reading--alarm">980</strong>', false)
+        ->assertDontSee('<strong class="wp-sense-reading--alarm">21,5</strong>', false);
 });
 
 it('toont de metingen van een clock point', function () {
@@ -129,7 +134,8 @@ it('toont de metingen van een clock point', function () {
         ->get(route('time.clock-displays.sense', $clockPoint))
         ->assertOk()
         ->assertSee('Metingen — Duinhummeltjes')
-        ->assertSee('18 °C');
+        ->assertSee('<strong class="wp-sense-reading--alarm">18</strong>', false)
+        ->assertSee(' °C', false);
 });
 
 it('weigert een medewerker en een scherm zonder sense', function () {
