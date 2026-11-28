@@ -9,6 +9,7 @@ use App\Actions\Time\RecordClockSenseReadingAction;
 use App\Data\Sense\RecordSenseReadingData;
 use App\Http\Requests\Sense\RecordSenseReadingRequest;
 use App\Models\SensePoint;
+use App\Support\Sense\SenseScreenWords;
 use App\Actions\Time\SetupClockDisplayPinAction;
 use App\Actions\Time\SubmitClockDisplayClaimAction;
 use App\Enums\ClockDisplayClaimStatus;
@@ -380,8 +381,14 @@ class ClockDisplayController extends Controller
             return ['enabled' => false];
         }
 
+        $locale = in_array($point->display_locale, config('locales.supported'), true)
+            ? (string) $point->display_locale
+            : (string) config('locales.default', 'nl');
+
         return [
             'enabled' => true,
+            'locale' => $locale,
+            'words' => SenseScreenWords::forLocale($locale),
             'temperature_low' => $point->temperature_low,
             'temperature_high' => $point->temperature_high,
             'humidity_low' => $point->humidity_low,

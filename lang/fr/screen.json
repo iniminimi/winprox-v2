@@ -8,7 +8,28 @@
         "title": "Sense",
         "hint": "Activez ceci pour un D1S. L’écran mesure alors la température, l’humidité, le CO₂ et la qualité de l’air. Laissez éteint pour un D1.",
         "on": "Sense activé",
-        "off": "Sense désactivé"
+        "off": "Sense désactivé",
+        "language": "Langue sur l’écran",
+        "language_hint": "Les mots sous la mesure, comme Trop froid ou Optimal. L’écran les reprend à la prochaine connexion.",
+        "languages": {
+            "nl": "Nederlands",
+            "en": "English",
+            "fr": "Français",
+            "de": "Deutsch",
+            "es": "Español",
+            "it": "Italiano"
+        },
+        "words": {
+            "cold": "Trop froid",
+            "comfort": "Confortable",
+            "warm": "Trop chaud",
+            "dry": "Sec",
+            "optimal": "Optimal",
+            "humid": "Humide",
+            "good": "Bon",
+            "high": "Élevé",
+            "pure": "Pur"
+        }
     },
     "qr": {
         "title": "QR de ce local",

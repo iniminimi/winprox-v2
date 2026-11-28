@@ -4,7 +4,7 @@
     @endif
 
     @if ($room)
-        <article class="wp-sense-room" wire:key="sense-room-{{ $room->id }}-{{ $room->temperature->low }}-{{ $room->temperature->target }}-{{ $room->temperature->high }}-{{ $room->humidity->low }}-{{ $room->humidity->target }}-{{ $room->humidity->high }}-{{ $room->co2->high }}-{{ $room->voc->high }}-{{ $room->temperature->value }}-{{ $room->humidity->value }}-{{ $room->co2->value }}-{{ $room->voc->value }}">
+        <article class="wp-sense-room" wire:key="sense-room-{{ $room->id }}-{{ $room->locale }}-{{ $room->temperature->low }}-{{ $room->temperature->target }}-{{ $room->temperature->high }}-{{ $room->humidity->low }}-{{ $room->humidity->target }}-{{ $room->humidity->high }}-{{ $room->co2->high }}-{{ $room->voc->high }}-{{ $room->temperature->value }}-{{ $room->humidity->value }}-{{ $room->co2->value }}-{{ $room->voc->value }}">
             <div class="wp-sense-card" style="--sense-bg: {{ \App\Support\Sense\SensePalette::BLACK }}; --sense-text: {{ \App\Support\Sense\SensePalette::TEXT }}; --sense-muted: {{ \App\Support\Sense\SensePalette::MUTED }}; --sense-green: {{ \App\Support\Sense\SensePalette::GREEN }}; --sense-red: {{ \App\Support\Sense\SensePalette::RED }};">
                 <header class="wp-sense-card__head">
                     <span class="wp-sense-leaf" aria-hidden="true">
@@ -29,6 +29,16 @@
                     <x-wp-icon name="clock" class="wp-icon" />
                     <span>{{ $room->lastLabel }}</span>
                 </p>
+            </div>
+
+            <div class="wp-cluster wp-cluster--wrap">
+                <label class="wp-label" for="sense-display-locale">{{ __('screen.sense.language') }}</label>
+                <select id="sense-display-locale" class="wp-input wp-input--auto" wire:change="saveLocale($event.target.value)">
+                    @foreach (config('locales.supported') as $code)
+                        <option value="{{ $code }}" @selected($room->locale === $code)>{{ __('screen.sense.languages.'.$code) }}</option>
+                    @endforeach
+                </select>
+                <span class="wp-hint">{{ __('screen.sense.language_hint') }}</span>
             </div>
 
             <div class="wp-cluster wp-sense-tools">

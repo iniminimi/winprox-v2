@@ -16,5 +16,6 @@ final class SenseRoomView
         public SenseScaleView $humidity,
         public SenseScaleView $co2,
         public SenseScaleView $voc,
+        public string $locale,
     ) {}
 }

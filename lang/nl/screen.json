@@ -8,7 +8,28 @@
         "title": "Sense",
         "hint": "Zet dit aan voor een D1S. Het scherm meet dan temperatuur, vocht, CO₂ en luchtkwaliteit. Een D1 laat u uit.",
         "on": "Sense aan",
-        "off": "Sense uit"
+        "off": "Sense uit",
+        "language": "Taal op het scherm",
+        "language_hint": "De woorden onder de meting, zoals Te koud of Optimaal. Het scherm neemt dit over bij de eerstvolgende verbinding.",
+        "languages": {
+            "nl": "Nederlands",
+            "en": "English",
+            "fr": "Français",
+            "de": "Deutsch",
+            "es": "Español",
+            "it": "Italiano"
+        },
+        "words": {
+            "cold": "Te koud",
+            "comfort": "Comfortabel",
+            "warm": "Te warm",
+            "dry": "Droog",
+            "optimal": "Optimaal",
+            "humid": "Vochtig",
+            "good": "Goed",
+            "high": "Hoog",
+            "pure": "Zuiver"
+        }
     },
     "qr": {
         "title": "QR van dit lokaal",

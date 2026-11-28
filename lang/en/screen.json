@@ -8,7 +8,28 @@
         "title": "Sense",
         "hint": "Turn this on for a D1S. The screen then measures temperature, humidity, CO₂ and air quality. Leave it off for a D1.",
         "on": "Sense on",
-        "off": "Sense off"
+        "off": "Sense off",
+        "language": "Language on the screen",
+        "language_hint": "The words under the reading, such as Too cold or Optimal. The screen picks this up at the next connection.",
+        "languages": {
+            "nl": "Nederlands",
+            "en": "English",
+            "fr": "Français",
+            "de": "Deutsch",
+            "es": "Español",
+            "it": "Italiano"
+        },
+        "words": {
+            "cold": "Too cold",
+            "comfort": "Comfortable",
+            "warm": "Too warm",
+            "dry": "Dry",
+            "optimal": "Optimal",
+            "humid": "Humid",
+            "good": "Good",
+            "high": "High",
+            "pure": "Pure"
+        }
     },
     "qr": {
         "title": "QR for this room",

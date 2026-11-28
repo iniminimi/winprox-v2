@@ -15,7 +15,7 @@ Vier kaders op 480×480, met ongeveer 1 mm rand zodat de afgeronde hoeken zichtb
 thermometer), LUCHTVOCHTIGHEID (blauw, lachende druppel), CO₂ (groen, wolk) en LUCHTKWALITEIT
 (paars, molecule). Elk kader is een JPEG met verloop, gloed, icoon en golfjes,
 dezelfde decoder als de screensaverfoto’s. Het getal en de status zijn losse
-tekst, zonder gekleurd vlak. Buiten de grens krijgt alleen het statuswoord een klein donker pilletje: ijsblauw als het te laag is, amber als het te hoog is. Het cijfer blijft wit. De temperatuur toont een kleinere °C, de luchtvochtigheid een even klein %, CO₂ een even kleine ppm. VOC is de index en krijgt geen eenheid. De status van VOC staat
+tekst, zonder gekleurd vlak. De woorden onder de meting volgen de taal onder Sense op scherminstellingen (Nederlands, Engels, Frans, Duits, Spaans, Italiaans). De titels in de kaders blijven het beeld. Buiten de grens krijgt alleen het statuswoord een klein donker pilletje: ijsblauw als het te laag is, amber als het te hoog is. Het cijfer blijft wit. De kleur volgt de grens, niet de tekst. De temperatuur toont een kleinere °C, de luchtvochtigheid een even klein %, CO₂ een even kleine ppm. VOC is de index en krijgt geen eenheid. De status van VOC staat
 even laag als de andere. Per kader een kort icoon-loopje. Alleen het icoon beweegt, zijn achtergrond blijft stil. Geen MP4, geen Lottie, geen
 filmpje over het hele scherm. VOC op het toestel is de index (1–500), niet
 mg/m³.

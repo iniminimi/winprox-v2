@@ -54,6 +54,9 @@ class ListSenseRoomsAction
             humidity: $this->band($point, SenseMetric::Humidity),
             co2: $this->ceiling($point, SenseMetric::Co2),
             voc: $this->scale($point, SenseMetric::Voc),
+            locale: in_array($point->display_locale, config('locales.supported'), true)
+                ? (string) $point->display_locale
+                : (string) config('locales.default', 'nl'),
         );
     }
 

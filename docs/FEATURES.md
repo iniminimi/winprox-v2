@@ -830,6 +830,7 @@ stuurt events; WinProx zet die om in workflow.
 - VOC-index (SGP40, 1–500, geen µg/m³): groen tot 100, geel tot 150, oranje tot 250, daarna rood. 100 is het 24-uurgemiddelde van de sensor, geen gezondheidsgrens. Aandacht pas boven 150 én 30 minuten volgehouden.
 - De kaart toont temperatuur van 12 tot 34 (daarbuiten `12-` / `34+`), vocht van 30 tot 80 % (`30%-` / `80%+`) en CO₂ van 400 tot 1.600 met 900 in het midden (`400-` / `1.600+`). De opgeslagen meting blijft de echte waarde. De streefwaarde staat op een tweede regel, zodat 20 en 21 niet op elkaar liggen.
 - De grenzen staan op **Scherm instellingen** van het scherm dat Sense aan heeft. Een D1 (lokaal of Clock Point) heeft geen klimaat. Een D1S wel, op die pagina, als zwarte kaart. Het menu Plaatsen → Sense is weg. Het beginscherm linkt naar de instellingen van dat scherm.
+- Onder die kaart kiest de beheerder de taal van de woorden op het scherm (Te koud, Optimaal, …): `nl`, `en`, `fr`, `de`, `es`, `it`. Standaard Nederlands. De titels in de kaders blijven het beeld.
 - `POST /api/v1/sense/readings` met `X-WinProx-Sense-Key` (`wpsense_…`). Zie `docs/api/sense.md`.
 - Opnames van een camera horen hier niet bij.
 
@@ -1431,8 +1432,9 @@ binnen ~30–90 s dood.
   token → 401 → scherm wist credentials → pairing-modus.
 - **Sense op de prikklok:** het D1S-scherm toont de vier kaders en post
   `POST /api/v1/time/clock-displays/sense` met dezelfde kloksleutel, alleen
-  als Sense op dat Clock Point aan staat. Ping geeft `sense.enabled` en de
-  grenzen mee. De Sense-sleutel zelf blijft weg.
+  als Sense op dat Clock Point aan staat. Ping geeft `sense.enabled`, de
+  grenzen, `sense.locale` en `sense.words` (de negen statuswoorden) mee.
+  De Sense-sleutel zelf blijft weg.
 - **Heartbeat:** `GET /api/v1/time/clock-displays/ping` (`X-WinProx-Clock-Key`)
   → `server_time`, `state`, naam/locatie, rotatie- en offline-drempels
   (`time.display_*` in `config/time.php`). Firmware: sync bij confirm én elke ping;

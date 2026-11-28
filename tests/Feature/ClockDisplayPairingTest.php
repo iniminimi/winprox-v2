@@ -752,7 +752,23 @@ it('bewaart een Sense-meting van het klokscherm wanneer Sense aan staat', functi
 
     $this->getJson('/api/v1/time/clock-displays/ping', [
         'X-WinProx-Clock-Key' => $token,
-    ])->assertOk()->assertJsonPath('sense.enabled', true);
+    ])->assertOk()
+        ->assertJsonPath('sense.enabled', true)
+        ->assertJsonPath('sense.locale', 'nl')
+        ->assertJsonPath('sense.words.cold', 'Te koud')
+        ->assertJsonPath('sense.words.optimal', 'Optimaal')
+        ->assertJsonPath('sense.words.pure', 'Zuiver');
+
+    $screen->refresh();
+    app(\App\Actions\Sense\UpdateSenseDisplayLocaleAction::class)
+        ->handle($screen->sensePoint, 'fr', $tenant->id, null);
+
+    $this->getJson('/api/v1/time/clock-displays/ping', [
+        'X-WinProx-Clock-Key' => $token,
+    ])->assertOk()
+        ->assertJsonPath('sense.locale', 'fr')
+        ->assertJsonPath('sense.words.cold', 'Trop froid')
+        ->assertJsonPath('sense.words.high', 'Élevé');
 
     $this->postJson('/api/v1/time/clock-displays/sense', [
         'temperature' => 21.8,

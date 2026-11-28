@@ -8,7 +8,28 @@
         "title": "Sense",
         "hint": "Schalten Sie dies für ein D1S ein. Das Display misst dann Temperatur, Feuchte, CO₂ und Luftqualität. Für ein D1 lassen Sie es aus.",
         "on": "Sense ein",
-        "off": "Sense aus"
+        "off": "Sense aus",
+        "language": "Sprache auf dem Display",
+        "language_hint": "Die Wörter unter dem Messwert, wie Zu kalt oder Optimal. Das Display übernimmt das bei der nächsten Verbindung.",
+        "languages": {
+            "nl": "Nederlands",
+            "en": "English",
+            "fr": "Français",
+            "de": "Deutsch",
+            "es": "Español",
+            "it": "Italiano"
+        },
+        "words": {
+            "cold": "Zu kalt",
+            "comfort": "Angenehm",
+            "warm": "Zu warm",
+            "dry": "Trocken",
+            "optimal": "Optimal",
+            "humid": "Feucht",
+            "good": "Gut",
+            "high": "Hoch",
+            "pure": "Rein"
+        }
     },
     "qr": {
         "title": "QR dieses Raums",

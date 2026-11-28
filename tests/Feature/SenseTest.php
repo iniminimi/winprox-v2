@@ -336,3 +336,17 @@ it('verbergt sense voor een medewerker en voor checkmate', function () {
 
     $this->actingAs($admin)->get('/sense')->assertNotFound();
 });
+
+it('bewaart de taal van de woorden op het sensorscherm', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    [$unit] = senseRoom($tenant);
+    $created = app(CreateSensePointAction::class)->handle((int) $unit->id, (int) $tenant->id);
+    $update = app(\App\Actions\Sense\UpdateSenseDisplayLocaleAction::class);
+
+    $point = $update->handle($created['point'], 'en', (int) $tenant->id);
+
+    expect($point->display_locale)->toBe('en');
+    expect(fn () => $update->handle($point, 'pt', (int) $tenant->id))
+        ->toThrow(\Illuminate\Validation\ValidationException::class);
+});

@@ -7,6 +7,7 @@ namespace App\Livewire\Screens;
 use App\Actions\Sense\ApplySensePresetAction;
 use App\Actions\Sense\ListSenseRoomsAction;
 use App\Actions\Sense\UpdateSenseBandsAction;
+use App\Actions\Sense\UpdateSenseDisplayLocaleAction;
 use App\Models\Screen;
 use App\Models\SensePoint;
 use App\Support\Tenancy;
@@ -55,6 +56,17 @@ class SenseCard extends Component
         }
 
         return true;
+    }
+
+    public function saveLocale(string $locale, UpdateSenseDisplayLocaleAction $update): void
+    {
+        $point = Screen::query()->findOrFail($this->screenId)->sensePoint;
+        if ($point === null) {
+            return;
+        }
+
+        $this->authorize('update', $point);
+        $update->handle($point, $locale, (int) Tenancy::id(), (int) auth()->id());
     }
 
     public function render(ListSenseRoomsAction $rooms)

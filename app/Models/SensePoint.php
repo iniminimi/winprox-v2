@@ -30,6 +30,7 @@ class SensePoint extends Model
         'co2_high',
         'voc_high',
         'season_applied',
+        'display_locale',
         'last_temperature',
         'last_humidity',
         'last_co2',
