@@ -40,7 +40,7 @@ class EnsureBackofficeDesktop
         }
 
         return response()->view('components.layouts.guest', [
-            'title' => __('auth.phone.title').' — WinProx',
+            'title' => __('auth.phone.wall_title').' — WinProx',
             'slot' => new HtmlString(view('auth.phone')->render()),
         ]);
     }

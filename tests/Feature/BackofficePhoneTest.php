@@ -16,13 +16,16 @@ it('toont op een smartphone geen inlogformulier', function () {
     $this->withHeader('User-Agent', IPHONE_UA)
         ->get(route('login'))
         ->assertOk()
-        ->assertSee(__('auth.phone.title'))
+        ->assertSee(__('auth.phone.wall_title'))
+        ->assertSee(__('auth.phone.body'))
+        ->assertSee(__('auth.phone.home'))
+        ->assertDontSee('auth.phone.body', false)
         ->assertDontSee(__('auth.password'), false);
 
     $this->withHeader('User-Agent', IPHONE_UA)
         ->get(route('auth.microsoft.redirect'))
         ->assertOk()
-        ->assertSee(__('auth.phone.title'));
+        ->assertSee(__('auth.phone.wall_title'));
 });
 
 it('laat een tablet wel inloggen', function () {
@@ -30,7 +33,7 @@ it('laat een tablet wel inloggen', function () {
         ->get(route('login'))
         ->assertOk()
         ->assertSee(__('auth.password'), false)
-        ->assertDontSee(__('auth.phone.title'), false);
+        ->assertDontSee(__('auth.phone.wall_title'), false);
 });
 
 it('blokkeert het beheer op een smartphone voor beheerder en medewerker', function (string $role) {
@@ -44,7 +47,7 @@ it('blokkeert het beheer op een smartphone voor beheerder en medewerker', functi
         ->actingAs($user)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertSee(__('auth.phone.title'))
+        ->assertSee(__('auth.phone.wall_title'))
         ->assertDontSee(__('dashboard.welcome'), false);
 })->with([
     'beheerder' => User::ROLE_ADMIN,
@@ -73,7 +76,7 @@ it('toont op een smartphone geen registratieformulier', function () {
     $this->withHeader('User-Agent', IPHONE_UA)
         ->get(route('register'))
         ->assertOk()
-        ->assertSee(__('auth.phone.title'))
+        ->assertSee(__('auth.phone.wall_title'))
         ->assertDontSee(__('auth.register.title'), false);
 });
 
@@ -81,7 +84,7 @@ it('laat de website en wachtwoordherstel op een smartphone open', function () {
     $this->withHeader('User-Agent', IPHONE_UA)
         ->get(route('welcome', ['locale' => 'nl']))
         ->assertOk()
-        ->assertDontSee(__('auth.phone.title'), false);
+        ->assertDontSee(__('auth.phone.wall_title'), false);
 
     $this->withHeader('User-Agent', IPHONE_UA)
         ->get(route('password.request'))
