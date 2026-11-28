@@ -11,7 +11,6 @@ final class SenseRoomView
         public string $name,
         public bool $ok,
         public ?string $preset,
-        public string $lastLabel,
         public SenseScaleView $temperature,
         public SenseScaleView $humidity,
         public SenseScaleView $co2,

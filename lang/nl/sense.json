@@ -17,10 +17,6 @@
         "voc": "VOC-index",
         "stale": "Meting"
     },
-    "card": {
-        "last": "Laatste meting: :when",
-        "last_none": "Nog geen meting"
-    },
     "attention": {
         "below": ":room · :metric :value · onder :limit",
         "above": ":room · :metric :value · boven :limit",

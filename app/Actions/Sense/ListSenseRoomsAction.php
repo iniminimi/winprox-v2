@@ -49,7 +49,6 @@ class ListSenseRoomsAction
             name: $name,
             ok: SenseBands::attentions($point) === [],
             preset: $this->presetKey($point),
-            lastLabel: $this->lastLabel($point),
             temperature: $this->band($point, SenseMetric::Temperature),
             humidity: $this->band($point, SenseMetric::Humidity),
             co2: $this->ceiling($point, SenseMetric::Co2),
@@ -58,15 +57,6 @@ class ListSenseRoomsAction
                 ? (string) $point->display_locale
                 : (string) config('locales.default', 'nl'),
         );
-    }
-
-    private function lastLabel(SensePoint $point): string
-    {
-        if ($point->last_recorded_at === null) {
-            return __('sense.card.last_none');
-        }
-
-        return __('sense.card.last', ['when' => SenseBands::whenLabel($point->last_recorded_at)]);
     }
 
     private function band(SensePoint $point, SenseMetric $metric): SenseScaleView

@@ -17,10 +17,6 @@
         "voc": "VOC index",
         "stale": "Reading"
     },
-    "card": {
-        "last": "Last reading: :when",
-        "last_none": "No reading yet"
-    },
     "attention": {
         "below": ":room · :metric :value · below :limit",
         "above": ":room · :metric :value · above :limit",

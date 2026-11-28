@@ -17,10 +17,6 @@
         "voc": "VOC-Index",
         "stale": "Messung"
     },
-    "card": {
-        "last": "Letzte Messung: :when",
-        "last_none": "Noch keine Messung"
-    },
     "attention": {
         "below": ":room · :metric :value · unter :limit",
         "above": ":room · :metric :value · über :limit",

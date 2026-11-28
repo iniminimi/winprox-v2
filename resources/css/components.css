@@ -9693,31 +9693,33 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 .wp-sense-room {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.55rem;
+    width: 21rem;
+    max-width: 100%;
 }
 
 .wp-sense-card {
     background: var(--sense-bg, #000);
     color: var(--sense-text, #fff);
-    border-radius: 1.25rem;
-    padding: 1rem 1rem 0.85rem;
+    border-radius: 0.95rem;
+    padding: 0.75rem 0.75rem 0.65rem;
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 0.65rem;
     width: 100%;
-    max-width: 28rem;
+    font-size: 0.75rem;
 }
 
 .wp-sense-card__head {
     display: grid;
-    grid-template-columns: 1.85rem minmax(0, 1fr) 1.85rem;
+    grid-template-columns: 1.4rem minmax(0, 1fr) 1.4rem;
     align-items: center;
-    column-gap: 0.45rem;
+    column-gap: 0.35rem;
 }
 
 .wp-sense-leaf {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 1.3rem;
+    height: 1.3rem;
     color: var(--sense-green, #00d26a);
     justify-self: center;
 }
@@ -9725,7 +9727,7 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 .wp-sense-card__title {
     margin: 0;
     color: var(--sense-text, #fff);
-    font-size: 1.35rem;
+    font-size: 1.01rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     text-align: center;
@@ -9733,8 +9735,8 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 }
 
 .wp-sense-state {
-    width: 1.85rem;
-    height: 1.85rem;
+    width: 1.4rem;
+    height: 1.4rem;
     border-radius: 999px;
     background: var(--sense-green, #00d26a);
     color: #000;
@@ -9750,24 +9752,24 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 }
 
 .wp-sense-svg {
-    width: 1.35rem;
-    height: 1.35rem;
+    width: 1.01rem;
+    height: 1.01rem;
     display: block;
 }
 
 .wp-sense-state .wp-sense-svg {
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 0.82rem;
+    height: 0.82rem;
 }
 
 .wp-sense-metric__head {
     display: flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.4rem;
 }
 
 .wp-sense-metric__icon {
-    width: 1.6rem;
+    width: 1.2rem;
     color: var(--sense-text, #fff);
     display: inline-flex;
     align-items: center;
@@ -9781,7 +9783,7 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 }
 
 .wp-sense-metric__value {
-    font-size: 1.35rem;
+    font-size: 1.01rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
 }
@@ -9790,20 +9792,20 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 1.7rem;
-    height: 1.35rem;
-    padding: 0 0.2rem;
-    border-radius: 0.35rem;
+    min-width: 1.28rem;
+    height: 1.01rem;
+    padding: 0 0.15rem;
+    border-radius: 0.26rem;
     background: var(--sense-green, #00d26a);
     color: #000;
-    font-size: 0.62rem;
+    font-size: 0.47rem;
     font-weight: 800;
 }
 
 .wp-sense-track {
     position: relative;
-    height: 0.55rem;
-    margin: 0.85rem 0.7rem 0.35rem;
+    height: 0.41rem;
+    margin: 0.64rem 0.52rem 0.26rem;
     border-radius: 999px;
     touch-action: none;
 }
@@ -9811,8 +9813,8 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 .wp-sense-now {
     position: absolute;
     top: 50%;
-    width: 0.28rem;
-    height: 1.15rem;
+    width: 0.21rem;
+    height: 0.86rem;
     border-radius: 999px;
     background: var(--sense-text, #fff);
     transform: translate(-50%, -50%);
@@ -9822,11 +9824,11 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 .wp-sense-handle {
     position: absolute;
     top: 50%;
-    width: 1.35rem;
-    height: 1.35rem;
+    width: 1.01rem;
+    height: 1.01rem;
     margin: 0;
     padding: 0;
-    border: 3px solid var(--sense-text, #fff);
+    border: 2px solid var(--sense-text, #fff);
     border-radius: 999px;
     transform: translate(-50%, -50%);
     cursor: grab;
@@ -9839,22 +9841,22 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 
 .wp-sense-marks {
     position: relative;
-    height: 2.7rem;
-    margin: 0 0.7rem;
+    height: 2.02rem;
+    margin: 0 0.52rem;
 }
 
 .wp-sense-mark {
     position: absolute;
     top: 0;
     transform: translateX(-50%);
-    font-size: 0.82rem;
+    font-size: 0.62rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
 }
 
 .wp-sense-mark--target {
-    top: 1.15rem;
+    top: 0.86rem;
 }
 
 .wp-sense-mark button {
@@ -9868,28 +9870,14 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 }
 
 .wp-sense-input {
-    width: 4.5rem;
-    padding: 0.1rem 0.3rem;
+    width: 3.4rem;
+    padding: 0.08rem 0.22rem;
     border: 1px solid var(--sense-muted, #a3a3a3);
-    border-radius: 0.4rem;
+    border-radius: 0.3rem;
     background: #111;
     color: #fff;
     font: inherit;
     text-align: center;
-}
-
-.wp-sense-card__foot {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin: 0.2rem 0 0;
-    color: var(--sense-muted, #a3a3a3);
-    font-size: 0.85rem;
-}
-
-.wp-sense-card__foot .wp-icon {
-    width: 1rem;
-    height: 1rem;
 }
 
 .wp-sense-tools {

@@ -24,11 +24,6 @@
                 @include('partials.wp-sense-scale', ['scale' => $room->humidity, 'pointId' => $room->id])
                 @include('partials.wp-sense-scale', ['scale' => $room->co2, 'pointId' => $room->id])
                 @include('partials.wp-sense-scale', ['scale' => $room->voc, 'pointId' => $room->id])
-
-                <p class="wp-sense-card__foot">
-                    <x-wp-icon name="clock" class="wp-icon" />
-                    <span>{{ $room->lastLabel }}</span>
-                </p>
             </div>
 
             <div class="wp-cluster wp-sense-tools">

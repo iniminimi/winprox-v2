@@ -17,10 +17,6 @@
         "voc": "Índice VOC",
         "stale": "Medición"
     },
-    "card": {
-        "last": "Última medición: :when",
-        "last_none": "Aún no hay medición"
-    },
     "attention": {
         "below": ":room · :metric :value · por debajo de :limit",
         "above": ":room · :metric :value · por encima de :limit",
