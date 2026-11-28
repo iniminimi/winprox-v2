@@ -395,6 +395,7 @@ class ClockDisplayController extends Controller
                 ? substr((string) $clockPoint->display_on_until, 0, 5) : null,
             // Piep bij toets en prikking; uit = stil scherm.
             'sound_enabled' => (bool) ($clockPoint?->display_sound_enabled ?? true),
+            'sense' => $this->senseManifest($clockPoint),
             'album' => $this->albumManifest($clockPoint),
             'rotation_seconds' => $this->rotationSeconds($clockPoint),
             'offline_warn_hours' => (int) config('time.display_offline_warn_hours', 24),
@@ -402,7 +403,6 @@ class ClockDisplayController extends Controller
             // Scherm vult hier {display_id}{dyn} in; display_id volgt mee in
             // de claim-status-response (of staat in NVS na provisioning).
             'portal_url_template' => route('public.time-portal', '__TOKEN__'),
-            'sense' => $this->senseManifest($clockPoint),
         ];
     }
 
@@ -560,12 +560,12 @@ class ClockDisplayController extends Controller
             'display_on_until' => $screen->display_on_until !== null
                 ? substr((string) $screen->display_on_until, 0, 5) : null,
             'sound_enabled' => (bool) ($screen->display_sound_enabled ?? true),
+            'sense' => $this->screenSense($screen),
             'album' => $this->screenAlbum($screen),
             'rotation_seconds' => ScreenQr::windowSeconds($screen),
             'offline_warn_hours' => (int) config('time.display_offline_warn_hours', 24),
             'offline_block_hours' => (int) config('time.display_offline_block_hours', 168),
             'portal_url_template' => route('public.unit-portal', '__TOKEN__'),
-            'sense' => $this->screenSense($screen),
         ];
     }
 

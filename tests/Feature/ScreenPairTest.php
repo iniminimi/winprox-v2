@@ -190,7 +190,17 @@ it('aanvaardt een lokaalcode op het toestel dat de prikklok-koppeling gebruikt',
         ->getJson(route('api.v1.time.clock-displays.ping'))
         ->assertOk()
         ->assertJsonPath('sense.enabled', true)
+        ->assertJsonPath('sense.words.cold', 'Te koud')
         ->assertJsonPath('clock_point_name', 'Babylokaal');
+
+    SensePoint::query()->where('unit_id', $unit->id)->update(['display_locale' => 'en']);
+
+    $this->withHeader('X-WinProx-Clock-Key', $device)
+        ->getJson(route('api.v1.time.clock-displays.ping'))
+        ->assertOk()
+        ->assertJsonPath('sense.locale', 'en')
+        ->assertJsonPath('sense.words.cold', 'Too cold')
+        ->assertJsonPath('sense.words.optimal', 'Optimal');
 
     $this->withHeader('X-WinProx-Clock-Key', $device)
         ->postJson(route('api.v1.time.clock-displays.sense'), [
