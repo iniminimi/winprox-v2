@@ -37,7 +37,19 @@
         "placement_company": "Organisatie",
         "placement_location": "Locatie",
         "placement_unit": "Unit",
-        "placement_clock_point": "Clock Point"
+        "placement_clock_point": "Clock Point",
+        "flash": "Toestel flashen",
+        "flash_confirm": "Toestel :type, :mac gevonden. Wil je het flashen?",
+        "flash_yes": "Ja",
+        "flash_no": "Nee",
+        "flash_working": "Bezig met flashen…",
+        "flash_ok": "Flashen van toestel :type, :mac is gelukt.",
+        "flash_failed": "Flashen van toestel :type, :mac is mislukt.",
+        "flash_none": "Geen klokscherm gevonden aan de USB-poort.",
+        "flash_ambiguous": "Er hangt meer dan één klokscherm aan USB. Laat er één aangesloten.",
+        "flash_unavailable": "Flashen kan alleen op de computer waar het toestel aan USB hangt.",
+        "flash_unreadable": "Het toestel aan USB antwoordt niet.",
+        "flash_changed": "Het toestel aan USB is veranderd. Flashen is gestopt."
     },
     "fields": {
         "serial_number": "Serienummer (S/N)",

@@ -66,9 +66,13 @@
             <input id="ops-without-mac" type="checkbox" wire:model.live="withoutMac">
             <span>{{ __('ops.devices.filter_without_mac') }}</span>
         </label>
-        <div>
+        <div class="wp-cluster">
             <button type="button" class="btn btn--primary" wire:click="openRegister">
                 {{ __('ops.devices.register') }}
+            </button>
+            <button type="button" class="btn btn--ghost" wire:click="detectFlash" wire:loading.attr="disabled" wire:target="detectFlash,confirmFlash">
+                <span wire:loading.remove wire:target="detectFlash,confirmFlash">{{ __('ops.devices.flash') }}</span>
+                <span wire:loading wire:target="detectFlash,confirmFlash">{{ __('ops.devices.flash_working') }}</span>
             </button>
         </div>
 
@@ -267,6 +271,25 @@
                     <button type="submit" class="btn btn--primary">{{ __('ops.devices.save') }}</button>
                 </div>
             </form>
+        </x-wp-modal>
+    @endif
+
+    @if ($showFlashConfirm)
+        <x-wp-modal closeMethod="cancelFlash" aria-labelledby="flash-device-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="flash-device-title" class="wp-h2">{{ __('ops.devices.flash') }}</h2>
+                    <x-wp-modal-close wire:click="cancelFlash" />
+                </div>
+                <p>{{ __('ops.devices.flash_confirm', ['type' => $flashTargetType, 'mac' => $flashTargetMac]) }}</p>
+                <div class="wp-cluster">
+                    <button type="button" class="btn btn--surface" wire:click="cancelFlash">{{ __('ops.devices.flash_no') }}</button>
+                    <button type="button" class="btn btn--primary" wire:click="confirmFlash" wire:loading.attr="disabled" wire:target="confirmFlash">
+                        <span wire:loading.remove wire:target="confirmFlash">{{ __('ops.devices.flash_yes') }}</span>
+                        <span wire:loading wire:target="confirmFlash">{{ __('ops.devices.flash_working') }}</span>
+                    </button>
+                </div>
+            </div>
         </x-wp-modal>
     @endif
 </div>

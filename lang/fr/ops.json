@@ -37,7 +37,19 @@
         "placement_company": "Organisation",
         "placement_location": "Site",
         "placement_unit": "Unit",
-        "placement_clock_point": "Clock Point"
+        "placement_clock_point": "Clock Point",
+        "flash": "Flasher l’appareil",
+        "flash_confirm": "Appareil :type, :mac trouvé. Voulez-vous le flasher ?",
+        "flash_yes": "Oui",
+        "flash_no": "Non",
+        "flash_working": "Flash en cours…",
+        "flash_ok": "Le flash de l’appareil :type, :mac a réussi.",
+        "flash_failed": "Le flash de l’appareil :type, :mac a échoué.",
+        "flash_none": "Aucun écran d’horloge trouvé sur le port USB.",
+        "flash_ambiguous": "Plusieurs écrans d’horloge sont branchés. Laissez-en un seul.",
+        "flash_unavailable": "Le flash ne fonctionne que sur l’ordinateur où l’appareil est branché.",
+        "flash_unreadable": "L’appareil sur USB ne répond pas.",
+        "flash_changed": "L’appareil sur USB a changé. Le flash est arrêté."
     },
     "fields": {
         "serial_number": "Numéro de série (S/N)",

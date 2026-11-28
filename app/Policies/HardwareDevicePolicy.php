@@ -24,6 +24,11 @@ class HardwareDevicePolicy
         return $user->is_superuser;
     }
 
+    public function flash(User $user): bool
+    {
+        return $user->is_superuser;
+    }
+
     public function update(User $user, HardwareDevice $device): bool
     {
         return $user->is_superuser;

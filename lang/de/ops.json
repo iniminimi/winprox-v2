@@ -37,7 +37,19 @@
         "placement_company": "Organisation",
         "placement_location": "Standort",
         "placement_unit": "Unit",
-        "placement_clock_point": "Clock Point"
+        "placement_clock_point": "Clock Point",
+        "flash": "Gerät flashen",
+        "flash_confirm": "Gerät :type, :mac gefunden. Möchten Sie es flashen?",
+        "flash_yes": "Ja",
+        "flash_no": "Nein",
+        "flash_working": "Flash läuft…",
+        "flash_ok": "Flashen von Gerät :type, :mac ist gelungen.",
+        "flash_failed": "Flashen von Gerät :type, :mac ist fehlgeschlagen.",
+        "flash_none": "Kein Uhr-Display am USB-Anschluss gefunden.",
+        "flash_ambiguous": "Es hängt mehr als ein Uhr-Display an USB. Lassen Sie eines angeschlossen.",
+        "flash_unavailable": "Flashen geht nur an dem Computer, an dem das Gerät hängt.",
+        "flash_unreadable": "Das Gerät an USB antwortet nicht.",
+        "flash_changed": "Das Gerät an USB hat sich geändert. Flashen wurde gestoppt."
     },
     "fields": {
         "serial_number": "Seriennummer (S/N)",

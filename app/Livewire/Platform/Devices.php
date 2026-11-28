@@ -6,7 +6,9 @@ namespace App\Livewire\Platform;
 
 use App\Actions\Ops\AssignHardwareDeviceTenantAction;
 use App\Actions\Ops\BindHardwareDeviceMacAction;
+use App\Actions\Ops\DetectUsbFlashTargetAction;
 use App\Actions\Ops\EnsureOpsPortalAction;
+use App\Actions\Ops\FlashUsbClockAction;
 use App\Actions\Ops\ListHardwareDevicesAction;
 use App\Actions\Ops\RegisterHardwareDeviceAction;
 use App\Actions\Ops\ResolveHardwareDevicePlacementsAction;
@@ -103,6 +105,14 @@ class Devices extends Component
 
     public string $flashType = 'success';
 
+    public bool $showFlashConfirm = false;
+
+    public string $flashTargetType = '';
+
+    public string $flashTargetMac = '';
+
+    public string $flashExpectedMac = '';
+
     public function mount(): void
     {
         $this->authorize('viewAny', HardwareDevice::class);
@@ -190,6 +200,67 @@ class Devices extends Component
         $this->flashMessage = __('ops.flash.registered', ['serial' => $device->serial_number]);
         $this->flashType = 'success';
         $this->resetPage();
+    }
+
+    public function detectFlash(DetectUsbFlashTargetAction $detect): void
+    {
+        $this->authorize('flash', HardwareDevice::class);
+        $seen = $detect->handle();
+        if ($seen->status !== 'found') {
+            $this->showFlashConfirm = false;
+            $this->flashMessage = __('ops.devices.flash_'.$seen->status);
+            $this->flashType = 'error';
+
+            return;
+        }
+
+        $this->flashTargetType = $seen->typeLabel;
+        $this->flashTargetMac = $seen->macDisplay;
+        $this->flashExpectedMac = $seen->mac;
+        $this->showFlashConfirm = true;
+        $this->flashMessage = null;
+    }
+
+    public function cancelFlash(): void
+    {
+        $this->showFlashConfirm = false;
+        $this->flashExpectedMac = '';
+    }
+
+    public function confirmFlash(FlashUsbClockAction $flash): void
+    {
+        $this->authorize('flash', HardwareDevice::class);
+        if (! $this->showFlashConfirm || $this->flashExpectedMac === '') {
+            return;
+        }
+
+        $user = auth()->user();
+        if ($user === null) {
+            return;
+        }
+
+        $result = $flash->handle($this->flashExpectedMac, (int) $user->id);
+        $type = $result->typeLabel !== '' ? $result->typeLabel : $this->flashTargetType;
+        $mac = $result->macDisplay !== '' ? $result->macDisplay : $this->flashTargetMac;
+        $this->showFlashConfirm = false;
+        $this->flashExpectedMac = '';
+
+        if ($result->status === 'ok') {
+            $this->flashMessage = __('ops.devices.flash_ok', ['type' => $type, 'mac' => $mac]);
+            $this->flashType = 'success';
+
+            return;
+        }
+
+        if ($result->status === 'failed') {
+            $this->flashMessage = __('ops.devices.flash_failed', ['type' => $type, 'mac' => $mac]);
+            $this->flashType = 'error';
+
+            return;
+        }
+
+        $this->flashMessage = __('ops.devices.flash_'.$result->status);
+        $this->flashType = 'error';
     }
 
     public function openEdit(int $deviceId): void

@@ -1409,7 +1409,7 @@ binnen ~30–90 s dood.
   Gsm-portaal (na login): menu met **toestel registreren** (foto S/N),
   **toestel zoeken** (S/N/MAC), **gebruiker / nieuw wachtwoord**, en
   **help-vragen** (doorgestuurde assistent-vragen beantwoorden of verwijderen).
-  Desktop: na flashen MAC plakken bij het S/N (S/N↔MAC vast voor hergebruik).
+  Desktop: knop **Toestel flashen** zoekt het klokscherm aan USB (CH340), toont type en MAC, en flasht pas na Ja. Nee stopt. Het resultaat zegt of het gelukt is. Alleen op de computer waar de kabel in zit. Daarna MAC plakken bij het S/N (S/N↔MAC vast voor hergebruik).
   Tenant koppelt het scherm zelf via Klokscherm. Toewijzing + event-log;
   bevestigde claim matcht inventaris op MAC (`in_use` + clock point).
   Hangt die MAC aan een klokpunt of scherm, dan toont de rij het bedrijf

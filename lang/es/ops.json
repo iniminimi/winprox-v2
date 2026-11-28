@@ -37,7 +37,19 @@
         "placement_company": "Organización",
         "placement_location": "Ubicación",
         "placement_unit": "Unit",
-        "placement_clock_point": "Clock Point"
+        "placement_clock_point": "Clock Point",
+        "flash": "Flashear el dispositivo",
+        "flash_confirm": "Dispositivo :type, :mac encontrado. ¿Quiere flashearlo?",
+        "flash_yes": "Sí",
+        "flash_no": "No",
+        "flash_working": "Flasheando…",
+        "flash_ok": "El flasheo del dispositivo :type, :mac ha salido bien.",
+        "flash_failed": "El flasheo del dispositivo :type, :mac ha fallado.",
+        "flash_none": "No hay un reloj conectado al puerto USB.",
+        "flash_ambiguous": "Hay más de un reloj en USB. Deje solo uno conectado.",
+        "flash_unavailable": "El flasheo solo funciona en el ordenador donde está conectado el dispositivo.",
+        "flash_unreadable": "El dispositivo en USB no responde.",
+        "flash_changed": "El dispositivo en USB ha cambiado. El flasheo se ha detenido."
     },
     "fields": {
         "serial_number": "Número de serie (S/N)",

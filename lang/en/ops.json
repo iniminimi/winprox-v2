@@ -37,7 +37,19 @@
         "placement_company": "Organisation",
         "placement_location": "Location",
         "placement_unit": "Unit",
-        "placement_clock_point": "Clock Point"
+        "placement_clock_point": "Clock Point",
+        "flash": "Flash device",
+        "flash_confirm": "Device :type, :mac found. Do you want to flash it?",
+        "flash_yes": "Yes",
+        "flash_no": "No",
+        "flash_working": "Flashing…",
+        "flash_ok": "Flashing device :type, :mac succeeded.",
+        "flash_failed": "Flashing device :type, :mac failed.",
+        "flash_none": "No clock display found on the USB port.",
+        "flash_ambiguous": "More than one clock display is connected. Leave one connected.",
+        "flash_unavailable": "Flashing only works on the computer the device is plugged into.",
+        "flash_unreadable": "The device on USB does not answer.",
+        "flash_changed": "The device on USB changed. Flashing was stopped."
     },
     "fields": {
         "serial_number": "Serial number (S/N)",

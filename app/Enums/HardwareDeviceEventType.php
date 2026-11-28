@@ -16,4 +16,5 @@ enum HardwareDeviceEventType: string
     case Retired = 'retired';
     case Lost = 'lost';
     case Updated = 'updated';
+    case Flashed = 'flashed';
 }

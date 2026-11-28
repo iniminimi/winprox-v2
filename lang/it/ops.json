@@ -37,7 +37,19 @@
         "placement_company": "Organizzazione",
         "placement_location": "Sede",
         "placement_unit": "Unit",
-        "placement_clock_point": "Clock Point"
+        "placement_clock_point": "Clock Point",
+        "flash": "Flashare il dispositivo",
+        "flash_confirm": "Dispositivo :type, :mac trovato. Vuole flasharlo?",
+        "flash_yes": "Sì",
+        "flash_no": "No",
+        "flash_working": "Flash in corso…",
+        "flash_ok": "Il flash del dispositivo :type, :mac è riuscito.",
+        "flash_failed": "Il flash del dispositivo :type, :mac non è riuscito.",
+        "flash_none": "Nessun orologio trovato sulla porta USB.",
+        "flash_ambiguous": "C’è più di un orologio sulla USB. Lasciarne uno collegato.",
+        "flash_unavailable": "Il flash funziona solo sul computer a cui il dispositivo è collegato.",
+        "flash_unreadable": "Il dispositivo sulla USB non risponde.",
+        "flash_changed": "Il dispositivo sulla USB è cambiato. Il flash è stato interrotto."
     },
     "fields": {
         "serial_number": "Numero di serie (S/N)",
