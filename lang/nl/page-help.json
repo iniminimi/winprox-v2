@@ -1914,7 +1914,7 @@
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
-                    "text": "Hier staan de klimaatwaarden die dit scherm al naar WinProx stuurde: temperatuur, vocht, CO₂ en VOC. U kiest een periode van hoogstens 31 dagen."
+                    "text": "Hier staan de klimaatwaarden die dit scherm al naar WinProx stuurde: temperatuur, vocht, CO₂ en VOC. U kiest een periode van hoogstens 31 dagen. Een meting buiten de grenzen staat vet en rood. Alarmen toont alleen die rijen."
                 },
                 {
                     "label": "Download",

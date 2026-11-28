@@ -63,6 +63,8 @@
         "location": "Ubicación",
         "screen": "Pantalla",
         "no_location": "Sin ubicación",
-        "excel": "Excel"
+        "excel": "Excel",
+        "alarms": "Alarmas",
+        "empty_alarms": "No hay alarmas en este periodo."
     }
 }

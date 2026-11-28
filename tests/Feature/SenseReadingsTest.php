@@ -38,6 +38,13 @@ it('toont de metingen van een scherm en downloadt ze', function () {
 
     app(RecordSenseReadingAction::class)->handle($created['point'], new RecordSenseReadingData(
         temperature: 21.5,
+        humidity: 50,
+        co2: 700,
+        voc: 40,
+        recordedAt: CarbonImmutable::parse('2026-11-28 11:00:00', config('app.timezone')),
+    ));
+    app(RecordSenseReadingAction::class)->handle($created['point'], new RecordSenseReadingData(
+        temperature: 21.5,
         humidity: 40,
         co2: 980,
         voc: 80,
@@ -55,7 +62,20 @@ it('toont de metingen van een scherm en downloadt ze', function () {
         ->assertOk()
         ->assertSee('Metingen — Babylokaal')
         ->assertSee('Locatie')
+        ->assertSee('Alarmen')
+        ->assertSee('wp-sense-reading--alarm', false)
         ->assertSee('28-11-2026 12:09 : Temperatuur 21,5 °C · Luchtvochtigheid 40 % · CO₂ 980 ppm · VOC-index 80', false);
+
+    $this->actingAs($admin)
+        ->get(route('screens.sense', [
+            'unit' => $unit,
+            'alarms' => 1,
+            'from' => '2026-11-28',
+            'until' => '2026-11-28',
+        ]))
+        ->assertOk()
+        ->assertSee('980 ppm')
+        ->assertDontSee('700 ppm');
 
     $export = $this->actingAs($admin)->get(route('screens.sense.export', [
         'unit' => $unit,

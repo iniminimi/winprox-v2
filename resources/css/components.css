@@ -9662,6 +9662,34 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     align-items: start;
 }
 
+.wp-sense-readings-filters {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+}
+
+.wp-sense-readings-filters .wp-select {
+    width: 11rem;
+    max-width: 11rem;
+    flex: 0 1 11rem;
+    min-width: 0;
+}
+
+.wp-sense-readings-filters input.wp-input {
+    width: 9.5rem;
+    flex: 0 0 auto;
+}
+
+@media (max-width: 75rem) {
+    .wp-sense-readings-filters {
+        flex-wrap: wrap;
+    }
+}
+
+.wp-sense-reading--alarm {
+    font-weight: 700;
+    color: var(--wp-danger);
+}
+
 .wp-sense-room {
     display: flex;
     flex-direction: column;

@@ -26,7 +26,7 @@ class SenseReadingPrintController
             (string) $request->validated('from'),
             (string) $request->validated('until'),
         );
-        $result = $export->handle((int) Tenancy::id(), $choice->sensePointId, $from, $until);
+        $result = $export->handle((int) Tenancy::id(), $choice->sensePointId, $from, $until, $request->boolean('alarms'));
 
         return view('reports.print-sense', [
             'tenant' => Tenant::query()->findOrFail(Tenancy::id()),

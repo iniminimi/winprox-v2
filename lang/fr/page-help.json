@@ -1918,7 +1918,7 @@
             "actions": [
                 {
                     "label": "Qu’est-ce que cet écran ?",
-                    "text": "Ici se trouvent les valeurs de climat que cet écran a déjà envoyées à WinProx : température, humidité, CO₂ et COV. Vous choisissez une période de 31 jours au plus."
+                    "text": "Ici se trouvent les valeurs de climat que cet écran a déjà envoyées à WinProx : température, humidité, CO₂ et COV. Vous choisissez une période de 31 jours au plus. Une mesure hors des limites est en gras et en rouge. Alarmes n’affiche que ces lignes."
                 },
                 {
                     "label": "Télécharger",

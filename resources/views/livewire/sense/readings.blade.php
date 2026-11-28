@@ -15,25 +15,26 @@
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-cluster wp-cluster--wrap">
+        <div class="wp-cluster wp-sense-readings-filters">
             <label class="wp-label" for="sense-location">{{ __('sense.readings.location') }}</label>
-            <select id="sense-location" class="wp-select" wire:model.live="locationId">
+            <select id="sense-location" class="wp-select wp-input--auto wp-select--inline" wire:model.live="locationId">
                 @foreach ($locations as $location)
                     <option value="{{ $location['id'] }}">{{ $location['name'] }}</option>
                 @endforeach
             </select>
             <label class="wp-label" for="sense-screen">{{ __('sense.readings.screen') }}</label>
-            <select id="sense-screen" class="wp-select" wire:model.live="screenId">
+            <select id="sense-screen" class="wp-select wp-input--auto wp-select--inline" wire:model.live="screenId">
                 @foreach ($screensHere as $screen)
                     <option value="{{ $screen->sensePointId }}">{{ $screen->name }}</option>
                 @endforeach
             </select>
-        </div>
-        <div class="wp-cluster wp-cluster--wrap">
             <label class="wp-label" for="sense-from">{{ __('sense.readings.from') }}</label>
             <input type="date" id="sense-from" class="wp-input wp-input--auto" wire:model.live="from">
             <label class="wp-label" for="sense-until">{{ __('sense.readings.until') }}</label>
             <input type="date" id="sense-until" class="wp-input wp-input--auto" wire:model.live="until">
+            <button type="button" wire:click="toggleAlarms" @class(['btn', 'btn--sm', 'btn--primary' => $alarmsOnly, 'btn--ghost' => ! $alarmsOnly])>
+                {{ __('sense.readings.alarms') }}
+            </button>
             @if ($exportUrl && $printUrl)
                 <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" :file-label="__('sense.readings.excel')" />
             @endif
@@ -46,10 +47,10 @@
 
     <div class="wp-card wp-card-pad wp-stack-tight">
         @if ($readings === null || $readings->isEmpty())
-            <p class="wp-muted">{{ __('sense.readings.empty') }}</p>
+            <p class="wp-muted">{{ $alarmsOnly && $readings !== null ? __('sense.readings.empty_alarms') : __('sense.readings.empty') }}</p>
         @else
             @foreach ($readings as $reading)
-                <p class="wp-text-body" wire:key="sense-reading-{{ $reading->id }}">{{ \App\Support\Sense\SenseReadingLine::text($reading) }}</p>
+                <p @class(['wp-text-body', 'wp-sense-reading--alarm' => $reading->point && \App\Support\Sense\SenseBands::outsideLimits($reading, $reading->point)]) wire:key="sense-reading-{{ $reading->id }}">{{ \App\Support\Sense\SenseReadingLine::text($reading) }}</p>
             @endforeach
             @if ($readings->hasPages())
                 <nav class="wp-pagination" aria-label="{{ __('common.pagination.nav_label') }}">

@@ -38,6 +38,9 @@ class Readings extends Component
     #[Url]
     public string $until = '';
 
+    #[Url(as: 'alarms')]
+    public bool $alarmsOnly = false;
+
     public string $place = '';
 
     public ?int $unitId = null;
@@ -83,6 +86,12 @@ class Readings extends Component
         $this->resetPage();
     }
 
+    public function toggleAlarms(): void
+    {
+        $this->alarmsOnly = ! $this->alarmsOnly;
+        $this->resetPage();
+    }
+
     public function render(ListSenseReadingScreensAction $screens, ListSenseReadingsAction $list): View
     {
         $catalog = $screens->handle((int) Tenancy::id());
@@ -104,6 +113,7 @@ class Readings extends Component
                     $from,
                     $until,
                     (int) $this->getPage(),
+                    $this->alarmsOnly,
                 );
             } catch (ValidationException $exception) {
                 $periodError = collect($exception->errors())->flatten()->first();
@@ -115,6 +125,7 @@ class Readings extends Component
             'screensHere' => $screensHere,
             'readings' => $readings,
             'periodError' => is_string($periodError) ? $periodError : null,
+            'alarmsOnly' => $this->alarmsOnly,
             'backUrl' => $this->backUrl(),
             'exportUrl' => $readings instanceof LengthAwarePaginator ? $this->downloadUrl('export') : null,
             'printUrl' => $readings instanceof LengthAwarePaginator ? $this->downloadUrl('print') : null,
@@ -176,11 +187,12 @@ class Readings extends Component
 
     private function downloadUrl(string $kind): string
     {
-        $params = [
+        $params = array_filter([
             'screen' => $this->screenId,
             'from' => $this->from,
             'until' => $this->until,
-        ];
+            'alarms' => $this->alarmsOnly ? 1 : null,
+        ], fn ($value) => $value !== null);
 
         if ($this->clockPointId !== null) {
             return route('time.clock-displays.sense.'.$kind, ['clockPoint' => $this->clockPointId] + $params);
