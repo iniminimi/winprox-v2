@@ -2,7 +2,7 @@
 
 Device key for one room. The admin screen does not show it. Does not create issues or tasks.
 
-Pairing: on the room, Scherm issues a code. The device posts `POST /api/v1/screens/claim` with `{ "code", "device_hint" }` and polls `GET /api/v1/screens/claim-status/{claim_token}`. After the admin confirms, that poll returns `display_id`, `display_secret` and `qr_window_seconds` (3600 for a room). `sense_key` is included only when Sense is on for that screen. The key is not shown in the admin UI. The room QR opens `/melden/{token}` and changes once an hour.
+Pairing: on the room, Scherm issues a code. A D1S posts that code to `POST /api/v1/time/clock-displays/claim` (the same call as a clock) and polls `GET /api/v1/time/clock-displays/claim-status/{claim_token}`. A room code is accepted there. `POST /api/v1/screens/claim` remains for the same code. After the admin confirms, the clock poll returns `device_token`, `display_id`, `display_secret` and `rotation_seconds` (3600). The screen poll returns `sense_key` only when Sense is on. The key is not shown in the admin UI. The room QR opens `/melden/{token}` and changes once an hour. The linked D1S then pings and posts Sense on the clock-display endpoints with `X-WinProx-Clock-Key`.
 
 ## Auth
 

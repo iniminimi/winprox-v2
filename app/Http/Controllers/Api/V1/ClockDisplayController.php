@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api\V1;
 use App\Actions\Time\ListClockDisplayWorkersAction;
 use App\Actions\Time\PinClockFromClockDisplayAction;
 use App\Actions\Time\RecordClockDisplayPingAction;
+use App\Actions\Screens\RecordUnitScreenPingAction;
+use App\Actions\Screens\SubmitScreenClaimAction;
+use App\Actions\Sense\RecordUnitScreenSenseReadingAction;
 use App\Actions\Time\RecordClockSenseReadingAction;
 use App\Data\Sense\RecordSenseReadingData;
 use App\Http\Requests\Sense\RecordSenseReadingRequest;
@@ -13,6 +16,7 @@ use App\Support\Sense\SenseScreenWords;
 use App\Actions\Time\SetupClockDisplayPinAction;
 use App\Actions\Time\SubmitClockDisplayClaimAction;
 use App\Enums\ClockDisplayClaimStatus;
+use App\Enums\ScreenClaimStatus;
 use App\Enums\ClockDisplayPinAction;
 use App\Enums\ClockDisplayPinStatus;
 use App\Actions\Time\ChangeClockDisplayPinAction;
@@ -24,8 +28,11 @@ use App\Models\ClockDisplayClaim;
 use App\Models\ClockDisplayImage;
 use App\Models\ClockPoint;
 use App\Models\Screen;
+use App\Models\ScreenClaim;
+use App\Support\Screens\ScreenQr;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 
 /**
@@ -38,21 +45,28 @@ class ClockDisplayController extends Controller
     public function claim(
         SubmitClockDisplayClaimRequest $request,
         SubmitClockDisplayClaimAction $submit,
+        SubmitScreenClaimAction $submitScreen,
     ): JsonResponse {
         $validated = $request->validated();
+        $code = (string) $validated['code'];
+        $hint = (string) $validated['device_hint'];
 
         try {
-            $claim = $submit->handle(
-                (string) $validated['code'],
-                (string) $validated['device_hint'],
-                $request->ip(),
-            );
+            $claim = $submit->handle($code, $hint, $request->ip());
         } catch (InvalidArgumentException $e) {
-            return match ($e->getMessage()) {
-                'claim_pending' => response()->json(['error' => 'claim_pending'], 409),
-                'claim_rate_limited' => response()->json(['error' => 'rate_limited'], 429),
-                default => response()->json(['error' => 'pairing_code_invalid'], 404),
-            };
+            if ($e->getMessage() !== 'pairing_code_invalid') {
+                return match ($e->getMessage()) {
+                    'claim_pending' => response()->json(['error' => 'claim_pending'], 409),
+                    'claim_rate_limited' => response()->json(['error' => 'rate_limited'], 429),
+                    default => response()->json(['error' => 'pairing_code_invalid'], 404),
+                };
+            }
+
+            try {
+                $claim = $submitScreen->handle($code, $hint, $request->ip());
+            } catch (ValidationException) {
+                return response()->json(['error' => 'pairing_code_invalid'], 404);
+            }
         }
 
         return response()->json([
@@ -70,7 +84,14 @@ class ClockDisplayController extends Controller
             ->first();
 
         if ($claim === null) {
-            return response()->json(['error' => 'claim_not_found'], 404);
+            $screenClaim = ScreenClaim::query()
+                ->withoutGlobalScopes()
+                ->where('claim_token', $claimToken)
+                ->first();
+
+            return $screenClaim instanceof ScreenClaim
+                ? $this->screenClaimStatus($screenClaim)
+                : response()->json(['error' => 'claim_not_found'], 404);
         }
 
         // Verlopen pending die de scheduler nog niet op 'expired' zette —
@@ -108,8 +129,18 @@ class ClockDisplayController extends Controller
         ]);
     }
 
-    public function ping(Request $request, RecordClockDisplayPingAction $ping): JsonResponse
-    {
+    public function ping(
+        Request $request,
+        RecordClockDisplayPingAction $ping,
+        RecordUnitScreenPingAction $pingScreen,
+    ): JsonResponse {
+        $screen = $request->attributes->get('clock_display_screen');
+        if ($screen instanceof Screen) {
+            $screen = $pingScreen->handle($screen);
+
+            return response()->json($this->screenPingBody($screen));
+        }
+
         $clockPoint = $this->linkedPoint($request);
         if (! $clockPoint instanceof ClockPoint) {
             return $clockPoint;
@@ -128,7 +159,25 @@ class ClockDisplayController extends Controller
     public function sense(
         RecordSenseReadingRequest $request,
         RecordClockSenseReadingAction $record,
+        RecordUnitScreenSenseReadingAction $recordScreen,
     ): JsonResponse {
+        $screen = $request->attributes->get('clock_display_screen');
+        if ($screen instanceof Screen) {
+            try {
+                $result = $recordScreen->handle(
+                    $screen,
+                    RecordSenseReadingData::fromValidated($request->validated()),
+                );
+            } catch (InvalidArgumentException $e) {
+                return response()->json(['error' => $e->getMessage()], 404);
+            }
+
+            return response()->json([
+                'id' => $result['reading']->id,
+                'created' => $result['created'],
+            ], $result['created'] ? 201 : 200);
+        }
+
         $clockPoint = $this->linkedPoint($request);
         if (! $clockPoint instanceof ClockPoint) {
             return $clockPoint;
@@ -449,6 +498,137 @@ class ClockDisplayController extends Controller
             'windows' => $windows,
             // Bitmask weekdagen (bit 0 = ma … bit 6 = zo); geldt voor de
             // dag waarop een venster begint (relevant over middernacht).
+            'days' => $albumDays,
+            'images' => $images
+                ->map(fn (ClockDisplayImage $i) => ['id' => $i->id, 'url' => $i->publicUrl()])
+                ->values()
+                ->all(),
+        ];
+    }
+
+    private function screenClaimStatus(ScreenClaim $claim): JsonResponse
+    {
+        if ($claim->status === ScreenClaimStatus::Pending && $claim->expires_at?->isPast()) {
+            return response()->json(['status' => 'expired']);
+        }
+
+        if ($claim->status !== ScreenClaimStatus::Confirmed) {
+            return response()->json([
+                'status' => $claim->status->value,
+                'reason' => $claim->denied_reason,
+            ]);
+        }
+
+        $confirmedAt = $claim->confirmed_at;
+        $screen = $claim->screen;
+        if ($confirmedAt === null
+            || $confirmedAt->lt(now()->subMinutes(10))
+            || $claim->device_token === null
+            || ! $screen instanceof Screen
+            || $screen->unit_id === null) {
+            return response()->json(['error' => 'claim_not_found'], 404);
+        }
+
+        $screen->loadMissing(['unit.location', 'sensePoint']);
+
+        return response()->json([
+            'status' => ScreenClaimStatus::Confirmed->value,
+            'device_token' => $claim->device_token,
+            'display_id' => $screen->display_id,
+            'display_secret' => $screen->display_secret,
+            'clock_point_name' => $screen->unit?->localizedName(),
+            'location_name' => $screen->unit?->location?->localizedName(),
+            ...$this->screenPingBody($screen),
+        ]);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function screenPingBody(Screen $screen): array
+    {
+        $screen->loadMissing(['unit.location', 'sensePoint']);
+
+        return [
+            'state' => 'active',
+            'clock_point_name' => $screen->unit?->localizedName(),
+            'location_name' => $screen->unit?->location?->localizedName(),
+            'server_time' => now()->toIso8601String(),
+            'server_unix' => now()->getTimestamp(),
+            'display_on_from' => $screen->display_on_from !== null
+                ? substr((string) $screen->display_on_from, 0, 5) : null,
+            'display_on_until' => $screen->display_on_until !== null
+                ? substr((string) $screen->display_on_until, 0, 5) : null,
+            'sound_enabled' => (bool) ($screen->display_sound_enabled ?? true),
+            'album' => $this->screenAlbum($screen),
+            'rotation_seconds' => ScreenQr::windowSeconds($screen),
+            'offline_warn_hours' => (int) config('time.display_offline_warn_hours', 24),
+            'offline_block_hours' => (int) config('time.display_offline_block_hours', 168),
+            'portal_url_template' => route('public.unit-portal', '__TOKEN__'),
+            'sense' => $this->screenSense($screen),
+        ];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function screenSense(Screen $screen): array
+    {
+        $point = $screen->sensePoint;
+        if (! $screen->has_sense || $point === null) {
+            return ['enabled' => false];
+        }
+
+        $locale = in_array($point->display_locale, config('locales.supported'), true)
+            ? (string) $point->display_locale
+            : (string) config('locales.default', 'nl');
+
+        return [
+            'enabled' => true,
+            'locale' => $locale,
+            'words' => SenseScreenWords::forLocale($locale),
+            'temperature_low' => $point->temperature_low,
+            'temperature_high' => $point->temperature_high,
+            'humidity_low' => $point->humidity_low,
+            'humidity_high' => $point->humidity_high,
+            'co2_high' => $point->co2_high,
+            'voc_high' => $point->voc_high,
+        ];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function screenAlbum(Screen $screen): array
+    {
+        $windows = [];
+        foreach ([
+            [$screen->album1_from, $screen->album1_until],
+            [$screen->album2_from, $screen->album2_until],
+        ] as [$from, $until]) {
+            if ($from !== null && $until !== null) {
+                $windows[] = [substr((string) $from, 0, 5), substr((string) $until, 0, 5)];
+            }
+        }
+
+        $images = ClockDisplayImage::query()
+            ->where('tenant_id', $screen->tenant_id)
+            ->where('screen_id', $screen->id)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->limit(ClockDisplayImage::MAX_PER_SCOPE)
+            ->get();
+
+        $albumDays = (int) ($screen->album_days ?? 31);
+        $version = substr(md5(
+            $images->map(fn (ClockDisplayImage $i) => $i->id.'@'.$i->updated_at?->getTimestamp())->implode(',')
+            .'|'.json_encode($windows).'|'.$albumDays
+        ), 0, 12);
+
+        return [
+            'version' => $version,
+            'mode' => $screen->album_mode ?? 'none',
+            'windows' => $windows,
             'days' => $albumDays,
             'images' => $images
                 ->map(fn (ClockDisplayImage $i) => ['id' => $i->id, 'url' => $i->publicUrl()])

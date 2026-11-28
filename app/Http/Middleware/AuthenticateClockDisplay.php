@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Middleware;
 
 use App\Models\ClockPoint;
+use App\Models\Screen;
 use App\Support\Tenancy;
 use Closure;
 use Illuminate\Http\Request;
@@ -30,10 +31,32 @@ class AuthenticateClockDisplay
             ->where('display_token_hash', hash('sha256', $token))
             ->first();
 
-        if ($clockPoint === null || ! $clockPoint->matchesDisplayToken($token)) {
+        if ($clockPoint instanceof ClockPoint && $clockPoint->matchesDisplayToken($token)) {
+            return $this->asClock($request, $next, $clockPoint);
+        }
+
+        $screen = Screen::withoutGlobalScope('tenant')
+            ->where('display_token_hash', hash('sha256', $token))
+            ->whereNotNull('unit_id')
+            ->first();
+
+        if (! $screen instanceof Screen || ! $screen->matchesDisplayToken($token) || ! $screen->isLinked()) {
             return response()->json(['message' => 'Unauthorized'], 401);
         }
 
+        $tenant = $screen->tenant;
+        if ($tenant === null || ! $tenant->is_active || ! $tenant->hasFullAppAccess()) {
+            return response()->json(['message' => 'Subscription inactive'], 403);
+        }
+
+        Tenancy::actAs((int) $screen->tenant_id);
+        $request->attributes->set('clock_display_screen', $screen);
+
+        return $next($request);
+    }
+
+    private function asClock(Request $request, Closure $next, ClockPoint $clockPoint): Response
+    {
         $tenant = $clockPoint->tenant;
         if ($tenant === null || ! $tenant->is_active || ! $tenant->hasTimeModule()) {
             return response()->json(['message' => 'Time module disabled'], 403);

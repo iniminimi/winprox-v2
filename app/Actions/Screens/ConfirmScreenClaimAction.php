@@ -50,10 +50,13 @@ class ConfirmScreenClaimAction
                 ? $this->senseKey($screen, $tenantId, $actorUserId)
                 : null;
             $displayId = $screen->display_id ?? $this->displayId();
+            $deviceToken = 'wpscr_'.Str::lower(Str::random(40));
 
             $screen->update([
                 'display_id' => $displayId,
                 'display_secret' => $screen->display_secret ?? bin2hex(random_bytes(32)),
+                'display_token_hash' => hash('sha256', $deviceToken),
+                'display_token_prefix' => substr($deviceToken, 0, 12),
                 'qr_window_seconds' => 3600,
                 'device_hint' => $locked->device_hint,
                 'paired_at' => now(),
@@ -65,6 +68,7 @@ class ConfirmScreenClaimAction
             $locked->update([
                 'status' => ScreenClaimStatus::Confirmed,
                 'issued_token' => $plain,
+                'device_token' => $deviceToken,
                 'confirmed_at' => now(),
             ]);
 

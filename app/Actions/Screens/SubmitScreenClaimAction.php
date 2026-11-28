@@ -28,6 +28,17 @@ class SubmitScreenClaimAction
             ]);
         }
 
+        $sameDevice = ScreenClaim::query()
+            ->withoutGlobalScopes()
+            ->where('screen_id', $screen->id)
+            ->where('device_hint', $deviceHint)
+            ->activePending()
+            ->first();
+
+        if ($sameDevice !== null) {
+            return $sameDevice;
+        }
+
         ScreenClaim::query()
             ->withoutGlobalScopes()
             ->where('screen_id', $screen->id)

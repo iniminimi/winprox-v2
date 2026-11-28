@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Actions\Screens\ConfirmScreenClaimAction;
+use App\Actions\Screens\IssueScreenPairingCodeAction;
 use App\Livewire\Screens\Pair;
 use App\Models\Location;
 use App\Models\ScreenClaim;
@@ -146,4 +148,57 @@ it('bewaart de uren per scherm en laat de QR van een lokaal een uur meegaan', fu
     $this->withHeader('User-Agent', $phone)
         ->get(route('public.unit-portal', $stale))
         ->assertNotFound();
+});
+
+it('aanvaardt een lokaalcode op het toestel dat de prikklok-koppeling gebruikt', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    seedTenantPastOnboarding($tenant);
+    Tenancy::actAs($tenant->id);
+
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'De Duinhummeltjes']);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Babylokaal',
+    ]);
+
+    $code = app(IssueScreenPairingCodeAction::class)->handle($unit, (int) $tenant->id, (int) $admin->id);
+    $unit->screen()->update(['has_sense' => true]);
+
+    $claimToken = $this->postJson(route('api.v1.time.clock-displays.claim'), [
+        'code' => substr($code, 0, 4).'-'.substr($code, 4),
+        'device_hint' => 'AABBCCDDEEFF',
+    ])->assertCreated()->json('claim_token');
+
+    expect($claimToken)->toBeString()->not->toBeEmpty();
+
+    app(ConfirmScreenClaimAction::class)->handle(
+        ScreenClaim::query()->where('claim_token', $claimToken)->first(),
+        (int) $tenant->id,
+        (int) $admin->id,
+    );
+
+    $status = $this->getJson(route('api.v1.time.clock-displays.claim-status', $claimToken))->assertOk();
+    $device = $status->json('device_token');
+    expect($device)->toStartWith('wpscr_')
+        ->and($status->json('portal_url_template'))->toContain('/melden/__TOKEN__')
+        ->and($status->json('rotation_seconds'))->toBe(3600)
+        ->and($status->json('sense.enabled'))->toBeTrue();
+
+    $this->withHeader('X-WinProx-Clock-Key', $device)
+        ->getJson(route('api.v1.time.clock-displays.ping'))
+        ->assertOk()
+        ->assertJsonPath('sense.enabled', true)
+        ->assertJsonPath('clock_point_name', 'Babylokaal');
+
+    $this->withHeader('X-WinProx-Clock-Key', $device)
+        ->postJson(route('api.v1.time.clock-displays.sense'), [
+            'temperature' => 21.5,
+            'humidity' => 50,
+            'co2' => 800,
+            'voc' => 40,
+            'recorded_at' => now()->toIso8601String(),
+        ])
+        ->assertCreated();
 });

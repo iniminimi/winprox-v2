@@ -24,6 +24,8 @@ class Screen extends Model
         'has_sense',
         'display_id',
         'display_secret',
+        'display_token_hash',
+        'display_token_prefix',
         'qr_window_seconds',
         'display_on_from',
         'display_on_until',
@@ -89,5 +91,14 @@ class Screen extends Model
     public function hasOpenCode(): bool
     {
         return $this->pairing_code !== null && $this->pairing_expires_at?->isFuture();
+    }
+
+    public function matchesDisplayToken(string $plain): bool
+    {
+        if ($plain === '' || $this->display_token_hash === null) {
+            return false;
+        }
+
+        return hash_equals($this->display_token_hash, hash('sha256', $plain));
     }
 }

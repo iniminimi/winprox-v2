@@ -33,6 +33,7 @@ class ScreenClaim extends Model
         'status',
         'denied_reason',
         'issued_token',
+        'device_token',
         'expires_at',
         'confirmed_at',
         'pending_slot',
@@ -43,6 +44,7 @@ class ScreenClaim extends Model
         return [
             'status' => ScreenClaimStatus::class,
             'issued_token' => 'encrypted',
+            'device_token' => 'encrypted',
             'expires_at' => 'datetime',
             'confirmed_at' => 'datetime',
         ];
