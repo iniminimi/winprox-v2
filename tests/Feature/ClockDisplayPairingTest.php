@@ -780,6 +780,13 @@ it('bewaart een Sense-meting van het klokscherm wanneer Sense aan staat', functi
         ->assertCreated()
         ->assertJsonPath('created', true);
 
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $this->actingAs($admin);
+    Livewire::test(\App\Livewire\Time\ClockDisplayPair::class, ['clockPoint' => $point->fresh()])
+        ->assertSee(__('screen.sense.language'))
+        ->call('saveSenseLocale', 'fr');
+    expect($screen->fresh()->sensePoint->display_locale)->toBe('fr');
+
     $point = $screen->fresh()->sensePoint;
     expect($point)->not->toBeNull()
         ->and((float) $point->last_temperature)->toBe(21.8)

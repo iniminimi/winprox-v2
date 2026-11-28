@@ -31,16 +31,6 @@
                 </p>
             </div>
 
-            <div class="wp-cluster wp-cluster--wrap">
-                <label class="wp-label" for="sense-display-locale">{{ __('screen.sense.language') }}</label>
-                <select id="sense-display-locale" class="wp-input wp-input--auto" wire:change="saveLocale($event.target.value)">
-                    @foreach (config('locales.supported') as $code)
-                        <option value="{{ $code }}" @selected($room->locale === $code)>{{ __('screen.sense.languages.'.$code) }}</option>
-                    @endforeach
-                </select>
-                <span class="wp-hint">{{ __('screen.sense.language_hint') }}</span>
-            </div>
-
             <div class="wp-cluster wp-sense-tools">
                 @if ($readingsUrl !== '')
                     <a href="{{ $readingsUrl }}" class="btn btn--ghost btn--sm">{{ __('sense.readings.open') }}</a>

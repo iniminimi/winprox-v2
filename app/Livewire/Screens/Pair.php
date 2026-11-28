@@ -11,6 +11,7 @@ use App\Actions\Screens\EnableSenseOnScreenAction;
 use App\Actions\Screens\EnsureUnitScreenAction;
 use App\Actions\Screens\IssueScreenPairingCodeAction;
 use App\Actions\Screens\UnlinkScreenAction;
+use App\Actions\Sense\UpdateSenseDisplayLocaleAction;
 use App\Actions\Screens\UpdateScreenAlbumAction;
 use App\Actions\Screens\UpdateScreenScheduleAction;
 use App\Actions\Screens\UpdateScreenSoundAction;
@@ -88,6 +89,18 @@ class Pair extends Component
         }
 
         $enable->handle($screen, (int) Tenancy::id(), auth()->id());
+    }
+
+    public function saveSenseLocale(string $locale, UpdateSenseDisplayLocaleAction $update): void
+    {
+        $screen = $this->screen();
+        $point = $screen->sensePoint;
+        if ($point === null) {
+            return;
+        }
+
+        $this->authorize('update', $point);
+        $update->handle($point, $locale, (int) Tenancy::id(), auth()->id());
     }
 
     public function issueCode(IssueScreenPairingCodeAction $issue): void

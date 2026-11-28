@@ -5,6 +5,7 @@ namespace App\Livewire\Time;
 use App\Actions\Screens\DisableSenseOnScreenAction;
 use App\Actions\Screens\EnableSenseOnScreenAction;
 use App\Actions\Screens\EnsureClockScreenAction;
+use App\Actions\Sense\UpdateSenseDisplayLocaleAction;
 use App\Actions\Ops\ResolveHardwareDeviceByMacAction;
 use App\Actions\Time\ConfirmClockDisplayClaimAction;
 use App\Actions\Time\DeleteClockDisplayImageAction;
@@ -349,6 +350,18 @@ class ClockDisplayPair extends Component
         }
 
         $enable->handle($screen, (int) $this->clockPoint->tenant_id, auth()->id());
+    }
+
+    public function saveSenseLocale(string $locale, UpdateSenseDisplayLocaleAction $update): void
+    {
+        $screen = app(EnsureClockScreenAction::class)->handle($this->clockPoint);
+        $point = $screen->sensePoint;
+        if ($point === null) {
+            return;
+        }
+
+        $this->authorize('update', $point);
+        $update->handle($point, $locale, (int) $this->clockPoint->tenant_id, auth()->id());
     }
 
     public function render(
