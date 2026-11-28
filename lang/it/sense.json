@@ -40,5 +40,25 @@
         "unit_taken": "Questo locale ha già Sense.",
         "band_range": "Quel valore è fuori scala.",
         "band_order": "Il valore obiettivo sta tra il limite basso e quello alto."
+    },
+    "readings": {
+        "open": "Misure",
+        "title": "Misure — :place",
+        "subtitle": "Valori di clima salvati di questo schermo.",
+        "document_title": "Misure — :place — WinProx",
+        "back": "Torna allo schermo",
+        "from": "Dal",
+        "until": "Al",
+        "hint": "Al massimo 31 giorni. Un download contiene al massimo 5.000 righe, le più recenti prima.",
+        "period_max": "Scelga al massimo 31 giorni.",
+        "empty": "Nessuna misura in questo periodo.",
+        "filename": "misure-sense",
+        "columns": {
+            "recorded": "Misurato il",
+            "temperature": "Temperatura (°C)",
+            "humidity": "Umidità (%)",
+            "co2": "CO₂ (ppm)",
+            "voc": "Indice VOC"
+        }
     }
 }

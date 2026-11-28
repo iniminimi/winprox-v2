@@ -32,6 +32,9 @@
             </div>
 
             <div class="wp-cluster wp-sense-tools">
+                @if ($readingsUrl !== '')
+                    <a href="{{ $readingsUrl }}" class="btn btn--ghost btn--sm">{{ __('sense.readings.open') }}</a>
+                @endif
                 <button type="button" @class(['btn', 'btn--sm', 'btn--primary' => $room->preset === 'winter', 'btn--ghost' => $room->preset !== 'winter']) wire:click="applyPreset({{ $room->id }}, 'winter')">
                     {{ __('sense.presets.winter') }}
                 </button>

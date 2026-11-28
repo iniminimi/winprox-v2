@@ -296,7 +296,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense è il timbratore con rilevazione ore e clima interno. Le misure compaiono in WinProx.",
+                "body": "Sense è il timbratore con rilevazione ore e clima interno. Le misure compaiono in WinProx. Può consultare un periodo e scaricarlo.",
                 "link_route": "clock.sense",
                 "link_label": "Altro su Sense"
             },
@@ -525,7 +525,7 @@
             },
             {
                 "title": "Sense (opzionale)",
-                "body": "Sense misura il clima interno. Le misure compaiono in WinProx.",
+                "body": "Sense misura il clima interno. Le misure compaiono in WinProx. Può consultare un periodo e scaricarlo.",
                 "link_route": "clock.sense",
                 "link_label": "Altro su Sense"
             },

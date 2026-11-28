@@ -24,7 +24,7 @@
             {{ $screen?->has_sense ? __('screen.sense.on') : __('screen.sense.off') }}
         </button>
         @if ($screen?->has_sense && $screen->sensePoint)
-            <livewire:screens.sense-card :screen-id="$screen->id" :key="'sense-card-'.$screen->id" />
+            <livewire:screens.sense-card :screen-id="$screen->id" :readings-url="route('screens.sense', $unit)" :key="'sense-card-'.$screen->id" />
         @endif
     </x-wp-settings-section>
 

@@ -31,3 +31,5 @@ All four values are required. The same `recorded_at` for the same room is stored
 `data.attention` is true when temperature or humidity is outside the lower or upper mark, or when CO₂ is above its upper mark. The target mark is not an alarm. The VOC index (1–500) turns attention on only after it stays above the room limit (default 150) for 30 minutes. One high sample is not attention. 100 is the sensor’s own 24-hour average, not a health limit.
 
 Send about every five minutes. A value outside its band is attention in WinProx, also when that reading is older than 15 minutes. A room whose last reading is inside the band and older than 15 minutes is shown as no measurement.
+
+Stored readings are listed in the admin, on the screen’s Sense card (Metingen). This endpoint does not return them.

@@ -40,5 +40,25 @@
         "unit_taken": "Dieser Raum hat bereits Sense.",
         "band_range": "Dieser Wert liegt außerhalb der Skala.",
         "band_order": "Der Zielwert liegt zwischen unten und oben."
+    },
+    "readings": {
+        "open": "Messwerte",
+        "title": "Messwerte — :place",
+        "subtitle": "Gespeicherte Klimawerte dieses Displays.",
+        "document_title": "Messwerte — :place — WinProx",
+        "back": "Zurück zum Display",
+        "from": "Von",
+        "until": "Bis",
+        "hint": "Höchstens 31 Tage. Ein Download enthält höchstens 5.000 Zeilen, die neuesten zuerst.",
+        "period_max": "Wählen Sie höchstens 31 Tage.",
+        "empty": "Keine Messwerte in diesem Zeitraum.",
+        "filename": "sense-messwerte",
+        "columns": {
+            "recorded": "Gemessen am",
+            "temperature": "Temperatur (°C)",
+            "humidity": "Luftfeuchtigkeit (%)",
+            "co2": "CO₂ (ppm)",
+            "voc": "VOC-Index"
+        }
     }
 }

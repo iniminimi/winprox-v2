@@ -82,7 +82,10 @@ use App\Livewire\Esg\MeasurementsIndex as EsgMeasurementsIndex;
 use App\Livewire\Esg\PointHistory as EsgPointHistory;
 use App\Livewire\Iot\Index as IotIndex;
 use App\Livewire\Cameras\Show as CameraShow;
+use App\Http\Controllers\Sense\SenseReadingExportController;
+use App\Http\Controllers\Sense\SenseReadingPrintController;
 use App\Livewire\Screens\Pair as ScreenPair;
+use App\Livewire\Sense\Readings as SenseReadings;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Locations\Index as LocationIndex;
@@ -542,6 +545,9 @@ Route::middleware(['auth', 'backoffice.desktop'])->group(function () {
         Route::get('/locations/{location}/qr-pack', LocationQrPackDownloadController::class)->name('locations.qr-pack');
         Route::get('/units', UnitsIndex::class)->name('units.index');
             Route::get('/units/{unit}/screen', ScreenPair::class)->name('screens.pair');
+            Route::get('/units/{unit}/screen/readings', SenseReadings::class)->name('screens.sense');
+            Route::get('/units/{unit}/screen/readings/export', SenseReadingExportController::class)->name('screens.sense.export');
+            Route::get('/units/{unit}/screen/readings/print', SenseReadingPrintController::class)->name('screens.sense.print');
             Route::get('/units/{unit}/camera', CameraShow::class)->name('cameras.show');
             Route::get('/cameras/photos/{photo}', CameraPhotoFileController::class)->name('cameras.photos.show');
         Route::get('/units/{unit}/qr', UnitQrController::class)->name('units.qr');
@@ -600,6 +606,9 @@ Route::middleware(['auth', 'backoffice.desktop'])->group(function () {
         // Klokscherm-koppeling: eigen naamruimte zodat Checkmate (whitelist
         // op routenaam) schermbeheer NIET mee krijgt met time.clock-points.*.
         Route::get('/time/clock-points/{clockPoint}/display', ClockDisplayPair::class)->name('time.clock-displays.pair');
+        Route::get('/time/clock-points/{clockPoint}/display/readings', SenseReadings::class)->name('time.clock-displays.sense');
+        Route::get('/time/clock-points/{clockPoint}/display/readings/export', SenseReadingExportController::class)->name('time.clock-displays.sense.export');
+        Route::get('/time/clock-points/{clockPoint}/display/readings/print', SenseReadingPrintController::class)->name('time.clock-displays.sense.print');
         Route::get('/team', Team::class)->name('team.index');
         Route::get('/team/{internalTeam}', Team::class)->name('team.show');
         Route::get('/workers', WorkersIndex::class)->name('workers.index');

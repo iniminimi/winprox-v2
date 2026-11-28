@@ -296,7 +296,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense ist die Stechuhr mit Zeiterfassung und Raumklima. Die Messwerte erscheinen in WinProx.",
+                "body": "Sense ist die Stechuhr mit Zeiterfassung und Raumklima. Die Messwerte erscheinen in WinProx. Sie rufen einen Zeitraum ab und laden ihn herunter.",
                 "link_route": "clock.sense",
                 "link_label": "Mehr über Sense"
             },
@@ -525,7 +525,7 @@
             },
             {
                 "title": "Sense (optional)",
-                "body": "Sense misst das Raumklima. Die Messwerte erscheinen in WinProx.",
+                "body": "Sense misst das Raumklima. Die Messwerte erscheinen in WinProx. Sie rufen einen Zeitraum ab und laden ihn herunter.",
                 "link_route": "clock.sense",
                 "link_label": "Mehr über Sense"
             },

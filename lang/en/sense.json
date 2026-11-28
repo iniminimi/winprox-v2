@@ -40,5 +40,25 @@
         "unit_taken": "This room already has Sense.",
         "band_range": "That value is outside the scale.",
         "band_order": "The target sits between the lower and upper mark."
+    },
+    "readings": {
+        "open": "Readings",
+        "title": "Readings — :place",
+        "subtitle": "Stored climate values from this screen.",
+        "document_title": "Readings — :place — WinProx",
+        "back": "Back to the screen",
+        "from": "From",
+        "until": "To",
+        "hint": "At most 31 days. A download holds up to 5,000 rows, newest first.",
+        "period_max": "Choose at most 31 days.",
+        "empty": "No readings in this period.",
+        "filename": "sense-readings",
+        "columns": {
+            "recorded": "Recorded at",
+            "temperature": "Temperature (°C)",
+            "humidity": "Humidity (%)",
+            "co2": "CO₂ (ppm)",
+            "voc": "VOC index"
+        }
     }
 }

@@ -40,5 +40,25 @@
         "unit_taken": "Dit lokaal heeft al Sense.",
         "band_range": "Die waarde valt buiten de schaal.",
         "band_order": "De streefwaarde staat tussen onder en boven."
+    },
+    "readings": {
+        "open": "Metingen",
+        "title": "Metingen — :place",
+        "subtitle": "Opgeslagen klimaatwaarden van dit scherm.",
+        "document_title": "Metingen — :place — WinProx",
+        "back": "Terug naar het scherm",
+        "from": "Van",
+        "until": "Tot",
+        "hint": "Hoogstens 31 dagen. Een download bevat maximaal 5.000 rijen, de nieuwste eerst.",
+        "period_max": "Kies hoogstens 31 dagen.",
+        "empty": "Geen metingen in deze periode.",
+        "filename": "sense-metingen",
+        "columns": {
+            "recorded": "Gemeten op",
+            "temperature": "Temperatuur (°C)",
+            "humidity": "Luchtvochtigheid (%)",
+            "co2": "CO₂ (ppm)",
+            "voc": "VOC-index"
+        }
     }
 }

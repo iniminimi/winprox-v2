@@ -40,5 +40,25 @@
         "unit_taken": "Esta sala ya tiene Sense.",
         "band_range": "Ese valor queda fuera de la escala.",
         "band_order": "El valor objetivo está entre el inferior y el superior."
+    },
+    "readings": {
+        "open": "Mediciones",
+        "title": "Mediciones — :place",
+        "subtitle": "Valores de clima guardados de esta pantalla.",
+        "document_title": "Mediciones — :place — WinProx",
+        "back": "Volver a la pantalla",
+        "from": "Desde",
+        "until": "Hasta",
+        "hint": "Como máximo 31 días. Una descarga contiene como máximo 5.000 filas, las más recientes primero.",
+        "period_max": "Elija como máximo 31 días.",
+        "empty": "No hay mediciones en este periodo.",
+        "filename": "mediciones-sense",
+        "columns": {
+            "recorded": "Medido el",
+            "temperature": "Temperatura (°C)",
+            "humidity": "Humedad (%)",
+            "co2": "CO₂ (ppm)",
+            "voc": "Índice VOC"
+        }
     }
 }

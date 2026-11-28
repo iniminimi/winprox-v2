@@ -1826,7 +1826,7 @@
                 },
                 {
                     "label": "Sense",
-                    "text": "Attivate <strong>Sense</strong> se è un D1S. Lo schermo misura allora temperatura, umidità, CO₂ e qualità dell’aria. Lasciatelo spento per un D1. Lo stesso interruttore sta su un locale, tramite Schermo. La scheda nera appartiene solo a questo schermo. Per temperatura e umidità trascini o digiti il valore basso, l’obiettivo e il valore alto, oppure scegli Inverno o Estate. Il 1° maggio passa da solo all’estate, il 1° ottobre all’inverno. L’obiettivo è solo un riferimento. Il CO₂ chiede attenzione sopra il limite. L’indice VOC va dal verde al rosso; l’attenzione arriva solo se un valore alto resta per mezz’ora. Sense spento nasconde la scheda e ferma l’attenzione nella schermata iniziale; i limiti restano salvati. Non nasce nessuna segnalazione né attività."
+                    "text": "Attivate <strong>Sense</strong> se è un D1S. Lo schermo misura allora temperatura, umidità, CO₂ e qualità dell’aria. Lasciatelo spento per un D1. Lo stesso interruttore sta su un locale, tramite Schermo. La scheda nera appartiene solo a questo schermo. Per temperatura e umidità trascini o digiti il valore basso, l’obiettivo e il valore alto, oppure scegli Inverno o Estate. Il 1° maggio passa da solo all’estate, il 1° ottobre all’inverno. L’obiettivo è solo un riferimento. Il CO₂ chiede attenzione sopra il limite. L’indice VOC va dal verde al rosso; l’attenzione arriva solo se un valore alto resta per mezz’ora. Sense spento nasconde la scheda e ferma l’attenzione nella schermata iniziale; i limiti restano salvati. Non nasce nessuna segnalazione né attività. <strong>Misure</strong> apre i valori salvati di questo schermo. Scelga un periodo di al massimo 31 giorni e li scarichi."
                 },
                 {
                     "label": "Scollega",
@@ -1877,7 +1877,7 @@
                 },
                 {
                     "label": "Sense",
-                    "text": "Attivate <strong>Sense</strong> se è un D1S. Lo schermo misura allora temperatura, umidità, CO₂ e qualità dell’aria. Lasciatelo spento per un D1. Lo stesso interruttore sta su un Clock Point. La scheda nera appartiene solo a questo schermo. Per temperatura e umidità trascini o digiti il valore basso, l’obiettivo e il valore alto, oppure scegli Inverno o Estate. Il 1° maggio passa da solo all’estate, il 1° ottobre all’inverno. L’obiettivo è solo un riferimento. Il CO₂ chiede attenzione sopra il limite. L’indice VOC va dal verde al rosso; l’attenzione arriva solo se un valore alto resta per mezz’ora. Sense spento nasconde la scheda e ferma l’attenzione nella schermata iniziale; i limiti restano salvati. Non nasce nessuna segnalazione né attività."
+                    "text": "Attivate <strong>Sense</strong> se è un D1S. Lo schermo misura allora temperatura, umidità, CO₂ e qualità dell’aria. Lasciatelo spento per un D1. Lo stesso interruttore sta su un Clock Point. La scheda nera appartiene solo a questo schermo. Per temperatura e umidità trascini o digiti il valore basso, l’obiettivo e il valore alto, oppure scegli Inverno o Estate. Il 1° maggio passa da solo all’estate, il 1° ottobre all’inverno. L’obiettivo è solo un riferimento. Il CO₂ chiede attenzione sopra il limite. L’indice VOC va dal verde al rosso; l’attenzione arriva solo se un valore alto resta per mezz’ora. Sense spento nasconde la scheda e ferma l’attenzione nella schermata iniziale; i limiti restano salvati. Non nasce nessuna segnalazione né attività. <strong>Misure</strong> apre i valori salvati di questo schermo. Scelga un periodo di al massimo 31 giorni e li scarichi."
                 },
                 {
                     "label": "Orari dello schermo",
@@ -1906,6 +1906,19 @@
                 {
                     "label": "Offline",
                     "text": "Lo schermo si segnala ogni minuto. Dopo ±24 ore senza contatto col server mostra un avviso; dopo 7 giorni offline il QR si ferma del tutto. Gli orari di accensione continuano a funzionare offline."
+                }
+            ]
+        },
+        "sense.readings": {
+            "title": "Aiuto — Misure",
+            "actions": [
+                {
+                    "label": "Che cos’è questa schermata?",
+                    "text": "Qui ci sono i valori di clima che questo schermo ha già inviato a WinProx: temperatura, umidità, CO₂ e VOC. Scelga un periodo di al massimo 31 giorni."
+                },
+                {
+                    "label": "Scarica",
+                    "text": "<strong>Scarica rapporto</strong> fa un CSV o una stampa di quel periodo. Un download contiene al massimo 5.000 righe, le più recenti prima."
                 }
             ]
         },

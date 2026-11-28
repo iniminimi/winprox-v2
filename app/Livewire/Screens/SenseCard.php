@@ -19,6 +19,8 @@ class SenseCard extends Component
     use AuthorizesRequests;
     public int $screenId;
 
+    public string $readingsUrl = '';
+
     public ?string $bandError = null;
 
     public function mount(int $screenId): void

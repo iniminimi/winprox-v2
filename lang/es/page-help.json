@@ -1826,7 +1826,7 @@
                 },
                 {
                     "label": "Sense",
-                    "text": "Active <strong>Sense</strong> si es un D1S. La pantalla mide entonces temperatura, humedad, CO₂ y calidad del aire. Déjelo apagado para un D1. El mismo interruptor está en una sala, con Pantalla. La tarjeta negra pertenece solo a esta pantalla. En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El 1 de mayo pasa solo al verano y el 1 de octubre al invierno. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora. Sense apagado oculta la tarjeta y detiene la atención en el inicio; los límites se conservan. No se crea ningún aviso ni tarea."
+                    "text": "Active <strong>Sense</strong> si es un D1S. La pantalla mide entonces temperatura, humedad, CO₂ y calidad del aire. Déjelo apagado para un D1. El mismo interruptor está en una sala, con Pantalla. La tarjeta negra pertenece solo a esta pantalla. En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El 1 de mayo pasa solo al verano y el 1 de octubre al invierno. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora. Sense apagado oculta la tarjeta y detiene la atención en el inicio; los límites se conservan. No se crea ningún aviso ni tarea. <strong>Mediciones</strong> abre los valores guardados de esta pantalla. Elija un periodo de como máximo 31 días y descárguelos."
                 },
                 {
                     "label": "Desvincular",
@@ -1877,7 +1877,7 @@
                 },
                 {
                     "label": "Sense",
-                    "text": "Active <strong>Sense</strong> si es un D1S. La pantalla mide entonces temperatura, humedad, CO₂ y calidad del aire. Déjelo apagado para un D1. El mismo interruptor está en un Clock Point. La tarjeta negra pertenece solo a esta pantalla. En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El 1 de mayo pasa solo al verano y el 1 de octubre al invierno. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora. Sense apagado oculta la tarjeta y detiene la atención en el inicio; los límites se conservan. No se crea ningún aviso ni tarea."
+                    "text": "Active <strong>Sense</strong> si es un D1S. La pantalla mide entonces temperatura, humedad, CO₂ y calidad del aire. Déjelo apagado para un D1. El mismo interruptor está en un Clock Point. La tarjeta negra pertenece solo a esta pantalla. En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El 1 de mayo pasa solo al verano y el 1 de octubre al invierno. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora. Sense apagado oculta la tarjeta y detiene la atención en el inicio; los límites se conservan. No se crea ningún aviso ni tarea. <strong>Mediciones</strong> abre los valores guardados de esta pantalla. Elija un periodo de como máximo 31 días y descárguelos."
                 },
                 {
                     "label": "Horas de pantalla",
@@ -1906,6 +1906,19 @@
                 {
                     "label": "Sin conexión",
                     "text": "La pantalla se comunica cada minuto. Tras ±24 h sin contacto con el servidor muestra un aviso; tras 7 días sin conexión el QR se detiene por completo. El horario de encendido sigue funcionando sin conexión."
+                }
+            ]
+        },
+        "sense.readings": {
+            "title": "Ayuda — Mediciones",
+            "actions": [
+                {
+                    "label": "¿Qué es esta pantalla?",
+                    "text": "Aquí están los valores de clima que esta pantalla ya envió a WinProx: temperatura, humedad, CO₂ y VOC. Elija un periodo de como máximo 31 días."
+                },
+                {
+                    "label": "Descargar",
+                    "text": "<strong>Descargar informe</strong> hace un CSV o una impresión de ese periodo. Una descarga contiene como máximo 5.000 filas, las más recientes primero."
                 }
             ]
         },

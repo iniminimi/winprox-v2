@@ -296,7 +296,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense is the time clock with time registration and indoor climate. The readings appear in WinProx.",
+                "body": "Sense is the time clock with time registration and indoor climate. The readings appear in WinProx. You look up a period and download them.",
                 "link_route": "clock.sense",
                 "link_label": "More about Sense"
             },
@@ -525,7 +525,7 @@
             },
             {
                 "title": "Sense (optional)",
-                "body": "Sense measures the indoor climate. The readings appear in WinProx.",
+                "body": "Sense measures the indoor climate. The readings appear in WinProx. You look up a period and download them.",
                 "link_route": "clock.sense",
                 "link_label": "More about Sense"
             },

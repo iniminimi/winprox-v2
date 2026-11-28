@@ -2,12 +2,12 @@
     "meta_title": "Sense: registro horario y clima interior | WinProx Time",
     "social": {
         "og_title": "Sense: registro horario y clima interior | WinProx Time",
-        "og_description": "Sense registra el tiempo y mide la temperatura, la humedad, el CO₂ y el índice VOC. Las mediciones aparecen en WinProx."
+        "og_description": "Sense registra el tiempo y mide la temperatura, la humedad, el CO₂ y el índice VOC. Las mediciones aparecen en WinProx. Puede consultar un periodo y descargarlo."
     },
     "eyebrow": "WinProx Time",
     "title": "Sense",
     "lead": "Registro horario y una vista del clima interior.",
-    "intro": "Sense hace lo que hace el reloj Time y, además, mide el lugar en el que están las personas. Las mediciones aparecen en WinProx.",
+    "intro": "Sense hace lo que hace el reloj Time y, además, mide el lugar en el que están las personas. Las mediciones aparecen en WinProx. Puede consultar un periodo y descargarlo.",
     "section_title": "Qué mide Sense",
     "points": [
         "Temperatura.",

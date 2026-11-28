@@ -296,7 +296,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense is de prikklok met tijdregistratie en binnenklimaat. De metingen verschijnen in WinProx.",
+                "body": "Sense is de prikklok met tijdregistratie en binnenklimaat. De metingen verschijnen in WinProx. U vraagt een periode op en downloadt ze.",
                 "link_route": "clock.sense",
                 "link_label": "Meer over Sense"
             },
@@ -525,7 +525,7 @@
             },
             {
                 "title": "Sense (optioneel)",
-                "body": "Sense meet het binnenklimaat. De metingen verschijnen in WinProx.",
+                "body": "Sense meet het binnenklimaat. De metingen verschijnen in WinProx. U vraagt een periode op en downloadt ze.",
                 "link_route": "clock.sense",
                 "link_label": "Meer over Sense"
             },

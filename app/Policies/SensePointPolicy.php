@@ -17,6 +17,11 @@ class SensePointPolicy
         return $this->allowed($user);
     }
 
+    public function view(User $user, SensePoint $point): bool
+    {
+        return $this->viewAny($user) && $this->sameTenant($point);
+    }
+
     public function create(User $user): bool
     {
         return $this->viewAny($user);

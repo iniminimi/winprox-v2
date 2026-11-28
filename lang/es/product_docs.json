@@ -296,7 +296,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense es el reloj de fichar con registro horario y clima interior. Las mediciones aparecen en WinProx.",
+                "body": "Sense es el reloj de fichar con registro horario y clima interior. Las mediciones aparecen en WinProx. Puede consultar un periodo y descargarlo.",
                 "link_route": "clock.sense",
                 "link_label": "Más sobre Sense"
             },
@@ -525,7 +525,7 @@
             },
             {
                 "title": "Sense (opcional)",
-                "body": "Sense mide el clima interior. Las mediciones aparecen en WinProx.",
+                "body": "Sense mide el clima interior. Las mediciones aparecen en WinProx. Puede consultar un periodo y descargarlo.",
                 "link_route": "clock.sense",
                 "link_label": "Más sobre Sense"
             },

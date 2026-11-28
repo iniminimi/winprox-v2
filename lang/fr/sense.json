@@ -40,5 +40,25 @@
         "unit_taken": "Ce local a déjà Sense.",
         "band_range": "Cette valeur est hors de l'échelle.",
         "band_order": "La valeur cible se situe entre le bas et le haut."
+    },
+    "readings": {
+        "open": "Mesures",
+        "title": "Mesures — :place",
+        "subtitle": "Valeurs de climat enregistrées de cet écran.",
+        "document_title": "Mesures — :place — WinProx",
+        "back": "Retour à l’écran",
+        "from": "Du",
+        "until": "Au",
+        "hint": "31 jours au plus. Un téléchargement contient au plus 5 000 lignes, les plus récentes d’abord.",
+        "period_max": "Choisissez 31 jours au plus.",
+        "empty": "Aucune mesure sur cette période.",
+        "filename": "mesures-sense",
+        "columns": {
+            "recorded": "Mesuré le",
+            "temperature": "Température (°C)",
+            "humidity": "Humidité (%)",
+            "co2": "CO₂ (ppm)",
+            "voc": "Indice COV"
+        }
     }
 }

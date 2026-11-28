@@ -534,6 +534,9 @@
                             $placesGroupActive = request()->routeIs('locations.*')
                                 || $unitsActive
                                 || request()->routeIs('screens.pair')
+                                || request()->routeIs('screens.sense')
+                                || request()->routeIs('screens.sense.export')
+                                || request()->routeIs('screens.sense.print')
                                 || request()->routeIs('cameras.show')
                                 || ($showCustomersNav && request()->routeIs('customers.*'))
                                 || ($showPhotoAlbumNavItem && request()->routeIs('photo-album.*'));

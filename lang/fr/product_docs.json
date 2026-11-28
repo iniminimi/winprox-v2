@@ -296,7 +296,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense est la pointeuse avec pointage et climat intérieur. Les mesures apparaissent dans WinProx.",
+                "body": "Sense est la pointeuse avec pointage et climat intérieur. Les mesures apparaissent dans WinProx. Vous consultez une période et les téléchargez.",
                 "link_route": "clock.sense",
                 "link_label": "En savoir plus sur Sense"
             },
@@ -525,7 +525,7 @@
             },
             {
                 "title": "Sense (optionnel)",
-                "body": "Sense mesure le climat intérieur. Les mesures apparaissent dans WinProx.",
+                "body": "Sense mesure le climat intérieur. Les mesures apparaissent dans WinProx. Vous consultez une période et les téléchargez.",
                 "link_route": "clock.sense",
                 "link_label": "En savoir plus sur Sense"
             },
