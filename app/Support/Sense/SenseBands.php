@@ -46,11 +46,6 @@ final class SenseBands
             return [self::row(SenseMetric::Stale, SenseAttentionDirection::Missing, null, null, null)];
         }
 
-        $staleAfter = (int) config('sense.stale_after_minutes', 15);
-        if ($point->last_recorded_at->lt(now()->subMinutes($staleAfter))) {
-            return [self::row(SenseMetric::Stale, SenseAttentionDirection::Stale, null, null, $point->last_recorded_at)];
-        }
-
         $rows = [];
         $temperature = round((float) $point->last_temperature, 1);
         if ($temperature < round((float) $point->temperature_low, 1)) {
@@ -74,6 +69,11 @@ final class SenseBands
         $voc = (int) $point->last_voc;
         if ($voc > (int) $point->voc_high && self::vocHolds($point, (int) $point->voc_high)) {
             $rows[] = self::row(SenseMetric::Voc, SenseAttentionDirection::Above, (float) $voc, (float) $point->voc_high, $point->last_recorded_at);
+        }
+
+        $staleAfter = (int) config('sense.stale_after_minutes', 15);
+        if ($rows === [] && $point->last_recorded_at->lt(now()->subMinutes($staleAfter))) {
+            $rows[] = self::row(SenseMetric::Stale, SenseAttentionDirection::Stale, null, null, $point->last_recorded_at);
         }
 
         return $rows;

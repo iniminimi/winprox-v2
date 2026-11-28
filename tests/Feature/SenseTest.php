@@ -160,6 +160,33 @@ it('toont een stilgevallen scherm als aandacht', function () {
     Carbon::setTestNow();
 });
 
+it('toont een alarm ook als de laatste meting al even geleden is', function () {
+    Carbon::setTestNow('2026-11-24 12:00:00');
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    seedTenantPastOnboarding($tenant);
+    Tenancy::actAs($tenant->id);
+    [$unit] = senseRoom($tenant);
+    $created = app(CreateSensePointAction::class)->handle((int) $unit->id, (int) $tenant->id);
+
+    app(RecordSenseReadingAction::class)->handle($created['point'], new RecordSenseReadingData(
+        temperature: 18,
+        humidity: 50,
+        co2: 1400,
+        voc: 30,
+        recordedAt: CarbonImmutable::parse('2026-11-24 11:00:00'),
+    ));
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee('Temperatuur 18 °C · onder 20 °C', false)
+        ->assertSee('CO₂ 1.400 ppm · boven 900 ppm', false)
+        ->assertDontSee('geen meting sinds');
+
+    Carbon::setTestNow();
+});
+
 it('start met de winterwaarden van een leefruimte', function () {
     Carbon::setTestNow('2026-11-24 12:00:00');
     $tenant = Tenant::factory()->create();

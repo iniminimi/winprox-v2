@@ -821,7 +821,7 @@ stuurt events; WinProx zet die om in workflow.
 
 ## 5d. Sense
 
-**Doel:** per lokaal temperatuur, luchtvochtigheid, CO₂ en VOC-index tonen (D1S). Geen melding, geen taak. Aandacht op het beginscherm als een waarde onder of boven de band zit, of als het scherm 15 minuten niets stuurt.
+**Doel:** per lokaal temperatuur, luchtvochtigheid, CO₂ en VOC-index tonen (D1S). Geen melding, geen taak. Aandacht op het beginscherm als een waarde onder of boven de band zit. Alleen als de laatste meting binnen de band zit en het scherm 15 minuten niets stuurt, staat er dat er geen meting is.
 
 - Geen apart menu. Op **Scherm instellingen** zet de beheerder Sense aan voor een D1S, op een lokaal of op een Clock Point. Een D1 blijft uit. Checkmate ziet de pagina niet.
 - Eén punt per scherm dat Sense aan heeft, op een lokaal of op een Clock Point. De kaart toont de unitnaam, of de locatienaam bij een site-unit, of de naam van het Clock Point. Zwarte kaart, dezelfde verzadigde kleuren als het lcd. Uit zetten bewaart de grenzen.
