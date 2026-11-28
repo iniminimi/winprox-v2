@@ -19,6 +19,8 @@ final class DetectUsbFlashTargetAction
 
     public function handle(): UsbFlashSighting
     {
+        set_time_limit(90);
+
         if (! $this->usb->available()) {
             return new UsbFlashSighting('unavailable');
         }

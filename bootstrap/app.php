@@ -11,6 +11,7 @@ use App\Http\Middleware\AuthenticateSensePoint;
 use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\ConfineMarketHost;
 use App\Http\Middleware\EnsureAbsoluteSessionLifetime;
+use App\Http\Middleware\EnsureLoopbackUsbFlash;
 use App\Http\Middleware\EnsureBackofficeDesktop;
 use App\Http\Middleware\EnsureWorkerPhone;
 use App\Http\Middleware\EnsureCheckmateRouteAllowed;
@@ -45,6 +46,8 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->validateCsrfTokens(except: [
             'stripe/webhook',
+            'platform/usb-flash/detect',
+            'platform/usb-flash/run',
         ]);
 
         $middleware->alias([
@@ -60,6 +63,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'sense.point' => AuthenticateSensePoint::class,
             'camera.device' => AuthenticateCamera::class,
             'clock.display' => AuthenticateClockDisplay::class,
+            'usb.flash' => EnsureLoopbackUsbFlash::class,
             'idempotency' => EnsureRequestIdempotency::class,
         ]);
 

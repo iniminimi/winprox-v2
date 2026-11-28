@@ -1,4 +1,4 @@
-<div class="wp-stack">
+<div class="wp-stack" x-data="wpUsbFlash()">
     <x-wp-page-head-title
         icon="document"
         :title="__('ops.devices.title')"
@@ -70,9 +70,9 @@
             <button type="button" class="btn btn--primary" wire:click="openRegister">
                 {{ __('ops.devices.register') }}
             </button>
-            <button type="button" class="btn btn--ghost" wire:click="detectFlash" wire:loading.attr="disabled" wire:target="detectFlash,confirmFlash">
-                <span wire:loading.remove wire:target="detectFlash,confirmFlash">{{ __('ops.devices.flash') }}</span>
-                <span wire:loading wire:target="detectFlash,confirmFlash">{{ __('ops.devices.flash_working') }}</span>
+            <button type="button" class="btn btn--ghost" @click="detectLocal()" :disabled="busy">
+                <span x-show="!busy">{{ __('ops.devices.flash') }}</span>
+                <span x-show="busy" x-cloak>{{ __('ops.devices.flash_working') }}</span>
             </button>
         </div>
 
@@ -284,12 +284,77 @@
                 <p>{{ __('ops.devices.flash_confirm', ['type' => $flashTargetType, 'mac' => $flashTargetMac]) }}</p>
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--surface" wire:click="cancelFlash">{{ __('ops.devices.flash_no') }}</button>
-                    <button type="button" class="btn btn--primary" wire:click="confirmFlash" wire:loading.attr="disabled" wire:target="confirmFlash">
-                        <span wire:loading.remove wire:target="confirmFlash">{{ __('ops.devices.flash_yes') }}</span>
-                        <span wire:loading wire:target="confirmFlash">{{ __('ops.devices.flash_working') }}</span>
+                    <button type="button" class="btn btn--primary" @click="confirmLocal()" :disabled="busy">
+                        <span x-show="!busy">{{ __('ops.devices.flash_yes') }}</span>
+                        <span x-show="busy" x-cloak>{{ __('ops.devices.flash_working') }}</span>
                     </button>
                 </div>
             </div>
         </x-wp-modal>
     @endif
 </div>
+<script>
+    function wpUsbFlash() {
+        return {
+            busy: false,
+            raw: '',
+            detectUrl: 'http://127.0.0.1/platform/usb-flash/detect',
+            runUrl: 'http://127.0.0.1/platform/usb-flash/run',
+            async detectLocal() {
+                this.busy = true;
+                try {
+                    const data = await this.post(this.detectUrl, {});
+                    if (data.status === 'found') {
+                        this.raw = data.raw;
+                        this.$wire.set('flashTargetType', data.type);
+                        this.$wire.set('flashTargetMac', data.mac);
+                        this.$wire.set('flashExpectedMac', data.raw);
+                        this.$wire.set('showFlashConfirm', true);
+                        this.$wire.set('flashMessage', null);
+                        return;
+                    }
+                    this.raw = '';
+                    this.$wire.set('showFlashConfirm', false);
+                    this.$wire.set('flashMessage', data.message);
+                    this.$wire.set('flashType', 'error');
+                } catch (e) {
+                    await this.$wire.detectFlash();
+                } finally {
+                    this.busy = false;
+                }
+            },
+            async confirmLocal() {
+                if (!this.raw) {
+                    await this.$wire.confirmFlash();
+                    return;
+                }
+                this.busy = true;
+                try {
+                    const data = await this.post(this.runUrl, { mac: this.raw });
+                    this.raw = '';
+                    this.$wire.set('flashMessage', data.message);
+                    this.$wire.set('flashType', data.status === 'ok' ? 'success' : 'error');
+                    this.$wire.set('showFlashConfirm', false);
+                } catch (e) {
+                    await this.$wire.confirmFlash();
+                } finally {
+                    this.busy = false;
+                }
+            },
+            async post(url, body) {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify(body),
+                });
+                if (!response.ok) {
+                    throw new Error('usb-flash');
+                }
+                return response.json();
+            },
+        };
+    }
+</script>

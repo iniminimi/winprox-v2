@@ -19,7 +19,7 @@ final class FlashUsbClockAction
         private LogAuditAction $audit,
     ) {}
 
-    public function handle(string $expectedMac, int $actorUserId): UsbFlashSighting
+    public function handle(string $expectedMac, ?int $actorUserId): UsbFlashSighting
     {
         set_time_limit(320);
 

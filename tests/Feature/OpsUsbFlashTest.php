@@ -151,6 +151,33 @@ it('meldt wanneer er geen klokscherm aan usb hangt', function () {
         ->assertSee(__('ops.devices.flash_none'));
 });
 
+it('flasht via deze computer wanneer de pagina erom vraagt', function () {
+    app()->instance(UsbClockBridge::class, new FakeUsbClockBridge);
+
+    $this->withServerVariables(['REMOTE_ADDR' => '127.0.0.1'])
+        ->postJson('/platform/usb-flash/detect', [], ['Origin' => 'https://winprox.app'])
+        ->assertOk()
+        ->assertJsonPath('status', 'found')
+        ->assertJsonPath('mac', 'AA:BB:CC:DD:EE:01');
+
+    $this->withServerVariables(['REMOTE_ADDR' => '127.0.0.1'])
+        ->postJson('/platform/usb-flash/run', ['mac' => 'AABBCCDDEE01'], ['Origin' => 'https://winprox.app'])
+        ->assertOk()
+        ->assertJsonPath('status', 'ok');
+});
+
+it('weigert usb-flash van een ander adres of een andere site', function () {
+    app()->instance(UsbClockBridge::class, new FakeUsbClockBridge);
+
+    $this->withServerVariables(['REMOTE_ADDR' => '203.0.113.8'])
+        ->postJson('/platform/usb-flash/detect', [], ['Origin' => 'https://winprox.app'])
+        ->assertForbidden();
+
+    $this->withServerVariables(['REMOTE_ADDR' => '127.0.0.1'])
+        ->postJson('/platform/usb-flash/detect', [], ['Origin' => 'https://example.test'])
+        ->assertForbidden();
+});
+
 it('laat een medewerker niet flashen', function () {
     $employee = User::factory()->employee()->create();
 

@@ -129,6 +129,15 @@ class UsbClockBridge
     private function run(array $command, int $timeout): array
     {
         $process = new Process($command);
+        $profile = $this->userProfile();
+        if ($profile !== null) {
+            $env = getenv() ?: [];
+            $env['USERPROFILE'] = $profile;
+            $env['APPDATA'] = $profile.'\\AppData\\Roaming';
+            $env['LOCALAPPDATA'] = $profile.'\\AppData\\Local';
+            $env['PYTHONPATH'] = $profile.'\\AppData\\Roaming\\Python\\Python313\\site-packages';
+            $process->setEnv($env);
+        }
         $process->setTimeout($timeout);
 
         try {
@@ -146,6 +155,16 @@ class UsbClockBridge
     private function path(string $key): string
     {
         return (string) config('ops.usb_flash.'.$key);
+    }
+
+    private function userProfile(): ?string
+    {
+        $python = $this->path('python');
+        if (preg_match('/^(C:\\\\Users\\\\[^\\\\]+)\\\\/i', $python, $match) === 1) {
+            return $match[1];
+        }
+
+        return null;
     }
 
     private function isComPort(string $port): bool

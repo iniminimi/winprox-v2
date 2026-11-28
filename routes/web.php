@@ -452,6 +452,13 @@ Route::middleware('guest')->group(function () {
     Route::get('/auth/microsoft/callback', [MicrosoftAuthController::class, 'callback'])->middleware('backoffice.desktop')->name('auth.microsoft.callback');
 });
 
+Route::match(['POST', 'OPTIONS'], '/platform/usb-flash/detect', [\App\Http\Controllers\Platform\LocalUsbFlashController::class, 'detect'])
+    ->middleware('usb.flash')
+    ->name('platform.usb-flash.detect');
+Route::match(['POST', 'OPTIONS'], '/platform/usb-flash/run', [\App\Http\Controllers\Platform\LocalUsbFlashController::class, 'run'])
+    ->middleware('usb.flash')
+    ->name('platform.usb-flash.run');
+
 Route::middleware(['auth', 'backoffice.desktop'])->group(function () {
     Route::get('/ui-theme/{theme}', UiThemeController::class)->name('ui-theme.switch');
 
