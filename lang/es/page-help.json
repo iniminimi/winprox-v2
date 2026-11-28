@@ -1918,7 +1918,7 @@
                 },
                 {
                     "label": "Descargar",
-                    "text": "<strong>Descargar informe</strong> hace un CSV o una impresión de ese periodo. Una descarga contiene como máximo 5.000 filas, las más recientes primero."
+                    "text": "<strong>Descargar informe</strong> hace un archivo Excel o una impresión de ese periodo. Una descarga contiene como máximo 5.000 filas, las más recientes primero."
                 }
             ]
         },

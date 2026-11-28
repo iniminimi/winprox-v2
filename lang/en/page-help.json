@@ -1918,7 +1918,7 @@
                 },
                 {
                     "label": "Download",
-                    "text": "<strong>Download report</strong> makes a CSV or a print of that period. A download holds up to 5,000 rows, newest first."
+                    "text": "<strong>Download report</strong> makes an Excel file or a print of that period. A download holds up to 5,000 rows, newest first."
                 }
             ]
         },

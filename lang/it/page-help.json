@@ -1918,7 +1918,7 @@
                 },
                 {
                     "label": "Scarica",
-                    "text": "<strong>Scarica rapporto</strong> fa un CSV o una stampa di quel periodo. Un download contiene al massimo 5.000 righe, le più recenti prima."
+                    "text": "<strong>Scarica rapporto</strong> fa un file Excel o una stampa di quel periodo. Un download contiene al massimo 5.000 righe, le più recenti prima."
                 }
             ]
         },

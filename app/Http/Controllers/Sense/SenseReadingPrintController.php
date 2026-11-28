@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Sense;
 
 use App\Actions\Sense\ExportSenseReadingsAction;
-use App\Actions\Sense\FindSensePointForScreenAction;
-use App\Data\Sense\SenseScreenRef;
+use App\Actions\Sense\ListSenseReadingScreensAction;
+use App\Data\Sense\SenseReadingScreenChoice;
 use App\Http\Requests\Sense\ListSenseReadingsRequest;
 use App\Models\SensePoint;
 use App\Models\Tenant;
@@ -18,36 +18,51 @@ class SenseReadingPrintController
 {
     public function __invoke(
         ListSenseReadingsRequest $request,
-        FindSensePointForScreenAction $find,
+        ListSenseReadingScreensAction $screens,
         ExportSenseReadingsAction $export,
     ): View {
-        $ref = $this->ref($find);
+        $choice = $this->choice($request, $screens);
         [$from, $until] = ListSenseReadingsRequest::bounds(
             (string) $request->validated('from'),
             (string) $request->validated('until'),
         );
-        $result = $export->handle((int) Tenancy::id(), $ref->sensePointId, $from, $until);
+        $result = $export->handle((int) Tenancy::id(), $choice->sensePointId, $from, $until);
 
         return view('reports.print-sense', [
             'tenant' => Tenant::query()->findOrFail(Tenancy::id()),
-            'place' => $ref->place,
+            'place' => $choice->name,
             'readings' => $result->rows,
             'truncated' => $result->truncated,
             'limit' => $result->limit,
         ]);
     }
 
-    private function ref(FindSensePointForScreenAction $find): SenseScreenRef
+    private function choice(ListSenseReadingsRequest $request, ListSenseReadingScreensAction $screens): SenseReadingScreenChoice
     {
         Gate::authorize('viewAny', SensePoint::class);
 
-        [$unitId, $clockPointId] = ListSenseReadingsRequest::screenIds();
-        $ref = $find->handle((int) Tenancy::id(), $unitId, $clockPointId);
+        $catalog = $screens->handle((int) Tenancy::id());
+        $screenId = $request->integer('screen');
+        $choice = $screenId > 0 ? $catalog->find($screenId) : null;
 
-        if ($ref === null) {
+        if ($choice === null) {
+            [$unitId, $clockPointId] = ListSenseReadingsRequest::screenIds();
+            foreach ($catalog->screens as $screen) {
+                if ($unitId !== null && $screen->unitId === $unitId) {
+                    $choice = $screen;
+                    break;
+                }
+                if ($clockPointId !== null && $screen->clockPointId === $clockPointId) {
+                    $choice = $screen;
+                    break;
+                }
+            }
+        }
+
+        if ($choice === null) {
             abort(404);
         }
 
-        return $ref;
+        return $choice;
     }
 }

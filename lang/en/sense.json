@@ -59,6 +59,10 @@
             "humidity": "Humidity (%)",
             "co2": "CO₂ (ppm)",
             "voc": "VOC index"
-        }
+        },
+        "location": "Location",
+        "screen": "Screen",
+        "no_location": "No location",
+        "excel": "Excel"
     }
 }

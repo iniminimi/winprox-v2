@@ -1,6 +1,7 @@
 @props([
     'csvUrl',
     'printUrl',
+    'fileLabel' => null,
 ])
 
 <div
@@ -26,7 +27,7 @@
         role="menu"
     >
         <a href="{{ $csvUrl }}" class="wp-list-export__item" role="menuitem" download>
-            {{ __('reports.format.csv') }}
+            {{ $fileLabel ?? __('reports.format.csv') }}
         </a>
         <a
             href="{{ $printUrl }}"

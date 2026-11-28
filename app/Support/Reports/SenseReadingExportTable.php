@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Support\Reports;
 
 use App\Models\SenseReading;
-use App\Support\Sense\SenseNumber;
 use Illuminate\Support\Collection;
 
 final class SenseReadingExportTable
@@ -34,11 +33,11 @@ final class SenseReadingExportTable
             $at = $reading->recorded_at?->timezone(config('app.timezone'));
 
             return [
-                $at?->format('Y-m-d H:i') ?? '',
-                SenseNumber::format((float) $reading->temperature, 1),
-                SenseNumber::format((float) $reading->humidity, 0),
-                SenseNumber::format((float) $reading->co2, 0),
-                SenseNumber::format((float) $reading->voc, 0),
+                $at?->format('d-m-Y H:i') ?? '',
+                (float) $reading->temperature,
+                (float) $reading->humidity,
+                (int) $reading->co2,
+                (int) $reading->voc,
             ];
         });
     }

@@ -1918,7 +1918,7 @@
                 },
                 {
                     "label": "Download",
-                    "text": "<strong>Bericht herunterladen</strong> macht eine CSV oder einen Druck dieses Zeitraums. Ein Download enthält höchstens 5.000 Zeilen, die neuesten zuerst."
+                    "text": "<strong>Bericht herunterladen</strong> macht eine Excel-Datei oder einen Druck dieses Zeitraums. Ein Download enthält höchstens 5.000 Zeilen, die neuesten zuerst."
                 }
             ]
         },

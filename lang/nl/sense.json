@@ -59,6 +59,10 @@
             "humidity": "Luchtvochtigheid (%)",
             "co2": "CO₂ (ppm)",
             "voc": "VOC-index"
-        }
+        },
+        "location": "Locatie",
+        "screen": "Scherm",
+        "no_location": "Zonder locatie",
+        "excel": "Excel"
     }
 }

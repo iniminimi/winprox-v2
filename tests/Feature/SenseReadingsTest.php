@@ -54,9 +54,8 @@ it('toont de metingen van een scherm en downloadt ze', function () {
         ->get(route('screens.sense', $unit))
         ->assertOk()
         ->assertSee('Metingen — Babylokaal')
-        ->assertSee('21,5 °C')
-        ->assertSee('980 ppm')
-        ->assertSee('28-11-2026 12:09');
+        ->assertSee('Locatie')
+        ->assertSee('28-11-2026 12:09 : Temperatuur 21,5 °C · Luchtvochtigheid 40 % · CO₂ 980 ppm · VOC-index 80', false);
 
     $export = $this->actingAs($admin)->get(route('screens.sense.export', [
         'unit' => $unit,
@@ -64,7 +63,17 @@ it('toont de metingen van een scherm en downloadt ze', function () {
         'until' => '2026-11-28',
     ]));
     $export->assertOk();
-    expect($export->streamedContent())->toContain('21,5')->toContain('980');
+    $export->assertHeader('content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    $binary = $export->streamedContent();
+    expect($binary)->toStartWith('PK');
+    $path = tempnam(sys_get_temp_dir(), 'wp-xlsx-test-');
+    file_put_contents($path, $binary);
+    $zip = new ZipArchive;
+    $zip->open($path);
+    $sheet = $zip->getFromName('xl/worksheets/sheet1.xml');
+    $zip->close();
+    unlink($path);
+    expect($sheet)->toContain('21.5')->toContain('980');
 
     $this->actingAs($admin)
         ->get(route('screens.sense.print', [
@@ -73,7 +82,7 @@ it('toont de metingen van een scherm en downloadt ze', function () {
             'until' => '2026-11-28',
         ]))
         ->assertOk()
-        ->assertSee('21,5 °C');
+        ->assertSee('28-11-2026 12:09 : Temperatuur 21,5 °C · Luchtvochtigheid 40 % · CO₂ 980 ppm · VOC-index 80', false);
 });
 
 it('toont de metingen van een clock point', function () {

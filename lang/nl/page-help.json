@@ -1918,7 +1918,7 @@
                 },
                 {
                     "label": "Download",
-                    "text": "<strong>Download rapport</strong> maakt een CSV of een afdruk van die periode. Een download bevat maximaal 5.000 rijen, de nieuwste eerst."
+                    "text": "<strong>Download rapport</strong> maakt een Excel-bestand of een afdruk van die periode. Een download bevat maximaal 5.000 rijen, de nieuwste eerst."
                 }
             ]
         },

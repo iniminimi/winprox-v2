@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Livewire\Sense;
 
-use App\Actions\Sense\FindSensePointForScreenAction;
+use App\Actions\Sense\ListSenseReadingScreensAction;
 use App\Actions\Sense\ListSenseReadingsAction;
+use App\Data\Sense\SenseReadingCatalog;
+use App\Data\Sense\SenseReadingScreenChoice;
 use App\Http\Requests\Sense\ListSenseReadingsRequest;
 use App\Models\SensePoint;
 use App\Support\Tenancy;
@@ -24,13 +26,17 @@ class Readings extends Component
 {
     use WithPagination;
 
+    #[Url(as: 'location')]
+    public string $locationId = '';
+
+    #[Url(as: 'screen')]
+    public string $screenId = '';
+
     #[Url]
     public string $from = '';
 
     #[Url]
     public string $until = '';
-
-    public int $sensePointId;
 
     public string $place = '';
 
@@ -38,19 +44,12 @@ class Readings extends Component
 
     public ?int $clockPointId = null;
 
-    public function mount(FindSensePointForScreenAction $find): void
+    public function mount(ListSenseReadingScreensAction $screens): void
     {
         $this->authorize('viewAny', SensePoint::class);
 
-        [$this->unitId, $this->clockPointId] = ListSenseReadingsRequest::screenIds();
-
-        $ref = $find->handle((int) Tenancy::id(), $this->unitId, $this->clockPointId);
-        if ($ref === null) {
-            abort(404);
-        }
-
-        $this->sensePointId = $ref->sensePointId;
-        $this->place = $ref->place;
+        $catalog = $screens->handle((int) Tenancy::id());
+        $this->select($catalog, true);
 
         if ($this->from === '') {
             $this->from = now()->subDays(6)->toDateString();
@@ -59,6 +58,19 @@ class Readings extends Component
         if ($this->until === '') {
             $this->until = now()->toDateString();
         }
+    }
+
+    public function updatedLocationId(string $value): void
+    {
+        $catalog = app(ListSenseReadingScreensAction::class)->handle((int) Tenancy::id());
+        $first = $catalog->firstInLocation((int) $value);
+        $this->screenId = $first !== null ? (string) $first->sensePointId : '';
+        $this->resetPage();
+    }
+
+    public function updatedScreenId(): void
+    {
+        $this->resetPage();
     }
 
     public function updatedFrom(): void
@@ -71,25 +83,36 @@ class Readings extends Component
         $this->resetPage();
     }
 
-    public function render(ListSenseReadingsAction $list): View
+    public function render(ListSenseReadingScreensAction $screens, ListSenseReadingsAction $list): View
     {
+        $catalog = $screens->handle((int) Tenancy::id());
+        $choice = $this->select($catalog, false);
+        $screensHere = array_values(array_filter(
+            $catalog->screens,
+            fn (SenseReadingScreenChoice $screen): bool => (string) $screen->locationId === $this->locationId,
+        ));
+
         $readings = null;
         $periodError = null;
 
-        try {
-            [$from, $until] = ListSenseReadingsRequest::bounds($this->from, $this->until);
-            $readings = $list->handle(
-                (int) Tenancy::id(),
-                $this->sensePointId,
-                $from,
-                $until,
-                (int) $this->getPage(),
-            );
-        } catch (ValidationException $exception) {
-            $periodError = collect($exception->errors())->flatten()->first();
+        if ($choice !== null) {
+            try {
+                [$from, $until] = ListSenseReadingsRequest::bounds($this->from, $this->until);
+                $readings = $list->handle(
+                    (int) Tenancy::id(),
+                    $choice->sensePointId,
+                    $from,
+                    $until,
+                    (int) $this->getPage(),
+                );
+            } catch (ValidationException $exception) {
+                $periodError = collect($exception->errors())->flatten()->first();
+            }
         }
 
         return view('livewire.sense.readings', [
+            'locations' => $catalog->locations,
+            'screensHere' => $screensHere,
             'readings' => $readings,
             'periodError' => is_string($periodError) ? $periodError : null,
             'backUrl' => $this->backUrl(),
@@ -98,18 +121,66 @@ class Readings extends Component
         ]);
     }
 
-    private function backUrl(): string
+    private function select(SenseReadingCatalog $catalog, bool $missingIsError): ?SenseReadingScreenChoice
+    {
+        if ($this->screenId === '') {
+            [$unitId, $clockPointId] = ListSenseReadingsRequest::screenIds();
+            foreach ($catalog->screens as $screen) {
+                if ($unitId !== null && $screen->unitId === $unitId) {
+                    $this->screenId = (string) $screen->sensePointId;
+                    break;
+                }
+                if ($clockPointId !== null && $screen->clockPointId === $clockPointId) {
+                    $this->screenId = (string) $screen->sensePointId;
+                    break;
+                }
+            }
+
+            if ($missingIsError && ($unitId !== null || $clockPointId !== null) && $this->screenId === '') {
+                abort(404);
+            }
+        }
+
+        $choice = $this->screenId !== '' ? $catalog->find((int) $this->screenId) : null;
+        if ($choice === null && $this->screenId !== '' && $missingIsError) {
+            abort(404);
+        }
+
+        if ($choice === null && $catalog->screens !== []) {
+            $choice = $catalog->screens[0];
+        }
+
+        if ($choice !== null) {
+            $this->locationId = (string) $choice->locationId;
+            $this->screenId = (string) $choice->sensePointId;
+            $this->place = $choice->name;
+            $this->unitId = $choice->unitId;
+            $this->clockPointId = $choice->clockPointId;
+        }
+
+        return $choice;
+    }
+
+    private function backUrl(): ?string
     {
         if ($this->clockPointId !== null) {
             return route('time.clock-displays.pair', $this->clockPointId);
         }
 
-        return route('screens.pair', $this->unitId);
+        if ($this->unitId !== null) {
+            return route('screens.pair', $this->unitId);
+        }
+
+        return null;
     }
 
     private function downloadUrl(string $kind): string
     {
-        $params = ['from' => $this->from, 'until' => $this->until];
+        $params = [
+            'screen' => $this->screenId,
+            'from' => $this->from,
+            'until' => $this->until,
+        ];
 
         if ($this->clockPointId !== null) {
             return route('time.clock-displays.sense.'.$kind, ['clockPoint' => $this->clockPointId] + $params);

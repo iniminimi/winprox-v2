@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Sense;
 
 use App\Actions\Sense\ExportSenseReadingsAction;
-use App\Actions\Sense\FindSensePointForScreenAction;
+use App\Actions\Sense\ListSenseReadingScreensAction;
+use App\Data\Sense\SenseReadingScreenChoice;
 use App\Http\Requests\Sense\ListSenseReadingsRequest;
 use App\Models\SensePoint;
-use App\Support\Reports\CsvStreamer;
 use App\Support\Reports\SenseReadingExportTable;
+use App\Support\Reports\XlsxDownload;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -18,16 +19,16 @@ class SenseReadingExportController
 {
     public function __invoke(
         ListSenseReadingsRequest $request,
-        FindSensePointForScreenAction $find,
+        ListSenseReadingScreensAction $screens,
         ExportSenseReadingsAction $export,
     ): StreamedResponse {
-        $ref = $this->ref($find);
+        $choice = $this->choice($request, $screens);
         [$from, $until] = ListSenseReadingsRequest::bounds(
             (string) $request->validated('from'),
             (string) $request->validated('until'),
         );
 
-        $result = $export->handle((int) Tenancy::id(), $ref->sensePointId, $from, $until);
+        $result = $export->handle((int) Tenancy::id(), $choice->sensePointId, $from, $until);
         $rows = SenseReadingExportTable::rows($result->rows);
 
         if ($result->truncated) {
@@ -37,24 +38,40 @@ class SenseReadingExportController
             ]);
         }
 
-        return CsvStreamer::download(
-            __('sense.readings.filename').'-'.now()->format('Y-m-d').'.csv',
+        return XlsxDownload::download(
+            __('sense.readings.filename').'-'.now()->format('Y-m-d').'.xlsx',
             SenseReadingExportTable::columns(),
             $rows,
+            [false, true, true, true, true],
         );
     }
 
-    private function ref(FindSensePointForScreenAction $find): \App\Data\Sense\SenseScreenRef
+    private function choice(ListSenseReadingsRequest $request, ListSenseReadingScreensAction $screens): SenseReadingScreenChoice
     {
         Gate::authorize('viewAny', SensePoint::class);
 
-        [$unitId, $clockPointId] = ListSenseReadingsRequest::screenIds();
-        $ref = $find->handle((int) Tenancy::id(), $unitId, $clockPointId);
+        $catalog = $screens->handle((int) Tenancy::id());
+        $screenId = $request->integer('screen');
+        $choice = $screenId > 0 ? $catalog->find($screenId) : null;
 
-        if ($ref === null) {
+        if ($choice === null) {
+            [$unitId, $clockPointId] = ListSenseReadingsRequest::screenIds();
+            foreach ($catalog->screens as $screen) {
+                if ($unitId !== null && $screen->unitId === $unitId) {
+                    $choice = $screen;
+                    break;
+                }
+                if ($clockPointId !== null && $screen->clockPointId === $clockPointId) {
+                    $choice = $screen;
+                    break;
+                }
+            }
+        }
+
+        if ($choice === null) {
             abort(404);
         }
 
-        return $ref;
+        return $choice;
     }
 }

@@ -6,26 +6,13 @@
     :limit="$limit"
     :row-count="$readings->count()"
 >
-    @if ($readings->isEmpty())
-        <div class="wp-card wp-card-pad">
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        @if ($readings->isEmpty())
             <p class="wp-muted">{{ __('reports.empty') }}</p>
-        </div>
-    @else
-        <div class="wp-list wp-stack">
+        @else
             @foreach ($readings as $reading)
-                @php
-                    $at = $reading->recorded_at?->timezone(config('app.timezone'));
-                @endphp
-                <div class="wp-card wp-card-pad wp-report-print__card">
-                    <p class="wp-text-body"><strong>{{ $at?->format('d-m-Y H:i') }}</strong></p>
-                    <p class="wp-muted">
-                        {{ __('sense.metrics.temperature') }} {{ \App\Support\Sense\SenseNumber::withUnit(\App\Enums\SenseMetric::Temperature, (float) $reading->temperature) }}
-                        · {{ __('sense.metrics.humidity') }} {{ \App\Support\Sense\SenseNumber::withUnit(\App\Enums\SenseMetric::Humidity, (float) $reading->humidity) }}
-                        · {{ __('sense.metrics.co2') }} {{ \App\Support\Sense\SenseNumber::withUnit(\App\Enums\SenseMetric::Co2, (float) $reading->co2) }}
-                        · {{ __('sense.metrics.voc') }} {{ \App\Support\Sense\SenseNumber::withUnit(\App\Enums\SenseMetric::Voc, (float) $reading->voc) }}
-                    </p>
-                </div>
+                <p class="wp-text-body">{{ \App\Support\Sense\SenseReadingLine::text($reading) }}</p>
             @endforeach
-        </div>
-    @endif
+        @endif
+    </div>
 </x-wp-report-print>

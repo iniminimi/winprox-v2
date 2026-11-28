@@ -1922,7 +1922,7 @@
                 },
                 {
                     "label": "Télécharger",
-                    "text": "<strong>Télécharger le rapport</strong> fait un CSV ou une impression de cette période. Un téléchargement contient au plus 5 000 lignes, les plus récentes d’abord."
+                    "text": "<strong>Télécharger le rapport</strong> fait un fichier Excel ou une impression de cette période. Un téléchargement contient au plus 5 000 lignes, les plus récentes d’abord."
                 }
             ]
         },
