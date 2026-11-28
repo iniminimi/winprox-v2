@@ -11,8 +11,8 @@ beeld als screensaver (keuze Sense, met een tijdvenster) en vijf seconden
 na een veeg naar links op de QR. Een tik opent de QR. Niet opnieuw
 ontwerpen.
 
-Vier kaders op 480×480, met ongeveer 1 mm rand zodat de afgeronde hoeken zichtbaar blijven, Sense-merk in het midden: TEMP (koraal,
-thermometer), VOCHTIGHEID (blauw, lachende druppel), CO₂ (groen, wolk), VOC
+Vier kaders op 480×480, met ongeveer 1 mm rand zodat de afgeronde hoeken zichtbaar blijven. In het midden het zilveren WinProx-logo (twee cirkels met een V), twee keer zo groot als het vroegere merk, en het schittert door een kleine beweging. De titels zijn TEMPERATUUR (koraal,
+thermometer), LUCHTVOCHTIGHEID (blauw, lachende druppel), CO₂ (groen, wolk) en LUCHTKWALITEIT
 (paars, molecule). Elk kader is een JPEG met verloop, gloed, icoon en golfjes,
 dezelfde decoder als de screensaverfoto’s. Het getal en de status zijn losse
 tekst, zonder gekleurd vlak. De temperatuur toont een kleinere °C, CO₂ een even kleine ppm. VOC is de index en krijgt geen eenheid. De status van VOC staat
