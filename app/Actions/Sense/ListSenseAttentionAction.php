@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace App\Actions\Sense;
 
+use App\Data\Sense\SenseAttentionBoard;
 use App\Data\Sense\SenseAttentionLine;
+use App\Enums\SenseAttentionDirection;
 use App\Models\SensePoint;
 use App\Support\Sense\SenseBands;
 
 class ListSenseAttentionAction
 {
-    /**
-     * @return list<SenseAttentionLine>
-     */
-    public function handle(int $tenantId): array
+    public function handle(int $tenantId): SenseAttentionBoard
     {
         app(SyncSenseSeasonAction::class)->handleTenant($tenantId);
 
@@ -42,16 +41,24 @@ class ListSenseAttentionAction
                     ? mb_substr($sentence, mb_strlen($prefix))
                     : $sentence;
 
+                $band = in_array($row['direction'], [SenseAttentionDirection::Below, SenseAttentionDirection::Above], true);
+
                 $lines[] = new SenseAttentionLine(
                     sensePointId: (int) $point->id,
                     room: $room,
                     detail: $detail,
-                    url: $this->settingsUrl($point),
+                    url: $this->readingsUrl($point, selectScreen: true, alarms: $band) ?? route('dashboard'),
                 );
             }
         }
 
-        return $lines;
+        $readingsUrl = null;
+        $first = $points->first();
+        if ($lines === [] && $first instanceof SensePoint) {
+            $readingsUrl = $this->readingsUrl($first, selectScreen: false, alarms: false);
+        }
+
+        return new SenseAttentionBoard($lines, $readingsUrl);
     }
 
     private function placeName(SensePoint $point): string
@@ -63,17 +70,26 @@ class ListSenseAttentionAction
         return (string) ($point->screen?->clockPoint?->name ?? '');
     }
 
-    private function settingsUrl(SensePoint $point): string
+    private function readingsUrl(SensePoint $point, bool $selectScreen, bool $alarms): ?string
     {
+        $params = [];
+        if ($selectScreen) {
+            $params['screen'] = $point->id;
+        }
+        if ($alarms) {
+            $params['alarms'] = 1;
+        }
+
         $screen = $point->screen;
         if ($screen?->clock_point_id !== null) {
-            return route('time.clock-displays.pair', $screen->clock_point_id);
+            return route('time.clock-displays.sense', ['clockPoint' => $screen->clock_point_id] + $params);
         }
 
-        if ($screen?->unit_id !== null) {
-            return route('screens.pair', $screen->unit_id);
+        $unitId = $screen?->unit_id ?? $point->unit_id;
+        if ($unitId !== null) {
+            return route('screens.sense', ['unit' => $unitId] + $params);
         }
 
-        return route('dashboard');
+        return null;
     }
 }

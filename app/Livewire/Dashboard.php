@@ -22,6 +22,7 @@ use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
 use App\Actions\Onboarding\RemoveTenantStarterPackAction;
 use App\Actions\ReleaseNotes\ShouldShowWhatsNewCardAction;
 use App\Actions\Sense\ListSenseAttentionAction;
+use App\Data\Sense\SenseAttentionBoard;
 use App\Actions\Retention\ListTimeArchiveNoticesAction;
 use App\Actions\Time\CountExpiringAbsencePhotosAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
@@ -492,6 +493,10 @@ class Dashboard extends Component
             $showPhoneLoginPrompt = $tenant->backoffice_phone_login_decided_at === null;
         }
 
+        $senseBoard = (! $isCheckmate && $user instanceof User && $user->can('viewAny', SensePoint::class))
+            ? $listSenseAttention->handle($tenantId)
+            : new SenseAttentionBoard([], null);
+
         return view('livewire.dashboard', [
             'checkmate' => $checkmateData,
             'checkmateQuickTiles' => $checkmateTiles['quickTiles'],
@@ -532,9 +537,8 @@ class Dashboard extends Component
             'starterPackUnitsHref' => $starterPackSummary !== null
                 ? TenantOnboardingState::unitsOnboardingHref()
                 : null,
-            'senseAttention' => (! $isCheckmate && $user instanceof User && $user->can('viewAny', SensePoint::class))
-                ? $listSenseAttention->handle($tenantId)
-                : [],
+            'senseAttention' => $senseBoard->lines,
+            'senseReadingsUrl' => $senseBoard->readingsUrl,
             'canAddDevice' => $user instanceof User && $user->can('pairDeviceAny', Location::class),
         ]);
     }

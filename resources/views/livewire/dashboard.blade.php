@@ -724,6 +724,24 @@
                     </div>
                 </a>
             @endforeach
+            @if (($senseAttention ?? []) === [] && filled($senseReadingsUrl ?? null))
+                <a href="{{ $senseReadingsUrl }}"
+                   class="wp-kpi"
+                   draggable="false"
+                   wire:key="sense-readings">
+                    <div class="wp-kpi-body">
+                        <span class="wp-kpi-icon" aria-hidden="true">
+                            <x-wp-icon name="sensor" />
+                        </span>
+                        <div class="wp-kpi-main">
+                            <p class="wp-kpi-kicker">{{ __('sense.title') }}</p>
+                            <p class="wp-kpi-stats">
+                                <span class="wp-kpi-value wp-kpi-value--phrase">{{ __('sense.readings.open') }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            @endif
             @if ($visibleKpis !== [] || $hiddenKpis !== [])
                 @php
                     $hiddenKpiCount = count($hiddenKpis);

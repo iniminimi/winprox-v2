@@ -61,7 +61,36 @@ it('zet sense onder plaatsen en toont aandacht zonder melding', function () {
         ->get(route('dashboard'))
         ->assertOk()
         ->assertSee('Babylokaal')
-        ->assertSee('1.450 ppm');
+        ->assertSee('1.450 ppm')
+        ->assertSee('/units/'.$unit->id.'/screen/readings?screen='.$created['point']->id, false)
+        ->assertSee('alarms=1', false);
+});
+
+it('toont zonder alarm een kaart naar de metingen', function () {
+    Carbon::setTestNow('2026-11-24 11:10:00');
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    seedTenantPastOnboarding($tenant);
+    Tenancy::actAs($tenant->id);
+    [$unit] = senseRoom($tenant);
+    $created = app(CreateSensePointAction::class)->handle((int) $unit->id, (int) $tenant->id);
+
+    app(RecordSenseReadingAction::class)->handle($created['point'], new RecordSenseReadingData(
+        temperature: 21,
+        humidity: 50,
+        co2: 700,
+        voc: 30,
+        recordedAt: CarbonImmutable::parse('2026-11-24 11:05:00'),
+    ));
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee('Metingen')
+        ->assertSee(route('screens.sense', $unit), false)
+        ->assertDontSee('alarms=1', false);
+
+    Carbon::setTestNow();
 });
 
 it('slaat de streefwaarde niet als alarm', function () {
@@ -155,7 +184,9 @@ it('toont een stilgevallen scherm als aandacht', function () {
     $this->actingAs($admin)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertSee('geen meting sinds');
+        ->assertSee('geen meting sinds')
+        ->assertSee('/units/'.$unit->id.'/screen/readings?screen='.$created['point']->id, false)
+        ->assertDontSee('alarms=1', false);
 
     Carbon::setTestNow();
 });
@@ -182,7 +213,9 @@ it('toont een alarm ook als de laatste meting al even geleden is', function () {
         ->assertOk()
         ->assertSee('Temperatuur 18 °C · onder 20 °C', false)
         ->assertSee('CO₂ 1.400 ppm · boven 900 ppm', false)
-        ->assertDontSee('geen meting sinds');
+        ->assertDontSee('geen meting sinds')
+        ->assertSee('/units/'.$unit->id.'/screen/readings?screen='.$created['point']->id, false)
+        ->assertSee('alarms=1', false);
 
     Carbon::setTestNow();
 });
